@@ -1,11 +1,7 @@
 <template>
-  <div>
-    {{ eleData.id }}
+  <div v-html="eleData.properties.svg">
   </div>
 </template>
-
-<style lang="less">
-</style>
 
 <script>
 export default { 

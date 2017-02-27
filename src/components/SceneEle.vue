@@ -12,6 +12,8 @@ import ScoreEle from './childElements/ScoreEle.vue';
 import ImgEle from './childElements/ImgEle.vue';
 import ShapeEle from './childElements/ShapeEle.vue';
 import CarouselEle from './childElements/CarouselEle.vue';
+import MapEle from './childElements/MapEle.vue';
+
 
 import _ from 'underscore';
 window._ = _;
@@ -72,25 +74,44 @@ export default {
         transform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
         WebkitTransform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
       });
-    }
+    },
   },
   render (h) {
-    const childrenInfo = elementType.find((type) => {
+    const childrenInfo = elementType.find(type => {
       return type.typeID === this.eleData.type;
     });
     const childEle = h(childrenInfo.tag, 
     {
       props: {eleData: this.eleData, pageIndex: this.pageIndex},
-      class: {'element-content': true},
+      class: ['element-content'],
       style: this.eleContentStyle
     });
-    return h('div', {class: {'element-container': true}, style: this.eleStyle}, [childEle]);
+    const containerClassArray = this.eleData.animationClass ?
+     this.eleData.animationClass.concat('element-container') : ['element-container'];
+    return h('div', {class: containerClassArray, attrs: { id: this.eleData.id }, style: this.eleStyle}, [childEle]);
+  },
+  mounted(){
+    const childrenInfo = elementType.find(type => {
+      return type.typeID === this.eleData.type;
+    });
+    const immediateElementTypes = ['text-element', 'shape-element', 'input-form-element', 'button-form-element', 'contact-form-element',
+      'select-form-element', 'score-form-element', 'link-element', 'tel-element', 'count-element', 'statistic-element'];
+    const isImmediate = immediateElementTypes.find(type => {
+      return childrenInfo.tag === type;
+    });
+    if(isImmediate){
+      this.loadElementSuccess();
+    }
+  },
+  methods: {
+    ...mapMutations(['loadElementSuccess'])
   },
   components: {
     'score-form-element': ScoreEle,
     'image-element': ImgEle,
     'shape-element': ShapeEle,
-    'carousel-element': CarouselEle
+    'carousel-element': CarouselEle,
+    'map-element': MapEle
   }
 }
 </script>

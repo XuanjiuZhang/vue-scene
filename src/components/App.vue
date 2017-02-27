@@ -15,7 +15,7 @@
 </style>
 
 <script>
-import { mapMutations, mapGetters,mapActions } from 'vuex';
+import { mapMutations, mapGetters, mapActions } from 'vuex';
 import ScoreEle from './ScoreEle.vue';
 
 export default {

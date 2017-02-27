@@ -8,7 +8,16 @@
 </style>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
-  props: ['eleData']
+  props: ['eleData'],
+  mounted(){
+    setTimeout(() => {
+      this.loadElementSuccess();
+    }, Math.random() * 1000);
+  },
+  methods: {
+    ...mapMutations(['loadElementSuccess'])
+  },
 }
 </script>

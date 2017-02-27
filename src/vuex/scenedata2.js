@@ -69,6 +69,119 @@ const scenedata = {
       },
       "elements": [
         {
+          'id': 797,
+          // 元素名称
+          'name': 'shape element',
+          // 元素类型
+          'type': 4,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': null,
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素外层 .element-container 的样式，样式名用小驼峰命名
+          'css': {
+            'top': '100px',
+            'left': '42px',
+            'zIndex': 4,
+            'width': '100px',
+            'height': '100px',
+            'opacity': 1,
+            'color': '#676767',
+            'paddingBottom': 0,
+            'paddingTop': 0,
+            'lineHeight': 1,
+            'borderRadius': '0px',
+            'transform': 'rotateZ(0deg)',
+            'borderRadiusPerc': 0,
+            'borderBottomRightRadius': '0px',
+            'borderBottomLeftRadius': '0px',
+            'borderTopRightRadius': '0px',
+            'borderTopLeftRadius': '0px',
+            'boxShadow': '0px 0px 0px rgba(0,0,0,0.5)',
+            'boxShadowDirection': 0,
+            'boxShadowSize': 0
+          },
+          // 元素中层 .element-content 的样式，样式名用小驼峰命名
+          'contentCss': {
+            'backgroundColor': '',
+            'borderWidth': 0,
+            'borderStyle': 'solid',
+            'borderColor': 'rgba(0,0,0,1)',
+            'rotateZ': 78
+          },
+          // 元素特性，这里每类元素特性，每类元素里属性都不同
+          'properties': {
+            'svg': '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" xml:space="preserve" preserveAspectRatio="xMidYMid" viewBox="0 0 44 44"><g x="0" y="0" width="44" height="44"><path d="M23.984,2.000 C25.587,2.000 27.094,2.624 28.227,3.757 C30.566,6.097 30.566,9.903 28.227,12.243 L15.984,24.485 L3.742,12.243 C1.402,9.903 1.402,6.097 3.742,3.757 C4.875,2.624 6.382,2.000 7.984,2.000 C9.587,2.000 11.094,2.624 12.227,3.757 L14.570,6.100 L15.984,7.515 L17.399,6.100 L19.742,3.757 C20.875,2.624 22.382,2.000 23.984,2.000 M23.984,0.000 C21.937,0.000 19.890,0.781 18.327,2.343 L15.984,4.686 L13.641,2.343 C12.079,0.781 10.032,0.000 7.984,0.000 C5.937,0.000 3.890,0.781 2.327,2.343 C-0.797,5.467 -0.797,10.533 2.327,13.657 L15.984,27.314 L29.641,13.657 C32.765,10.533 32.765,5.467 29.641,2.343 C28.079,0.781 26.032,0.000 23.984,0.000 L23.984,0.000 Z" fill="#ff0000" fill-rule="evenodd"/></g></svg>'
+          },
+          // 动画
+          'animate': [
+            {
+              "type": 26,
+              "direction": 3,
+              "duration": 5,
+              "delay": 0.5,
+              "countNum": 2,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(淡入)"
+            }
+          ],
+          // 事件触发
+          'event': []
+        }
+        ,
+        {
+          'id': 856559,
+          // 元素名称
+          'name': 'map element',
+          // 元素类型
+          'type': 14,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'map element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '0px',
+            'left': '0px',
+            'width': '260px',
+            'height': '260px',
+            "zIndex": 100,
+          },
+          contentCss: {
+
+          },
+          'properties': {
+            currentCity: {
+              center: {
+                lng: 112.94,
+                lat: 28.18
+              },
+              level: 12
+            }
+          },
+          'animate': [
+            {
+              "type": 26,
+              "direction": 3,
+              "duration": 5,
+              "delay": 0.5,
+              "countNum": 6,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(淡入)"
+            }
+          ],
+        },
+        {
           'id': 10439,
           // 元素名称
           'name': 'score form element',
@@ -83,7 +196,7 @@ const scenedata = {
           'lock': false,
           // 元素样式，样式名用小驼峰命名
           'css': {
-            'top': '0px',
+            'top': '260px',
             'left': '0px',
             'width': '240px',
             'height': '200px',
@@ -163,7 +276,7 @@ const scenedata = {
               "direction": 3,
               "duration": 5,
               "delay": 0.5,
-              "countNum": 1,
+              "countNum": 10,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2013,7 +2126,7 @@ const scenedata = {
               "direction": 3,
               "duration": 5,
               "delay": 0.5,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2085,7 +2198,7 @@ const scenedata = {
               "direction": 3,
               "duration": 5,
               "delay": 0.5,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2159,7 +2272,7 @@ const scenedata = {
               "direction": 3,
               "duration": 0.5,
               "delay": 1,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2229,7 +2342,7 @@ const scenedata = {
               "direction": 3,
               "duration": 1,
               "delay": 2,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2299,7 +2412,7 @@ const scenedata = {
               "direction": 3,
               "duration": 1,
               "delay": 2.5,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2369,7 +2482,7 @@ const scenedata = {
               "direction": 3,
               "duration": 1,
               "delay": 2.5,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -2439,7 +2552,7 @@ const scenedata = {
               "direction": 3,
               "duration": 1,
               "delay": 2,
-              "countNum": 1,
+              "countNum": 5,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
@@ -10053,17 +10166,17 @@ const scenedata = {
             "svg": "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"100%\" height=\"100%\" viewBox=\"0 0 64 64\" enable-background=\"new 0 0 64 64\" xml:space=\"preserve\" preserveAspectRatio=\"none\">\n<g>\n  <path d=\"M44.274,39.25L64,24H40L32,0l-8,24H0l19.75,15.188L12,64l20.032-15.36L52.016,64L44.274,39.25z\" fill=\"rgba(248,248,5,1)\"></path>\n</g>\n</svg>",
             "svgColor": "rgba(248,248,5,1)"
           },
-          "animate": [
+          'animate': [
             {
-              "type": 33,
+              "type": 26,
               "direction": 3,
-              "duration": 2,
-              "delay": 1,
-              "countNum": 1,
+              "duration": 5,
+              "delay": 0.5,
+              "countNum": 2,
               "count": null,
               "__tableCss": "on",
               "__currentTabIndex": 0,
-              "__title": "进入动画(上方淡入)"
+              "__title": "进入动画(淡入)"
             }
           ],
           "isActive": false,

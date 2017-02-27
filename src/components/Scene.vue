@@ -4,6 +4,11 @@
   .full-screen{
     width: 100%;
     height: 100%;
+    &.loading{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
   .phone-ul{
     overflow: hidden;
@@ -24,21 +29,44 @@
 
 <template>
   <div class="full-screen">
-    <ul class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in pages" class="full-screen phone-li"
         :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'page-data': page, index}"></PhonePage>
       </li>
     </ul>
+    <div v-show="sceneLoadedPercentage != 100" class="full-screen loading">
+      <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapMutations, mapGetters,mapActions } from 'vuex';
 import PhonePage from './PhonePage.vue';
+import Loading from './Loading.vue';
 
 export default {
   created(){
+  },
+  mounted(){
+    const initHammer = () => {
+      this.HammerManager = new Hammer.Manager(this.$refs.phoneul);
+      this.HammerManager.on('panstart', panstart);
+      this.HammerManager.on('panend', panEnd);
+      this.HammerManager.on('panup', panUp);
+      this.HammerManager.on('pandown', panDown);
+      this.HammerManager.on('panleft', panleft);
+      this.HammerManager.on('panright', panRight);
+      this.Pan = new Hammer.Pan({
+        event: 'pan',
+        pointers: 0,
+        threshold: 5,
+        direction: Hammer.DIRECTION_ALL
+      });
+      this.HammerManager.add(this.Pan);
+    };
+
     const panstart = (event) => {
       this.inTouch = true;
       this.startData = Object.assign({}, {deltaY: this.deltaY, deltaX: this.deltaX});
@@ -173,23 +201,8 @@ export default {
       const { deltaY } = event;
       this.deltaY = this.startData.deltaY + deltaY;
     };
-    setTimeout(() => {
-      this.HammerManager = new Hammer.Manager(this.$refs.phoneul);
-      this.HammerManager.on('panstart', panstart);
-      this.HammerManager.on('panend', panEnd);
-      this.HammerManager.on('panup', panUp);
-      this.HammerManager.on('pandown', panDown);
-      this.HammerManager.on('panleft', panleft);
-      this.HammerManager.on('panright', panRight);
-      this.Pan = new Hammer.Pan({
-        event: 'pan',
-        pointers: 0,
-        threshold: 5,
-        direction: Hammer.DIRECTION_ALL
-      });
-      this.HammerManager.add(this.Pan);
-    });
-    
+
+    initHammer();    
   },
   data(){
     return {
@@ -220,14 +233,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['pages', 'currentPageIndex', 'activePage']),
-    phonePageClass: function(){
+    ...mapGetters(['pages', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage']),
+    phonePageClass(){
       return {
         'animated-page': this.fastTurnPage,
         'animated-page-fast': this.normalTurnPage
       }
     },
-    prePageStyle: function(){
+    prePageStyle(){
       const style = {
         transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)`
         : `translateX(-${this.screenWidth - this.deltaX}px)`,
@@ -235,14 +248,14 @@ export default {
       };
       return style;
     },
-    activePageStyle: function(){
+    activePageStyle(){
       const style = {
         transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.deltaY}px)`
         : `translateX(${this.deltaX}px)`
       };
       return style;
     },
-    nextPageStyle: function(){
+    nextPageStyle(){
       const style = {
         transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)`
         : `translateX(${this.screenWidth + this.deltaX}px)`,
@@ -250,10 +263,10 @@ export default {
       };
       return style;
     },
-    hidePageStyle: function(){
+    hidePageStyle(){
       return {display: 'none'};
     },
   },
-  components: { PhonePage }
+  components: { PhonePage, Loading }
 }
 </script>

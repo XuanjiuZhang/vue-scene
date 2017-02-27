@@ -8,15 +8,15 @@
 </style>
 
 <script>
-import { mapMutations, mapGetters,mapActions } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   props: ['eleData'], 
-  data(){
-    return {
-      msg: 'hello!',
-      iconType: 'default'
-    } 
-  }
+  mounted(){
+    this.loadElementSuccess();
+  },
+  methods: {
+    ...mapMutations(['loadElementSuccess'])
+  },
 }
 </script>
