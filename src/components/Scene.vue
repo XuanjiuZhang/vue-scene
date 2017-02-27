@@ -30,7 +30,7 @@
 <template>
   <div class="full-screen">
     <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
-      <li v-for="(page, index) in pages" class="full-screen phone-li"
+      <li v-for="(page, index) in sceneData.pages" class="full-screen phone-li"
         :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'page-data': page, index}"></PhonePage>
       </li>
@@ -38,6 +38,13 @@
     <div v-show="sceneLoadedPercentage != 100" class="full-screen loading">
       <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </div>
+    <!--背景音乐-->
+    <div class="bg-audio-element" v-show="sceneData.bgAudio" @click="toggleBgMusic">
+      <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
+      </audio>
+      <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
+    </div>
+    <!-- / 背景音乐-->
   </div>
 </template>
 
@@ -79,7 +86,7 @@ export default {
         // 第一页继续往下滑
         let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
         // 最后一页往上滑
-        let lastPageUp = this.currentPageIndex === this.pages.length - 1
+        let lastPageUp = this.currentPageIndex === this.sceneData.pages.length - 1
           && (additionalEvent === 'panup' || deltaY < 0);
         // 距离太小
         let tooNear = Math.abs(deltaY) <= 40;
@@ -133,7 +140,7 @@ export default {
         // 第一页继续往右滑
         let firstPageRight = this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
         // 最后一页往左滑
-        let lastPageLeft = this.currentPageIndex === this.pages.length - 1
+        let lastPageLeft = this.currentPageIndex === this.sceneData.pages.length - 1
           && (additionalEvent === 'panleft' || deltaX < 0);
         // 距离太小
         let tooNear = Math.abs(deltaX) <= 40;
@@ -214,12 +221,17 @@ export default {
       fastTurnPage: false,
       normalTurnPage: false,
       fastTurnPageTime: 200,
-      normalTurnPageTime: 500
+      normalTurnPageTime: 500,
+      bgMusicPlaying: true
     } 
   },
   methods: {
     ...mapMutations(['nextPage', 'prePage']),
-    getPhoneLiStyle: function(index){
+    toggleBgMusic (){
+      this.bgMusicPlaying = !this.bgMusicPlaying;
+      this.bgMusicPlaying ? this.$refs.bgmusic.play() : this.$refs.bgmusic.pause()
+    },
+    getPhoneLiStyle (index){
       switch(index){
         case this.currentPageIndex - 1:
           return this.prePageStyle;
@@ -233,7 +245,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['pages', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage']),
+    ...mapGetters(['sceneData', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage']),
     phonePageClass(){
       return {
         'animated-page': this.fastTurnPage,

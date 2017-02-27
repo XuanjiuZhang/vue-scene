@@ -93,6 +93,9 @@ const store = new Vuex.Store({
     }
   },
   getters: {
+    sceneData: state => {
+      return state.sceneData
+    },
     pages: state => {
       return state.sceneData.pages
     },
