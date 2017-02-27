@@ -76,22 +76,32 @@ module.exports = {
     //   {test: /\.scss$/, loader: "style-loader!css-loader!sass-loader|postcss-loader"}],
   },
   devtool: '#eval-source-map',
+  devServer: {
+    hot: true,
+    // enable HMR on the server
+
+    contentBase: path.resolve( __dirname ,'./'),
+    // match the output path
+
+    publicPath: '/build/'
+    // match the output `publicPath`
+  },
   // watch: true,
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"'
-      }
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "commons",
-      filename: "commons.js",
-      minChunks: 2,
-    }),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
-    new webpack.LoaderOptionsPlugin({
-       debug: true
-     })
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: '"development"'
+    //   }
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "commons",
+    //   filename: "commons.js",
+    //   minChunks: 2,
+    // }),
+    // new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+    // new webpack.LoaderOptionsPlugin({
+    //    debug: true
+    //  })
+    new webpack.HotModuleReplacementPlugin()
   ]
 };

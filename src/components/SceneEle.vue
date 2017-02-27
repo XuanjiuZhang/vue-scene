@@ -1,8 +1,8 @@
 
 <style lang="less">
-  .element{
+  /*.element{
     position: absolute;
-  }
+  }*/
 </style>
 
 <script>
@@ -13,12 +13,66 @@ import ImgEle from './childElements/ImgEle.vue';
 import ShapeEle from './childElements/ShapeEle.vue';
 import CarouselEle from './childElements/CarouselEle.vue';
 
+import _ from 'underscore';
+window._ = _;
+
 export default {
-  props: ['eleData'], 
+  props: ['eleData', 'pageIndex', 'finalScale'], 
+  created(){
+    // console.log(this.pageIndex);
+  },
   data(){
     return {
-      msg: 'hello!'
+
     } 
+  },
+  computed: {
+    eleStyle: function(){
+      const { notOpacity, width, height, top, left, padding } = this.eleData.css;
+      const newWidth = parseInt(width) * this.finalScale;
+      const newHeight = parseInt(height) * this.finalScale; 
+      const newTop = parseInt(top) * this.finalScale;
+      const newLeft = parseInt(left) * this.finalScale;
+
+      return Object.assign(this.eleData.css, {
+        opacity: _.isUndefined(notOpacity) ? 1 : 1 - output.notOpacity,
+        width: _.isUndefined(width) ? '100px' : newWidth + 'px',
+        height: _.isUndefined(height) ? '100px' : newHeight + 'px',
+        top: _.isUndefined(top) ? 0 : newTop + 'px',
+        left: _.isUndefined(left) ? 0 : newLeft + 'px',
+        padding: _.isUndefined(padding) ? 0 : padding
+      });
+    },
+
+    eleContentStyle: function(){
+      const { backgroundColor, borderStyle, borderColor, borderWidth, borderRadius,
+         rotateZ, boxShadow, translate3d }
+       = this.eleData.contentCss;
+
+      let boxShadowStr;
+      if(_.isUndefined(boxShadow)){
+        boxShadowStr = '';
+      }else{
+        let { x = 0, y = 0, vague = 0, extension = 0, color = 'rgba(85,85,85,1)', inset = false} = boxShadow;
+        boxShadowStr = `${x}px ${y}px ${vague}px ${extension}px ${color}`;
+        if(_.isBoolean(inset) && inset){
+          boxShadowStr = boxShadowStr + 'inset' 
+        }
+      }
+
+      return Object.assign(this.eleData.contentCss, {
+        backgroundColor: _.isUndefined(backgroundColor) ? 'transparent' : backgroundColor,
+        borderStyle: _.isUndefined(borderStyle) ? 'none' : borderStyle,
+        borderColor: _.isUndefined(borderColor) ? 'rgba(85,85,85,1)' : borderColor,
+        borderWidth: _.isUndefined(borderWidth) ? '1px' : borderWidth,
+        borderRadius: _.isUndefined(borderRadius) ? 0 : borderRadius,
+        rotateZ: _.isUndefined(rotateZ) ? 0 : rotateZ,
+        boxShadow: boxShadowStr,
+        // translate3d ... not use for now
+        transform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
+        WebkitTransform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
+      });
+    }
   },
   render (h) {
     const childrenInfo = elementType.find((type) => {
@@ -26,11 +80,11 @@ export default {
     });
     const childEle = h(childrenInfo.tag, 
     {
-      props: {eleData: this.eleData},
-      class: {'child-element': true},
-      style: this.eleData.contentCss
+      props: {eleData: this.eleData, pageIndex: this.pageIndex},
+      class: {'element-content': true},
+      style: this.eleContentStyle
     });
-    return h('div', {class: {'element': true}, style: this.eleData.css}, [childEle]);
+    return h('div', {class: {'element-container': true}, style: this.eleStyle}, [childEle]);
   },
   components: {
     'score-form-element': ScoreEle,

@@ -58,8 +58,8 @@ const scenedata = {
       "name": "第1页",
       "num": 1,
       "pageOption": {
-        "longPage": true,
-        "pageSize": 520,
+        "longPage": false,
+        "pageSize": 800,
         "banTurnPage": false,
         "turnPageMode": 2
       },
@@ -68,6 +68,42 @@ const scenedata = {
         "image": "/cdn/ae/05/510d77ee9c9a8f80208e1066c025.png"
       },
       "elements": [
+        {
+          'id': 10439,
+          // 元素名称
+          'name': 'score form element',
+          // 元素类型
+          'type': 11,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'score form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '0px',
+            'left': '0px',
+            'width': '240px',
+            'height': '200px',
+            "zIndex": 99,
+          },
+          contentCss: {
+            'backgroundColor': '#fff',
+            'color': '#666',
+            'textAlign': 'center',
+            'borderRadius': '4px'
+          },
+          'properties': {
+            iconType: 0,
+            title: '评分标题',
+            iconStyle: {
+              color: '#ffba01',
+              iconSize: 0
+            }
+          }
+        },
         {
           "id": 31799,
           "name": "image element",

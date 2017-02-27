@@ -1,0 +1,264 @@
+@import "typography.less";
+
+// 元素的样式，这个文件是要放到移动端预览页面的。请不要掺杂其他样式。
+.element-container {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  text-align: left;
+
+  > .element-content {
+    height: 100%;
+    width: 100%;
+  }
+
+  .text-element {
+    height: 100%;
+    width: 100%;
+    .force-wrap();
+    overflow: hidden;
+  }
+
+  .basic-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 5px;
+  }
+
+  .count-wrap,
+  .tel-wrap,
+  .sound-wrap,
+  .video-wrap,
+  .link-wrap,
+  .map-wrap,
+  .statistic-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  //选项表单
+  .option-group {
+    padding-bottom: 1px;
+    .option-title,
+    ul li {
+      height: 36px;
+      padding: 0 6px;
+      line-height: 36px;
+    }
+    ul {
+      margin: 0;
+      > li {
+        margin: 1px 1px 0 1px;
+        background-color: #fff;
+        .check-radio {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          padding: 2px;
+          vertical-align: middle;
+          margin-right: 10px;
+          border: 1px solid #ffba02;
+          border-radius: 2px;
+          .check-radio-dot {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: #ffba02;
+            border-radius: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  //联系表单
+  .contact-form {
+    .contact-input {
+      height: 46px;
+      input {
+        width: 100%;
+        height: 36px;
+        padding: 5px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+      }
+    }
+    .contact-submit {
+      width: 100%;
+      height: 36px;
+      border: 0;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  }
+
+  //评分表单
+  .rating-title {
+    padding: 18px 0 12px;
+  }
+
+  .rating-item {
+    .clearfix();
+    text-align: center;
+
+    .rating-icon {
+      display: inline-block;
+      //float: left;
+      cursor: pointer;
+      padding: 0 3px;
+      box-sizing: content-box;
+    }
+
+  }
+
+  //计数
+  .count-wrap {
+    .count-icon {
+      display: inline-block;
+    }
+    .count-item {
+      display: block;
+      line-height: 1;
+      margin: 1px 3px;
+      text-align: center;
+    }
+  }
+
+  //提交按钮
+  .submit-btn,
+  .tel-btn,
+  .sound-btn {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 0;
+    border-radius: 4px;
+  }
+
+  //电话组件
+  .tel-wrap {
+    .tel-item {
+      height: 100%;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .tel-link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    }
+  }
+
+  //音效组件
+  .sound-wrap {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    .sound-item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .sound-audio {
+      opacity: 0;
+    }
+  }
+
+  //视频组件
+  .video-wrap {
+   position: relative;
+   overflow: hidden;
+   video {
+     width: 100%;
+     height: 100%;
+   }
+   .e-play-video {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     margin-top: -22px;
+     margin-left: -22px;
+   }
+  }
+
+  //链接组件
+  .link-wrap {
+    .link-btn {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      text-align: center;
+      border-radius: 4px;
+    }
+  }
+
+  //地图组件
+  .map-wrap {
+
+  }
+
+  //统计组件
+  .statistic-wrap {
+    .statistic-item {
+      text-align: center;
+      .statistic-icon i {
+        display: inline-block;
+      }
+      .item-text {
+        line-height: 1;
+      }
+      .statistic-icon,
+      .item-text {
+        margin: 1px 3px;
+      }
+    }
+  }
+
+  .image-element{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    > img{
+      width: 100%;
+    }
+  }
+}
+
+
+.text-element{
+  p,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6{
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+
+// 图集
+.carousel-element{
+  width: 100%;
+  height: 100%;
+
+  .carousel-image{
+    width: 100%;
+  }
+}
