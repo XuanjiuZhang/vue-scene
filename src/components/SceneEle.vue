@@ -1,10 +1,3 @@
-
-<style lang="less">
-  /*.element{
-    position: absolute;
-  }*/
-</style>
-
 <script>
 import { mapMutations, mapGetters,mapActions } from 'vuex';
 import elementType from '../const/elementType';
@@ -14,18 +7,15 @@ import ShapeEle from './childElements/ShapeEle.vue';
 import CarouselEle from './childElements/CarouselEle.vue';
 import MapEle from './childElements/MapEle.vue';
 
-
 import _ from 'underscore';
 window._ = _;
 
 export default {
   props: ['eleData', 'pageIndex', 'finalScale'], 
   created(){
-    // console.log(this.pageIndex);
   },
   data(){
     return {
-
     } 
   },
   computed: {
@@ -36,13 +26,14 @@ export default {
       const newTop = parseInt(top) * this.finalScale;
       const newLeft = parseInt(left) * this.finalScale;
 
-      return Object.assign(this.eleData.css, {
+      return Object.assign({}, this.eleData.css, {
         opacity: _.isUndefined(notOpacity) ? 1 : 1 - output.notOpacity,
         width: _.isUndefined(width) ? '100px' : newWidth + 'px',
         height: _.isUndefined(height) ? '100px' : newHeight + 'px',
         top: _.isUndefined(top) ? 0 : newTop + 'px',
         left: _.isUndefined(left) ? 0 : newLeft + 'px',
-        padding: _.isUndefined(padding) ? 0 : padding
+        padding: _.isUndefined(padding) ? 0 : padding,
+        display: this.eleData.visible ? '' : 'none'
       });
     },
 
@@ -62,7 +53,7 @@ export default {
         }
       }
 
-      return Object.assign(this.eleData.contentCss, {
+      return Object.assign({}, this.eleData.contentCss, {
         backgroundColor: _.isUndefined(backgroundColor) ? 'transparent' : backgroundColor,
         borderStyle: _.isUndefined(borderStyle) ? 'none' : borderStyle,
         borderColor: _.isUndefined(borderColor) ? 'rgba(85,85,85,1)' : borderColor,
@@ -88,7 +79,9 @@ export default {
     });
     const containerClassArray = this.eleData.animationClass ?
      this.eleData.animationClass.concat('element-container') : ['element-container'];
-    return h('div', {class: containerClassArray, attrs: { id: this.eleData.id }, style: this.eleStyle}, [childEle]);
+    const attrs = { id: this.eleData.id };
+    return h('div', {class: containerClassArray, attrs, style: this.eleStyle}
+    , [childEle]);
   },
   mounted(){
     const childrenInfo = elementType.find(type => {

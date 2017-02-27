@@ -1,9 +1,11 @@
 import sceneData from './scenedata2'
 import Vuex from 'Vuex';
 import Vue from 'vue'
+import _ from 'underscore';
 Vue.use(Vuex);
 
 import animationPlayer from '../service/animationPlayer';
+animationPlayer.initAnimatedEle(sceneData);
 
 const state = {
   sceneData,
@@ -14,22 +16,36 @@ const state = {
   BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
 };
 
+const toggleElementVisible = (elements) => {
+  elements.forEach(element => {
+    if(_.isArray(element.animate) && element.animate.length != 0){
+      element.visible = !element.visible;
+    }
+  });
+};
+
 const store = new Vuex.Store({
   state,
   mutations: {
     nextPage (state) {
       if(state.currentPageIndex < state.sceneData.pages.length - 1){
         animationPlayer.stopPageAnimation(state.currentPageIndex);
+        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+
         state.currentPageIndex++;
         animationPlayer.playPageAnimation(state.currentPageIndex);
+        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
       }
     },
     prePage (state) {
       if(state.currentPageIndex > 0){
         const currentPage = state.sceneData.pages[state.currentPageIndex];
         animationPlayer.stopPageAnimation(state.currentPageIndex);
+        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+
         state.currentPageIndex--;
         animationPlayer.playPageAnimation(state.currentPageIndex);
+        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
       }
     },
     loadElementSuccess (state){
@@ -40,6 +56,7 @@ const store = new Vuex.Store({
       });
       if(state.loadedElementCount === elementCount){
         animationPlayer.playPageAnimation(state.currentPageIndex);
+        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
       }
     },
     changeElementCssAndClass (state, payload){

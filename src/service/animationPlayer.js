@@ -1,10 +1,10 @@
 import { inAnimation, emphasizeAnimation, outAnimation } from './animationTypes';
+import _ from 'underscore';
 
 const playerService = {
   store: undefined,
 
   playPageAnimation (pageIndex){
-    console.log('playPageAnimation');
     if(!_.isNumber(pageIndex)){
       return false;
     }
@@ -78,7 +78,6 @@ const playerService = {
             this.playElementAnimation(element,pageIndex, eleIndex, animationIndex + 1);
           }
         }else{
-          console.log('playover');
           this.store.commit('restoreElementStyle', { eleIndex, pageIndex });
         }
       }, playTime);
@@ -97,6 +96,19 @@ const playerService = {
     }
     const allAnimation = inAnimation.concat(emphasizeAnimation, outAnimation);
     return finder(type, allAnimation);
+  },
+
+  initAnimatedEle (sceneData){
+    const { pages } = sceneData;
+    pages.forEach(page => {
+      page.elements.forEach(element => {
+        if(_.isArray(element.animate) && element.animate.length != 0){
+          element.visible = false;
+        }else{
+          element.visible = true;
+        }
+      });
+    });
   }
 };
 
