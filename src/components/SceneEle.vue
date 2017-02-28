@@ -14,6 +14,9 @@ import ContactEle from './childElements/ContactEle.vue';
 import SelectEle from './childElements/SelectEle.vue';
 import LinkEle from './childElements/LinkEle.vue';
 import SoundEle from './childElements/SoundEle.vue';
+import CountEle from './childElements/CountEle.vue';
+import StatisticEle from './childElements/StatisticEle.vue';
+import TelEle from './childElements/TelEle.vue';
 
 import _ from 'underscore';
 window._ = _;
@@ -120,7 +123,10 @@ export default {
     'contact-form-element': ContactEle,
     'select-form-element': SelectEle,
     'link-element': LinkEle,
-    'sound-element': SoundEle
+    'sound-element': SoundEle,
+    'count-element': CountEle,
+    'statistic-element': StatisticEle,
+    'tel-element': TelEle
   }
 }
 </script>

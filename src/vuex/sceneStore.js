@@ -101,6 +101,13 @@ const store = new Vuex.Store({
           opt.selected = index === optionIndex;
         });
       }
+    },
+    mutateLike (state, payload){
+      const { pageIndex, eleId, liked } = payload;
+      const element = state.sceneData.pages[pageIndex].elements.find((element) => {
+        return element.id === eleId;
+      });
+      liked ? element.properties.count++ : element.properties.count--;
     }
   },
   getters: {
@@ -151,6 +158,14 @@ const store = new Vuex.Store({
     },
     buttonFormSubmit (context){
       
+    },
+    toggleLike (context, payload){
+      const { pageIndex, eleId, liked } = payload;
+      return new Promise((resolve, reject) => {
+        setTimeout(function() {
+          resolve(0);
+        }, 1000);
+      });
     }
   }
 });

@@ -2405,6 +2405,124 @@ const scenedata = {
       },
       "elements": [
         {
+          'id': 15988,
+          // 元素名称
+          'name': 'tel element',
+          // 元素类型
+          'type': 13,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'tel element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '100px',
+            'left': '16px',
+            'width': '120px',
+            'height': '40px',
+            'zIndex': 9999
+          },
+          contentCss: {
+            'lineHeight': '40px',
+            'backgroundColor': '',
+            'color': ''
+          },
+          'properties': {
+            telType: 0,
+            telNumber: 1234567,
+            buttonText: 'tel!',
+            buttonStyle: {
+              'color': '#fff',
+              'backgroundColor': '#ffba02',
+              'fontSize': '16px'
+            },
+            iconType: 0,
+            iconColor: '#fff',
+            iconBackColor: '#ffba01'
+          }
+        },
+        {
+          'id': 99419,
+          // 元素名称
+          'name': 'statistic element',
+          // 元素类型
+          'type': 17,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'statistic element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '285px',
+            'left': '238px',
+            'width': '80px',
+            'height': '40px',
+            'zIndex': 10
+          },
+          contentCss: {
+
+          },
+          'properties': {
+            iconType: 0,
+            iconStyle:{
+              color: 'rgba(0,0,0,1)',
+              fontSize: 0,
+              layout: 0
+            }
+          }
+        },
+        {
+          'id': 99526,
+          // 元素名称
+          'name': 'count element',
+          // 元素类型
+          'type': 16,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'count element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '125px',
+            'left': '236px',
+            'width': '80px',
+            'height': '40px',
+            'zIndex': 10
+          },
+          contentCss: {
+
+          },
+          'properties': {
+            count: 0, // 点赞量
+            iconType: 0,
+            fontSize: 0,
+            layout: 0,
+            colorStyle: {
+              color: 'rgba(0,0,0,1)'
+            },
+            iconStyle: {
+              float: 'left',
+              width: '20px',
+              height: '20px'
+            },
+            textStyle: {
+              float: 'left',
+              height: '16px',
+              lineHeight: '14px',
+              fontSize: '14px'
+            }
+          }
+        },
+        {
           "id": 58518,
           "name": "image element",
           "type": 2,
