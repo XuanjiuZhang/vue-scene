@@ -45,14 +45,14 @@ module.exports = {
       },
       {
         test: /\.css/,
-        use: ['style-loader', 'css-loader', 'autoprefixer-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less/,
         use: ['style-loader', 'css-loader', 'autoprefixer-loader', 'less-loader']
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'

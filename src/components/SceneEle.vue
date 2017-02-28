@@ -6,6 +6,7 @@ import ImgEle from './childElements/ImgEle.vue';
 import ShapeEle from './childElements/ShapeEle.vue';
 import CarouselEle from './childElements/CarouselEle.vue';
 import MapEle from './childElements/MapEle.vue';
+import TextEle from './childElements/TextEle.vue';
 
 import _ from 'underscore';
 window._ = _;
@@ -104,7 +105,8 @@ export default {
     'image-element': ImgEle,
     'shape-element': ShapeEle,
     'carousel-element': CarouselEle,
-    'map-element': MapEle
+    'map-element': MapEle,
+    'text-element': TextEle
   }
 }
 </script>

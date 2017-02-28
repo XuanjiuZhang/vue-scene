@@ -49,9 +49,17 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapMutations, mapGetters,mapActions } from 'vuex';
 import PhonePage from './PhonePage.vue';
 import Loading from './Loading.vue';
+// 编辑器样式
+import '../style/editor.min.css';
+// 引入eleUI控件
+import 'element-ui/lib/theme-default/index.css';
+import { Carousel, CarouselItem } from 'element-ui';
+Vue.component(Carousel.name, Carousel); 
+Vue.component(CarouselItem.name, CarouselItem); 
 
 export default {
   created(){

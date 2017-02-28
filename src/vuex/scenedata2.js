@@ -69,6 +69,82 @@ const scenedata = {
       },
       "elements": [
         {
+          'id': 13112,
+          // 元素名称
+          'name': 'carousel form element',
+          // 元素类型
+          'type': 3,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'carousel form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '460px',
+            'left': '100px',
+            'width': '100px',
+            'height': '70px',
+            'text-align': 'center',
+            'z-Index': 5
+            /*'overflow': 'hidden'*/
+          },
+          contentCss: {
+            'width': '100%',
+            'height': '100%',
+            'overflow': 'hidden',
+            'color': ''
+          },
+          'properties': {
+            autoPlay: true,
+            playInterval: 2,
+            transition: 'zoom',
+            pictures: ['../assets/img/123_11.png', '../assets/img/123_06.png', '../assets/img/qr-code.png'],
+            carouseElementStyle: {
+              'width': '100%',
+              'height': '100%'
+            }
+          },
+          // 事件触发
+          'event': [{name: '显示/隐藏', code: '1'}]
+        },
+        {
+          'id': 888,
+          // 元素名称
+          'name': 'text element',
+          // 元素类型
+          'type': 1,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'text element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '417px',
+            'left': '130px',
+            'width': '300px',
+            'height': '32px'
+          },
+          contentCss: {
+
+          },
+          properties: {
+            textStyle: {
+              color: '#333',
+              fontSize: '20px',
+              lineHeight: 1.6,
+              textAlign: 'left',
+              fontWeight: 700,
+              fontFamily: ''
+            }
+          }
+        },
+        {
           'id': 797,
           // 元素名称
           'name': 'shape element',
@@ -199,7 +275,7 @@ const scenedata = {
             'top': '260px',
             'left': '0px',
             'width': '240px',
-            'height': '200px',
+            'height': '100px',
             "zIndex": 99,
           },
           contentCss: {
