@@ -69,6 +69,235 @@ const scenedata = {
       },
       "elements": [
         {
+          'id': 18276,
+          // 元素名称
+          'name': 'sound element',
+          // 元素类型
+          'type': 15,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'sound element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '357px',
+            'left': '76px',
+            'width': '120px',
+            'height': '40px',
+            'zIndex': 99999
+          },
+          contentCss: {
+
+          },
+          'properties': {
+            musicSrc: '',
+            musicType: 0,
+            buttonText: 'sound element'
+          }
+        },
+        {
+          'id': 1876,
+          // 元素名称
+          'name': 'link element',
+          // 元素类型
+          'type': 12,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'link element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '457px',
+            'left': '176px',
+            'width': '120px',
+            'height': '40px',
+            'zIndex': 100
+          },
+          contentCss: {
+
+          },
+          'properties': {
+            linkType: 0,
+            buttonText: '点击购买',
+            outLink: 'https://www.baidu.com/',
+            pageLink: 1,
+            buttonStyle: {
+              'fontSize': '16px',
+              'color': '#fff',
+              'backgroundColor': '#ffba02'
+            }
+          }
+        },
+        {
+          'id': 13103,
+          // 元素名称
+          'name': 'select form element',
+          // 元素类型
+          'type': 10,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'select form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '334px',
+            'left': '45px',
+            'width': '200px',
+            'height': '148px',
+            'zIndex': 60
+          },
+          contentCss: {
+            'backgroundColor': 'rgba(255, 186, 2, 1)'
+          },
+          'properties': {
+            title: '选项表单标题',
+            options: [{
+              text: '选项1',
+              selected: true 
+            },{
+              text: '选项2',
+              selected: false
+            },{
+              text: '选项3',
+              selected: false
+            }],
+            required: true,
+            multiSelect: false,
+            titleColor: 'rgba(255, 255, 255, 1)',
+            optionStyle: {
+              'color': '#666',
+              'backgroundColor': 'rgba(255, 186, 2, 1)'
+            }
+          }
+        },
+        {
+          'id': 13108,
+          // 元素名称
+          'name': 'contact form element',
+          // 元素类型
+          'type': 9,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'contact form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '383px',
+            'left': '22px',
+            'width': '205px',
+            'height': '173px',
+            'zIndex': 50
+          },
+          contentCss: {
+            'padding': '20px',
+            'color': '',
+            'backgroundColor': '#fff',
+            'borderRadius': '4px'
+          },
+          'properties': {
+            formData: [
+              {fieldName: 'name', data: '', required: false},
+              {fieldName: 'tel', data: '', required: false},
+              {fieldName: 'email', data: '', required: true}
+            ],
+            inputStyle: {
+              'borderColor': 'rgba(214,46,46,1)'
+            },
+            feedbackMsg: 'ok'
+          }
+        },
+        {
+          'id': 13109,
+          // 元素名称
+          'name': 'button form element',
+          // 元素类型
+          'type': 8,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'button form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素外层样式，样式名用小驼峰命名
+          'css': {
+            padding: 0,
+            'top': '352px',
+            'left': '170px',
+            'zIndex': 40,
+            'width': '110px',
+            'height': '36px',
+            'opacity': 1
+          },
+          contentCss: {
+            'fontSize': '16px',
+            'lineHeight': '36px',
+            'color': '',
+            'borderRadius': '4px',
+            'borderRadiusPerc': 0,
+            'backgroundColor': '',
+            'boxShadow': '0px 0px 0px rgba(0,0,0,0.5)',
+            'boxShadowDirection': 0,
+            'boxShadowSize': 0
+          },
+          'properties': {
+            formId: 520,
+            buttonName: '提交',
+            info: '获得红包',
+            outLink: 'http://baidu.com',
+            buttonStyle: {
+              'fontSize': '16px',
+              'color': '#fff',
+              'backgroundColor': '#ffba02'
+            }
+          }
+        },
+        {
+          'id': 13111,
+          // 元素名称
+          'name': 'input form element',
+          // 元素类型
+          'type': 7,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'input form element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '500px',
+            'left': '18px',
+            'width': '220px',
+            'height': '36px',
+            'zIndex': 10
+          },
+          contentCss: {
+            'color': ''
+          },
+          'properties': {
+            name: 'email',
+            data: 'xuanjiu@qq.com',
+            required: true,
+            style: {
+              borderColor: '#d7d7d7'
+            }
+          }
+        },
+        {
           'id': 13113,
           // 元素名称
           'name': 'video element',

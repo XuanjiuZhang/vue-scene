@@ -8,6 +8,12 @@ import CarouselEle from './childElements/CarouselEle.vue';
 import MapEle from './childElements/MapEle.vue';
 import TextEle from './childElements/TextEle.vue';
 import VideoEle from './childElements/VideoEle.vue';
+import InputEle from './childElements/InputEle.vue';
+import ButtonEle from './childElements/ButtonEle.vue';
+import ContactEle from './childElements/ContactEle.vue';
+import SelectEle from './childElements/SelectEle.vue';
+import LinkEle from './childElements/LinkEle.vue';
+import SoundEle from './childElements/SoundEle.vue';
 
 import _ from 'underscore';
 window._ = _;
@@ -108,7 +114,13 @@ export default {
     'carousel-element': CarouselEle,
     'map-element': MapEle,
     'text-element': TextEle,
-    'video-element': VideoEle
+    'video-element': VideoEle,
+    'input-form-element': InputEle,
+    'button-form-element': ButtonEle,
+    'contact-form-element': ContactEle,
+    'select-form-element': SelectEle,
+    'link-element': LinkEle,
+    'sound-element': SoundEle
   }
 }
 </script>

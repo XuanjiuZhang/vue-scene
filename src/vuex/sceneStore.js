@@ -23,29 +23,32 @@ const toggleElementVisible = (elements) => {
     }
   });
 };
+const execGoPage = (state, index) => {
+  animationPlayer.stopPageAnimation(state.currentPageIndex);
+  toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+
+  state.currentPageIndex = index;
+  animationPlayer.playPageAnimation(state.currentPageIndex);
+  toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+};
 
 const store = new Vuex.Store({
   state,
   mutations: {
     nextPage (state) {
       if(state.currentPageIndex < state.sceneData.pages.length - 1){
-        animationPlayer.stopPageAnimation(state.currentPageIndex);
-        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
-
-        state.currentPageIndex++;
-        animationPlayer.playPageAnimation(state.currentPageIndex);
-        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+        execGoPage(state, state.currentPageIndex + 1);
       }
     },
     prePage (state) {
       if(state.currentPageIndex > 0){
-        const currentPage = state.sceneData.pages[state.currentPageIndex];
-        animationPlayer.stopPageAnimation(state.currentPageIndex);
-        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
-
-        state.currentPageIndex--;
-        animationPlayer.playPageAnimation(state.currentPageIndex);
-        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+        execGoPage(state, state.currentPageIndex - 1);
+      }
+    },
+    goPage (state, payload) {
+      const { pageLink } = payload;
+      if(0 <= pageLink && pageLink <= state.sceneData.pages.length - 1 && pageLink != state.currentPageIndex){
+        execGoPage(state, pageLink);
       }
     },
     loadElementSuccess (state){
@@ -84,6 +87,20 @@ const store = new Vuex.Store({
         return element.id === eleId;
       });
       _.extend(element.css, element.__originCss);
+    },
+    toggleSelectOption (state, payload){
+      const { optionIndex, pageIndex, eleId } = payload;
+      const element = state.sceneData.pages[pageIndex].elements.find((element) => {
+        return element.id === eleId;
+      });
+      const { properties } = element;
+      if(properties.multiSelect){
+        properties.options[optionIndex].selected = !properties.options[optionIndex].selected;
+      }else{
+        properties.options.forEach((opt, index) => {
+          opt.selected = index === optionIndex;
+        });
+      }
     }
   },
   getters: {
@@ -131,7 +148,9 @@ const store = new Vuex.Store({
         });
       }
       return global._BMapPromise;
-
+    },
+    buttonFormSubmit (context){
+      
     }
   }
 });
