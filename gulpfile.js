@@ -5,12 +5,12 @@ var gulp = require('gulp');
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var config = require("./webpack.config.js");
-var path = require('path'); 
+var path = require('path');
 del = require('del');
 
 // gulp.task('clean', function(){
 //   del([
-//       './build/**/*',
+//       './build/**/*', 
 //     ]);
 //   console.log('clean build folder.');
 // });
@@ -28,7 +28,7 @@ gulp.task('dev', function() {
     hot: true,
     // enable HMR on the server
 
-    contentBase: path.resolve( __dirname ,'./'),
+    contentBase: path.resolve(__dirname, './'),
     // match the output path
 
     publicPath: '/build/',

@@ -7,45 +7,41 @@
   </el-carousel>
 </template>
 
-<style lang="less">
-
-</style>
-
 <script>
-    import {
-        mapMutations
-    } from 'vuex';
+  import {
+    mapMutations
+  } from 'vuex';
 
-    export default {
-        props: ['eleData'],
-        data() {
-            return {
-                loadedImageNumber: 0,
-                failedImageNumber: 0
-            }
-        },
-        mounted() {
-            const imgArray = _.flatten(_.values(this.$refs));
-            console.log(imgArray);
-            const load1ImageSuc = () => {
-                this.loadedImageNumber++;
-                if (this.loadedImageNumber === imgArray.length) {
-                    this.loadElementSuccess();
-                }
-            };
-            const load1ImageFail = () => {
-                this.failedImageNumber++;
-                // console.log('load1ImageFail');
-            };
-            imgArray.forEach((image) => {
-                image.onload = load1ImageSuc;
-                image.onerror = load1ImageFail;
-            });
-
-            this.loadElementSuccess();
-        },
-        methods: {
-            ...mapMutations(['loadElementSuccess'])
+  export default {
+    props: ['eleData'],
+    data() {
+      return {
+        loadedImageNumber: 0,
+        failedImageNumber: 0
+      }
+    },
+    mounted() {
+      const imgArray = _.flatten(_.values(this.$refs));
+      console.log(imgArray);
+      const load1ImageSuc = () => {
+        this.loadedImageNumber++;
+        if (this.loadedImageNumber === imgArray.length) {
+          this.loadElementSuccess();
         }
+      };
+      const load1ImageFail = () => {
+        this.failedImageNumber++;
+        // console.log('load1ImageFail');
+      };
+      imgArray.forEach((image) => {
+        image.onload = load1ImageSuc;
+        image.onerror = load1ImageFail;
+      });
+
+      this.loadElementSuccess();
+    },
+    methods: {
+      ...mapMutations(['loadElementSuccess'])
     }
+  }
 </script>

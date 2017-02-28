@@ -12,10 +12,10 @@ import './lib/hammer.min.js'
 // Vue.use(VueRouter); 
 
 new Vue({
-    // router,
-    store: sceneStore, // 注入到所有子组件1
-    el: '#root',
-    components: { Scene }
+  // router,
+  store: sceneStore, // 注入到所有子组件1
+  el: '#root',
+  components: { Scene }
 });
 
 // new Vue({
