@@ -7,6 +7,7 @@ import ShapeEle from './childElements/ShapeEle.vue';
 import CarouselEle from './childElements/CarouselEle.vue';
 import MapEle from './childElements/MapEle.vue';
 import TextEle from './childElements/TextEle.vue';
+import VideoEle from './childElements/VideoEle.vue';
 
 import _ from 'underscore';
 window._ = _;
@@ -89,13 +90,13 @@ export default {
       return type.typeID === this.eleData.type;
     });
     const immediateElementTypes = ['text-element', 'shape-element', 'input-form-element', 'button-form-element', 'contact-form-element',
-      'select-form-element', 'score-form-element', 'link-element', 'tel-element', 'count-element', 'statistic-element'];
+      'select-form-element', 'score-form-element', 'link-element', 'tel-element', 'count-element', 'statistic-element', 'video-element'];
     const isImmediate = immediateElementTypes.find(type => {
       return childrenInfo.tag === type;
     });
     if(isImmediate){
       this.loadElementSuccess();
-    }
+    } 
   },
   methods: {
     ...mapMutations(['loadElementSuccess'])
@@ -106,7 +107,8 @@ export default {
     'shape-element': ShapeEle,
     'carousel-element': CarouselEle,
     'map-element': MapEle,
-    'text-element': TextEle
+    'text-element': TextEle,
+    'video-element': VideoEle
   }
 }
 </script>

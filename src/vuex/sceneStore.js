@@ -4,7 +4,7 @@ import Vue from 'vue'
 import _ from 'underscore';
 Vue.use(Vuex);
 
-import animationPlayer from '../service/animationPlayer';
+import { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle } from '../service/animationPlayer';
 animationPlayer.initAnimatedEle(sceneData);
 
 const state = {
@@ -59,37 +59,31 @@ const store = new Vuex.Store({
         toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
       }
     },
-    changeElementCssAndClass (state, payload){
-      const { style, styleClass, animationIndex, eleIndex, pageIndex } = payload;
-      const element = state.sceneData.pages[pageIndex].elements[eleIndex];
-      Vue.set(element, 'animationClass', styleClass);
-      // Object.assign(element.animationClass, styleClass);
-      _.extend(element.css, style);
-    },
-    addElementLastPlayPromise (state, payload){
-      const { elementLastAnimationPromise, eleIndex, pageIndex } = payload;
-      const element = state.sceneData.pages[pageIndex].elements[eleIndex];
-      Object.assign(element, { __lastAnimationPromise: elementLastAnimationPromise });
-    },
-    restoreElementStyle (state, payload){
-      const { eleIndex, pageIndex } = payload;
-      const element = state.sceneData.pages[pageIndex].elements[eleIndex];
-      const emptyStyle = {
-        WebkitAnimationDuration: '',
-        WebkitAnimationDelay: '',
-        WebkitAnimationIterationCount: '',
-        MozAnimationDuration: '',
-        MozAnimationDelay: '',
-        MozAnimationIterationCount: ''
+    changeElementCssAndClass,
+    addElementLastPlayPromise,
+    restoreElementStyle,
+    videoFrameOpen (state, payload){ 
+      const { pageIndex, eleId } = payload;
+      const element = state.sceneData.pages[pageIndex].elements.find((element) => {
+        return element.id === eleId;
+      });
+      const heightStandard = document.body.offsetWidth * .75;
+      const playingStyle = {
+        height: heightStandard + 'px',
+        width: document.body.offsetWidth + 'px',
+        left: 0,
+        top: (document.body.offsetHeight - heightStandard) / 2 + 'px',
+        zIndex: 99999
       };
-      if(element.__lastAnimationPromise){
-        clearTimeout(element.__lastAnimationPromise);
-      }
-      Vue.set(element, 'animationClass', []);
-      // Vue.set(element, 'css', emptyStyle);
-      // Object.assign(element.animationClass, []);
-      Object.assign(element.__lastAnimationPromise, null);
-      _.extend(element.css, emptyStyle);
+      element.__originCss = _.extend({}, element.css);
+      _.extend(element.css, playingStyle);
+    },
+    videoFrameClose (state, payload){
+      const { pageIndex, eleId } = payload;
+      const element = state.sceneData.pages[pageIndex].elements.find((element) => {
+        return element.id === eleId;
+      });
+      _.extend(element.css, element.__originCss);
     }
   },
   getters: {

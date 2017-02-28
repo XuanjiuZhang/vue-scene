@@ -1,7 +1,8 @@
 import { inAnimation, emphasizeAnimation, outAnimation } from './animationTypes';
+import Vue from 'vue';
 import _ from 'underscore';
 
-const playerService = {
+const animationPlayer = {
   store: undefined,
 
   playPageAnimation (pageIndex){
@@ -112,4 +113,37 @@ const playerService = {
   }
 };
 
-export default playerService;
+const changeElementCssAndClass = (state, payload) => {
+  const { style, styleClass, animationIndex, eleIndex, pageIndex } = payload;
+  const element = state.sceneData.pages[pageIndex].elements[eleIndex];
+  Vue.set(element, 'animationClass', styleClass);
+  // Object.assign(element.animationClass, styleClass);
+  _.extend(element.css, style);
+};
+const addElementLastPlayPromise = (state, payload) => {
+  const { elementLastAnimationPromise, eleIndex, pageIndex } = payload;
+  const element = state.sceneData.pages[pageIndex].elements[eleIndex];
+  Object.assign(element, { __lastAnimationPromise: elementLastAnimationPromise });
+};
+const restoreElementStyle = (state, payload) => {
+  const { eleIndex, pageIndex } = payload;
+  const element = state.sceneData.pages[pageIndex].elements[eleIndex];
+  const emptyStyle = {
+    WebkitAnimationDuration: '',
+    WebkitAnimationDelay: '',
+    WebkitAnimationIterationCount: '',
+    MozAnimationDuration: '',
+    MozAnimationDelay: '',
+    MozAnimationIterationCount: ''
+  };
+  if(element.__lastAnimationPromise){
+    clearTimeout(element.__lastAnimationPromise);
+  }
+  Vue.set(element, 'animationClass', []);
+  // Vue.set(element, 'css', emptyStyle);
+  // Object.assign(element.animationClass, []);
+  Object.assign(element.__lastAnimationPromise, null);
+  _.extend(element.css, emptyStyle);
+};
+
+export { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle };

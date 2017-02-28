@@ -69,6 +69,39 @@ const scenedata = {
       },
       "elements": [
         {
+          'id': 13113,
+          // 元素名称
+          'name': 'video element',
+          // 元素类型
+          'type': 5,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'video element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '460px',
+            'left': '100px',
+            'width': '100px',
+            'height': '70px',
+            'zIndex': 6
+          },
+          contentCss: {
+            'color': '',
+            'backgroundColor': '#010101',
+            'borderRadius': ''
+          },
+          properties: {
+            iframe: '<iframe height=498 width=510 src="http://player.youku.com/embed/XMTc2NDU0MzY5Ng=="' +
+            ' frameborder=0 "allowfullscreen"></iframe>',
+            iconColor: '#d9d9d9',
+            iconBackColor: '#6c6c6c'
+          }
+        },
+        {
           'id': 13112,
           // 元素名称
           'name': 'carousel form element',
