@@ -102,6 +102,13 @@ module.exports = {
     // new webpack.LoaderOptionsPlugin({
     //    debug: true
     //  })
+    // 压缩js文件
+    // new webpack.optimize.UglifyJsPlugin({
+    //   mangle: true,
+    //   compress: {
+    //     warnings: false // 禁止生成warning
+    //   }
+    // }),
     new webpack.HotModuleReplacementPlugin()
   ]
 };

@@ -9,6 +9,7 @@ const scenedata = {
   "status": 3,
   "sendstatus": 0,
   "image": "/cdn/21/7a/6fb8dccc92342abb28b00b2a8677.jpg",
+  // 1上下，2左右
   "pageMode": 1,
   "updateTime": 1483595413153,
   "publishTime": 1482482349671,
