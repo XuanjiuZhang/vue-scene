@@ -15,7 +15,7 @@
         inSubmitting: false
       }
     },
-    mounted() {},
+    mounted() { },
     methods: {
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),
@@ -40,10 +40,14 @@
           this.buttonFormSubmit(payload).then(response => {
             console.log(response);
             this.inSubmitting = false;
-            if(response.ok){
+            if (response.ok) {
               this.hasSubmitted = true;
-            }else{
+              let { properties: { info, outLink } } = this.eleData;
+              _.isString(info) && alert(info);
+              _.isString(outLink) && window.open(outLink);
+            } else {
               this.hasSubmitted = false;
+              alert('error');
             }
           }, (reject) => {
             this.hasSubmitted = false;
@@ -72,4 +76,5 @@
       }
     },
   }
+
 </script>
