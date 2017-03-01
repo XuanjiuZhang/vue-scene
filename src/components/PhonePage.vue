@@ -1,50 +1,42 @@
 <template>
-  <div class="phonePage" :style="pageStyle">
-    <SceneEle v-for="ele in pageData.elements" :key="ele.id" v-bind="{eleData: ele, pageIndex: index, finalScale}"></SceneEle>
+    <div class="phonePage" :style="pageStyle">
+        <SceneEle v-for="ele in pageData.elements" :key="ele.id" v-bind="{eleData: ele, pageIndex: index, finalScale}"></SceneEle>
 
-    <div class="page-number" ng-show="scene.showPageNo" style="display: block; z-index: 100;">
-      <em class="page-tip">{{index + 1}} / {{sceneData.pages.length}}</em>
-    </div>
+        <div class="page-number" ng-show="scene.showPageNo" style="display: block; z-index: 100;">
+            <em class="page-tip">{{index + 1}} / {{sceneData.pages.length}}</em>
+        </div>
 
-    <div class="trailer-label" v-if="index === sceneData.pages.length - 1
+        <div class="trailer-label" v-if="index === sceneData.pages.length - 1
      && sceneData.trailerLabel && sceneData.trailerLabel.type != 3">
-        <a v-if="sceneData.trailerLabel.type === 1"
-         :href="sceneData.trailerLabel.labelLink"
-         :class="{
+            <a v-if="sceneData.trailerLabel.type === 1" :href="sceneData.trailerLabel.labelLink" :class="{
             'grey': sceneData.trailerLabel.style === 1,
             'red': sceneData.trailerLabel.style === 2,
             'green': sceneData.trailerLabel.style === 3
         }" target="_blank" class="label-link">
-        [小蜜蜂]技术支持
-        </a>
-        <a v-if="sceneData.trailerLabel.type === 2"
-          :href="sceneData.trailerLabel.trademarkInfoSite"
-          :class="{
+                [小蜜蜂]技术支持
+                </a>
+                <a v-if="sceneData.trailerLabel.type === 2" :href="sceneData.trailerLabel.trademarkInfoSite" :class="{
             'grey': sceneData.trailerLabel.style === 1,
             'red': sceneData.trailerLabel.style === 2,
             'green': sceneData.trailerLabel.style === 3
             }" target="_blank" class="label-link">
-        {{sceneData.trailerLabel.trademarkInfoName}} | [小蜜蜂]技术支持
-        </a>
+                    {{sceneData.trailerLabel.trademarkInfoName}} | [小蜜蜂]技术支持
+                    </a>
     </div>
 
     <div v-if="showArrow" :class="arrowClass" style="position: fixed">
-      <div class="arrow-wrap">
-        <div class="arrow-part-1">
-          <div class="part-1"></div>
+        <div class="arrow-wrap">
+            <div class="arrow-part-1">
+                <div class="part-1"></div>
+            </div>
+            <div class="arrow-part-2">
+                <div class="part-2"></div>
+            </div>
         </div>
-        <div class="arrow-part-2">
-          <div class="part-2"></div>
-        </div>
-      </div>
     </div>
-    
-  </div>
+
+    </div>
 </template>
-
-<style lang="less">
-
-</style>
 
 <script>
     import {
@@ -56,7 +48,7 @@
 
     export default {
         props: ['pageData', 'index'],
-        created() {},
+        created() { },
         data() {
             return {
                 screenHeight: document.body.offsetHeight,
@@ -88,11 +80,15 @@
                 };
                 return classData;
             },
-            pageStyle: function() {
+            pageStyle: function () {
                 const {
                     pageOption = {
                         longPage: false,
                         pageSize: 486
+                    },
+                    pageBackground = {
+                        image: '',
+                        color: ''
                     }
                 } = this.pageData;
                 return {
@@ -100,10 +96,12 @@
                     width: '100%',
                     position: 'relative',
                     overflow: 'hidden',
-                    transform: `translateY(0)`
+                    transform: `translateY(0)`,
+                    backgroundImage: pageBackground.image === '' ? '' : 'url(' + pageBackground.image + ')',
+                    backgroundColor: pageBackground.color,
                 };
             },
-            finalScale: function() {
+            finalScale: function () {
                 const hScale = this.screenHeight / this.editorHeight;
                 const wScale = this.screenWidth / this.editorWidth;
                 return Math.min(hScale, wScale);
@@ -113,4 +111,5 @@
             SceneEle
         }
     }
+
 </script>

@@ -37,10 +37,14 @@
             pageIndex: this.pageIndex
           };
           this.inSubmitting = true;
-          this.buttonFormSubmit(payload).then((result) => {
-            this.hasSubmitted = true;
+          this.buttonFormSubmit(payload).then(response => {
+            console.log(response);
             this.inSubmitting = false;
-            console.log('submit success');
+            if(response.ok){
+              this.hasSubmitted = true;
+            }else{
+              this.hasSubmitted = false;
+            }
           }, (reject) => {
             this.hasSubmitted = false;
             this.inSubmitting = false;

@@ -9,22 +9,24 @@ const UserPosts = { template: '<div>this is UserPosts</div>' };
 
 const routes = [
   { path: '/home', component: home },
-  { path: '/news', component: news, children: [
-        {
-          // 当 /user/:id/profile 匹配成功，
-          // UserProfile 会被渲染在 User 的 <router-view> 中
-          path: 'profile',
-          name: 'profile',
-          component: UserProfile
-        },
-        {
-          // 当 /user/:id/posts 匹配成功
-          // UserPosts 会被渲染在 User 的 <router-view> 中
-          path: 'posts',
-          name: 'posts',
-          component: UserPosts
-        }
-      ] },
+  {
+    path: '/news', component: news, children: [
+      {
+        // 当 /user/:id/profile 匹配成功，
+        // UserProfile 会被渲染在 User 的 <router-view> 中
+        path: 'profile',
+        name: 'profile',
+        component: UserProfile
+      },
+      {
+        // 当 /user/:id/posts 匹配成功
+        // UserPosts 会被渲染在 User 的 <router-view> 中
+        path: 'posts',
+        name: 'posts',
+        component: UserPosts
+      }
+    ]
+  },
   { path: '/about', component: about }
 ];
 

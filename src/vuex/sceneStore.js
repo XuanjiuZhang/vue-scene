@@ -219,7 +219,7 @@ const store = new Vuex.Store({
       return global._BMapPromise;
     },
     buttonFormSubmit(context, payload) {
-      const { query, pageIndex } = payload;
+      const { query : { qrc, src }, pageIndex } = payload;
       const formData = genPageFormData(context.state.sceneData.pages[pageIndex]);
       console.log(formData);
       const failArray = formData.filter(data => {
@@ -230,28 +230,24 @@ const store = new Vuex.Store({
           reject(failArray);
         });
       } else {
-        return new Promise((resolve, reject) => {
-          setTimeout(function () {
-            resolve(0);
-          }, 1000);
-        });
+        let params = {
+          formData, sceneid: context.state.sceneData.id,
+           pageid: context.state.sceneData.pages[pageIndex].id, qrc, src 
+        };
+        console.log(params);
+        return context.state.sceneApi.formSubmit(params);
       }
 
     },
     toggleLike(context, payload) {
       const { pageIndex, eleId, liked } = payload;
       let params = {
-        id: context.state.sceneData.id,
+        sceneid: context.state.sceneData.id,
         pageid: context.state.sceneData.pages[pageIndex].id,
         elementid: eleId,
         op: liked ? 'add' : 'minus'
       };
       return context.state.sceneApi.updateEleCount(params);
-      // return new Promise((resolve, reject) => {
-      //   setTimeout(function () {
-      //     resolve(0);
-      //   }, 1000);
-      // });
     }
   }
 });

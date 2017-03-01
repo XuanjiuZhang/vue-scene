@@ -50,7 +50,8 @@ const scenedata = {
   },
   "trailerLabel": {
     "type": 1,
-    "style": 1
+    "style": 1,
+    "labelLink": 'https://www.baidu.com'
   },
   "weixinAuth": 0,
   "pages": [{
