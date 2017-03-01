@@ -98,9 +98,16 @@ export default {
         eleId: this.eleData.id,
         liked: !this.liked
       };
-      this.toggleLike(payLoad).then(() => {
-        this.liked = !this.liked;
-        this.mutateLike(payLoad);
+      this.toggleLike(payLoad).then(response => {
+        console.log(response);
+        if(response.ok){
+          this.liked = !this.liked;
+          this.mutateLike(payLoad);
+        }else{
+          console.log('fail');
+        }
+      }, () => {
+        console.log('fail');
       });
     }
   },

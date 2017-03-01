@@ -4,6 +4,7 @@ import Vue from 'vue'
 import _ from 'underscore';
 Vue.use(Vuex);
 
+import sceneApi from '../api/sceneApi';
 import sceneDataPrepare from '../service/sceneDataPrepare';
 import { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle } from '../service/animationPlayer';
 const preMsg = sceneDataPrepare(sceneData);
@@ -12,6 +13,7 @@ animationPlayer.initAnimatedEle(sceneData);
 
 const state = {
   sceneData,
+  sceneApi,
   editorWidth: 320,
   editorHeight: 486,
   currentPageIndex: 0,
@@ -47,15 +49,15 @@ const genPageFormData = (page) => {
           value: element.properties.data
         };
         break;
-        // contact
+      // contact
       case 9:
         return element.properties.formData.map(row => {
-          if(row.required && row.data === ''){
+          if (row.required && row.data === '') {
             return {
               fail: true,
               msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
             };
-          }else{
+          } else {
             return {
               fieldname: row.fieldName,
               value: row.data
@@ -63,7 +65,7 @@ const genPageFormData = (page) => {
           }
         });
         break;
-        // select
+      // select
       case 10:
         return element.properties.options.map(option => {
           return {
@@ -72,7 +74,7 @@ const genPageFormData = (page) => {
           };
         });
         break;
-        // score
+      // score
       case 11:
         return {
           fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
@@ -162,7 +164,7 @@ const store = new Vuex.Store({
       });
       liked ? element.properties.count++ : element.properties.count--;
     },
-    scoreChange(state, payload){
+    scoreChange(state, payload) {
       const { pageIndex, eleId, currentScore } = payload;
       const element = state.sceneData.pages[pageIndex].elements.find((element) => {
         return element.id === eleId;
@@ -205,7 +207,7 @@ const store = new Vuex.Store({
           const $script = document.createElement('script');
           global.document.body.appendChild($script);
 
-          global._initBaiduMap = function() {
+          global._initBaiduMap = function () {
             resolve(global.BMap);
             global.document.body.removeChild($script);
             global._initBaiduMap = null;
@@ -223,26 +225,33 @@ const store = new Vuex.Store({
       const failArray = formData.filter(data => {
         return _.has(data, 'fail') && data.fail === true;
       });
-      if(failArray.length){
+      if (failArray.length) {
         return new Promise((resolve, reject) => {
           reject(failArray);
         });
-      }else{
+      } else {
         return new Promise((resolve, reject) => {
-        setTimeout(function() {
-          resolve(0);
-        }, 1000);
-      });
+          setTimeout(function () {
+            resolve(0);
+          }, 1000);
+        });
       }
-      
+
     },
     toggleLike(context, payload) {
       const { pageIndex, eleId, liked } = payload;
-      return new Promise((resolve, reject) => {
-        setTimeout(function() {
-          resolve(0);
-        }, 1000);
-      });
+      let params = {
+        id: context.state.sceneData.id,
+        pageid: context.state.sceneData.pages[pageIndex].id,
+        elementid: eleId,
+        op: liked ? 'add' : 'minus'
+      };
+      return context.state.sceneApi.updateEleCount(params);
+      // return new Promise((resolve, reject) => {
+      //   setTimeout(function () {
+      //     resolve(0);
+      //   }, 1000);
+      // });
     }
   }
 });

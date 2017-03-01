@@ -30,7 +30,8 @@
     "vue-resource": "^1.2.0",
     "vue-router": "^2.2.1",
     "vue-style-loader": "^2.0.0",
-    "vuex": "^2.1.2"
+    "vuex": "^2.1.2",
+    "whatwg-fetch": "^2.0.2"
   },
   "devDependencies": {
     "babel-helper-vue-jsx-merge-props": "^2.0.2",

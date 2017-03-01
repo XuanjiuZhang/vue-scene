@@ -26,7 +26,7 @@
         }
         if (this.inSubmitting) {
           console.log('正在提交中。。。');
-          return '正在提交中。。。';
+          return '正在提交中。。';
         }
         if (!this.hasSubmitted && !this.inSubmitting) {
           // TODO
