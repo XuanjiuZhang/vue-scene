@@ -16,6 +16,8 @@ const state = {
   sceneApi,
   editorWidth: 320,
   editorHeight: 486,
+  screenWidth: 0,
+  screenHeight: 0,
   currentPageIndex: 0,
   loadedElementCount: 0,
   BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
@@ -90,6 +92,11 @@ const genPageFormData = (page) => {
 const store = new Vuex.Store({
   state,
   mutations: {
+    measureOutterEl(state, payload) {
+      const { $el } = payload;
+      state.screenWidth = $el.offsetWidth;
+      state.screenHeight = $el.offsetHeight;
+    },
     nextPage(state) {
       if (state.currentPageIndex < state.sceneData.pages.length - 1) {
         execGoPage(state, state.currentPageIndex + 1);
@@ -174,10 +181,16 @@ const store = new Vuex.Store({
   },
   getters: {
     sceneData: state => {
-      return state.sceneData
+      return state.sceneData;
     },
     pages: state => {
-      return state.sceneData.pages
+      return state.sceneData.pages;
+    },
+    screenWidth: state => {
+      return state.screenWidth;
+    },
+    screenHeight: state => {
+      return state.screenHeight;
     },
     editorWidth: state => {
       return state.editorWidth;

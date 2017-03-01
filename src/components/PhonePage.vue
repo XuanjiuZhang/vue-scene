@@ -51,12 +51,12 @@
         created() { },
         data() {
             return {
-                screenHeight: document.body.offsetHeight,
-                screenWidth: document.body.offsetWidth
+                // screenHeight: document.body.offsetHeight,
+                // screenWidth: document.body.offsetWidth
             }
         },
         computed: {
-            ...mapGetters(['editorWidth', 'editorHeight', 'sceneData']),
+            ...mapGetters(['editorWidth', 'editorHeight', 'sceneData', 'screenWidth', 'screenHeight']),
             showArrow() {
                 var show = true;
                 if (this.pageData.pageOption.banTurnPage) {

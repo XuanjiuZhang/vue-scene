@@ -11,6 +11,7 @@ import './lib/hammer.min.js'
 
 // Vue.use(VueRouter); 
 
+sceneStore.commit('measureOutterEl', { $el: document.getElementById('root') });
 new Vue({
   // router,
   store: sceneStore, // 注入到所有子组件1

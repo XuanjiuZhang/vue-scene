@@ -50,7 +50,7 @@
 
 <script>
 import Vue from 'vue';
-import { mapMutations, mapGetters,mapActions } from 'vuex';
+import { mapMutations, mapGetters, mapActions } from 'vuex';
 import PhonePage from './PhonePage.vue';
 import Loading from './Loading.vue';
 // // 编辑器样式
@@ -233,8 +233,6 @@ export default {
   },
   data(){
     return {
-      screenHeight: document.body.offsetHeight,
-      screenWidth: document.body.offsetWidth,
       deltaY: 0,
       deltaX: 0,
       inTouch: false,
@@ -266,7 +264,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['sceneData', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage']),
+    ...mapGetters(['sceneData', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage', 'screenWidth', 'screenHeight']),
     phonePageClass(){
       return {
         'animated-page': this.fastTurnPage,
