@@ -45,6 +45,7 @@
             this.hasSubmitted = false;
             this.inSubmitting = false;
             console.log('submit fail');
+            console.log(reject);
           });
         }
       },

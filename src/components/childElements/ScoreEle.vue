@@ -57,11 +57,11 @@
 </style>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   props: ['eleData', 'pageIndex'],
   data() {
     return {
-      currentScore: 0,
       hasScored: false,
       inMouseMove: false
     }
@@ -124,9 +124,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['scoreChange']),
     score: function (index) {
       this.hasScored = true;
-      this.currentScore = index + 1;
+      this.scoreChange({ pageIndex: this.pageIndex, eleId: this.eleData.id, currentScore: index + 1 });
       this.ratingItemArray.forEach((item, itemIndex) => {
         item.hasScored = itemIndex <= index;
       });

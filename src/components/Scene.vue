@@ -35,7 +35,7 @@
         <PhonePage v-bind="{'page-data': page, index}"></PhonePage>
       </li>
     </ul>
-    <div v-show="sceneLoadedPercentage != 100" class="full-screen loading">
+    <div v-show="sceneLoadedPercentage < 100" class="full-screen loading">
       <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </div>
     <!--背景音乐-->
@@ -108,7 +108,9 @@ export default {
           setTimeout(() => {
             this.inTouch = false;
             this.fastTurnPage = false;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
           }, this.fastTurnPageTime);
           return;
         }
@@ -123,7 +125,9 @@ export default {
             this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
             this.nextPage();
           }, this.normalTurnPageTime);
           return;
@@ -138,7 +142,9 @@ export default {
             this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
             this.prePage();
           }, this.normalTurnPageTime);
           return;
@@ -162,7 +168,9 @@ export default {
           setTimeout(() => {
             this.inTouch = false;
             this.fastTurnPage = false;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
           }, this.fastTurnPageTime);
           return;
         }
@@ -177,7 +185,9 @@ export default {
             this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
             this.nextPage();
           }, this.normalTurnPageTime);
           return;
@@ -193,7 +203,9 @@ export default {
             this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.HammerManager.add(this.Pan);
+            setTimeout(() => {
+              this.HammerManager.add(this.Pan);
+            }, this.addPanTime);
             this.prePage();
           }, this.normalTurnPageTime);
           return;
@@ -230,6 +242,7 @@ export default {
       normalTurnPage: false,
       fastTurnPageTime: 200,
       normalTurnPageTime: 500,
+      addPanTime: 50,
       bgMusicPlaying: true
     } 
   },

@@ -542,6 +542,7 @@ const scenedata = {
           },
           'properties': {
             iconType: 0,
+            currentScore: 0,
             title: '评分标题',
             iconStyle: {
               color: '#ffba01',

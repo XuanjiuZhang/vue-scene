@@ -4,7 +4,10 @@ import Vue from 'vue'
 import _ from 'underscore';
 Vue.use(Vuex);
 
+import sceneDataPrepare from '../service/sceneDataPrepare';
 import { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle } from '../service/animationPlayer';
+const preMsg = sceneDataPrepare(sceneData);
+console.log(preMsg);
 animationPlayer.initAnimatedEle(sceneData);
 
 const state = {
@@ -47,10 +50,17 @@ const genPageFormData = (page) => {
         // contact
       case 9:
         return element.properties.formData.map(row => {
-          return {
-            fieldname: row.fieldName,
-            value: row.data
-          };
+          if(row.required && row.data === ''){
+            return {
+              fail: true,
+              msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
+            };
+          }else{
+            return {
+              fieldname: row.fieldName,
+              value: row.data
+            };
+          }
         });
         break;
         // select
@@ -66,7 +76,7 @@ const genPageFormData = (page) => {
       case 11:
         return {
           fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
-          value: element.__scoredLength || 0
+          value: element.currentScore
         }
         break;
     }
@@ -151,6 +161,13 @@ const store = new Vuex.Store({
         return element.id === eleId;
       });
       liked ? element.properties.count++ : element.properties.count--;
+    },
+    scoreChange(state, payload){
+      const { pageIndex, eleId, currentScore } = payload;
+      const element = state.sceneData.pages[pageIndex].elements.find((element) => {
+        return element.id === eleId;
+      });
+      element.currentScore = currentScore;
     }
   },
   getters: {
@@ -203,11 +220,21 @@ const store = new Vuex.Store({
       const { query, pageIndex } = payload;
       const formData = genPageFormData(context.state.sceneData.pages[pageIndex]);
       console.log(formData);
-      return new Promise((resolve, reject) => {
+      const failArray = formData.filter(data => {
+        return _.has(data, 'fail') && data.fail === true;
+      });
+      if(failArray.length){
+        return new Promise((resolve, reject) => {
+          reject(failArray);
+        });
+      }else{
+        return new Promise((resolve, reject) => {
         setTimeout(function() {
           resolve(0);
         }, 1000);
       });
+      }
+      
     },
     toggleLike(context, payload) {
       const { pageIndex, eleId, liked } = payload;
