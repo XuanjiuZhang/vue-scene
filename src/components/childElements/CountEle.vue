@@ -1,7 +1,7 @@
 <template>
   <div class="count-wrap center-middle" :style="eleData.properties.colorStyle">
     <div v-if="eleData.properties.iconType === 0" @click="preToggleLike">
-      <div class="count-item" :style="eleData.properties.iconStyle">
+      <div class="count-item" :style="iconStyle">
         <i v-show="!liked" class="count-icon">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 32 27.313"  xml:space="preserve" preserveAspectRatio="xMidYMid">
             <g>
@@ -17,12 +17,12 @@
           </svg>
         </i>
       </div>
-      <div class="count-item" :style="eleData.properties.textStyle">
+      <div class="count-item" :style="textStyle">
         {{eleData.properties.count}}
       </div>
     </div>
     <div v-if="eleData.properties.iconType === 1" @click="preToggleLike">
-      <div class="count-item" :style="eleData.properties.iconStyle">
+      <div class="count-item" :style="iconStyle">
         <i v-show="!liked" class="count-icon">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 29 27"  xml:space="preserve" preserveAspectRatio="xMidYMid">
             <path d="M28.996,13.243 L27.662,25.043 C27.537,26.157 26.579,27.000 25.439,27.000 L20.120,27.000 C16.459,27.000 14.629,25.200 12.798,25.200 C10.968,25.200 9.138,25.200 9.138,25.200 L9.138,10.800 C9.138,10.800 10.968,10.800 12.798,10.800 C16.459,10.800 16.459,2.700 16.459,2.700 C16.459,1.209 17.688,0.000 19.205,0.000 C20.721,0.000 21.950,1.209 21.950,2.700 C21.950,8.100 21.950,10.800 21.950,10.800 L26.772,10.800 C28.106,10.800 29.143,11.940 28.996,13.243 ZM27.075,12.733 C27.020,12.672 26.922,12.600 26.772,12.600 L21.950,12.600 L20.120,12.600 L20.120,10.800 L20.120,2.700 C20.120,2.204 19.709,1.800 19.205,1.800 C18.700,1.800 18.289,2.204 18.289,2.700 C18.289,2.791 18.284,4.948 17.788,7.140 C16.769,11.653 14.512,12.600 12.798,12.600 L10.968,12.600 L10.968,23.400 L12.798,23.400 C13.921,23.400 14.884,23.792 15.903,24.208 C17.101,24.695 18.340,25.200 20.120,25.200 L25.439,25.200 C25.647,25.200 25.820,25.047 25.843,24.844 L27.177,13.044 C27.193,12.897 27.131,12.794 27.075,12.733 ZM5.070,27.000 L-0.014,27.000 L-0.014,9.000 L5.070,9.000 C6.306,9.000 7.307,9.985 7.307,11.200 L7.307,24.800 C7.307,26.015 6.306,27.000 5.070,27.000 ZM5.477,11.200 C5.477,10.979 5.294,10.800 5.070,10.800 L1.816,10.800 L1.816,25.200 L5.070,25.200 C5.294,25.200 5.477,25.021 5.477,24.800 L5.477,11.200 Z" :fill="eleData.properties.colorStyle.color" fill-rule="evenodd"/>
@@ -34,12 +34,12 @@
           </svg>
         </i>
       </div>
-      <div class="count-item" :style="eleData.properties.textStyle">
+      <div class="count-item" :style="textStyle">
         {{eleData.properties.count}}
       </div>
     </div>
     <div v-if="eleData.properties.iconType === 2" @click="preToggleLike">
-      <div class="count-item" :style="eleData.properties.iconStyle">
+      <div class="count-item" :style="iconStyle">
         <i v-show="!liked" class="count-icon">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 29 29"  xml:space="preserve" preserveAspectRatio="xMidYMid">
             <path d="M27.413,14.520 C28.367,15.398 28.962,16.659 28.953,18.057 C28.936,20.688 26.790,22.806 24.160,22.790 C23.555,22.786 22.977,22.669 22.447,22.460 C22.671,23.018 22.793,23.627 22.789,24.265 C22.773,26.896 20.627,29.014 17.997,28.998 C16.598,28.989 15.345,28.378 14.479,27.413 C13.602,28.367 12.340,28.962 10.942,28.953 C8.311,28.937 6.193,26.791 6.209,24.161 C6.213,23.556 6.330,22.978 6.539,22.447 C5.981,22.671 5.372,22.794 4.734,22.790 C2.104,22.773 -0.015,20.628 0.001,17.997 C0.010,16.599 0.621,15.345 1.586,14.480 C0.632,13.602 0.037,12.341 0.046,10.943 C0.062,8.312 2.208,6.193 4.839,6.210 C5.443,6.214 6.021,6.330 6.552,6.539 C6.328,5.982 6.205,5.373 6.209,4.734 C6.226,2.104 8.372,-0.015 11.002,0.002 C12.400,0.011 13.654,0.621 14.520,1.587 C15.397,0.632 16.658,0.038 18.056,0.046 C20.687,0.063 22.806,2.209 22.789,4.839 C22.786,5.444 22.669,6.022 22.460,6.553 C23.018,6.329 23.626,6.206 24.264,6.210 C26.895,6.226 29.014,8.372 28.997,11.003 C28.989,12.401 28.378,13.654 27.413,14.520 ZM11.968,25.839 C12.934,25.839 13.803,25.423 14.405,24.760 C15.007,25.423 15.876,25.839 16.842,25.839 C18.659,25.839 20.132,24.366 20.132,22.548 C20.132,21.582 19.716,20.714 19.053,20.111 L19.059,20.111 L15.933,16.986 C15.488,17.277 14.958,17.449 14.386,17.449 C13.824,17.449 13.304,17.281 12.863,16.999 L9.751,20.111 L9.757,20.111 C9.093,20.714 8.677,21.582 8.677,22.548 C8.677,24.366 10.150,25.839 11.968,25.839 ZM6.678,9.128 C4.860,9.128 3.387,10.601 3.387,12.418 C3.387,13.385 3.803,14.254 4.466,14.856 C3.803,15.458 3.387,16.327 3.387,17.293 C3.387,19.110 4.860,20.584 6.678,20.584 C7.644,20.584 8.513,20.167 9.115,19.504 L9.115,19.509 L12.211,16.413 C11.804,15.922 11.550,15.301 11.550,14.613 C11.550,14.051 11.718,13.530 12.001,13.089 L9.115,10.202 L9.115,10.208 C8.513,9.544 7.644,9.128 6.678,9.128 ZM16.807,3.838 C15.842,3.838 14.973,4.254 14.370,4.917 C13.768,4.254 12.899,3.838 11.933,3.838 C10.116,3.838 8.643,5.311 8.643,7.129 C8.643,8.095 9.059,8.963 9.722,9.566 L9.717,9.566 L12.588,12.437 C13.078,12.031 13.699,11.777 14.386,11.777 C15.064,11.777 15.679,12.025 16.167,12.423 L19.024,9.566 L19.019,9.566 C19.682,8.963 20.099,8.095 20.099,7.129 C20.099,5.311 18.625,3.838 16.807,3.838 ZM25.389,12.384 C25.389,11.476 25.020,10.653 24.425,10.057 C23.630,9.263 22.459,8.926 21.363,9.176 C20.695,9.328 20.105,9.682 19.661,10.168 C18.694,11.135 17.727,12.102 16.760,13.069 C17.050,13.513 17.222,14.043 17.222,14.613 C17.222,15.291 16.975,15.904 16.579,16.392 C17.606,17.419 18.633,18.447 19.661,19.470 C20.105,19.959 20.695,20.314 21.362,20.467 C22.458,20.717 23.630,20.380 24.425,19.585 C25.020,18.990 25.389,18.167 25.389,17.259 C25.389,16.293 24.484,14.654 24.564,14.563 C25.077,13.983 25.389,13.220 25.389,12.384 Z" :fill="eleData.properties.colorStyle.color" fill-rule="evenodd"/>
@@ -51,12 +51,12 @@
           </svg>
         </i>
       </div>
-      <div class="count-item" :style="eleData.properties.textStyle">
+      <div class="count-item" :style="textStyle">
         {{eleData.properties.count}}
       </div>
     </div>
     <div v-if="eleData.properties.iconType === 3" @click="preToggleLike">
-      <div class="count-item" :style="eleData.properties.iconStyle">
+      <div class="count-item" :style="iconStyle">
         <i v-show="!liked" class="count-icon">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 29 27"  xml:space="preserve" preserveAspectRatio="xMidYMid">
             <path d="M18.050,21.000 L18.050,19.000 C18.050,18.448 18.499,18.000 19.052,18.000 L22.060,18.000 C22.613,18.000 23.062,18.448 23.062,19.000 L23.062,21.000 L18.050,21.000 ZM22.062,19.000 L19.062,19.000 L19.062,20.000 L22.062,20.000 L22.062,19.000 ZM12.035,13.000 C12.035,12.448 12.484,12.000 13.038,12.000 L16.045,12.000 C16.599,12.000 17.048,12.448 17.048,13.000 L17.048,21.000 L12.035,21.000 L12.035,13.000 ZM13.062,20.000 L16.062,20.000 L16.062,13.000 L13.062,13.000 L13.062,20.000 ZM6.021,1.000 C6.021,0.448 6.470,0.000 7.023,0.000 L10.031,0.000 C10.584,0.000 11.033,0.448 11.033,1.000 L11.033,21.000 L6.021,21.000 L6.021,1.000 ZM7.062,20.000 L10.062,20.000 L10.062,1.000 L7.062,1.000 L7.062,20.000 ZM0.007,7.000 C0.007,6.448 0.455,6.000 1.009,6.000 L4.016,6.000 C4.570,6.000 5.019,6.448 5.019,7.000 L5.019,21.000 L0.007,21.000 L0.007,7.000 ZM1.062,20.000 L4.062,20.000 L4.062,7.000 L1.062,7.000 L1.062,20.000 Z" :fill="eleData.properties.colorStyle.color" fill-rule="evenodd"/>
@@ -68,7 +68,7 @@
           </svg>
         </i>
       </div>
-      <div class="count-item" :style="eleData.properties.textStyle">
+      <div class="count-item" :style="textStyle">
         {{eleData.properties.count}}
       </div>
     </div>
@@ -81,7 +81,7 @@
 <script>
 import { mapMutations, mapActions } from 'vuex';
 export default {
-  props: ['eleData', 'pageIndex'],
+  props: ['eleData', 'pageIndex', 'finalScale'],
   data(){
     return {
       liked: false
@@ -109,6 +109,25 @@ export default {
       }, () => {
         console.log('fail');
       });
+    }
+  },
+  computed: {
+    iconStyle() {
+      const { properties } = this.eleData;
+      const { iconStyle } = properties;
+      const { height, width } = iconStyle;
+      return Object.assign({}, iconStyle,
+       { 'height': `${parseInt(height) * this.finalScale}px`,
+        'width': `${parseInt(width) * this.finalScale}px` })
+    },
+    textStyle() {
+      const { properties } = this.eleData;
+      const { textStyle } = properties;
+      const { height, lineHeight, fontSize } = textStyle;
+      return Object.assign({}, textStyle,
+       { 'height': `${parseInt(height) * this.finalScale}px`,
+        'lineHeight': `${parseInt(lineHeight) * this.finalScale}px`,
+        'fontSize': `${parseInt(fontSize) * this.finalScale}px` })
     }
   },
 }

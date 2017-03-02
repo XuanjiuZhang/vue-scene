@@ -36,7 +36,7 @@
 <script>
 import { mapMutations, mapActions } from 'vuex';
 export default {
-  props: ['eleData', 'pageIndex'],
+  props: ['eleData', 'pageIndex', 'finalScale'],
   data(){
     return {
       readCount: 0
@@ -59,22 +59,22 @@ export default {
       }
       switch (rowIconStyle.fontSize) {
         case 0:
-          iconStyle.width = '20px';
-          iconStyle.height = '20px';
-          statisticStyle.height = '20px';
-          statisticStyle.fontSize = '18px';
+          iconStyle.width = `${20 * this.finalScale}px`;
+          iconStyle.height = `${20 * this.finalScale}px`;
+          statisticStyle.height = `${20 * this.finalScale}px`;
+          statisticStyle.fontSize = `${18 * this.finalScale}px`;
           break;
         case 1:
-          iconStyle.width = '16px';
-          iconStyle.height = '16px';
-          statisticStyle.height = '16px';
-          statisticStyle.fontSize = '14px';
+          iconStyle.width = `${16 * this.finalScale}px`;
+          iconStyle.height = `${16 * this.finalScale}px`;
+          statisticStyle.height = `${16 * this.finalScale}px`;
+          statisticStyle.fontSize = `${14 * this.finalScale}px`;
           break;
         case 2:
-          iconStyle.width = '12px';
-          iconStyle.height = '12px';
-          statisticStyle.height = '12px';
-          statisticStyle.fontSize = '12px';
+          iconStyle.width = `${12 * this.finalScale}px`;
+          iconStyle.height = `${12 * this.finalScale}px`;
+          statisticStyle.height = `${12 * this.finalScale}px`;
+          statisticStyle.fontSize = `${12 * this.finalScale}px`;
           break;
       }
       return { statisticStyle, iconStyle };
