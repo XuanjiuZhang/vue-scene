@@ -34,9 +34,10 @@
 <template>
   <div class="full-screen">
     <ul v-show="sceneLoadedPercentage >= 98" class="full-screen phone-ul" ref="phoneul">
-      <li v-for="(page, index) in sceneData.pages" class="full-screen phone-li" :key="page.id" :style="getPhoneLiStyle(index)"
+      <li v-for="(page, index) in sceneData.pages" class="full-screen phone-li"
+       :key="page.id" :style="getPhoneLiStyle(index)"
         :class="phonePageClass">
-        <PhonePage v-bind="{'page-data': page, index}"></PhonePage>
+        <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
         </li>
     </ul>
     <div v-show="sceneLoadedPercentage < 100" class="full-screen loading">
@@ -297,8 +298,9 @@
       }
     },
     computed: {
-    ...mapGetters(['sceneData', 'currentPageIndex', 'activePage', 'sceneLoadedPercentage',
-      'screenWidth', 'screenHeight', 'activePageCanUp', 'activePageCanDown']),
+    ...mapGetters(['sceneData', 'sceneLoadedPercentage', 'currentPageIndex',
+      'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
+      'activePage', 'activePageCanUp', 'activePageCanDown']),
       phonePageClass() {
         return {
           'animated-page': this.fastTurnPage,
@@ -330,6 +332,11 @@
       },
       hidePageStyle() {
         return { display: 'none' };
+      },
+      finalScale () {
+        const hScale = this.screenHeight / this.editorHeight;
+        const wScale = this.screenWidth / this.editorWidth;
+        return Math.min(hScale, wScale);
       }
     },
     components: { PhonePage, Loading }

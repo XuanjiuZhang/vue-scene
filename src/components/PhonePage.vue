@@ -47,7 +47,7 @@
     import SceneEle from './SceneEle.vue';
 
     export default {
-        props: ['pageData', 'index'],
+        props: ['pageData', 'index', 'finalScale'],
         created() { },
         mounted() {
             const throttlePanstart = (event) => {
@@ -124,7 +124,7 @@
             }
         },
         computed: {
-            ...mapGetters(['editorWidth', 'editorHeight', 'sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex']),
+            ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex']),
             showArrow() {
                 var show = true;
                 if (this.pageData.pageOption.banTurnPage) {
@@ -169,11 +169,6 @@
                     backgroundColor: pageBackground.color,
                     fontSize: this.finalScale * 100 + '%'
                 };
-            },
-            finalScale: function () {
-                const hScale = this.screenHeight / this.editorHeight;
-                const wScale = this.screenWidth / this.editorWidth;
-                return Math.min(hScale, wScale);
             }
         },
         components: {

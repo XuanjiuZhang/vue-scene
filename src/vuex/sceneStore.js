@@ -140,7 +140,7 @@ const store = new Vuex.Store({
         height: heightStandard + 'px',
         width: state.screenWidth + 'px',
         left: 0,
-        top: (state.screenHeight - heightStandard) / 3 + 'px',
+        top: state.screenHeight * .1 + 'px',
         zIndex: 99999
       };
       element.__originCss = _.extend({}, element.css);

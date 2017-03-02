@@ -22,7 +22,7 @@ export default {
     // };
     setTimeout(() => {
       this.loadElementSuccess();
-    }, Math.random() * 1000);
+    }, Math.random() * 800);
   },
   methods: {
     ...mapMutations(['loadElementSuccess'])
