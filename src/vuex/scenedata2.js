@@ -62,7 +62,7 @@ const scenedata = {
         "longPage": true,
         "pageSize": 800,
         "banTurnPage": false,
-        "turnPageMode": 2
+        "turnPageMode": 1
       },
       "pageBackground": {
         "color": "",

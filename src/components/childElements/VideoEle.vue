@@ -12,88 +12,98 @@
 </template>
 
 <style lang="less">
+
 </style>
 
 <script>
-import { mapMutations } from 'vuex';
-export default {
-  props: ['eleData', 'pageIndex'],
-  data(){
-    return {
-      isPlay: false,
-      iframe: undefined
-    }
-  },
-  mounted(){
-  },
-  methods: {
-    ...mapMutations(['videoFrameOpen', 'videoFrameClose']),
-    togglePlayVideo(){
-      const iframeCode = this.eleData.properties.iframe;
-      this.isPlay = !this.isPlay;
-      if(this.isPlay){
-        this.videoFrameOpen({ pageIndex: this.pageIndex, eleId: this.eleData.id });
-        this.createIframe(this.$refs.videoWrap, iframeCode, () => { console.log('createdIframe') });
-      }else{
-        this.videoFrameClose({ pageIndex: this.pageIndex, eleId: this.eleData.id });
-        this.destroyIframe();
+  import {
+    mapMutations
+  } from 'vuex';
+  export default {
+    props: ['eleData', 'pageIndex'],
+    data() {
+      return {
+        isPlay: false,
+        iframe: undefined
       }
     },
-    /**
-     * 动态创建iframe
-     * @param dom 创建iframe的容器，即在dom中创建iframe。dom可以是div、span或者其他标签。
-     * @param code iframeCode代码
-     * @param onload iframe加载完后触发该事件，可以为空
-     * @return 返回创建的iframe对象
-    */
-    createIframe(dom, code, onload){
-      //在document中创建iframe
-      this.iframe = document.createElement('iframe');
-
-      const srcPattern = /src='?\"?([^']*)\"?'?/;
-
-      const heightStandard = document.body.offsetWidth * .75;
-      //设置iframe的样式
-      this.iframe.style.width = '100%';
-      this.iframe.style.height = '100%';
-      this.iframe.style.margin = '0';
-      this.iframe.style.padding = '0';
-      this.iframe.style.overflow = 'hidden';
-      this.iframe.style.border = 'none';
-
-      //绑定iframe的onload事件
-      if(_.isFunction(onload)){
-        if(this.iframe.attachEvent){
-          this.iframe.attachEvent('onload', onload);
-        }else if(this.iframe.addEventListener){
-          this.iframe.addEventListener('load', onload);
-        }else{
-          this.iframe.onload = onload;
+    mounted() {},
+    methods: {
+      ...mapMutations(['videoFrameOpen', 'videoFrameClose']),
+      togglePlayVideo() {
+        const iframeCode = this.eleData.properties.iframe;
+        this.isPlay = !this.isPlay;
+        if (this.isPlay) {
+          this.videoFrameOpen({
+            pageIndex: this.pageIndex,
+            eleId: this.eleData.id
+          });
+          this.createIframe(this.$refs.videoWrap, iframeCode, () => {
+            console.log('createdIframe')
+          });
+        } else {
+          this.videoFrameClose({
+            pageIndex: this.pageIndex,
+            eleId: this.eleData.id
+          });
+          this.destroyIframe();
         }
-      }
+      },
+      /**
+       * 动态创建iframe
+       * @param dom 创建iframe的容器，即在dom中创建iframe。dom可以是div、span或者其他标签。
+       * @param code iframeCode代码
+       * @param onload iframe加载完后触发该事件，可以为空
+       * @return 返回创建的iframe对象
+       */
+      createIframe(dom, code, onload) {
+        //在document中创建iframe
+        this.iframe = document.createElement('iframe');
 
-      if(!code.match(srcPattern)){
+        const srcPattern = /src='?\"?([^']*)\"?'?/;
+
+        const heightStandard = document.body.offsetWidth * .75;
+        //设置iframe的样式
+        this.iframe.style.width = '100%';
+        this.iframe.style.height = '100%';
+        this.iframe.style.margin = '0';
+        this.iframe.style.padding = '0';
+        this.iframe.style.overflow = 'hidden';
+        this.iframe.style.border = 'none';
+
+        //绑定iframe的onload事件
+        if (_.isFunction(onload)) {
+          if (this.iframe.attachEvent) {
+            this.iframe.attachEvent('onload', onload);
+          } else if (this.iframe.addEventListener) {
+            this.iframe.addEventListener('load', onload);
+          } else {
+            this.iframe.onload = onload;
+          }
+        }
+
+        if (!code.match(srcPattern)) {
+          this.iframe.src = 'about:blank';
+        } else {
+          this.iframe.src = code.match(srcPattern)[1];
+        }
+        //把iframe加载到dom下面
+        dom.append(this.iframe);
+      },
+      /**
+       * 销毁iframe，释放iframe所占用的内存。
+       * @param iframe 需要销毁的iframe对象
+       */
+      destroyIframe() {
+        //把iframe指向空白页面，这样可以释放大部分内存。
         this.iframe.src = 'about:blank';
-      }else{
-        this.iframe.src = code.match(srcPattern)[1];
+        try {
+          this.iframe.contentWindow.document.write('');
+          this.iframe.contentWindow.document.clear();
+        } catch (e) {}
+        //把iframe从页面移除
+        this.iframe.parentNode.removeChild(this.iframe);
       }
-      //把iframe加载到dom下面
-      dom.append(this.iframe);
     },
-    /**
-     * 销毁iframe，释放iframe所占用的内存。
-     * @param iframe 需要销毁的iframe对象
-     */
-    destroyIframe(){
-      //把iframe指向空白页面，这样可以释放大部分内存。
-      this.iframe.src = 'about:blank';
-      try{
-        this.iframe.contentWindow.document.write('');
-        this.iframe.contentWindow.document.clear();
-      }catch(e){}
-      //把iframe从页面移除
-      this.iframe.parentNode.removeChild(this.iframe);
-    }
-  },
-}
+  }
 </script>

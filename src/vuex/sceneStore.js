@@ -17,7 +17,7 @@ const initEventBus = _.once(() => {
     animationPlayer.playPageAnimation(state.currentPageIndex);
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
   });
-  const restLoad = _.after(2, execGoPage) ;
+  const restLoad = _.after(2, execGoPage);
   VueEventBus.$on('LoadPagesComplete', (state) => {
     firstLoad(state);
     restLoad(state, state.currentPageIndex + 1);
@@ -68,7 +68,7 @@ const genPageFormData = (page) => {
           value: element.properties.data
         };
         break;
-      // contact
+        // contact
       case 9:
         return element.properties.formData.map(row => {
           if (row.required && row.data === '') {
@@ -84,7 +84,7 @@ const genPageFormData = (page) => {
           }
         });
         break;
-      // select
+        // select
       case 10:
         return element.properties.options.map(option => {
           return {
@@ -93,7 +93,7 @@ const genPageFormData = (page) => {
           };
         });
         break;
-      // score
+        // score
       case 11:
         return {
           fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
@@ -116,8 +116,9 @@ const store = new Vuex.Store({
     },
     nextPage(state) {
       if (state.currentPageIndex < state.sceneData.pages.length - 1) {
-        if (state.currentPageIndex + 1 === state.loadPageMaxIndex && state.currentPageIndex != state.sceneData.pages.length - 2) {
-          state.loadPageMaxIndex = Math.min(state.sceneData.pages.length, state.loadPageMaxIndex + 5); 
+        if (state.currentPageIndex + 2 === state.loadPageMaxIndex &&
+          state.currentPageIndex != state.sceneData.pages.length - 2) {
+          state.loadPageMaxIndex = Math.min(state.sceneData.pages.length, state.loadPageMaxIndex + 5);
         } else {
           execGoPage(state, state.currentPageIndex + 1);
         }
@@ -256,7 +257,7 @@ const store = new Vuex.Store({
           const $script = document.createElement('script');
           global.document.body.appendChild($script);
 
-          global._initBaiduMap = function () {
+          global._initBaiduMap = function() {
             resolve(global.BMap);
             global.document.body.removeChild($script);
             global._initBaiduMap = null;
@@ -280,8 +281,11 @@ const store = new Vuex.Store({
         });
       } else {
         let params = {
-          formData, sceneid: context.state.sceneData.id,
-          pageid: context.state.sceneData.pages[pageIndex].id, qrc, src
+          formData,
+          sceneid: context.state.sceneData.id,
+          pageid: context.state.sceneData.pages[pageIndex].id,
+          qrc,
+          src
         };
         console.log(params);
         return context.state.sceneApi.formSubmit(params);
