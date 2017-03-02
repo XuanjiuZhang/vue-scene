@@ -153,7 +153,7 @@ const scenedata = {
             'left': '45px',
             'width': '200px',
             'height': '148px',
-            'zIndex': 60
+            'zIndex': 600
           },
           contentCss: {
             'backgroundColor': 'rgba(255, 186, 2, 1)'
@@ -194,11 +194,11 @@ const scenedata = {
           'lock': false,
           // 元素样式，样式名用小驼峰命名
           'css': {
-            'top': '383px',
+            'top': '213px',
             'left': '22px',
             'width': '205px',
             'height': '173px',
-            'zIndex': 50
+            'zIndex': 500
           },
           contentCss: {
             'padding': '20px',
@@ -233,7 +233,7 @@ const scenedata = {
           'lock': false,
           // 元素外层样式，样式名用小驼峰命名
           'css': {
-            padding: 0,
+            'padding': 0,
             'top': '352px',
             'left': '170px',
             'zIndex': 400,
@@ -279,11 +279,11 @@ const scenedata = {
           'lock': false,
           // 元素样式，样式名用小驼峰命名
           'css': {
-            'top': '500px',
+            'top': '400px',
             'left': '18px',
             'width': '220px',
             'height': '36px',
-            'zIndex': 10
+            'zIndex': 1000
           },
           contentCss: {
             'color': ''
@@ -312,11 +312,11 @@ const scenedata = {
           'lock': false,
           // 元素样式，样式名用小驼峰命名
           'css': {
-            'top': '460px',
+            'top': '260px',
             'left': '100px',
             'width': '100px',
             'height': '70px',
-            'zIndex': 6
+            'zIndex': 6000
           },
           contentCss: {
             'color': '',

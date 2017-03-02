@@ -33,7 +33,7 @@
 
 <template>
   <div class="full-screen">
-    <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="sceneLoadedPercentage >= 98" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in sceneData.pages" class="full-screen phone-li" :key="page.id" :style="getPhoneLiStyle(index)"
         :class="phonePageClass">
         <PhonePage v-bind="{'page-data': page, index}"></PhonePage>
@@ -330,7 +330,7 @@
       },
       hidePageStyle() {
         return { display: 'none' };
-      },
+      }
     },
     components: { PhonePage, Loading }
   }

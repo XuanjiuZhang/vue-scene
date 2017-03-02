@@ -135,12 +135,12 @@ const store = new Vuex.Store({
       const element = state.sceneData.pages[pageIndex].elements.find((element) => {
         return element.id === eleId;
       });
-      const heightStandard = document.body.offsetWidth * .75;
+      const heightStandard = state.screenHeight * .5;
       const playingStyle = {
         height: heightStandard + 'px',
-        width: document.body.offsetWidth + 'px',
+        width: state.screenWidth + 'px',
         left: 0,
-        top: (document.body.offsetHeight - heightStandard) / 2 + 'px',
+        top: (state.screenHeight - heightStandard) / 3 + 'px',
         zIndex: 99999
       };
       element.__originCss = _.extend({}, element.css);

@@ -167,6 +167,7 @@
                     transform: `translateY(${this.deltaY}px)`,
                     backgroundImage: pageBackground.image === '' ? '' : 'url(' + pageBackground.image + ')',
                     backgroundColor: pageBackground.color,
+                    fontSize: this.finalScale * 100 + '%'
                 };
             },
             finalScale: function () {

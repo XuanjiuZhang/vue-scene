@@ -1,7 +1,7 @@
 <template>
   <div class="tel-wrap" style="width: 100%; height: 100%;">
     <div class="tel-item" v-show="eleData.properties.telType === 0">
-      <button class="tel-btn" :style="eleData.properties.buttonStyle">{{eleData.properties.buttonText}}</button>
+      <button class="tel-btn" :style="computedBtnStyle">{{eleData.properties.buttonText}}</button>
       <a class="tel-link" :href="'tel:' + eleData.properties.telNumber"></a>
     </div>
     <div class="tel-item" v-show="eleData.properties.telType === 1">
@@ -19,7 +19,15 @@
 </template>
 
 <script>
-export default {
-  props: ['eleData']
-}
+  export default {
+    props: ['eleData', 'finalScale'],
+    computed: {
+      computedBtnStyle() {
+        const { properties } = this.eleData;
+        const { buttonStyle } = properties;
+        return Object.assign({}, buttonStyle, { 'fontSize' : `${parseInt(buttonStyle.fontSize) * this.finalScale}px` });
+      }
+    },
+  }
+
 </script>

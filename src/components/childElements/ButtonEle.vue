@@ -1,5 +1,7 @@
 <template>
-  <a class="submit-btn" href="" :style="eleData.properties.buttonStyle" @click.prevent="submit">{{eleData.properties.buttonName}}</a>
+  <div>
+    <a class="submit-btn" href="" :style="computedBtnStyle" @click.prevent="submit">{{eleData.properties.buttonName}}</a>
+  </div>
 </template>
 
 <script>
@@ -8,14 +10,20 @@
     mapActions
   } from 'vuex';
   export default {
-    props: ['eleData', 'pageIndex'],
+    props: ['eleData', 'pageIndex', 'finalScale'],
     data() {
       return {
         hasSubmitted: false,
         inSubmitting: false
       }
     },
-    mounted() { },
+    computed: {
+      computedBtnStyle() {   
+        const { properties } = this.eleData;
+        const { buttonStyle } = properties;
+        return Object.assign({}, buttonStyle, { 'fontSize' : `${parseInt(buttonStyle.fontSize) * this.finalScale}px` });
+      }
+    },
     methods: {
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),

@@ -50,7 +50,7 @@ export default {
 
     eleContentStyle: function(){
       const { backgroundColor, borderStyle, borderColor, borderWidth, borderRadius,
-         rotateZ, boxShadow, translate3d }
+         rotateZ, boxShadow, translate3d, fontSize, lineHeight }
        = this.eleData.contentCss;
 
       let boxShadowStr;
@@ -75,6 +75,8 @@ export default {
         // translate3d ... not use for now
         transform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
         WebkitTransform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
+        fontSize: _.isUndefined(fontSize) ? undefined : `${parseInt(fontSize) * this.finalScale}px`,
+        lineHeight: _.isUndefined(lineHeight) ? undefined : `${parseInt(lineHeight) * this.finalScale}px`
       });
     },
   },
@@ -84,7 +86,7 @@ export default {
     });
     const childEle = h(childrenInfo.tag, 
     {
-      props: {eleData: this.eleData, pageIndex: this.pageIndex},
+      props: {eleData: this.eleData, pageIndex: this.pageIndex, finalScale: this.finalScale},
       class: ['element-content'],
       style: this.eleContentStyle
     });

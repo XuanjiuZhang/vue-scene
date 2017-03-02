@@ -13,10 +13,94 @@ const scoreEle = (element) => {
   return result;
 };
 
+const buttonEle = (element) => {
+  const result = {
+    msg: 'buttonEle',
+    success: false
+  };
+  if(element.type === 8){
+    // Object.assign(element.contentCss, {
+    //   'fontSize': '',
+    // });
+  }else{
+    result.success = true;
+  }
+  return result;
+};
+
+const soundEle = (element) => {
+  const result = {
+    msg: 'soundEle',
+    success: false
+  };
+  if(element.type === 15){
+    if(_.isUndefined(element.properties.buttonStyle)){
+      element.properties.buttonStyle = {};
+    }
+    Object.assign(element.properties.buttonStyle, {
+      'fontSize': '100%',
+    });
+  }else{
+    result.success = true;
+  }
+  return result;
+};
+
+const ContactEle = (element) => {
+  const result = {
+    msg: 'ContactEle',
+    success: false
+  };
+  if(element.type === 9){
+    if(_.isUndefined(element.properties.inputStyle)){
+      element.properties.inputStyle = {};
+    }
+    Object.assign(element.properties.inputStyle, {
+      'fontSize': '100%',
+      'height': '46px'
+    });
+  }else{
+    result.success = true;
+  }
+  return result;
+};
+
+const SelectEle = (element) => {
+  const result = {
+    msg: 'SelectEle',
+    success: false
+  };
+  if(element.type === 10){
+    if(_.isUndefined(element.properties.inputStyle)){
+      element.properties.selectCssFileConfig = {};
+    }
+    Object.assign(element.properties.selectCssFileConfig, {
+      'height': 36,
+      'lineHeight': 36,
+      'HorizontalPadding': 6
+    });
+  }else{
+    result.success = true;
+  }
+  return result;
+};
+
+const InputEle = (element) => {
+  const result = {
+    msg: 'InputEle',
+    success: false
+  };
+  if(element.type === 7){
+    
+  }else{
+    result.success = true;
+  }
+  return result;
+};
 
 const pre = (sceneData) => {
   const { pages } = sceneData;
-  const elementPreArray = [scoreEle];
+  const elementPreArray = [scoreEle, buttonEle, soundEle, ContactEle, SelectEle, InputEle];
   const preMsg = [];
   pages.forEach(page => {
     page.elements.forEach(element => {
