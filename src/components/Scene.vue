@@ -124,7 +124,7 @@
           let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
           // 最后一页往上滑
           let lastPageUp = this.currentPageIndex === this.sceneData.pages.length - 1 &&
-            (additionalEvent === 'panup' || deltaY < 0);
+            (additionalEvent === 'panup' || deltaY < 0) && !this.sceneData.play.loop;
           // 距离太小
           let tooNear = Math.abs(deltaY) <= this.turnPageThreshold;
 

@@ -122,6 +122,8 @@ const store = new Vuex.Store({
         } else {
           execGoPage(state, state.currentPageIndex + 1);
         }
+      } else if (state.sceneData.play.loop) {
+        execGoPage(state, 0);
       }
     },
     prePage(state) {
