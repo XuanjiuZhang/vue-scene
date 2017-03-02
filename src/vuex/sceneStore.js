@@ -11,6 +11,19 @@ const preMsg = sceneDataPrepare(sceneData);
 console.log(preMsg);
 animationPlayer.initAnimatedEle(sceneData);
 
+const VueEventBus = new Vue();
+const initEventBus = _.once(() => {
+  const firstLoad = _.once((state) => {
+    animationPlayer.playPageAnimation(state.currentPageIndex);
+    toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+  });
+  const restLoad = _.after(2, execGoPage) ;
+  VueEventBus.$on('LoadPagesComplete', (state) => {
+    firstLoad(state);
+    restLoad(state, state.currentPageIndex + 1);
+  });
+});
+
 const state = {
   sceneData,
   sceneApi,
@@ -22,6 +35,7 @@ const state = {
   activePageCanDown: true,
   currentPageIndex: 0,
   loadedElementCount: 0,
+  loadPageMaxIndex: 3,
   BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
 };
 
@@ -102,7 +116,11 @@ const store = new Vuex.Store({
     },
     nextPage(state) {
       if (state.currentPageIndex < state.sceneData.pages.length - 1) {
-        execGoPage(state, state.currentPageIndex + 1);
+        if (state.currentPageIndex + 1 === state.loadPageMaxIndex && state.currentPageIndex != state.sceneData.pages.length - 2) {
+          state.loadPageMaxIndex = Math.min(state.sceneData.pages.length, state.loadPageMaxIndex + 5); 
+        } else {
+          execGoPage(state, state.currentPageIndex + 1);
+        }
       }
     },
     prePage(state) {
@@ -119,12 +137,13 @@ const store = new Vuex.Store({
     loadElementSuccess(state) {
       state.loadedElementCount++;
       var elementCount = 0;
-      state.sceneData.pages.forEach((page, index) => {
+      state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      if (state.loadedElementCount === elementCount) {
-        animationPlayer.playPageAnimation(state.currentPageIndex);
-        toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+      const result = Math.floor(state.loadedElementCount / elementCount * 100);
+      if (result === 100) {
+        initEventBus();
+        VueEventBus.$emit('LoadPagesComplete', state);
       }
     },
     changeElementCssAndClass,
@@ -214,7 +233,7 @@ const store = new Vuex.Store({
     },
     sceneLoadedPercentage: state => {
       var elementCount = 0;
-      state.sceneData.pages.forEach((page, index) => {
+      state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
       const result = Math.floor(state.loadedElementCount / elementCount * 100);
@@ -225,7 +244,10 @@ const store = new Vuex.Store({
     },
     activePageCanDown: state => {
       return state.activePageCanDown;
-    }
+    },
+    loadPageMaxIndex: state => {
+      return state.loadPageMaxIndex;
+    },
   },
   actions: {
     loadBmap(context) {

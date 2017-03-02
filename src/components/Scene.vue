@@ -33,8 +33,8 @@
 
 <template>
   <div class="full-screen">
-    <ul v-show="sceneLoadedPercentage >= 98" class="full-screen phone-ul" ref="phoneul">
-      <li v-for="(page, index) in sceneData.pages" class="full-screen phone-li"
+    <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
+      <li v-for="(page, index) in maxPageArray" class="full-screen phone-li" 
        :key="page.id" :style="getPhoneLiStyle(index)"
         :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
@@ -45,7 +45,8 @@
     </div>
     <!--背景音乐-->
     <div class="bg-audio-element" v-show="sceneData.bgAudio" @click="toggleBgMusic">
-      <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
+      <audio ref="bgmusic" class="bg-music" autoplay="true"
+       v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
       </audio>
       <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
     </div>
@@ -298,9 +299,12 @@
       }
     },
     computed: {
-    ...mapGetters(['sceneData', 'sceneLoadedPercentage', 'currentPageIndex',
+    ...mapGetters(['sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
       'activePage', 'activePageCanUp', 'activePageCanDown']),
+      maxPageArray() {
+        return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
+      },
       phonePageClass() {
         return {
           'animated-page': this.fastTurnPage,

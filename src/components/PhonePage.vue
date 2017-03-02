@@ -139,7 +139,6 @@
                 if (this.pageData.pageOption.turnPageMode === 0) {
                     this.sceneData.pageMode === 1 ? horizontal = false : horizontal = true;
                 } else {
-                    console.log(this.pageData.pageOption.turnPageMode);
                     this.pageData.pageOption.turnPageMode === 1 ? horizontal = false : horizontal = true;
                 }
                 const classData = {
