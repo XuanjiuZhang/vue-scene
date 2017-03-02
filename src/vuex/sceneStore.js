@@ -18,6 +18,8 @@ const state = {
   editorHeight: 486,
   screenWidth: 0,
   screenHeight: 0,
+  activePageCanUp: true,
+  activePageCanDown: true,
   currentPageIndex: 0,
   loadedElementCount: 0,
   BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
@@ -36,7 +38,8 @@ const execGoPage = (state, index) => {
 
   state.currentPageIndex = index;
   animationPlayer.playPageAnimation(state.currentPageIndex);
-  toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+  const currentPage = state.sceneData.pages[state.currentPageIndex];
+  toggleElementVisible(currentPage.elements);
 };
 const genPageFormData = (page) => {
   const formData = page.elements.filter(element => {
@@ -177,6 +180,11 @@ const store = new Vuex.Store({
         return element.id === eleId;
       });
       element.currentScore = currentScore;
+    },
+    activePageCanUpDown(state, payload) {
+      const { up, down } = payload;
+      state.activePageCanDown = down;
+      state.activePageCanUp = up;
     }
   },
   getters: {
@@ -211,6 +219,12 @@ const store = new Vuex.Store({
       });
       const result = Math.floor(state.loadedElementCount / elementCount * 100);
       return result;
+    },
+    activePageCanUp: state => {
+      return state.activePageCanUp;
+    },
+    activePageCanDown: state => {
+      return state.activePageCanDown;
     }
   },
   actions: {
@@ -232,7 +246,7 @@ const store = new Vuex.Store({
       return global._BMapPromise;
     },
     buttonFormSubmit(context, payload) {
-      const { query : { qrc, src }, pageIndex } = payload;
+      const { query: { qrc, src }, pageIndex } = payload;
       const formData = genPageFormData(context.state.sceneData.pages[pageIndex]);
       console.log(formData);
       const failArray = formData.filter(data => {
@@ -245,7 +259,7 @@ const store = new Vuex.Store({
       } else {
         let params = {
           formData, sceneid: context.state.sceneData.id,
-           pageid: context.state.sceneData.pages[pageIndex].id, qrc, src 
+          pageid: context.state.sceneData.pages[pageIndex].id, qrc, src
         };
         console.log(params);
         return context.state.sceneApi.formSubmit(params);

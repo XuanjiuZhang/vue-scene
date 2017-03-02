@@ -1,5 +1,5 @@
 <template>
-    <div class="phonePage" :style="pageStyle">
+    <div class="phonePage" :style="pageStyle" ref="phonePage">
         <SceneEle v-for="ele in pageData.elements" :key="ele.id" v-bind="{eleData: ele, pageIndex: index, finalScale}"></SceneEle>
 
         <div class="page-number" ng-show="scene.showPageNo" style="display: block; z-index: 100;">
@@ -49,14 +49,82 @@
     export default {
         props: ['pageData', 'index'],
         created() { },
+        mounted() {
+            const throttlePanstart = (event) => {
+                _.throttle(panstart(event), 200);
+            };
+            const panstart = (event) => {
+                this.inTouch = true;
+                this.startData = Object.assign({}, { deltaY: this.deltaY });
+            };
+            const throttlePanEnd = (event) => {
+                _.throttle(panEnd(event), 200);
+            };
+            const panEnd = (event) => {
+                this.inTouch = false;
+                setTimeout(() => {
+                    defineUpDown();
+                }, 100);
+            };
+            const panUp = (event) => {
+                if(this.inTouch){
+                    const { deltaY } = event;
+                    this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight - this.pageData.pageOption.pageSize));
+                }
+            };
+            const panDown = (event) => {
+                if(this.inTouch){
+                    const { deltaY } = event;
+                    this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight - this.pageData.pageOption.pageSize));
+                }
+            };
+            const initHammer = () => {
+                this.HammerManager = new Hammer.Manager(this.$refs.phonePage);
+                this.HammerManager.on('panstart', throttlePanstart);
+                this.HammerManager.on('panend', throttlePanEnd);
+                this.HammerManager.on('panup', panUp);
+                this.HammerManager.on('pandown', panDown);
+                this.Pan = new Hammer.Pan({
+                    event: 'pan',
+                    pointers: 0,
+                    threshold: 5,
+                    direction: Hammer.DIRECTION_VERTICAL
+                });
+                this.HammerManager.add(this.Pan);
+            };
+            if (this.pageData.pageOption.longPage && this.pageData.pageOption.pageSize > this.screenHeight) {
+                initHammer();
+            }
+
+            const defineUpDown = () => {
+                if (this.currentPageIndex === this.index) {
+                    // 不是长页面 或者页面高度小于一个屏幕的高度, 可以翻页
+                    if (!this.pageData.pageOption.longPage || this.pageData.pageOption.pageSize <= this.screenHeight) {
+                        this.activePageCanUpDown({ down: true, up: true });
+                    } else {
+                        let down = this.deltaY === 0;
+                        let up = this.deltaY === this.screenHeight - this.pageData.pageOption.pageSize;
+                        this.activePageCanUpDown({ down, up });
+                    }
+                }
+            };
+
+            this.$watch('currentPageIndex', (newValue) => {
+                defineUpDown();
+            });
+
+            defineUpDown();
+        },
+        methods: {
+            ...mapMutations(['activePageCanUpDown'])
+        },
         data() {
             return {
-                // screenHeight: document.body.offsetHeight,
-                // screenWidth: document.body.offsetWidth
+                deltaY: 0
             }
         },
         computed: {
-            ...mapGetters(['editorWidth', 'editorHeight', 'sceneData', 'screenWidth', 'screenHeight']),
+            ...mapGetters(['editorWidth', 'editorHeight', 'sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex']),
             showArrow() {
                 var show = true;
                 if (this.pageData.pageOption.banTurnPage) {
@@ -96,7 +164,7 @@
                     width: '100%',
                     position: 'relative',
                     overflow: 'hidden',
-                    transform: `translateY(0)`,
+                    transform: `translateY(${this.deltaY}px)`,
                     backgroundImage: pageBackground.image === '' ? '' : 'url(' + pageBackground.image + ')',
                     backgroundColor: pageBackground.color,
                 };

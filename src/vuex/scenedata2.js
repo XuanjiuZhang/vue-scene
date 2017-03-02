@@ -59,7 +59,7 @@ const scenedata = {
       "name": "第1页",
       "num": 1,
       "pageOption": {
-        "longPage": false,
+        "longPage": true,
         "pageSize": 800,
         "banTurnPage": false,
         "turnPageMode": 2
