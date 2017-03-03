@@ -13073,14 +13073,12 @@ global.testSceneData = __WEBPACK_IMPORTED_MODULE_8__vuex_scenedata2__["a" /* def
           store: sceneStore, // 注入到所有子组件1
           components: { Pcbutton: __WEBPACK_IMPORTED_MODULE_4__components_PCTurnPageBtn_vue___default.a }
         });
-        Promise.resolve().then((function () {
-          var canvas = __WEBPACK_IMPORTED_MODULE_7_qrcanvas___default()({
-            data: 'hello, world',
-            size: 232
-            // cellSize: 11
-          });
-          document.getElementById('qrCode').appendChild(canvas);
-        }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
+        var canvas = __WEBPACK_IMPORTED_MODULE_7_qrcanvas___default()({
+          data: 'hello, world',
+          size: 232
+          // cellSize: 11
+        });
+        document.getElementById('qrCode').appendChild(canvas);
         instance.$mount('#' + pcTurnPageElementID);
       };
     }
@@ -18594,10 +18592,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else {
           var down = _this.deltaY === 0;
           var up = _this.deltaY === _this.screenHeight - _this.pageData.pageOption.pageSize;
-          _this.activePageCanUpDown({
-            down: down,
-            up: up
-          });
+          _this.activePageCanUpDown({ down: down, up: up });
         }
       }
     };

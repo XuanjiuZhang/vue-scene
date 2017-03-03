@@ -15,6 +15,7 @@
   
   .phone-ul {
     overflow: hidden;
+    position: relative;
   }
   
   .phone-li {

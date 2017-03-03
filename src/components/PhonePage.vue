@@ -113,10 +113,7 @@
           } else {
             let down = this.deltaY === 0;
             let up = this.deltaY === this.screenHeight - this.pageData.pageOption.pageSize;
-            this.activePageCanUpDown({
-              down,
-              up
-            });
+            this.activePageCanUpDown({ down, up });
           }
         }
       };
