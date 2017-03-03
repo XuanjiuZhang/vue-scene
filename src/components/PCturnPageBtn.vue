@@ -27,20 +27,22 @@
 
 <script>
 import {
-    mapMutations,
     mapGetters
   } from 'vuex';
 
 export default {
-  
-  methods: {
-    ...mapMutations(['nextPage', 'prePage']),
-    handlePrePage() {
-      this.prePage();
+  computed: {
+    ...mapGetters(['VueEventBus']),
+    handlePrePage(){
+      return _.throttle(() => {
+        this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
+      }, 800);
     },
-    handleNextPage() {
-      this.nextPage('nextPage');
-    }
+    handleNextPage(){
+      return _.throttle(() => {
+        this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
+      }, 800);
+    },
   }
 }
 </script>

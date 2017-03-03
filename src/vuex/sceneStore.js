@@ -27,6 +27,7 @@ const initEventBus = _.once(() => {
 const state = {
   sceneData,
   sceneApi,
+  VueEventBus,
   editorWidth: 320,
   editorHeight: 486,
   screenWidth: 0,
@@ -146,7 +147,7 @@ const store = new Vuex.Store({
       const result = Math.floor(state.loadedElementCount / elementCount * 100);
       if (result === 100) {
         initEventBus();
-        VueEventBus.$emit('LoadPagesComplete', state);
+        state.VueEventBus.$emit('LoadPagesComplete', state);
       }
     },
     changeElementCssAndClass,
@@ -251,6 +252,9 @@ const store = new Vuex.Store({
     loadPageMaxIndex: state => {
       return state.loadPageMaxIndex;
     },
+    VueEventBus: state => {
+      return state.VueEventBus
+    }
   },
   actions: {
     loadBmap(context) {
@@ -265,7 +269,7 @@ const store = new Vuex.Store({
             global._initBaiduMap = null;
             global._BMapPromise = null;
           };
-          $script.src = `//api.map.baidu.com/api?v=2.0&ak=${context.state.BmapAk}&callback=_initBaiduMap`;
+          $script.src = `https://api.map.baidu.com/api?v=2.0&ak=${context.state.BmapAk}&callback=_initBaiduMap`;
         });
       }
       return global._BMapPromise;

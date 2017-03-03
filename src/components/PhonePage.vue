@@ -50,24 +50,21 @@
     props: ['pageData', 'index', 'finalScale'],
     created() {},
     mounted() {
-      const throttlePanstart = (event) => {
-        _.throttle(panstart(event), 200);
-      };
       const panstart = (event) => {
         this.inTouch = true;
         this.startData = Object.assign({}, {
           deltaY: this.deltaY
         });
       };
-      const throttlePanEnd = (event) => {
-        _.throttle(panEnd(event), 200);
-      };
+      const throttlePanstart = _.throttle(panstart, 200);
       const panEnd = (event) => {
         this.inTouch = false;
         setTimeout(() => {
           defineUpDown();
         }, 100);
       };
+      const throttlePanEnd = _.throttle(panEnd, 200);
+      
       const panUp = (event) => {
         if (this.inTouch) {
           const {

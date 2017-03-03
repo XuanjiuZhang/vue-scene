@@ -35,19 +35,16 @@
 <template>
   <div class="full-screen">
     <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
-      <li v-for="(page, index) in maxPageArray" class="phone-li" 
-       :key="page.id" :style="getPhoneLiStyle(index)"
-        :class="phonePageClass">
+      <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
-        </li>
+      </li>
     </ul>
     <div v-show="sceneLoadedPercentage < 100" class="full-screen loading">
       <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </div>
     <!--背景音乐-->
     <div class="bg-audio-element" v-show="sceneData.bgAudio" @click="toggleBgMusic">
-      <audio ref="bgmusic" class="bg-music" autoplay="true"
-       v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
+      <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
       </audio>
       <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
     </div>
@@ -76,9 +73,120 @@
   Vue.component(CarouselItem.name, CarouselItem);
 
   export default {
-    created() {},
+    created() { },
     mounted() {
       const initHammer = () => {
+        const panstart = (event) => {
+          this.inTouch = true;
+          this.preNextVisible = true;
+          this.startData = Object.assign({}, {
+            deltaY: this.deltaY,
+            deltaX: this.deltaX
+          });
+        };
+        const panEnd = (event) => {
+          this.inTouch = false;
+          const {
+            deltaY,
+            deltaX,
+            additionalEvent
+          } = event;
+          this.startData = Object.assign({}, {
+            deltaY: this.deltaY,
+            deltaX: this.deltaX
+          });
+          if (this.activePage.pageOption.turnPageMode === 1) {
+            // 第一页继续往下滑
+            let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
+            // 最后一页往上滑
+            let lastPageUp = this.currentPageIndex === this.sceneData.pages.length - 1 &&
+              (additionalEvent === 'panup' || deltaY < 0) && !this.sceneData.play.loop;
+            // 距离太小
+            let tooNear = Math.abs(deltaY) <= this.turnPageThreshold;
+
+            // 不翻页
+            if (firstPageDown || lastPageUp || tooNear) {
+              this.notTurnPage();
+              return;
+            }
+
+            // 往下滑翻页
+            if ((additionalEvent === 'panup' || deltaY < 0) && this.activePageCanUp) {
+              this.downTurnPage();
+              return;
+            }
+            // 往上滑翻页
+            if ((additionalEvent === 'pandown' || deltaY > 0) && this.activePageCanDown) {
+              this.upTurnPage();
+              return;
+            }
+
+          } else {
+            // 第一页继续往右滑
+            let firstPageRight = this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
+            // 最后一页往左滑
+            let lastPageLeft = this.currentPageIndex === this.sceneData.pages.length - 1 &&
+              (additionalEvent === 'panleft' || deltaX < 0);
+            // 距离太小
+            let tooNear = Math.abs(deltaX) <= this.turnPageThreshold;
+
+            // 不翻页
+            if (firstPageRight || lastPageLeft || tooNear) {
+              this.notTurnPage();
+              return;
+            }
+            // 往左滑翻页
+            if (additionalEvent === 'panleft' || deltaX < 0) {
+              this.leftTurnPage();
+              return;
+            }
+
+            // 往右滑翻页
+            if (additionalEvent === 'panright' || deltaX > 0) {
+              this.rightTurnPage();
+              return;
+            }
+          }
+        };
+        const throttlePanstart = _.throttle(panstart, 200);
+        const throttlePanEnd = _.throttle(panEnd, 200);
+        
+        const panleft = (event) => {
+          if (this.inTouch) {
+            let {
+              deltaX
+            } = event;
+            this.deltaX = this.startData.deltaX + deltaX;
+          }
+        };
+        const panRight = (event) => {
+          if (this.inTouch) {
+            let {
+              deltaX
+            } = event;
+            this.deltaX = this.startData.deltaX + deltaX;
+          }
+        };
+        const panUp = (event) => {
+          if (this.inTouch) {
+            let {
+              deltaY
+            } = event;
+            if (this.activePageCanUp || this.deltaY != 0) {
+              this.deltaY = this.startData.deltaY + deltaY;
+            }
+          }
+        };
+        const panDown = (event) => {
+          if (this.inTouch) {
+            let {
+              deltaY
+            } = event;
+            if (this.activePageCanDown || this.deltaY != 0) {
+              this.deltaY = this.startData.deltaY + deltaY;
+            }
+          }
+        };
         this.HammerManager = new Hammer.Manager(this.$refs.phoneul);
         this.HammerManager.on('panstart', throttlePanstart);
         this.HammerManager.on('panend', throttlePanEnd);
@@ -95,199 +203,114 @@
         this.HammerManager.add(this.Pan);
       };
 
-      const throttlePanstart = (event) => {
-        _.throttle(panstart(event), 200);
-      };
-      const panstart = (event) => {
-        this.inTouch = true;
-        this.preNextVisible = true;
-        this.startData = Object.assign({}, {
-          deltaY: this.deltaY,
-          deltaX: this.deltaX
-        });
-      };
-      const throttlePanEnd = (event) => {
-        _.throttle(panEnd(event), 200);
-      };
-      const panEnd = (event) => {
-        this.inTouch = false;
-        const {
-          deltaY,
-          deltaX,
-          additionalEvent
-        } = event;
-        this.startData = Object.assign({}, {
-          deltaY: this.deltaY,
-          deltaX: this.deltaX
-        });
-        if (this.activePage.pageOption.turnPageMode === 1) {
-          // 第一页继续往下滑
-          let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
-          // 最后一页往上滑
-          let lastPageUp = this.currentPageIndex === this.sceneData.pages.length - 1 &&
-            (additionalEvent === 'panup' || deltaY < 0) && !this.sceneData.play.loop;
-          // 距离太小
-          let tooNear = Math.abs(deltaY) <= this.turnPageThreshold;
-
-          // 不翻页
-          if (firstPageDown || lastPageUp || tooNear) {
-            this.HammerManager.remove(this.Pan);
-            console.log('不翻页!');
+      const initTurnPage = () => {
+        this.downTurnPage = () => {
+          this.HammerManager.remove(this.Pan);
+          console.log('往下滑翻页!');
+          this.deltaY = -this.screenHeight;
+          this.normalTurnPage = true;
+          this.fastTurnPage = false;
+          setTimeout(() => {
+            this.HammerManager.add(this.Pan);
+          }, this.addPanTime);
+          setTimeout(() => {
+            this.preNextVisible = false;
+            this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.fastTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.fastTurnPage = false;
-            }, this.fastTurnPageTime);
-            return;
-          }
-
-          // 往下滑翻页
-          if ((additionalEvent === 'panup' || deltaY < 0) && this.activePageCanUp) {
-            this.HammerManager.remove(this.Pan);
-            console.log('往下滑翻页!');
-            this.deltaY = -this.screenHeight;
-            this.normalTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.normalTurnPage = false;
-              this.deltaY = 0;
-              this.deltaX = 0;
-              this.nextPage();
-            }, this.normalTurnPageTime);
-            return;
-          }
-          // 往上滑翻页
-          if ((additionalEvent === 'pandown' || deltaY > 0) && this.activePageCanDown) {
-            this.HammerManager.remove(this.Pan);
-            console.log('往上滑翻页!');
-            this.deltaY = this.screenHeight;
-            this.normalTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.normalTurnPage = false;
-              this.deltaY = 0;
-              this.deltaX = 0;
-              this.prePage();
-            }, this.normalTurnPageTime);
-            return;
-          }
-
-        } else {
-          // 第一页继续往右滑
-          let firstPageRight = this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
-          // 最后一页往左滑
-          let lastPageLeft = this.currentPageIndex === this.sceneData.pages.length - 1 &&
-            (additionalEvent === 'panleft' || deltaX < 0);
-          // 距离太小
-          let tooNear = Math.abs(deltaX) <= this.turnPageThreshold;
-
-          // 不翻页
-          if (firstPageRight || lastPageLeft || tooNear) {
-            console.log('不翻页!');
+            this.nextPage();
+          }, this.normalTurnPageTime);
+        };
+        this.upTurnPage = () => {
+          this.HammerManager.remove(this.Pan);
+          console.log('往上滑翻页!');
+          this.deltaY = this.screenHeight;
+          this.normalTurnPage = true;
+          this.fastTurnPage = false;
+          setTimeout(() => {
+            this.HammerManager.add(this.Pan);
+          }, this.addPanTime);
+          setTimeout(() => {
+            this.preNextVisible = false;
+            this.normalTurnPage = false;
             this.deltaY = 0;
             this.deltaX = 0;
-            this.fastTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.fastTurnPage = false;
-            }, this.fastTurnPageTime);
-            return;
+            this.prePage();
+          }, this.normalTurnPageTime);
+        };
+        this.leftTurnPage = () => {
+          console.log('往左滑翻页!');
+          // 暂时移除hammer, 置delta为屏幕大小, 开启翻页动画, 完成以后恢复
+          this.deltaX = -this.screenWidth;
+          this.normalTurnPage = true;
+          this.fastTurnPage = false;
+          setTimeout(() => {
+            this.HammerManager.add(this.Pan);
+          }, this.addPanTime);
+          setTimeout(() => {
+            this.preNextVisible = false;
+            this.normalTurnPage = false;
+            this.deltaY = 0;
+            this.deltaX = 0;
+            this.nextPage();
+          }, this.normalTurnPageTime);
+        };
+        this.rightTurnPage = () => {
+          console.log('往右滑翻页!');
+          this.deltaX = this.screenWidth;
+          this.normalTurnPage = true;
+          this.fastTurnPage = false;
+          setTimeout(() => {
+            this.HammerManager.add(this.Pan);
+          }, this.addPanTime);
+          setTimeout(() => {
+            this.preNextVisible = false;
+            this.normalTurnPage = false;
+            this.deltaY = 0;
+            this.deltaX = 0;
+            this.prePage();
+          }, this.normalTurnPageTime);
+        };
+        this.notTurnPage = () => {
+          this.HammerManager.remove(this.Pan);
+          console.log('不翻页!');
+          this.deltaY = 0;
+          this.deltaX = 0;
+          this.normalTurnPage = false;
+          this.fastTurnPage = true;
+          setTimeout(() => {
+            this.HammerManager.add(this.Pan);
+          }, this.addPanTime);
+          setTimeout(() => {
+            this.preNextVisible = false;
+            this.fastTurnPage = false;
+          }, this.fastTurnPageTime);
+        };
+        this.VueEventBus.$on('btnTurnPage', payload => {
+          const { opt } = payload;
+          if(opt === 'pre'){
+            if(this.currentPageIndex === 0){
+              return ; 
+            }else if(this.activePage.pageOption.turnPageMode === 1){
+              this.preNextVisible = true;
+              this.upTurnPage();
+            }else{
+              this.preNextVisible = true;
+              this.rightTurnPage();
+            }
+          }else if( opt === 'next'){
+            if(this.activePage.pageOption.turnPageMode === 1){
+              this.preNextVisible = true;
+              this.downTurnPage();
+            }else{
+              this.preNextVisible = true;
+              this.leftTurnPage();
+            }
           }
-          // 往左滑翻页
-          if (additionalEvent === 'panleft' || deltaX < 0) {
-            console.log('往左滑翻页!');
-            // 暂时移除hammer, 置delta为屏幕大小, 开启翻页动画, 完成以后恢复
-            this.deltaX = -this.screenWidth;
-            this.normalTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.normalTurnPage = false;
-              this.deltaY = 0;
-              this.deltaX = 0;
-              this.nextPage();
-            }, this.normalTurnPageTime);
-            return;
-          }
+        });
+      }
 
-          // 往右滑翻页
-          if (additionalEvent === 'panright' || deltaX > 0) {
-            console.log('往右滑翻页!');
-            this.deltaX = this.screenWidth;
-            this.normalTurnPage = true;
-            setTimeout(() => {
-              this.HammerManager.add(this.Pan);
-            }, this.addPanTime);
-            setTimeout(() => {
-              this.preNextVisible = false;
-              this.normalTurnPage = false;
-              this.deltaY = 0;
-              this.deltaX = 0;
-              this.prePage();
-            }, this.normalTurnPageTime);
-            return;
-          }
-        }
-      };
-      const panleft = (event) => {
-        if (this.inTouch) {
-          let {
-            deltaX
-          } = event;
-          this.deltaX = this.startData.deltaX + deltaX;
-        }
-      };
-      const panRight = (event) => {
-        if (this.inTouch) {
-          let {
-            deltaX
-          } = event;
-          this.deltaX = this.startData.deltaX + deltaX;
-        }
-      };
-      const panUp = (event) => {
-        if (this.inTouch) {
-          let {
-            deltaY
-          } = event;
-          if (this.activePageCanUp || this.deltaY != 0) {
-            this.deltaY = this.startData.deltaY + deltaY;
-          }
-        }
-      };
-      const panDown = (event) => {
-        if (this.inTouch) {
-          let {
-            deltaY
-          } = event;
-          if (this.activePageCanDown || this.deltaY != 0) {
-            this.deltaY = this.startData.deltaY + deltaY;
-          }
-        }
-      };
-
-      // this.$watch('inTouch', (newValue, oldValue) => {
-      //   if (newValue === false && oldValue === true && !this.fastTurnPage && !this.normalTurnPage) {
-      //     console.log('test');
-      //   }
-      // });
-
+      initTurnPage();
       initHammer();
     },
     data() {
@@ -325,9 +348,9 @@
       }
     },
     computed: {
-      ...mapGetters(['sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
-        'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
-        'activePage', 'activePageCanUp', 'activePageCanDown'
+      ...mapGetters(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
+      'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
+      'activePage', 'activePageCanUp', 'activePageCanDown'
       ]),
       maxPageArray() {
         return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
@@ -342,7 +365,7 @@
         const style = {
           transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)` : `translateX(-${this.screenWidth - this.deltaX}px)`,
           display: this.preNextVisible ? '' : 'none',
-          width: `${this.screenWidth}px`, 
+          width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
         };
         return style;
@@ -350,7 +373,7 @@
       activePageStyle() {
         const style = {
           transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`,
-          width: `${this.screenWidth}px`, 
+          width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
         };
         return style;
@@ -359,7 +382,7 @@
         const style = {
           transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)` : `translateX(${this.screenWidth + this.deltaX}px)`,
           display: this.preNextVisible ? '' : 'none',
-          width: `${this.screenWidth}px`, 
+          width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
         };
         return style;
@@ -367,7 +390,7 @@
       hidePageStyle() {
         return {
           display: 'none',
-          width: `${this.screenWidth}px`, 
+          width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
         };
       },
@@ -382,4 +405,5 @@
       Loading
     }
   }
+
 </script>

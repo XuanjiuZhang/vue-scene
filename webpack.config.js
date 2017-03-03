@@ -18,7 +18,7 @@ module.exports = {
   }, 
   context: __dirname + "/src",
   entry: {
-    app: ['whatwg-fetch', './app.js']
+    app: ['whatwg-fetch', './applib.js']
   },
   output: {
     path: path.join(__dirname, 'build'),

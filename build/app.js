@@ -13337,7 +13337,7 @@ exports = module.exports = __webpack_require__(5)();
 
 
 // module
-exports.push([module.i, "/*@phone-width:320px;  \n@phone-height:486px;*/\n.full-screen {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.full-screen.loading {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.phone-ul {\n  overflow: hidden;\n}\n.phone-li {\n  overflow: hidden;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.phone-li.animated-page {\n  transition: .5s transform;\n}\n.phone-li.animated-page-fast {\n  transition: .2s transform;\n}\n", ""]);
+exports.push([module.i, "/*@phone-width:320px;  \n@phone-height:486px;*/\n.full-screen {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.full-screen.loading {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.phone-ul {\n  overflow: hidden;\n  position: relative;\n}\n.phone-li {\n  overflow: hidden;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n.phone-li.animated-page {\n  transition: .5s transform;\n}\n.phone-li.animated-page-fast {\n  transition: .2s transform;\n}\n", ""]);
 
 // exports
 
@@ -18454,13 +18454,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
-
-  methods: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapMutations"])(['nextPage', 'prePage']), {
+  computed: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_vuex__["mapGetters"])(['VueEventBus']), {
     handlePrePage: function handlePrePage() {
-      this.prePage();
+      var _this = this;
+
+      return _.throttle(function () {
+        _this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
+      }, 800);
     },
     handleNextPage: function handleNextPage() {
-      this.nextPage('nextPage');
+      var _this2 = this;
+
+      return _.throttle(function () {
+        _this2.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
+      }, 800);
     }
   })
 };
@@ -18531,24 +18538,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    var throttlePanstart = function throttlePanstart(event) {
-      _.throttle(panstart(event), 200);
-    };
     var panstart = function panstart(event) {
       _this.inTouch = true;
       _this.startData = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, {
         deltaY: _this.deltaY
       });
     };
-    var throttlePanEnd = function throttlePanEnd(event) {
-      _.throttle(panEnd(event), 200);
-    };
+    var throttlePanstart = _.throttle(panstart, 200);
     var panEnd = function panEnd(event) {
       _this.inTouch = false;
       setTimeout(function () {
         defineUpDown();
       }, 100);
     };
+    var throttlePanEnd = _.throttle(panEnd, 200);
+
     var panUp = function panUp(event) {
       if (_this.inTouch) {
         var deltaY = event.deltaY;
@@ -20137,8 +20141,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -20158,6 +20160,109 @@ __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_
     var _this = this;
 
     var initHammer = function initHammer() {
+      var panstart = function panstart(event) {
+        _this.inTouch = true;
+        _this.preNextVisible = true;
+        _this.startData = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, {
+          deltaY: _this.deltaY,
+          deltaX: _this.deltaX
+        });
+      };
+      var panEnd = function panEnd(event) {
+        _this.inTouch = false;
+        var deltaY = event.deltaY,
+            deltaX = event.deltaX,
+            additionalEvent = event.additionalEvent;
+
+        _this.startData = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, {
+          deltaY: _this.deltaY,
+          deltaX: _this.deltaX
+        });
+        if (_this.activePage.pageOption.turnPageMode === 1) {
+          // 第一页继续往下滑
+          var firstPageDown = _this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
+          // 最后一页往上滑
+          var lastPageUp = _this.currentPageIndex === _this.sceneData.pages.length - 1 && (additionalEvent === 'panup' || deltaY < 0) && !_this.sceneData.play.loop;
+          // 距离太小
+          var tooNear = Math.abs(deltaY) <= _this.turnPageThreshold;
+
+          // 不翻页
+          if (firstPageDown || lastPageUp || tooNear) {
+            _this.notTurnPage();
+            return;
+          }
+
+          // 往下滑翻页
+          if ((additionalEvent === 'panup' || deltaY < 0) && _this.activePageCanUp) {
+            _this.downTurnPage();
+            return;
+          }
+          // 往上滑翻页
+          if ((additionalEvent === 'pandown' || deltaY > 0) && _this.activePageCanDown) {
+            _this.upTurnPage();
+            return;
+          }
+        } else {
+          // 第一页继续往右滑
+          var firstPageRight = _this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
+          // 最后一页往左滑
+          var lastPageLeft = _this.currentPageIndex === _this.sceneData.pages.length - 1 && (additionalEvent === 'panleft' || deltaX < 0);
+          // 距离太小
+          var _tooNear = Math.abs(deltaX) <= _this.turnPageThreshold;
+
+          // 不翻页
+          if (firstPageRight || lastPageLeft || _tooNear) {
+            _this.notTurnPage();
+            return;
+          }
+          // 往左滑翻页
+          if (additionalEvent === 'panleft' || deltaX < 0) {
+            _this.leftTurnPage();
+            return;
+          }
+
+          // 往右滑翻页
+          if (additionalEvent === 'panright' || deltaX > 0) {
+            _this.rightTurnPage();
+            return;
+          }
+        }
+      };
+      var throttlePanstart = _.throttle(panstart, 200);
+      var throttlePanEnd = _.throttle(panEnd, 200);
+
+      var panleft = function panleft(event) {
+        if (_this.inTouch) {
+          var deltaX = event.deltaX;
+
+          _this.deltaX = _this.startData.deltaX + deltaX;
+        }
+      };
+      var panRight = function panRight(event) {
+        if (_this.inTouch) {
+          var deltaX = event.deltaX;
+
+          _this.deltaX = _this.startData.deltaX + deltaX;
+        }
+      };
+      var panUp = function panUp(event) {
+        if (_this.inTouch) {
+          var deltaY = event.deltaY;
+
+          if (_this.activePageCanUp || _this.deltaY != 0) {
+            _this.deltaY = _this.startData.deltaY + deltaY;
+          }
+        }
+      };
+      var panDown = function panDown(event) {
+        if (_this.inTouch) {
+          var deltaY = event.deltaY;
+
+          if (_this.activePageCanDown || _this.deltaY != 0) {
+            _this.deltaY = _this.startData.deltaY + deltaY;
+          }
+        }
+      };
       _this.HammerManager = new Hammer.Manager(_this.$refs.phoneul);
       _this.HammerManager.on('panstart', throttlePanstart);
       _this.HammerManager.on('panend', throttlePanEnd);
@@ -20174,191 +20279,115 @@ __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_
       _this.HammerManager.add(_this.Pan);
     };
 
-    var throttlePanstart = function throttlePanstart(event) {
-      _.throttle(panstart(event), 200);
-    };
-    var panstart = function panstart(event) {
-      _this.inTouch = true;
-      _this.preNextVisible = true;
-      _this.startData = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, {
-        deltaY: _this.deltaY,
-        deltaX: _this.deltaX
-      });
-    };
-    var throttlePanEnd = function throttlePanEnd(event) {
-      _.throttle(panEnd(event), 200);
-    };
-    var panEnd = function panEnd(event) {
-      _this.inTouch = false;
-      var deltaY = event.deltaY,
-          deltaX = event.deltaX,
-          additionalEvent = event.additionalEvent;
-
-      _this.startData = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default()({}, {
-        deltaY: _this.deltaY,
-        deltaX: _this.deltaX
-      });
-      if (_this.activePage.pageOption.turnPageMode === 1) {
-        // 第一页继续往下滑
-        var firstPageDown = _this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
-        // 最后一页往上滑
-        var lastPageUp = _this.currentPageIndex === _this.sceneData.pages.length - 1 && (additionalEvent === 'panup' || deltaY < 0) && !_this.sceneData.play.loop;
-        // 距离太小
-        var tooNear = Math.abs(deltaY) <= _this.turnPageThreshold;
-
-        // 不翻页
-        if (firstPageDown || lastPageUp || tooNear) {
-          _this.HammerManager.remove(_this.Pan);
-          console.log('不翻页!');
+    var initTurnPage = function initTurnPage() {
+      _this.downTurnPage = function () {
+        _this.HammerManager.remove(_this.Pan);
+        console.log('往下滑翻页!');
+        _this.deltaY = -_this.screenHeight;
+        _this.normalTurnPage = true;
+        _this.fastTurnPage = false;
+        setTimeout(function () {
+          _this.HammerManager.add(_this.Pan);
+        }, _this.addPanTime);
+        setTimeout(function () {
+          _this.preNextVisible = false;
+          _this.normalTurnPage = false;
           _this.deltaY = 0;
           _this.deltaX = 0;
-          _this.fastTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.fastTurnPage = false;
-          }, _this.fastTurnPageTime);
-          return;
-        }
-
-        // 往下滑翻页
-        if ((additionalEvent === 'panup' || deltaY < 0) && _this.activePageCanUp) {
-          _this.HammerManager.remove(_this.Pan);
-          console.log('往下滑翻页!');
-          _this.deltaY = -_this.screenHeight;
-          _this.normalTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.normalTurnPage = false;
-            _this.deltaY = 0;
-            _this.deltaX = 0;
-            _this.nextPage();
-          }, _this.normalTurnPageTime);
-          return;
-        }
-        // 往上滑翻页
-        if ((additionalEvent === 'pandown' || deltaY > 0) && _this.activePageCanDown) {
-          _this.HammerManager.remove(_this.Pan);
-          console.log('往上滑翻页!');
-          _this.deltaY = _this.screenHeight;
-          _this.normalTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.normalTurnPage = false;
-            _this.deltaY = 0;
-            _this.deltaX = 0;
-            _this.prePage();
-          }, _this.normalTurnPageTime);
-          return;
-        }
-      } else {
-        // 第一页继续往右滑
-        var firstPageRight = _this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
-        // 最后一页往左滑
-        var lastPageLeft = _this.currentPageIndex === _this.sceneData.pages.length - 1 && (additionalEvent === 'panleft' || deltaX < 0);
-        // 距离太小
-        var _tooNear = Math.abs(deltaX) <= _this.turnPageThreshold;
-
-        // 不翻页
-        if (firstPageRight || lastPageLeft || _tooNear) {
-          console.log('不翻页!');
+          _this.nextPage();
+        }, _this.normalTurnPageTime);
+      };
+      _this.upTurnPage = function () {
+        _this.HammerManager.remove(_this.Pan);
+        console.log('往上滑翻页!');
+        _this.deltaY = _this.screenHeight;
+        _this.normalTurnPage = true;
+        _this.fastTurnPage = false;
+        setTimeout(function () {
+          _this.HammerManager.add(_this.Pan);
+        }, _this.addPanTime);
+        setTimeout(function () {
+          _this.preNextVisible = false;
+          _this.normalTurnPage = false;
           _this.deltaY = 0;
           _this.deltaX = 0;
-          _this.fastTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.fastTurnPage = false;
-          }, _this.fastTurnPageTime);
-          return;
-        }
-        // 往左滑翻页
-        if (additionalEvent === 'panleft' || deltaX < 0) {
-          console.log('往左滑翻页!');
-          // 暂时移除hammer, 置delta为屏幕大小, 开启翻页动画, 完成以后恢复
-          _this.deltaX = -_this.screenWidth;
-          _this.normalTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.normalTurnPage = false;
-            _this.deltaY = 0;
-            _this.deltaX = 0;
-            _this.nextPage();
-          }, _this.normalTurnPageTime);
-          return;
-        }
+          _this.prePage();
+        }, _this.normalTurnPageTime);
+      };
+      _this.leftTurnPage = function () {
+        console.log('往左滑翻页!');
+        // 暂时移除hammer, 置delta为屏幕大小, 开启翻页动画, 完成以后恢复
+        _this.deltaX = -_this.screenWidth;
+        _this.normalTurnPage = true;
+        _this.fastTurnPage = false;
+        setTimeout(function () {
+          _this.HammerManager.add(_this.Pan);
+        }, _this.addPanTime);
+        setTimeout(function () {
+          _this.preNextVisible = false;
+          _this.normalTurnPage = false;
+          _this.deltaY = 0;
+          _this.deltaX = 0;
+          _this.nextPage();
+        }, _this.normalTurnPageTime);
+      };
+      _this.rightTurnPage = function () {
+        console.log('往右滑翻页!');
+        _this.deltaX = _this.screenWidth;
+        _this.normalTurnPage = true;
+        _this.fastTurnPage = false;
+        setTimeout(function () {
+          _this.HammerManager.add(_this.Pan);
+        }, _this.addPanTime);
+        setTimeout(function () {
+          _this.preNextVisible = false;
+          _this.normalTurnPage = false;
+          _this.deltaY = 0;
+          _this.deltaX = 0;
+          _this.prePage();
+        }, _this.normalTurnPageTime);
+      };
+      _this.notTurnPage = function () {
+        _this.HammerManager.remove(_this.Pan);
+        console.log('不翻页!');
+        _this.deltaY = 0;
+        _this.deltaX = 0;
+        _this.normalTurnPage = false;
+        _this.fastTurnPage = true;
+        setTimeout(function () {
+          _this.HammerManager.add(_this.Pan);
+        }, _this.addPanTime);
+        setTimeout(function () {
+          _this.preNextVisible = false;
+          _this.fastTurnPage = false;
+        }, _this.fastTurnPageTime);
+      };
+      _this.VueEventBus.$on('btnTurnPage', function (payload) {
+        var opt = payload.opt;
 
-        // 往右滑翻页
-        if (additionalEvent === 'panright' || deltaX > 0) {
-          console.log('往右滑翻页!');
-          _this.deltaX = _this.screenWidth;
-          _this.normalTurnPage = true;
-          setTimeout(function () {
-            _this.HammerManager.add(_this.Pan);
-          }, _this.addPanTime);
-          setTimeout(function () {
-            _this.preNextVisible = false;
-            _this.normalTurnPage = false;
-            _this.deltaY = 0;
-            _this.deltaX = 0;
-            _this.prePage();
-          }, _this.normalTurnPageTime);
-          return;
+        if (opt === 'pre') {
+          if (_this.currentPageIndex === 0) {
+            return;
+          } else if (_this.activePage.pageOption.turnPageMode === 1) {
+            _this.preNextVisible = true;
+            _this.upTurnPage();
+          } else {
+            _this.preNextVisible = true;
+            _this.rightTurnPage();
+          }
+        } else if (opt === 'next') {
+          if (_this.activePage.pageOption.turnPageMode === 1) {
+            _this.preNextVisible = true;
+            _this.downTurnPage();
+          } else {
+            _this.preNextVisible = true;
+            _this.leftTurnPage();
+          }
         }
-      }
-    };
-    var panleft = function panleft(event) {
-      if (_this.inTouch) {
-        var deltaX = event.deltaX;
-
-        _this.deltaX = _this.startData.deltaX + deltaX;
-      }
-    };
-    var panRight = function panRight(event) {
-      if (_this.inTouch) {
-        var deltaX = event.deltaX;
-
-        _this.deltaX = _this.startData.deltaX + deltaX;
-      }
-    };
-    var panUp = function panUp(event) {
-      if (_this.inTouch) {
-        var deltaY = event.deltaY;
-
-        if (_this.activePageCanUp || _this.deltaY != 0) {
-          _this.deltaY = _this.startData.deltaY + deltaY;
-        }
-      }
-    };
-    var panDown = function panDown(event) {
-      if (_this.inTouch) {
-        var deltaY = event.deltaY;
-
-        if (_this.activePageCanDown || _this.deltaY != 0) {
-          _this.deltaY = _this.startData.deltaY + deltaY;
-        }
-      }
+      });
     };
 
-    // this.$watch('inTouch', (newValue, oldValue) => {
-    //   if (newValue === false && oldValue === true && !this.fastTurnPage && !this.normalTurnPage) {
-    //     console.log('test');
-    //   }
-    // });
-
+    initTurnPage();
     initHammer();
   },
   data: function data() {
@@ -20395,7 +20424,7 @@ __WEBPACK_IMPORTED_MODULE_7_vue___default.a.component(__WEBPACK_IMPORTED_MODULE_
       }
     }
   }),
-  computed: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_vuex__["mapGetters"])(['sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex', 'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight', 'activePage', 'activePageCanUp', 'activePageCanDown']), {
+  computed: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8_vuex__["mapGetters"])(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex', 'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight', 'activePage', 'activePageCanUp', 'activePageCanDown']), {
     maxPageArray: function maxPageArray() {
       return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
     },
@@ -21755,23 +21784,7 @@ var initStore = function initStore(sceneData) {
   console.log(preMsg);
   __WEBPACK_IMPORTED_MODULE_7__service_animationPlayer__["a" /* animationPlayer */].initAnimatedEle(sceneData);
 
-  var state = {
-    sceneData: sceneData,
-    sceneApi: __WEBPACK_IMPORTED_MODULE_5__api_sceneApi__["a" /* default */],
-    editorWidth: 320,
-    editorHeight: 486,
-    screenWidth: 0,
-    screenHeight: 0,
-    activePageCanUp: true,
-    activePageCanDown: true,
-    currentPageIndex: 0,
-    loadedElementCount: 0,
-    loadPageMaxIndex: 3,
-    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
-  };
-
   var VueEventBus = new __WEBPACK_IMPORTED_MODULE_3_vue___default.a();
-
   var initEventBus = __WEBPACK_IMPORTED_MODULE_4_underscore___default.a.once(function () {
     var firstLoad = __WEBPACK_IMPORTED_MODULE_4_underscore___default.a.once(function (state) {
       __WEBPACK_IMPORTED_MODULE_7__service_animationPlayer__["a" /* animationPlayer */].playPageAnimation(state.currentPageIndex);
@@ -21784,6 +21797,22 @@ var initStore = function initStore(sceneData) {
     });
   });
 
+  var state = {
+    sceneData: sceneData,
+    sceneApi: __WEBPACK_IMPORTED_MODULE_5__api_sceneApi__["a" /* default */],
+    VueEventBus: VueEventBus,
+    editorWidth: 320,
+    editorHeight: 486,
+    screenWidth: 0,
+    screenHeight: 0,
+    activePageCanUp: true,
+    activePageCanDown: true,
+    currentPageIndex: 0,
+    loadedElementCount: 0,
+    loadPageMaxIndex: 3,
+    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
+  };
+
   var toggleElementVisible = function toggleElementVisible(elements) {
     elements.forEach(function (element) {
       if (__WEBPACK_IMPORTED_MODULE_4_underscore___default.a.isArray(element.animate) && element.animate.length != 0) {
@@ -21792,6 +21821,13 @@ var initStore = function initStore(sceneData) {
     });
   };
   var execGoPage = function execGoPage(state, index) {
+    var elementCount = 0;
+    state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach(function (page, index) {
+      elementCount += page.elements.length;
+    });
+    if (state.loadedElementCount != elementCount) {
+      return false;
+    }
     __WEBPACK_IMPORTED_MODULE_7__service_animationPlayer__["a" /* animationPlayer */].stopPageAnimation(state.currentPageIndex);
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
@@ -21893,7 +21929,7 @@ var initStore = function initStore(sceneData) {
         var result = Math.floor(state.loadedElementCount / elementCount * 100);
         if (result === 100) {
           initEventBus();
-          VueEventBus.$emit('LoadPagesComplete', state);
+          state.VueEventBus.$emit('LoadPagesComplete', state);
         }
       },
 
@@ -22014,6 +22050,9 @@ var initStore = function initStore(sceneData) {
       },
       loadPageMaxIndex: function loadPageMaxIndex(state) {
         return state.loadPageMaxIndex;
+      },
+      VueEventBus: function VueEventBus(state) {
+        return state.VueEventBus;
       }
     },
     actions: {
