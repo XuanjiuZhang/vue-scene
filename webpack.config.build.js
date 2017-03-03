@@ -57,7 +57,12 @@ module.exports = {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    })
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "appvender",
+    //   filename: "appvender.js",
+    //   minChunks: 2,
+    // }),
     // 压缩js文件
     // new webpack.optimize.UglifyJsPlugin({
     //   mangle: true,
