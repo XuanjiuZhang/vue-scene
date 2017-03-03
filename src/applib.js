@@ -9,14 +9,18 @@ import './lib/hammer.min.js'
 import testSceneData from './vuex/scenedata2'
 global.testSceneData = testSceneData;
 
-(function() {
-  global.previewScene = function(sceneData, elementID) {
-    const sceneStore = initStore(sceneData);
-    sceneStore.commit('measureOutterEl', { $el: document.getElementById(elementID) });
-    const instance = new Vue({
-      store: sceneStore, // 注入到所有子组件1
-      components: { Scene }
-    });
-    instance.$mount('#' + elementID);
+(function () {
+  global.previewScene = {
+    init (sceneData, elementID) {
+      const sceneStore = initStore(sceneData);
+      const domEle = document.getElementById(elementID);
+      domEle.innerHTML = '<Scene></Scene>';
+      sceneStore.commit('measureOutterEl', { $el: domEle });
+      const instance = new Vue({
+        store: sceneStore, // 注入到所有子组件1
+        components: { Scene }
+      });
+      instance.$mount('#' + elementID);
+    }
   }
 }());

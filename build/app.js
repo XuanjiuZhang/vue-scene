@@ -13049,14 +13049,18 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 global.testSceneData = __WEBPACK_IMPORTED_MODULE_6__vuex_scenedata2__["a" /* default */];
 
 (function () {
-  global.previewScene = function (sceneData, elementID) {
-    var sceneStore = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__vuex_sceneStorelib__["a" /* default */])(sceneData);
-    sceneStore.commit('measureOutterEl', { $el: document.getElementById(elementID) });
-    var instance = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-      store: sceneStore, // 注入到所有子组件1
-      components: { Scene: __WEBPACK_IMPORTED_MODULE_3__components_scene_vue___default.a }
-    });
-    instance.$mount('#' + elementID);
+  global.previewScene = {
+    init: function init(sceneData, elementID) {
+      var sceneStore = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__vuex_sceneStorelib__["a" /* default */])(sceneData);
+      var domEle = document.getElementById(elementID);
+      domEle.innerHTML = '<Scene></Scene>';
+      sceneStore.commit('measureOutterEl', { $el: domEle });
+      var instance = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+        store: sceneStore, // 注入到所有子组件1
+        components: { Scene: __WEBPACK_IMPORTED_MODULE_3__components_scene_vue___default.a }
+      });
+      instance.$mount('#' + elementID);
+    }
   };
 })();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(34)))
