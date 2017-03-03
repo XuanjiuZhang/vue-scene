@@ -34,7 +34,7 @@
 <template>
   <div class="full-screen">
     <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
-      <li v-for="(page, index) in maxPageArray" class="full-screen phone-li" 
+      <li v-for="(page, index) in maxPageArray" class="phone-li" 
        :key="page.id" :style="getPhoneLiStyle(index)"
         :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
@@ -340,26 +340,34 @@
       prePageStyle() {
         const style = {
           transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)` : `translateX(-${this.screenWidth - this.deltaX}px)`,
-          display: this.preNextVisible ? '' : 'none'
+          display: this.preNextVisible ? '' : 'none',
+          width: `${this.screenWidth}px`, 
+          height: `${this.screenHeight}px`
         };
         return style;
       },
       activePageStyle() {
         const style = {
-          transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`
+          transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`,
+          width: `${this.screenWidth}px`, 
+          height: `${this.screenHeight}px`
         };
         return style;
       },
       nextPageStyle() {
         const style = {
           transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)` : `translateX(${this.screenWidth + this.deltaX}px)`,
-          display: this.preNextVisible ? '' : 'none'
+          display: this.preNextVisible ? '' : 'none',
+          width: `${this.screenWidth}px`, 
+          height: `${this.screenHeight}px`
         };
         return style;
       },
       hidePageStyle() {
         return {
-          display: 'none'
+          display: 'none',
+          width: `${this.screenWidth}px`, 
+          height: `${this.screenHeight}px`
         };
       },
       finalScale() {

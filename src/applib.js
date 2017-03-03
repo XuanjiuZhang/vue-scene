@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'Vuex';
 import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
+import Pcbutton from './components/PCTurnPageBtn.vue'
 import './style/element.less'
 import './lib/hammer.min.js'
 
@@ -21,6 +22,16 @@ global.testSceneData = testSceneData;
         components: { Scene }
       });
       instance.$mount('#' + elementID);
+      return function(pcTurnPageElementID){
+        const domBtnEle = document.getElementById(pcTurnPageElementID);
+        domBtnEle.innerHTML = '<Pcbutton></Pcbutton>';
+        const instance = new Vue({
+          store: sceneStore, // 注入到所有子组件1
+          components: { Pcbutton }
+        });
+        instance.$mount('#' + pcTurnPageElementID);
+      };
     }
-  }
+  };
+  
 }());
