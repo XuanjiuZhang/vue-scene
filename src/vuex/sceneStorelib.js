@@ -1,6 +1,5 @@
 import Vuex from 'Vuex';
 import Vue from 'vue'
-import _ from 'underscore';
 Vue.use(Vuex);
 
 import sceneApi from '../api/sceneApi';

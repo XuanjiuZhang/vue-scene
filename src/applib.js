@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'Vuex';
+import _ from 'underscore';
+window._ = _;
 import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
 import Pcbutton from './components/PCTurnPageBtn.vue'
@@ -30,13 +32,32 @@ global.testSceneData = testSceneData;
           store: sceneStore, // 注入到所有子组件1
           components: { Pcbutton }
         });
-        const canvas = qrcanvas({
-          data: 'hello, world',
-          size: 232
-          // cellSize: 11
-        });
-        document.getElementById('qrCode').appendChild(canvas);
         instance.$mount('#' + pcTurnPageElementID);
+        return function(ids){
+          if(_.isArray(ids)){
+            ids.forEach(id => {
+              let qrCodeDomEle = document.getElementById(id);
+              if(qrCodeDomEle){
+                let canvas = qrcanvas({
+                  data: 'hello, world',
+                  size: 232
+                  // cellSize: 11
+                });
+                qrCodeDomEle.appendChild(canvas);
+              }
+            });
+          }else if(_.isString(ids)){
+            let qrCodeDomEle = document.getElementById(ids);
+            if(qrCodeDomEle){
+              let canvas = qrcanvas({
+                data: 'hello, world',
+                size: 232
+                // cellSize: 11
+              });
+              qrCodeDomEle.appendChild(canvas);
+            }
+          }
+        };
       };
     }
   };

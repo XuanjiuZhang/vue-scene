@@ -18,9 +18,6 @@ import CountEle from './childElements/CountEle.vue';
 import StatisticEle from './childElements/StatisticEle.vue';
 import TelEle from './childElements/TelEle.vue';
 
-import _ from 'underscore';
-window._ = _;
-
 export default {
   props: ['eleData', 'pageIndex', 'finalScale'], 
   created(){
