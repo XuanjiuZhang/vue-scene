@@ -14,7 +14,6 @@ export default {
   mounted(){
     this.loadBmap().then((BMap) => {
       this.loadElementSuccess();
-      this.mapInstance = new BMap.Map(this.eleData.id + '-innerMap');
       this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
         if(newValue === 100){
           this.initMap();
@@ -31,6 +30,7 @@ export default {
     ...mapMutations(['loadElementSuccess']),
     initMap(){
       const { properties: { currentCity, currentAddress} } = this.eleData;
+      this.mapInstance = new BMap.Map(this.eleData.id + '-innerMap');
       // 禁用地图拖拽
       this.mapInstance.disableDragging();
       // // 禁用双击放大
