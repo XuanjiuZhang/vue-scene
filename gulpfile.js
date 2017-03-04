@@ -26,7 +26,7 @@ gulp.task('dev', ['cleanImage', 'copyImage'], function() {
 
     stats: { colors: true }
   });
-  server.listen(8080);
+  server.listen(8085);
 });
 
 gulp.task('build', ['cleanImage', 'copyImage'], function() {

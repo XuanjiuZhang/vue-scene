@@ -24,6 +24,16 @@ const api = {
       body: JSON.stringify({ data: formData, pageid, qrc, src })
     });
   },
+  getSceneByCode (sceneinfo){
+    const url = `${appConfig.h5Service}preview`;
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      params: sceneinfo
+    });
+  }
 };
 
 export default api;
