@@ -1,7 +1,4 @@
 <style lang="less">
-  /*@phone-width:320px;  
-  @phone-height:486px;*/
-  
   .full-screen {
     width: 100%;
     height: 100%;
@@ -95,7 +92,7 @@
             deltaY: this.deltaY,
             deltaX: this.deltaX
           });
-          if (this.activePage.pageOption.turnPageMode === 1) {
+          if (this.turnPageMode === 1) {
             // 第一页继续往下滑
             let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
             // 最后一页往上滑
@@ -291,20 +288,28 @@
           if(opt === 'pre'){
             if(this.currentPageIndex === 0){
               return ; 
-            }else if(this.activePage.pageOption.turnPageMode === 1){
+            }else if(this.turnPageMode === 1){
               this.preNextVisible = true;
-              this.upTurnPage();
+              setTimeout(() => {
+                this.upTurnPage();
+              });
             }else{
               this.preNextVisible = true;
-              this.rightTurnPage();
+              setTimeout(() => {
+                this.rightTurnPage();
+              });
             }
           }else if( opt === 'next'){
-            if(this.activePage.pageOption.turnPageMode === 1){
+            if(this.turnPageMode === 1){
               this.preNextVisible = true;
-              this.downTurnPage();
+              setTimeout(() => {
+                this.downTurnPage();
+              });
             }else{
               this.preNextVisible = true;
-              this.leftTurnPage();
+              setTimeout(() => {
+                this.leftTurnPage();
+              });
             }
           }
         });
@@ -361,9 +366,17 @@
           'animated-page-fast': this.normalTurnPage
         }
       },
+      turnPageMode() {
+        const pageMode = this.activePage.pageOption.turnPageMode;
+        if(pageMode === 0){
+          return this.sceneData.pageMode;
+        }else{
+          return pageMode;
+        }
+      },
       prePageStyle() {
         const style = {
-          transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)` : `translateX(-${this.screenWidth - this.deltaX}px)`,
+          transform: this.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)` : `translateX(-${this.screenWidth - this.deltaX}px)`,
           display: this.preNextVisible ? '' : 'none',
           width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
@@ -372,7 +385,7 @@
       },
       activePageStyle() {
         const style = {
-          transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`,
+          transform: this.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`,
           width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`
         };
@@ -380,7 +393,7 @@
       },
       nextPageStyle() {
         const style = {
-          transform: this.activePage.pageOption.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)` : `translateX(${this.screenWidth + this.deltaX}px)`,
+          transform: this.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)` : `translateX(${this.screenWidth + this.deltaX}px)`,
           display: this.preNextVisible ? '' : 'none',
           width: `${this.screenWidth}px`,
           height: `${this.screenHeight}px`

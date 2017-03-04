@@ -52,10 +52,6 @@
   </div>
 </template>
 
-<style lang="less">
-
-</style>
-
 <script>
 import { mapMutations } from 'vuex';
 export default {

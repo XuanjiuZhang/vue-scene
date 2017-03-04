@@ -10,7 +10,9 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-import testSceneData from './vuex/scenedata2'
+// import testSceneData from './vuex/scenedata2'
+// global.testSceneData = testSceneData;
+import testSceneData from './vuex/scene.json';
 global.testSceneData = testSceneData;
 
 (function () {
