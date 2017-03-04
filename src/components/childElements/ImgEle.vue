@@ -1,7 +1,7 @@
 <template>
   <div>
-    {{eleData.name}}
-    <!--<img :src="eleData.properties.src" :alt="eleData.name" ref="img">-->
+    <!--{{eleData.name}}-->
+    <img :src="eleData.properties.src" :alt="eleData.name" ref="img">
   </div>
 </template>
 

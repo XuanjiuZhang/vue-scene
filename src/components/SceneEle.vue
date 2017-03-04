@@ -35,7 +35,7 @@ export default {
       const newLeft = parseInt(left) * this.finalScale;
 
       return Object.assign({}, this.eleData.css, {
-        opacity: _.isUndefined(notOpacity) ? 1 : 1 - output.notOpacity,
+        opacity: _.isUndefined(notOpacity) ? 1 : 1 - notOpacity,
         width: _.isUndefined(width) ? '100px' : newWidth + 'px',
         height: _.isUndefined(height) ? '100px' : newHeight + 'px',
         top: _.isUndefined(top) ? 0 : newTop + 'px',

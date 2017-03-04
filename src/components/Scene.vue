@@ -40,7 +40,7 @@
       <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </div>
     <!--背景音乐-->
-    <div class="bg-audio-element" v-show="sceneData.bgAudio" @click="toggleBgMusic">
+    <div class="bg-audio-element" v-show="showBgAudio" @click="toggleBgMusic">
       <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
       </audio>
       <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
@@ -292,24 +292,24 @@
               this.preNextVisible = true;
               setTimeout(() => {
                 this.upTurnPage();
-              });
+              }, this.btnTurnPageThreshold);
             }else{
               this.preNextVisible = true;
               setTimeout(() => {
                 this.rightTurnPage();
-              });
+              }, this.btnTurnPageThreshold);
             }
           }else if( opt === 'next'){
             if(this.turnPageMode === 1){
               this.preNextVisible = true;
               setTimeout(() => {
                 this.downTurnPage();
-              });
+              }, this.btnTurnPageThreshold);
             }else{
               this.preNextVisible = true;
               setTimeout(() => {
                 this.leftTurnPage();
-              });
+              }, this.btnTurnPageThreshold);
             }
           }
         });
@@ -329,6 +329,7 @@
         fastTurnPageTime: 400,
         normalTurnPageTime: 700,
         turnPageThreshold: 120,
+        btnTurnPageThreshold: 50,
         addPanTime: 700,
         bgMusicPlaying: true
       }
@@ -357,6 +358,11 @@
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
       'activePage', 'activePageCanUp', 'activePageCanDown'
       ]),
+      showBgAudio() {
+        const { bgAudio } = this.sceneData;
+        const { url } = bgAudio;
+        return !_.isUndefined(url) && url != '';
+      },
       maxPageArray() {
         return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
       },

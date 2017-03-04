@@ -5,6 +5,7 @@ window._ = _;
 import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
 import Pcbutton from './components/PCTurnPageBtn.vue'
+import EtBtn from './components/EditorTurnPageBtn.vue'
 import './style/element.less'
 import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
@@ -12,7 +13,7 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/scenedata2'
 // global.testSceneData = testSceneData;
-import testSceneData from './vuex/scene.json';
+import testSceneData from './vuex/newScene.json';
 global.testSceneData = testSceneData;
 
 (function () {
@@ -27,12 +28,13 @@ global.testSceneData = testSceneData;
         components: { Scene }
       });
       instance.$mount('#' + elementID);
-      return function (pcTurnPageElementID) {
+      return function (pcTurnPageElementID, templateName = 'Pcbutton') {
         const domBtnEle = document.getElementById(pcTurnPageElementID);
-        domBtnEle.innerHTML = '<Pcbutton></Pcbutton>';
+        // domBtnEle.innerHTML = `<Pcbutton></Pcbutton>`;
+        domBtnEle.innerHTML = `<component is="${templateName}"></component>`;
         const instance = new Vue({
           store: sceneStore, // 注入到所有子组件1
-          components: { Pcbutton }
+          components: { Pcbutton, EtBtn }
         });
         instance.$mount('#' + pcTurnPageElementID);
         return function(ids){
