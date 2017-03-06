@@ -1,4 +1,4 @@
-import Vuex from 'Vuex';
+import Vuex from 'vuex';
 import Vue from 'vue'
 Vue.use(Vuex);
 
@@ -12,18 +12,7 @@ const initStore = (sceneData) => {
   animationPlayer.initAnimatedEle(sceneData);
 
   const VueEventBus = new Vue();
-  const initEventBus = _.once(() => {
-    const firstLoad = _.once((state) => {
-      animationPlayer.playPageAnimation(state.currentPageIndex);
-      toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
-    });
-    const restLoad = _.after(2, execGoPage);
-    VueEventBus.$on('LoadPagesComplete', (state) => {
-      firstLoad(state);
-      restLoad(state, state.currentPageIndex + 1);
-    });
-  });
-
+  
   const state = {
     sceneData,
     sceneApi,
@@ -37,8 +26,23 @@ const initStore = (sceneData) => {
     currentPageIndex: 0,
     loadedElementCount: 0,
     loadPageMaxIndex: 3,
-    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
+    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv' 
   };
+
+  const initEventBus = _.once(() => {
+    console.log('initEventBus');
+    const firstLoad = _.once((state) => {
+      console.log('firstLoad!');
+      animationPlayer.playPageAnimation(state.currentPageIndex);
+      toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+    });
+
+    const restLoad = _.after(2, execGoPage);
+    VueEventBus.$on('LoadPagesComplete', (state) => {
+      firstLoad(state);
+      restLoad(state, state.currentPageIndex + 1);
+    });
+  });
 
   const toggleElementVisible = (elements) => {
     elements.forEach(element => {
@@ -48,6 +52,8 @@ const initStore = (sceneData) => {
     });
   };
   const execGoPage = (state, index) => {
+    console.log('execGoPage!!!');
+    console.log(index);
     var elementCount = 0;
     state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
       elementCount += page.elements.length;
@@ -58,10 +64,13 @@ const initStore = (sceneData) => {
     animationPlayer.stopPageAnimation(state.currentPageIndex);
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
-    state.currentPageIndex = index;
+    Object.assign(state, {
+      currentPageIndex: index
+    });
     animationPlayer.playPageAnimation(state.currentPageIndex);
     const currentPage = state.sceneData.pages[state.currentPageIndex];
     toggleElementVisible(currentPage.elements);
+    console.log(state.currentPageIndex);
   };
   const genPageFormData = (page) => {
     const formData = page.elements.filter(element => {
@@ -123,6 +132,7 @@ const initStore = (sceneData) => {
       state.screenHeight = $el.offsetHeight;
     },
     nextPage(state) {
+      console.log('storeNextPage!');
       if (state.currentPageIndex < state.sceneData.pages.length - 1) {
         if (state.currentPageIndex + 2 === state.loadPageMaxIndex &&
           state.currentPageIndex != state.sceneData.pages.length - 2) {
@@ -135,6 +145,7 @@ const initStore = (sceneData) => {
       }
     },
     prePage(state) {
+      console.log('storePrePage!');
       if (state.currentPageIndex > 0) {
         execGoPage(state, state.currentPageIndex - 1);
       }
@@ -151,11 +162,15 @@ const initStore = (sceneData) => {
       state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      const result = Math.floor(state.loadedElementCount / elementCount * 100);
-      if (result === 100) {
+      if (elementCount === 0 || state.loadedElementCount === elementCount) {
         initEventBus();
+        console.log('emit LoadPagesComplete');
         state.VueEventBus.$emit('LoadPagesComplete', state);
+        return 100;
+      }else{
+        return Math.floor(state.loadedElementCount / elementCount * 100);
       }
+     
     },
     changeElementCssAndClass,
     addElementLastPlayPromise,

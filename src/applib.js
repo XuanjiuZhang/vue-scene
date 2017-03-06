@@ -14,7 +14,7 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/scenedata2'
 // global.testSceneData = testSceneData;
-import testSceneData from './vuex/newScene.json';
+import testSceneData from './vuex/scenedata2';
 global.testSceneData = testSceneData;
 
 (function () {
@@ -58,11 +58,11 @@ global.testSceneData = testSceneData;
         const domBtnEle = document.getElementById(pcTurnPageElementID);
         // domBtnEle.innerHTML = `<Pcbutton></Pcbutton>`;
         domBtnEle.innerHTML = `<component is="${templateName}"></component>`;
-        const instance = new Vue({
+        const instanceBtn1 = new Vue({
           store: sceneStore, // 注入到所有子组件1
           components: { Pcbutton, EtBtn }
         });
-        instance.$mount('#' + pcTurnPageElementID);
+        instanceBtn1.$mount('#' + pcTurnPageElementID);
         return initCanvas;
       };
     },
@@ -72,24 +72,24 @@ global.testSceneData = testSceneData;
         if(!response.ok){
           return
         }
-        const sceneStore = initStore(response.data);
-        const domEle = document.getElementById(elementID);
-        domEle.innerHTML = '<Scene></Scene>';
-        sceneStore.commit('measureOutterEl', { $el: domEle });
-        const instance = new Vue({
-          store: sceneStore, // 注入到所有子组件1
+        const sceneStoreCode = initStore(response.data);
+        const domEleCode = document.getElementById(elementID);
+        domEleCode.innerHTML = '<Scene></Scene>';
+        sceneStoreCode.commit('measureOutterEl', { $el: domEleCode });
+        const instanceCode = new Vue({
+          store: sceneStoreCode, // 注入到所有子组件1
           components: { Scene }
         });
-        instance.$mount('#' + elementID);
+        instanceCode.$mount('#' + elementID);
         return function (pcTurnPageElementID, templateName = 'Pcbutton') {
-          const domBtnEle = document.getElementById(pcTurnPageElementID);
+          const domBtnEleCode = document.getElementById(pcTurnPageElementID);
           // domBtnEle.innerHTML = `<Pcbutton></Pcbutton>`;
-          domBtnEle.innerHTML = `<component is="${templateName}"></component>`;
-          const instance = new Vue({
-            store: sceneStore, // 注入到所有子组件1
+          domBtnEleCode.innerHTML = `<component is="${templateName}"></component>`;
+          const instanceBtn = new Vue({
+            store: sceneStore2, // 注入到所有子组件1
             components: { Pcbutton, EtBtn }
           });
-          instance.$mount('#' + pcTurnPageElementID);
+          instanceBtn.$mount('#' + pcTurnPageElementID);
           return initCanvas;
         };
       });

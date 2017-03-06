@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import appConfig from '../../appconfig';
+import queryString from 'query-string';
 
 const api = {
   updateEleCount(data) {
@@ -25,13 +26,17 @@ const api = {
     });
   },
   getSceneByCode (sceneinfo){
-    const url = `${appConfig.h5Service}preview`;
+    const paramsString = queryString.stringify(sceneinfo);
+    const searchParams = new URLSearchParams(paramsString);
+    const url = `${appConfig.h5Service}preview?${searchParams}`;
+    // const url = `http://10.41.13.189/h5/service/v1/preview?${searchParams}`;
     return fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
-      params: sceneinfo
+      // mode: 'no-cors'
+      // body: searchParams
     });
   }
 };
