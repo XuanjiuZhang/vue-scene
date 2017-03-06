@@ -30,13 +30,10 @@ const initStore = (sceneData) => {
   };
 
   const initEventBus = _.once(() => {
-    console.log('initEventBus');
     const firstLoad = _.once((state) => {
-      console.log('firstLoad!');
       animationPlayer.playPageAnimation(state.currentPageIndex);
       toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
     });
-
     const restLoad = _.after(2, execGoPage);
     VueEventBus.$on('LoadPagesComplete', (state) => {
       firstLoad(state);
@@ -52,15 +49,13 @@ const initStore = (sceneData) => {
     });
   };
   const execGoPage = (state, index) => {
-    console.log('execGoPage!!!');
-    console.log(index);
-    var elementCount = 0;
-    state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
-      elementCount += page.elements.length;
-    });
-    if(state.loadedElementCount != elementCount){
-      return false;
-    }
+    // var elementCount = 0;
+    // state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
+    //   elementCount += page.elements.length;
+    // });
+    // if(state.loadedElementCount != elementCount){
+    //   return false;
+    // }
     animationPlayer.stopPageAnimation(state.currentPageIndex);
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
@@ -70,7 +65,6 @@ const initStore = (sceneData) => {
     animationPlayer.playPageAnimation(state.currentPageIndex);
     const currentPage = state.sceneData.pages[state.currentPageIndex];
     toggleElementVisible(currentPage.elements);
-    console.log(state.currentPageIndex);
   };
   const genPageFormData = (page) => {
     const formData = page.elements.filter(element => {
@@ -132,7 +126,6 @@ const initStore = (sceneData) => {
       state.screenHeight = $el.offsetHeight;
     },
     nextPage(state) {
-      console.log('storeNextPage!');
       if (state.currentPageIndex < state.sceneData.pages.length - 1) {
         if (state.currentPageIndex + 2 === state.loadPageMaxIndex &&
           state.currentPageIndex != state.sceneData.pages.length - 2) {
@@ -145,7 +138,6 @@ const initStore = (sceneData) => {
       }
     },
     prePage(state) {
-      console.log('storePrePage!');
       if (state.currentPageIndex > 0) {
         execGoPage(state, state.currentPageIndex - 1);
       }
@@ -164,7 +156,6 @@ const initStore = (sceneData) => {
       });
       if (elementCount === 0 || state.loadedElementCount === elementCount) {
         initEventBus();
-        console.log('emit LoadPagesComplete');
         state.VueEventBus.$emit('LoadPagesComplete', state);
         return 100;
       }else{
@@ -262,8 +253,11 @@ const initStore = (sceneData) => {
       state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      const result = Math.floor(state.loadedElementCount / elementCount * 100);
-      return result;
+      if(elementCount === 0 || state.loadedElementCount >= elementCount){
+        return 100;
+      }else{
+        return Math.floor(state.loadedElementCount / elementCount * 100);
+      }
     },
     activePageCanUp: state => {
       return state.activePageCanUp;

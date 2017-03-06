@@ -20,10 +20,10 @@ module.exports = {
     app: ['whatwg-fetch', './applib.js']
   },
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, '/assets/fonts/'),
     // filename: '[name].js',
     filename: 'previewLib.min.js',
-    publicPath: '/build/',
+    publicPath: '/assets/fonts/',
     chunkFilename: '[name].min.js?[hash:8]'
   },
   module: {
@@ -48,7 +48,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg|eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]'
         }
       }
     ],

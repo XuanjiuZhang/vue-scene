@@ -23,7 +23,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].js',
-    publicPath: '/build/',
+    publicPath: '/assets/fonts/',
     chunkFilename: '[name].min.js?[hash:8]'
   },
   module: {
@@ -31,11 +31,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        // options: {
-        //   loaders: {
-        //     less: 'style-loader!css-loader!autoprefixer-loader!less-loader'
-        //   }
-        // }
       },
       {
         test: /\.js$/,
@@ -54,25 +49,11 @@ module.exports = {
         test: /\.(png|jpg|gif|svg|eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: '[name].[ext]'
         }
-      },
-      // {
-      //   test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      //   loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-      // },
-      {
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
       }
     ],
 
-    // loaders: [
-    //   {test: /\.js$/, include: path.join(__dirname, 'src'), loader: 'babel-loader'},
-    //   {test: /\.vue$/, loader: 'vue-loader'},
-    //   {test: /\.css$/, loader: "style!css-loader?sourceMap!postcss-loader"},
-    //   {test: /\.less/, loaders: ['style', 'css-loader', 'autoprefixer-loader', 'less-loader']},
-    //   {test: /\.scss$/, loader: "style-loader!css-loader!sass-loader|postcss-loader"}],
   },
   devtool: '#eval-source-map',
   devServer: {
@@ -82,7 +63,7 @@ module.exports = {
     contentBase: path.resolve( __dirname ,'./'),
     // match the output path
 
-    publicPath: '/build/'
+    publicPath: '/assets/fonts/'
     // match the output `publicPath`
   },
   // watch: true,

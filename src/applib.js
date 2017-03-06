@@ -12,21 +12,22 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-// import testSceneData from './vuex/scenedata2'
-// global.testSceneData = testSceneData;
-import testSceneData from './vuex/scenedata2';
+import testSceneData from './vuex/newScene.json'
 global.testSceneData = testSceneData;
+// import testSceneData from './vuex/scenedata2';
+// global.testSceneData = testSceneData;
 
 (function () {
-  const initCanvas = (ids) => {
+  const initCanvas = (ids, config) => {
+    const { url, size, cellSize } = config;
     if(_.isArray(ids)){
       ids.forEach(id => {
         let qrCodeDomEle = document.getElementById(id);
         if(qrCodeDomEle){
           let canvas = qrcanvas({
-            data: 'hello, world',
-            size: 232
-            // cellSize: 11
+            data: url,
+            size,
+            cellSize
           });
           qrCodeDomEle.appendChild(canvas);
         }
@@ -35,9 +36,9 @@ global.testSceneData = testSceneData;
       let qrCodeDomEle = document.getElementById(ids);
       if(qrCodeDomEle){
         let canvas = qrcanvas({
-          data: 'hello, world',
-          size: 232
-          // cellSize: 11
+          data: url,
+          size,
+          cellSize
         });
         qrCodeDomEle.appendChild(canvas);
       }
@@ -55,45 +56,42 @@ global.testSceneData = testSceneData;
       });
       instance.$mount('#' + elementID);
       return function (pcTurnPageElementID, templateName = 'Pcbutton') {
+        if(pcTurnPageElementID == undefined){
+          return initCanvas;
+        }
         const domBtnEle = document.getElementById(pcTurnPageElementID);
         // domBtnEle.innerHTML = `<Pcbutton></Pcbutton>`;
         domBtnEle.innerHTML = `<component is="${templateName}"></component>`;
-        const instanceBtn1 = new Vue({
+        const instanceBtn = new Vue({
           store: sceneStore, // 注入到所有子组件1
           components: { Pcbutton, EtBtn }
         });
-        instanceBtn1.$mount('#' + pcTurnPageElementID);
+        instanceBtn.$mount('#' + pcTurnPageElementID);
         return initCanvas;
       };
     },
     initBySceneCode(sceneinfo, elementID) {
-      sceneApi.getSceneByCode(sceneinfo).then(response => {
+      return sceneApi.getSceneByCode(sceneinfo);
+    },
+  };
+
+  window.onload = function(){
+    const { code, qrc, src, isMobile, autoLoad } = window;
+    const sceneInfo = { code, qrc, src };
+    if(autoLoad){
+      global.previewScene.initBySceneCode(sceneInfo).then(response => {
         console.log(response);
         if(!response.ok){
-          return
+          return;
         }
-        const sceneStoreCode = initStore(response.data);
-        const domEleCode = document.getElementById(elementID);
-        domEleCode.innerHTML = '<Scene></Scene>';
-        sceneStoreCode.commit('measureOutterEl', { $el: domEleCode });
-        const instanceCode = new Vue({
-          store: sceneStoreCode, // 注入到所有子组件1
-          components: { Scene }
-        });
-        instanceCode.$mount('#' + elementID);
-        return function (pcTurnPageElementID, templateName = 'Pcbutton') {
-          const domBtnEleCode = document.getElementById(pcTurnPageElementID);
-          // domBtnEle.innerHTML = `<Pcbutton></Pcbutton>`;
-          domBtnEleCode.innerHTML = `<component is="${templateName}"></component>`;
-          const instanceBtn = new Vue({
-            store: sceneStore2, // 注入到所有子组件1
-            components: { Pcbutton, EtBtn }
-          });
-          instanceBtn.$mount('#' + pcTurnPageElementID);
-          return initCanvas;
-        };
+        return response.json();
+      }).then(sceneData => {
+        if(isMobile === 'true'){
+          global.previewScene.init(sceneData, 'root');
+        }else{
+          global.previewScene.init(sceneData, 'root')('phoneBtn')(['qrCode'], { url: window.location.href, size: 232 });
+        }
       });
     }
   };
-
 }());
