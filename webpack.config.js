@@ -18,7 +18,8 @@ module.exports = {
   }, 
   context: __dirname + "/src",
   entry: {
-    app: ['whatwg-fetch', './applib.js']
+    app: ['whatwg-fetch', './applib.js'],
+    // vendor: ['whatwg-fetch', './lib/hammer.min.js']
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -73,6 +74,11 @@ module.exports = {
         NODE_ENV: '"development"'
       }
     }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   filename: "vendor.js",
+    //   // minChunks: 2,
+    // }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: "commons",
     //   filename: "commons.js",

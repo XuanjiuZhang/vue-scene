@@ -2,8 +2,34 @@
 // @import "./preview/label.less";
 // @import "./preview/mobile.less";
 // @import "./preview/pc.less";
-@import "./preview/preview.less";
-@import "./est/typography.less";
+// @import "./preview/preview.less";
+// @import "./est/typography.less";
+
+@support-ie-version: 10;
+.force-wrap() {
+    white-space: pre;           // CSS 2.0
+    white-space: pre-wrap;      // CSS 2.1
+    white-space: pre-line;      // CSS 3.0
+    white-space: -pre-wrap;     // Opera 4-6
+    white-space: -o-pre-wrap;   // Opera 7
+    white-space: -moz-pre-wrap; // Mozilla
+    white-space: -hp-pre-wrap;  // HP Printers
+    word-wrap: break-word;      // IE 5+
+}
+
+.clearfix() {
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+.clearfix() when (@support-ie-version < 8) {
+    *zoom: 1;
+}
 
 // 元素的样式，这个文件是要放到移动端预览页面的。请不要掺杂其他样式。
 .element-container {
@@ -238,32 +264,5 @@
     > img{
       width: 100%;
     }
-  }
-}
-
-
-.text-element{
-  p,
-  div,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6{
-    padding: 0;
-    margin: 0;
-  }
-
-}
-
-
-// 图集
-.carousel-element{
-  width: 100%;
-  height: 100%;
-
-  .carousel-image{
-    width: 100%;
   }
 }

@@ -17,7 +17,8 @@ module.exports = {
   },
   context: __dirname + "/src",
   entry: {
-    app: ['whatwg-fetch', './applib.js']
+    app: ['whatwg-fetch', './applib.js'],
+    // vendor: ['whatwg-fetch', './lib/hammer.min.js']
   },
   output: {
     path: path.join(__dirname, '/assets/fonts/'),
@@ -60,9 +61,9 @@ module.exports = {
       }
     }),
     // new webpack.optimize.CommonsChunkPlugin({
-    //   name: "appvender",
-    //   filename: "appvender.js",
-    //   minChunks: 2,
+    //   name: "vendor",
+    //   filename: "vendor.js",
+    //   // minChunks: 2,
     // }),
     // 压缩js文件
     // new webpack.optimize.UglifyJsPlugin({
