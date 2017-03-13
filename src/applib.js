@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Vuex from 'Vuex';
 import _ from 'underscore';
 import sceneApi from './api/sceneApi';
 window._ = _;
@@ -43,9 +42,31 @@ global.testSceneData = testSceneData;
         qrCodeDomEle.appendChild(canvas);
       }
     }
-  }
+  };
+  const loadFonts = (sceneData) => {
+    const { fonts } = sceneData;
+    if(fonts.length === 0){
+      return 
+    }
+    const nod = document.createElement('style');
+    var str = '';  
+    nod.type = 'text/css';  
+    fonts.forEach(font => {
+      str += `@font-face { 
+        font-family: ${font.name};/×定义font的名字×/ 
+        src: url(${font.url});/*把下载的字体文件引入进来×/ 
+      } `
+    });
+    if(nod.styleSheet){         //ie下  
+      nod.styleSheet.cssText = str;  
+    } else {  
+      nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))  
+    }  
+    document.getElementsByTagName('head')[0].appendChild(nod);  
+  };
   global.previewScene = {
     init(sceneData, elementID) {
+      loadFonts(sceneData);
       const sceneStore = initStore(sceneData);
       const domEle = document.getElementById(elementID);
       domEle.innerHTML = '<Scene></Scene>';
