@@ -2,7 +2,7 @@
   <el-carousel indicator-position="none"
    :interval="eleData.properties.playInterval * 1000" :autoplay="eleData.properties.autoplay">
     <el-carousel-item v-for="(pic, index) in eleData.properties.pictures" :key="index">
-      <img :src="pic" :alt="eleData.name" :ref="'img' + index">
+      <img :src="pic" :alt="eleData.name" draggable="false" :ref="'img' + index">
     </el-carousel-item>
   </el-carousel>
 </template>

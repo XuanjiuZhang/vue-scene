@@ -98,7 +98,36 @@ const InputEle = (element) => {
   return result;
 };
 
+const bgAudo = (sceneData) => {
+  if(_.isUndefined(sceneData.bgAudio)){
+    sceneData.bgAudio = {
+      url: '',
+      name: '',
+      id: ''
+    }
+  }
+};
+
+const fonts = (sceneData) => {
+  if(_.isUndefined(sceneData.fonts)){
+    sceneData.fonts = []
+  }
+}
+
+const play = (sceneData) => {
+  if(_.isUndefined(sceneData.play)){
+    sceneData.play = {
+      'loop': false,
+      'auto': false,
+      'interval': 3
+    };
+  }
+}
+
 const pre = (sceneData) => {
+  bgAudo(sceneData);
+  fonts(sceneData);
+  play(sceneData);
   const { pages } = sceneData;
   const elementPreArray = [scoreEle, buttonEle, soundEle, ContactEle, SelectEle, InputEle];
   const preMsg = [];

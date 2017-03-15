@@ -6,6 +6,8 @@ import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
 import Pcbutton from './components/PCTurnPageBtn.vue'
 import EtBtn from './components/EditorTurnPageBtn.vue'
+import BsBtn from './components/BackstageTurnPageBtn.vue'
+import BsBtnB from './components/BackstageTurnPageBtnStyleB.vue'
 import './style/element.less'
 import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
@@ -85,7 +87,7 @@ global.testSceneData = testSceneData;
         domBtnEle.innerHTML = `<component is="${templateName}"></component>`;
         const instanceBtn = new Vue({
           store: sceneStore, // 注入到所有子组件1
-          components: { Pcbutton, EtBtn }
+          components: { Pcbutton, EtBtn, BsBtn, BsBtnB }
         });
         instanceBtn.$mount('#' + pcTurnPageElementID);
         return initCanvas;

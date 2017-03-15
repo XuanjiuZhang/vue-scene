@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="eleData.properties.src" :alt="eleData.name" ref="img">
+    <img :src="eleData.properties.src" :alt="eleData.name" draggable="false" ref="img">
   </div>
 </template>
 
