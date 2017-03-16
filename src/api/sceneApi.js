@@ -1,4 +1,6 @@
 import 'whatwg-fetch';
+import URLSearchParams from 'url-search-params';
+global.URLSearchParams = URLSearchParams;
 import appConfig from '../../appconfig';
 import queryString from 'query-string';
 
@@ -27,7 +29,7 @@ const api = {
   },
   getSceneByCode (sceneinfo){
     const paramsString = queryString.stringify(sceneinfo);
-    const searchParams = new URLSearchParams(paramsString);
+    const searchParams = new global.URLSearchParams(paramsString);
     const url = `${appConfig.h5Service}preview?${searchParams}`;
     // const url = `http://10.41.13.189/h5/service/v1/preview?${searchParams}`;
     return fetch(url, {
