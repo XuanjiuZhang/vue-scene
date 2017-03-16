@@ -47,6 +47,7 @@ global.testSceneData = testSceneData;
   };
   const loadFonts = (sceneData) => {
     const { fonts } = sceneData;
+    console.log(fonts);
     if(fonts.length === 0){
       return 
     }
@@ -55,8 +56,8 @@ global.testSceneData = testSceneData;
     nod.type = 'text/css';  
     fonts.forEach(font => {
       str += `@font-face { 
-        font-family: ${font.name};/×定义font的名字×/ 
-        src: url(${font.url});/*把下载的字体文件引入进来×/ 
+        font-family: ${font.name}
+        src: url(${font.url});
       } `
     });
     if(nod.styleSheet){         //ie下  

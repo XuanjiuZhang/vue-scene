@@ -41,7 +41,10 @@ const scenedata = {
   "applyTemplate": 0,
   "applyCase": 0,
   "type": 0,
-  "fonts": [],
+  "fonts": [{
+      "name": "fz_cchjt",
+      "url": "http://www.xmfshow.com/upload/files/font/scene/19054a00767f11e68ce54b17201c70fd/c626ac50768511e6aa3b677d424043bc.woff"
+    }],
   "grid": {
     "gridVisable": false,
     "color": "rgba(150, 150, 150, 0.2)",
