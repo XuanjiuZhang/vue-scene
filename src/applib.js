@@ -55,15 +55,15 @@ global.testSceneData = testSceneData;
     var str = '';  
     nod.type = 'text/css';  
     fonts.forEach(font => {
-      str += `@font-face { 
-        font-family: ${font.name}
-        src: url(${font.url});
-      } `
+      str += `@font-face{font-family:'${font.name}';src:url('${font.url}');}`
     });
+    console.log(str);
     if(nod.styleSheet){         //ie下  
       nod.styleSheet.cssText = str;  
     } else {  
-      nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))  
+      nod.appendChild(document.createTextNode(str));
+      //或者写成 nod.appendChild(document.createTextNode(str))  
+      // nod.innerHTML = str;       
     }  
     document.getElementsByTagName('head')[0].appendChild(nod);  
   };
