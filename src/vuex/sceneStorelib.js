@@ -24,6 +24,7 @@ const initStore = (sceneData) => {
     activePageCanUp: true,
     activePageCanDown: true,
     currentPageIndex: 0,
+    firstLoadComplete: false,
     loadedElementCount: 0,
     loadPageMaxIndex: 3,
     BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv' 
@@ -31,13 +32,14 @@ const initStore = (sceneData) => {
 
   const initEventBus = _.once(() => {
     const firstLoad = _.once((state) => {
+      state.firstLoadComplete = true;
       animationPlayer.playPageAnimation(state.currentPageIndex);
       toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
     });
-    const restLoad = _.after(2, execGoPage);
+    // const restLoad = _.after(2, execGoPage);
     VueEventBus.$on('LoadPagesComplete', (state) => {
       firstLoad(state);
-      restLoad(state, state.currentPageIndex + 1);
+      // restLoad(state, state.currentPageIndex + 1);
     });
   });
 
@@ -130,9 +132,8 @@ const initStore = (sceneData) => {
         if (state.currentPageIndex + 2 === state.loadPageMaxIndex &&
           state.currentPageIndex != state.sceneData.pages.length - 2) {
           state.loadPageMaxIndex = Math.min(state.sceneData.pages.length, state.loadPageMaxIndex + 5);
-        } else {
-          execGoPage(state, state.currentPageIndex + 1);
         }
+        execGoPage(state, state.currentPageIndex + 1);
       } else if (state.sceneData.play.loop) {
         execGoPage(state, 0);
       }
@@ -270,6 +271,9 @@ const initStore = (sceneData) => {
     },
     VueEventBus: state => {
       return state.VueEventBus
+    },
+    firstLoadComplete: state => {
+      return state.firstLoadComplete;
     }
   },
   actions: {

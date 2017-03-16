@@ -3,9 +3,9 @@
     <div class="loading-bee">
         <div class="progress-cont">
         <div class="load-pie1"></div>
-        <div class="load-pie2" :style="loadPie2Style">
+        <div class="load-pie2 component-rotate" :style="loadPie2Style">
         </div>
-        <div class="load-pie3" :style="loadPie3Style">
+        <div class="load-pie3 component-rotate" :style="loadPie3Style">
         </div>
         <div class="bee-img"></div>
         </div>
@@ -13,6 +13,12 @@
     </div>
   </div>
 </template>
+
+<style lang="less" scoped>
+  .component-rotate {
+    transition: transform .2s;
+  }
+</style>
 
 <script>
 export default {

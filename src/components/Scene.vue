@@ -27,18 +27,26 @@
       transition: .2s transform;
     }
   }
+
+  .component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .5s ease;
+  }
+  .component-fade-enter, .component-fade-leave-active {
+    opacity: 0;
+  }
 </style>
 
 <template>
   <div class="full-screen">
-    <ul v-show="sceneLoadedPercentage === 100" class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="firstLoadComplete" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
       </li>
     </ul>
-    <div v-show="sceneLoadedPercentage < 100" class="full-screen loading">
-      <Loading :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
-    </div>
+    <transition name="component-fade" tag="div" class="full-screen loading"> 
+      <Loading v-show="!firstLoadComplete" :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
+    </transition>
+    
     <!--背景音乐-->
     <div class="bg-audio-element" v-show="showBgAudio" @click="toggleBgMusic">
       <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
@@ -356,7 +364,7 @@
     computed: {
       ...mapGetters(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
-      'activePage', 'activePageCanUp', 'activePageCanDown'
+      'activePage', 'activePageCanUp', 'activePageCanDown', 'firstLoadComplete'
       ]),
       showBgAudio() {
         const { bgAudio } = this.sceneData;

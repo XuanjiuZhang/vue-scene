@@ -24,7 +24,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].js',
-    publicPath: '/assets/fonts/',
+    publicPath: '/build',
     chunkFilename: '[name].min.js?[hash:8]'
   },
   module: {
@@ -64,7 +64,7 @@ module.exports = {
     contentBase: path.resolve( __dirname ,'./'),
     // match the output path
 
-    publicPath: '/assets/fonts/'
+    publicPath: '/build'
     // match the output `publicPath`
   },
   // watch: true,
