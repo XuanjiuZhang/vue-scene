@@ -222,6 +222,9 @@ const initStore = (sceneData) => {
       const { up, down } = payload;
       state.activePageCanDown = down;
       state.activePageCanUp = up;
+    },
+    goPage(state, payload){
+      execGoPage(state, payload.index);
     }
   },
   getters: {

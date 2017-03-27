@@ -71,6 +71,7 @@ global.testSceneData = testSceneData;
     init(sceneData, elementID) {
       loadFonts(sceneData);
       const sceneStore = initStore(sceneData);
+      global.sceneStore = sceneStore;
       const domEle = document.getElementById(elementID);
       domEle.innerHTML = '<Scene></Scene>';
       sceneStore.commit('measureOutterEl', { $el: domEle });
