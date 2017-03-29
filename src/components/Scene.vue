@@ -325,6 +325,14 @@
 
       initTurnPage();
       initHammer();
+      // No element..
+      let elementCount = 0;
+      this.sceneData.pages.slice(0, this.loadPageMaxIndex).forEach((page, index) => {
+        elementCount += page.elements.length;
+      });
+      if(elementCount === 0){
+        this.loadElementSuccess();
+      }
     },
     data() {
       return {
@@ -343,7 +351,7 @@
       }
     },
     methods: {
-      ...mapMutations(['nextPage', 'prePage']),
+      ...mapMutations(['nextPage', 'prePage', 'loadElementSuccess']),
       toggleBgMusic() {
         this.bgMusicPlaying = !this.bgMusicPlaying;
         this.bgMusicPlaying ? this.$refs.bgmusic.play() : this.$refs.bgmusic.pause()
