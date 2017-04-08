@@ -16,7 +16,7 @@ const api = {
       body: JSON.stringify({ pageid, elementid, op })
     });
   },
-  formSubmit (data) {
+  formSubmit(data) {
     const { formData, sceneid, pageid, qrc, src } = data;
     const url = `${appConfig.h5Service}preview/${sceneid}/form`;
     return fetch(url, {
@@ -27,7 +27,7 @@ const api = {
       body: JSON.stringify({ data: formData, pageid, qrc, src })
     });
   },
-  getSceneByCode (sceneinfo){
+  getSceneByCode(sceneinfo) {
     const paramsString = queryString.stringify(sceneinfo);
     const searchParams = new global.URLSearchParams(paramsString);
     const url = `${appConfig.h5Service}preview?${searchParams}`;
@@ -40,7 +40,17 @@ const api = {
       // mode: 'no-cors'
       // body: searchParams
     });
-  }
+  },
+  sendPassword(data) {
+    const url = `${appConfig.h5Service}preview/encrypt`;
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+  },
 };
 
 export default api;

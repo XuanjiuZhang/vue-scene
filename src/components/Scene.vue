@@ -53,7 +53,7 @@
     background-color: #FFFFFF;
     border-radius: 50%;
     text-align: center;
-    margin: 30% auto 26.2%;
+    margin: 20% auto 26.2%;
   }
   
   .bee_input_password {
@@ -93,7 +93,6 @@
     top: 267px;
     left: 18px;
     font-size: 12px;
-    display: none;
     position: absolute;
     top: 46px;
     left: 7px;
@@ -102,7 +101,7 @@
 
 <template>
   <div class="full-screen">
-    <ul v-show="!showPassword && firstLoadComplete" class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="!showPassword && firstLoadComplete && !showNoAccess" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
       </li>
@@ -112,15 +111,24 @@
         <img src="../img/bee_logo.png" alt="" style="position: relative;top:13px;">
       </div>
       <div style="margin: auto;width:295px;position: relative;">
-        <input type="text" class="bee_input_password" placeholder="请输入访问密码">
-        <div class="bee_input_btn">确定</div>
-        <div class="psd_err">密码错误</div>
+        <input type="text" v-model="passwordInput" @keydown.enter="confirmPwd" maxlength="30"
+         class="bee_input_password" placeholder="请输入访问密码">
+        <div class="bee_input_btn" @click="confirmPwd">确定</div>
+        <div class="psd_err" v-show="passwordSendCount > 0 && !passwordCorrect">密码错误</div>
       </div>
+    </div>
 
+    <div class="scene-container" v-show="showNoAccess">
+      <div class="bee_loge_box">
+        <img src="../img/bee_logo.png" alt="" style="position: relative;top:13px;">
+      </div>
+      <div style="margin: auto;width:295px;position: relative;">
+        <p style="text-align: center;font-size: 16px;font-weight:bold;">该场景不允许访问！</p>
+      </div>
     </div>
 
     <transition name="component-fade" tag="div" class="full-screen loading">
-      <Loading v-show="!firstLoadComplete" :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
+      <Loading v-show="!showPassword && !firstLoadComplete" :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </transition>
 
     <!--背景音乐-->
@@ -423,7 +431,10 @@
         turnPageThreshold: 120,
         btnTurnPageThreshold: 50,
         addPanTime: 700,
-        bgMusicPlaying: true
+        bgMusicPlaying: true,
+        passwordInput: '',
+        passwordSendCount: 0,
+        passwordCorrect: false,
       }
     },
     methods: {
@@ -443,15 +454,41 @@
           default:
             return this.hidePageStyle;
         }
+      },
+      confirmPwd() {
+        this.sceneApi.sendPassword({
+          code: this.sceneData.code,
+          pwd: this.passwordInput
+        }).then(res => {
+          if(!res.ok){
+            return {code: 'fail'};
+          }
+          return res.json();
+        }).then(data => {
+          console.log(data);
+          this.passwordSendCount++;
+          this.passwordCorrect = data.code === 'success'
+        });
       }
     },
     computed: {
       ...mapGetters(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
-      'activePage', 'activePageCanUp', 'activePageCanDown', 'firstLoadComplete'
+      'activePage', 'activePageCanUp', 'activePageCanDown', 'firstLoadComplete', 'sceneApi'
       ]),
+      showNoAccess() {
+        if(this.sceneData.share.mode != 2){
+          return false;
+        }else{
+          return this.firstLoadComplete && this.sceneData.share.mode === 2;
+        }
+      },
       showPassword() {
-        return this.firstLoadComplete && this.sceneData.share.mode === 2;
+        if(this.sceneData.share.mode != 3){
+          return false;
+        }else{
+          return !this.passwordCorrect && this.firstLoadComplete && this.sceneData.share.mode === 3;
+        }
       },
       showBgAudio() {
         const { bgAudio } = this.sceneData;
