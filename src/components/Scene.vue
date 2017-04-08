@@ -27,26 +27,102 @@
       transition: .2s transform;
     }
   }
-
-  .component-fade-enter-active, .component-fade-leave-active {
+  
+  .component-fade-enter-active,
+  .component-fade-leave-active {
     transition: opacity .5s ease;
   }
-  .component-fade-enter, .component-fade-leave-active {
+  
+  .component-fade-enter,
+  .component-fade-leave-active {
     opacity: 0;
+  }
+  
+  .scene-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    background-color: #FFE35E;
+  }
+  
+  .bee_loge_box {
+    width: 88px;
+    height: 88px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    text-align: center;
+    margin: 30% auto 26.2%;
+  }
+  
+  .bee_input_password {
+    width: 208px;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    color: #BBBBBB;
+    padding-left: 8px;
+    font-size: 12px;
+    outline: none;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+  
+  .bee_input_btn {
+    width: 80px;
+    height: 40px;
+    background-color: #7266BA;
+    color: #fff;
+    font-size: 15px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    top: 1px;
+  }
+  
+  .bee_input_password:focus {
+    border: 1px solid #666;
+  }
+  
+  .psd_err {
+    color: #EF1E1E;
+    position: absolute;
+    top: 267px;
+    left: 18px;
+    font-size: 12px;
+    display: none;
+    position: absolute;
+    top: 46px;
+    left: 7px;
   }
 </style>
 
 <template>
   <div class="full-screen">
-    <ul v-show="firstLoadComplete" class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="!showPassword && firstLoadComplete" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
       </li>
     </ul>
-    <transition name="component-fade" tag="div" class="full-screen loading"> 
+    <div class="scene-container" v-show="showPassword">
+      <div class="bee_loge_box">
+        <img src="../img/bee_logo.png" alt="" style="position: relative;top:13px;">
+      </div>
+      <div style="margin: auto;width:295px;position: relative;">
+        <input type="text" class="bee_input_password" placeholder="请输入访问密码">
+        <div class="bee_input_btn">确定</div>
+        <div class="psd_err">密码错误</div>
+      </div>
+
+    </div>
+
+    <transition name="component-fade" tag="div" class="full-screen loading">
       <Loading v-show="!firstLoadComplete" :sceneLoadedPercentage="sceneLoadedPercentage"></Loading>
     </transition>
-    
+
     <!--背景音乐-->
     <div class="bg-audio-element" v-show="showBgAudio" @click="toggleBgMusic">
       <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
@@ -155,7 +231,7 @@
         };
         const throttlePanstart = _.throttle(panstart, 200);
         const throttlePanEnd = _.throttle(panEnd, 200);
-        
+
         const panleft = (event) => {
           if (this.inTouch) {
             let {
@@ -293,27 +369,27 @@
         };
         this.VueEventBus.$on('btnTurnPage', payload => {
           const { opt } = payload;
-          if(opt === 'pre'){
-            if(this.currentPageIndex === 0){
-              return ; 
-            }else if(this.turnPageMode === 1){
+          if (opt === 'pre') {
+            if (this.currentPageIndex === 0) {
+              return;
+            } else if (this.turnPageMode === 1) {
               this.preNextVisible = true;
               setTimeout(() => {
                 this.upTurnPage();
               }, this.btnTurnPageThreshold);
-            }else{
+            } else {
               this.preNextVisible = true;
               setTimeout(() => {
                 this.rightTurnPage();
               }, this.btnTurnPageThreshold);
             }
-          }else if( opt === 'next'){
-            if(this.turnPageMode === 1){
+          } else if (opt === 'next') {
+            if (this.turnPageMode === 1) {
               this.preNextVisible = true;
               setTimeout(() => {
                 this.downTurnPage();
               }, this.btnTurnPageThreshold);
-            }else{
+            } else {
               this.preNextVisible = true;
               setTimeout(() => {
                 this.leftTurnPage();
@@ -330,7 +406,7 @@
       this.sceneData.pages.slice(0, this.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      if(elementCount === 0){
+      if (elementCount === 0) {
         this.loadElementSuccess();
       }
     },
@@ -374,6 +450,9 @@
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
       'activePage', 'activePageCanUp', 'activePageCanDown', 'firstLoadComplete'
       ]),
+      showPassword() {
+        return this.firstLoadComplete && this.sceneData.share.mode === 2;
+      },
       showBgAudio() {
         const { bgAudio } = this.sceneData;
         const { url } = bgAudio;
@@ -390,9 +469,9 @@
       },
       turnPageMode() {
         const pageMode = this.activePage.pageOption.turnPageMode;
-        if(pageMode === 0){
+        if (pageMode === 0) {
           return this.sceneData.pageMode;
-        }else{
+        } else {
           return pageMode;
         }
       },

@@ -15,8 +15,8 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/newScene.json'
 // global.testSceneData = testSceneData;
-// import testSceneData from './vuex/scenedata2'; 
-// global.testSceneData = testSceneData;
+import testSceneData from './vuex/scenedata2'; 
+global.testSceneData = testSceneData;
 
 (function () {
   const initCanvas = (ids, config) => {
@@ -46,8 +46,7 @@ import qrcanvas from 'qrcanvas'
     }
   };
   const loadFonts = (sceneData) => {
-    const { fonts } = sceneData;
-    console.log(fonts);
+    const { fonts = [] } = sceneData;
     if(fonts.length === 0){
       return 
     }

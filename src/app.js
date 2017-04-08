@@ -8,8 +8,8 @@ import Scene from './components/scene.vue'
 // import router from './router'
 import './style/element.less'
 import './lib/hammer.min.js'
-
-// Vue.use(VueRouter); 
+// Vue.use(VueRouter);
+console.log('measureOutterEl!');
 
 sceneStore.commit('measureOutterEl', { $el: document.getElementById('root') });
 new Vue({
@@ -20,7 +20,7 @@ new Vue({
 });
 
 // new Vue({
-//   sceneStore, // 注入到所有子组件2
+//   sceneStore, // 注入到所有子组件2 
 //   el: '#scene',
 //   components: { Scene }
 // });

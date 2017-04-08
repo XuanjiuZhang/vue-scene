@@ -12,21 +12,10 @@ console.log(preMsg);
 animationPlayer.initAnimatedEle(sceneData);
 
 const VueEventBus = new Vue();
-const initEventBus = _.once(() => {
-  const firstLoad = _.once((state) => {
-    animationPlayer.playPageAnimation(state.currentPageIndex);
-    toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
-  });
-  const restLoad = _.after(2, execGoPage);
-  VueEventBus.$on('LoadPagesComplete', (state) => {
-    firstLoad(state);
-    restLoad(state, state.currentPageIndex + 1);
-  });
-});
 
 const state = {
-  sceneData,
-  sceneApi,
+  sceneData, 
+  sceneApi, 
   VueEventBus,
   editorWidth: 320,
   editorHeight: 486,
@@ -40,72 +29,94 @@ const state = {
   BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
 };
 
-const toggleElementVisible = (elements) => {
-  elements.forEach(element => {
-    if (_.isArray(element.animate) && element.animate.length != 0) {
-      element.visible = !element.visible;
-    }
+  const initEventBus = _.once(() => {
+    const firstLoad = _.once((state) => {
+      state.firstLoadComplete = true;
+      animationPlayer.playPageAnimation(state.currentPageIndex);
+      toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+    });
+    // const restLoad = _.after(2, execGoPage);
+    VueEventBus.$on('LoadPagesComplete', (state) => {
+      firstLoad(state);
+      // restLoad(state, state.currentPageIndex + 1);
+    });
   });
-};
-const execGoPage = (state, index) => {
-  animationPlayer.stopPageAnimation(state.currentPageIndex);
-  toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
-  state.currentPageIndex = index;
-  animationPlayer.playPageAnimation(state.currentPageIndex);
-  const currentPage = state.sceneData.pages[state.currentPageIndex];
-  toggleElementVisible(currentPage.elements);
-};
-const genPageFormData = (page) => {
-  const formData = page.elements.filter(element => {
-    const { type } = element;
-    return type === 7 || type === 9 || type === 10 || type === 11;
-  }).map(element => {
-    switch (element.type) {
-      // input
-      case 7:
-        return {
-          fieldname: element.properties.name,
-          value: element.properties.data
-        };
-        break;
-        // contact
-      case 9:
-        return element.properties.formData.map(row => {
-          if (row.required && row.data === '') {
-            return {
-              fail: true,
-              msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
-            };
-          } else {
-            return {
-              fieldname: row.fieldName,
-              value: row.data
-            };
-          }
-        });
-        break;
-        // select
-      case 10:
-        return element.properties.options.map(option => {
+  const toggleElementVisible = (elements) => {
+    elements.forEach(element => {
+      if (_.isArray(element.animate) && element.animate.length != 0) {
+        element.visible = !element.visible;
+      }
+    });
+  };
+  const execGoPage = (state, index) => {
+    // var elementCount = 0;
+    // state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
+    //   elementCount += page.elements.length;
+    // });
+    // if(state.loadedElementCount != elementCount){
+    //   return false;
+    // }
+    animationPlayer.stopPageAnimation(state.currentPageIndex);
+    toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+
+    Object.assign(state, {
+      currentPageIndex: index
+    });
+    animationPlayer.playPageAnimation(state.currentPageIndex);
+    const currentPage = state.sceneData.pages[state.currentPageIndex];
+    toggleElementVisible(currentPage.elements);
+  };
+  const genPageFormData = (page) => {
+    const formData = page.elements.filter(element => {
+      const { type } = element;
+      return type === 7 || type === 9 || type === 10 || type === 11;
+    }).map(element => {
+      switch (element.type) {
+        // input
+        case 7:
           return {
-            fieldname: option.text,
-            value: option.selected
+            fieldname: element.properties.name,
+            value: element.properties.data
           };
-        });
-        break;
-        // score
-      case 11:
-        return {
-          fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
-          value: element.currentScore
-        }
-        break;
-    }
-  });
+          break;
+          // contact
+        case 9:
+          return element.properties.formData.map(row => {
+            if (row.required && row.data === '') {
+              return {
+                fail: true,
+                msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
+              };
+            } else {
+              return {
+                fieldname: row.fieldName,
+                value: row.data
+              };
+            }
+          });
+          break;
+          // select
+        case 10:
+          return element.properties.options.map(option => {
+            return {
+              fieldname: option.text,
+              value: option.selected
+            };
+          });
+          break;
+          // score
+        case 11:
+          return {
+            fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
+            value: element.currentScore
+          }
+          break;
+      }
+    });
 
-  return _.flatten(formData);
-};
+    return _.flatten(formData);
+  };
 
 const store = new Vuex.Store({
   state,
@@ -120,9 +131,8 @@ const store = new Vuex.Store({
         if (state.currentPageIndex + 2 === state.loadPageMaxIndex &&
           state.currentPageIndex != state.sceneData.pages.length - 2) {
           state.loadPageMaxIndex = Math.min(state.sceneData.pages.length, state.loadPageMaxIndex + 5);
-        } else {
-          execGoPage(state, state.currentPageIndex + 1);
         }
+        execGoPage(state, state.currentPageIndex + 1);
       } else if (state.sceneData.play.loop) {
         execGoPage(state, 0);
       }
@@ -144,11 +154,14 @@ const store = new Vuex.Store({
       state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      const result = Math.floor(state.loadedElementCount / elementCount * 100);
-      if (result === 100) {
+      if (elementCount === 0 || state.loadedElementCount === elementCount) {
         initEventBus();
         state.VueEventBus.$emit('LoadPagesComplete', state);
+        return 100;
+      }else{
+        return Math.floor(state.loadedElementCount / elementCount * 100);
       }
+     
     },
     changeElementCssAndClass,
     addElementLastPlayPromise,
@@ -208,6 +221,9 @@ const store = new Vuex.Store({
       const { up, down } = payload;
       state.activePageCanDown = down;
       state.activePageCanUp = up;
+    },
+    goPage(state, payload){
+      execGoPage(state, payload.index);
     }
   },
   getters: {
@@ -240,8 +256,11 @@ const store = new Vuex.Store({
       state.sceneData.pages.slice(0, state.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
-      const result = Math.floor(state.loadedElementCount / elementCount * 100);
-      return result;
+      if(elementCount === 0 || state.loadedElementCount >= elementCount){
+        return 100;
+      }else{
+        return Math.floor(state.loadedElementCount / elementCount * 100);
+      }
     },
     activePageCanUp: state => {
       return state.activePageCanUp;
@@ -254,6 +273,9 @@ const store = new Vuex.Store({
     },
     VueEventBus: state => {
       return state.VueEventBus
+    },
+    firstLoadComplete: state => {
+      return state.firstLoadComplete;
     }
   },
   actions: {

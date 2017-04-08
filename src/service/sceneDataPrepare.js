@@ -100,27 +100,33 @@ const InputEle = (element) => {
 
 const bgAudo = (sceneData) => {
   if(_.isUndefined(sceneData.bgAudio)){
-    sceneData.bgAudio = {
-      url: '',
-      name: '',
-      id: ''
-    }
+    Object.assign(sceneData, {
+      bgAudio: {
+        url: '',
+        name: '',
+        id: ''
+      }
+    });
   }
 };
 
 const fonts = (sceneData) => {
   if(_.isUndefined(sceneData.fonts)){
-    sceneData.fonts = []
+    Object.assign(sceneData, {
+      fonts: []
+    });
   }
 }
 
 const play = (sceneData) => {
   if(_.isUndefined(sceneData.play)){
-    sceneData.play = {
-      'loop': false,
-      'auto': false,
-      'interval': 3
-    };
+    Object.assign(sceneData, {
+      play: {
+        'loop': false,
+        'auto': false,
+        'interval': 3
+      }
+    });
   }
 }
 
