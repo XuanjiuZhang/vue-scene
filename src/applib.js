@@ -15,16 +15,16 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/newScene.json'
 // global.testSceneData = testSceneData;
-import testSceneData from './vuex/scenedata2'; 
-global.testSceneData = testSceneData;
+// import testSceneData from './vuex/scenedata2';
+// global.testSceneData = testSceneData;
 
-(function () {
+(function() {
   const initCanvas = (ids, config) => {
     const { url, size, cellSize } = config;
-    if(_.isArray(ids)){
+    if (_.isArray(ids)) {
       ids.forEach(id => {
         let qrCodeDomEle = document.getElementById(id);
-        if(qrCodeDomEle){
+        if (qrCodeDomEle) {
           let canvas = qrcanvas({
             data: url,
             size,
@@ -33,9 +33,9 @@ global.testSceneData = testSceneData;
           qrCodeDomEle.appendChild(canvas);
         }
       });
-    }else if(_.isString(ids)){
+    } else if (_.isString(ids)) {
       let qrCodeDomEle = document.getElementById(ids);
-      if(qrCodeDomEle){
+      if (qrCodeDomEle) {
         let canvas = qrcanvas({
           data: url,
           size,
@@ -47,24 +47,24 @@ global.testSceneData = testSceneData;
   };
   const loadFonts = (sceneData) => {
     const { fonts = [] } = sceneData;
-    if(fonts.length === 0){
-      return 
+    if (fonts.length === 0) {
+      return
     }
     const nod = document.createElement('style');
-    var str = '';  
-    nod.type = 'text/css';  
+    var str = '';
+    nod.type = 'text/css';
     fonts.forEach(font => {
       str += `@font-face{font-family:'${font.name}';src:url('${font.url}');}`
     });
     console.log(str);
-    if(nod.styleSheet){         //ie下  
-      nod.styleSheet.cssText = str;  
-    } else {  
+    if (nod.styleSheet) { //ie下  
+      nod.styleSheet.cssText = str;
+    } else {
       nod.appendChild(document.createTextNode(str));
       //或者写成 nod.appendChild(document.createTextNode(str))  
       // nod.innerHTML = str;       
-    }  
-    document.getElementsByTagName('head')[0].appendChild(nod);  
+    }
+    document.getElementsByTagName('head')[0].appendChild(nod);
   };
   global.previewScene = {
     init(sceneData, elementID) {
@@ -79,8 +79,8 @@ global.testSceneData = testSceneData;
         components: { Scene }
       });
       instance.$mount('#' + elementID);
-      return function (pcTurnPageElementID, templateName = 'Pcbutton') {
-        if(pcTurnPageElementID == undefined){
+      return function(pcTurnPageElementID, templateName = 'Pcbutton') {
+        if (pcTurnPageElementID == undefined) {
           return initCanvas;
         }
         const domBtnEle = document.getElementById(pcTurnPageElementID);
@@ -99,20 +99,20 @@ global.testSceneData = testSceneData;
     },
   };
 
-  window.onload = function(){
+  window.onload = function() {
     const { code, qrc, src, isMobile, autoLoad } = window;
     const sceneInfo = { code, qrc, src };
-    if(autoLoad){
+    if (autoLoad) {
       global.previewScene.initBySceneCode(sceneInfo).then(response => {
         console.log(response);
-        if(!response.ok){
+        if (!response.ok) {
           return;
         }
         return response.json();
       }).then(sceneData => {
-        if(isMobile === 'true'){
+        if (isMobile === 'true') {
           global.previewScene.init(sceneData, 'root');
-        }else{
+        } else {
           global.previewScene.init(sceneData, 'root')('phoneBtn')(['qrCode'], { url: window.location.href, size: 232 });
         }
       });

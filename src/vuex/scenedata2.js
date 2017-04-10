@@ -36,15 +36,15 @@ const scenedata = {
   "share": {
     "showCount": true,
     "bindDomain": true,
-    "mode": 1
+    "mode": 2
   },
   "applyTemplate": 0,
   "applyCase": 0,
   "type": 0,
   "fonts": [{
-      "name": "fz_cchjt",
-      "url": "http://www.xmfshow.com/upload/files/font/scene/19054a00767f11e68ce54b17201c70fd/c626ac50768511e6aa3b677d424043bc.woff"
-    }],
+    "name": "fz_cchjt",
+    "url": "http://www.xmfshow.com/upload/files/font/scene/19054a00767f11e68ce54b17201c70fd/c626ac50768511e6aa3b677d424043bc.woff"
+  }],
   "grid": {
     "gridVisable": false,
     "color": "rgba(150, 150, 150, 0.2)",
@@ -472,51 +472,51 @@ const scenedata = {
           // 事件触发
           'event': []
         },
-        {
-          'id': 856559,
-          // 元素名称
-          'name': 'map element',
-          // 元素类型
-          'type': 14,
-          'sound': null,
-          // 元素内部的内容，可能是一段html
-          'content': 'map element',
-          // 显示/隐藏
-          'visible': true,
-          // 锁定
-          'lock': false,
-          // 元素样式，样式名用小驼峰命名
-          'css': {
-            'top': '0px',
-            'left': '0px',
-            'width': '260px',
-            'height': '260px',
-            "zIndex": 100,
-          },
-          contentCss: {
+        // {
+        //   'id': 856559,
+        //   // 元素名称
+        //   'name': 'map element',
+        //   // 元素类型
+        //   'type': 14,
+        //   'sound': null,
+        //   // 元素内部的内容，可能是一段html
+        //   'content': 'map element',
+        //   // 显示/隐藏
+        //   'visible': true,
+        //   // 锁定
+        //   'lock': false,
+        //   // 元素样式，样式名用小驼峰命名
+        //   'css': {
+        //     'top': '0px',
+        //     'left': '0px',
+        //     'width': '260px',
+        //     'height': '260px',
+        //     "zIndex": 100,
+        //   },
+        //   contentCss: {
 
-          },
-          'properties': {
-            currentCity: {
-              center: {
-                lng: 112.94,
-                lat: 28.18
-              },
-              level: 12
-            }
-          },
-          'animate': [{
-            "type": 26,
-            "direction": 3,
-            "duration": 5,
-            "delay": 0.5,
-            "countNum": 6,
-            "count": null,
-            "__tableCss": "on",
-            "__currentTabIndex": 0,
-            "__title": "进入动画(淡入)"
-          }],
-        },
+        //   },
+        //   'properties': {
+        //     currentCity: {
+        //       center: {
+        //         lng: 112.94,
+        //         lat: 28.18
+        //       },
+        //       level: 12
+        //     }
+        //   },
+        //   'animate': [{
+        //     "type": 26,
+        //     "direction": 3,
+        //     "duration": 5,
+        //     "delay": 0.5,
+        //     "countNum": 6,
+        //     "count": null,
+        //     "__tableCss": "on",
+        //     "__currentTabIndex": 0,
+        //     "__title": "进入动画(淡入)"
+        //   }],
+        // },
         {
           'id': 10439,
           // 元素名称
