@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img :src="eleData.properties.src" :alt="eleData.name" draggable="false" ref="img">
+    <img class="full-screen" :src="eleData.properties.src" :alt="eleData.name" draggable="false" ref="img">
   </div>
 </template>
 

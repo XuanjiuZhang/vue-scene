@@ -70,6 +70,7 @@
   }
   
   .bee_input_btn {
+    cursor: pointer;
     width: 80px;
     height: 40px;
     background-color: #7266BA;
