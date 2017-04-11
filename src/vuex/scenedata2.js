@@ -36,7 +36,7 @@ const scenedata = {
   "share": {
     "showCount": true,
     "bindDomain": true,
-    "mode": 2
+    "mode": 1
   },
   "applyTemplate": 0,
   "applyCase": 0,

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import _ from 'underscore';
+import _ from 'lodash';
 import sceneApi from './api/sceneApi';
 window._ = _;
 import initStore from './vuex/sceneStorelib'

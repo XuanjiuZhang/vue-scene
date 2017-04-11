@@ -296,7 +296,6 @@
       const initTurnPage = () => {
         this.downTurnPage = () => {
           this.HammerManager.remove(this.Pan);
-          console.log('往下滑翻页!');
           this.deltaY = -this.screenHeight;
           this.normalTurnPage = true;
           this.fastTurnPage = false;
@@ -313,7 +312,6 @@
         };
         this.upTurnPage = () => {
           this.HammerManager.remove(this.Pan);
-          console.log('往上滑翻页!');
           this.deltaY = this.screenHeight;
           this.normalTurnPage = true;
           this.fastTurnPage = false;
@@ -329,7 +327,6 @@
           }, this.normalTurnPageTime);
         };
         this.leftTurnPage = () => {
-          console.log('往左滑翻页!');
           // 暂时移除hammer, 置delta为屏幕大小, 开启翻页动画, 完成以后恢复
           this.deltaX = -this.screenWidth;
           this.normalTurnPage = true;
@@ -346,7 +343,6 @@
           }, this.normalTurnPageTime);
         };
         this.rightTurnPage = () => {
-          console.log('往右滑翻页!');
           this.deltaX = this.screenWidth;
           this.normalTurnPage = true;
           this.fastTurnPage = false;
@@ -363,7 +359,6 @@
         };
         this.notTurnPage = () => {
           this.HammerManager.remove(this.Pan);
-          console.log('不翻页!');
           this.deltaY = 0;
           this.deltaX = 0;
           this.normalTurnPage = false;
@@ -428,10 +423,10 @@
         fastTurnPage: false,
         normalTurnPage: false,
         fastTurnPageTime: 400,
-        normalTurnPageTime: 700,
+        normalTurnPageTime: 500,
         turnPageThreshold: 120,
         btnTurnPageThreshold: 50,
-        addPanTime: 700,
+        addPanTime: 200,
         bgMusicPlaying: true,
         passwordInput: '',
         passwordSendCount: 0,

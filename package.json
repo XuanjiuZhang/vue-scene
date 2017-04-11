@@ -21,6 +21,7 @@
     "element-ui": "^1.2.1",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
+    "lodash": "^4.17.4",
     "qrcanvas": "^1.0.3",
     "query-string": "^4.3.2",
     "style-loader": "^0.13.2",
