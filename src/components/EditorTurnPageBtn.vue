@@ -20,12 +20,12 @@ export default {
     handlePrePage(){
       return _.throttle(() => {
         this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
-      }, 800);
+      }, 500);
     },
     handleNextPage(){
       return _.throttle(() => {
         this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
-      }, 800);
+      }, 500);
     },
   }
 }

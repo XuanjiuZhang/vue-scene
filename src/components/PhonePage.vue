@@ -172,6 +172,8 @@
           transform: `translateY(${this.deltaY}px)`,
           backgroundImage: pageBackground.image === '' ? '' : 'url(' + pageBackground.image + ')',
           backgroundColor: pageBackground.color,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
           fontSize: this.finalScale * 100 + '%'
         };
       }

@@ -426,7 +426,7 @@
         normalTurnPageTime: 500,
         turnPageThreshold: 120,
         btnTurnPageThreshold: 50,
-        addPanTime: 200,
+        addPanTime: 500,
         bgMusicPlaying: true,
         passwordInput: '',
         passwordSendCount: 0,
