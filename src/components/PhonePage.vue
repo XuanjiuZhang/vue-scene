@@ -110,6 +110,7 @@
           } else {
             let down = this.deltaY === 0;
             let up = this.deltaY === this.screenHeight - this.pageData.pageOption.pageSize;
+            this.changeCurrentPageDeltaY({currentPageDeltaY: this.deltaY});
             this.activePageCanUpDown({ down, up });
           }
         }
@@ -122,7 +123,7 @@
       defineUpDown();
     },
     methods: {
-      ...mapMutations(['activePageCanUpDown'])
+      ...mapMutations(['activePageCanUpDown', 'changeCurrentPageDeltaY'])
     },
     data() {
       return {

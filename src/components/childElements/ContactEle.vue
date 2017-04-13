@@ -3,14 +3,27 @@
     <div v-for="(formField, index) in eleData.properties.formData" :key="index"
      class="contact-input" :style="contactDivStyle">
       <input v-model.trim="formField.data" type="text" :required="formField.required"
-       :style="contactStyle" :placeholder="formField.fieldName">
+       :style="contactStyle" :placeholder="formField.fieldName"
+        @focus="handleFocus" @blur="handleBlur">
     </div>
   </form>
 </template>
 
 <script>
+  import {
+    mapMutations,
+  } from 'vuex';
   export default {
     props: ['eleData', 'finalScale'],
+    methods: {
+      ...mapMutations(['visualInput']),
+      handleFocus() {
+        this.visualInput({eleData: this.eleData, focused: true});
+      },
+      handleBlur() {
+        this.visualInput({eleData: this.eleData, focused: false});
+      }
+    },
     computed: {
       contactStyle() {
         const { properties } = this.eleData;

@@ -109,7 +109,7 @@
     </ul>
     <div class="scene-container" v-show="showPassword">
       <div class="bee_loge_box">
-        <img src="../img/bee_logo.png" alt="" style="position: relative;top:13px;">
+        <img :src="beeLogo" alt="" style="position: relative;top:13px;">
       </div>
       <div style="margin: auto;width:295px;position: relative;">
         <input type="text" v-model="passwordInput" @keydown.enter="confirmPwd" maxlength="30"
@@ -121,7 +121,7 @@
 
     <div class="scene-container" v-show="showNoAccess">
       <div class="bee_loge_box">
-        <img src="../img/bee_logo.png" alt="" style="position: relative;top:13px;">
+        <img :src="beeLogo" alt="" style="position: relative;top:13px;">
       </div>
       <div style="margin: auto;width:295px;position: relative;">
         <p style="text-align: center;font-size: 16px;font-weight:bold;">该场景不允许访问！</p>
@@ -161,6 +161,7 @@
   } from 'element-ui';
   Vue.component(Carousel.name, Carousel);
   Vue.component(CarouselItem.name, CarouselItem);
+  import beeLogo from '../img/bee_logo.js';
 
   export default {
     created() { },
@@ -416,6 +417,7 @@
     },
     data() {
       return {
+        beeLogo,
         deltaY: 0,
         deltaX: 0,
         inTouch: false,
@@ -423,10 +425,10 @@
         fastTurnPage: false,
         normalTurnPage: false,
         fastTurnPageTime: 400,
-        normalTurnPageTime: 500,
+        normalTurnPageTime: 700,
         turnPageThreshold: 120,
         btnTurnPageThreshold: 50,
-        addPanTime: 500,
+        addPanTime: 700,
         bgMusicPlaying: true,
         passwordInput: '',
         passwordSendCount: 0,

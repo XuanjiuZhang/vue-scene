@@ -7,35 +7,24 @@
       style="font-size: 100%"
       @focus="handleFocus"
       @blur="handleBlur"
-      :style="inputStyle"
+      :style="this.eleData.properties.style"
       :required="eleData.properties.required" />
   </div>
 </template>
 
 <script>
+import {
+  mapMutations,
+} from 'vuex';
 export default {
   props: ['eleData'],
-  data() {
-    return {
-      focused: false
-    }
-  },
   methods: {
+    ...mapMutations(['visualInput']),
     handleFocus() {
-      this.focused = true;
+      this.visualInput({eleData: this.eleData, focused: true});
     },
     handleBlur() {
-      this.focused = false;
-    }
-  },
-  computed: {
-    inputStyle() {
-      if(this.focused){
-        console.log('this.focused!');
-        return this.eleData.properties.style;
-      }else{
-        return this.eleData.properties.style;
-      }
+      this.visualInput({eleData: this.eleData, focused: false});
     }
   }
 }

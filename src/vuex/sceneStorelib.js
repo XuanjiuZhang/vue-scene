@@ -24,6 +24,7 @@ const initStore = (sceneData) => {
     activePageCanUp: true,
     activePageCanDown: true,
     currentPageIndex: 0,
+    currentPageDeltaY: 0,
     firstLoadComplete: false,
     loadedElementCount: 0,
     loadPageMaxIndex: 3,
@@ -62,7 +63,8 @@ const initStore = (sceneData) => {
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
     Object.assign(state, {
-      currentPageIndex: index
+      currentPageIndex: index,
+      currentPageDeltaY: 0,
     });
     animationPlayer.playPageAnimation(state.currentPageIndex);
     const currentPage = state.sceneData.pages[state.currentPageIndex];
@@ -225,6 +227,24 @@ const initStore = (sceneData) => {
       },
       goPage(state, payload) {
         execGoPage(state, payload.index);
+      },
+      visualInput(state, payload){
+        const { eleData, focused } = payload;
+        if(_.isUndefined(eleData._clonedCss)){
+          eleData._clonedCss = _.clone(eleData.css);
+        }
+        if(focused){
+          Object.assign(eleData.css, {
+            left: '20px',
+            top: `${50 - state.currentPageDeltaY}px`,
+            zIndex: 99999,
+          });
+        }else{
+          Object.assign(eleData.css, eleData._clonedCss);
+        }
+      },
+      changeCurrentPageDeltaY(state, payload){
+        state.currentPageDeltaY = payload.currentPageDeltaY;
       }
     },
     getters: {
