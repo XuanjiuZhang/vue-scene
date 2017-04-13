@@ -237,7 +237,7 @@ const initStore = (sceneData) => {
           Object.assign(eleData.css, {
             left: '20px',
             top: `${50 - state.currentPageDeltaY}px`,
-            zIndex: 99999,
+            zIndex: 999999,
           });
         }else{
           Object.assign(eleData.css, eleData._clonedCss);

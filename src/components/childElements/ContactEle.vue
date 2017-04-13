@@ -49,6 +49,9 @@
         // }
       }
     },
+    beforeDestroy(){
+      this.handleBlur();
+    }
   }
 
 </script>

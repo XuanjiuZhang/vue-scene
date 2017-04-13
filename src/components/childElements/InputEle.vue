@@ -26,6 +26,9 @@ export default {
     handleBlur() {
       this.visualInput({eleData: this.eleData, focused: false});
     }
+  },
+  beforeDestroy(){
+    this.handleBlur();
   }
 }
 </script>
