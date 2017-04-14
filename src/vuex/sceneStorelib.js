@@ -245,6 +245,17 @@ const initStore = (sceneData) => {
       },
       changeCurrentPageDeltaY(state, payload){
         state.currentPageDeltaY = payload.currentPageDeltaY;
+      },
+      pageAnimationPlay(state, payload){
+        const { pageIndex, play } = payload;
+        if(pageIndex < 0 || pageIndex > state.sceneData.pages.length - 1){
+          return ;
+        }
+        if(play){
+          animationPlayer.playPageAnimation(pageIndex);
+        }else{
+          animationPlayer.stopPageAnimation(pageIndex);
+        }
       }
     },
     getters: {

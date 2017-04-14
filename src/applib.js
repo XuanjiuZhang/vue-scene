@@ -79,6 +79,7 @@ import qrcanvas from 'qrcanvas'
         components: { Scene }
       });
       instance.$mount('#' + elementID);
+      global.previewScene.initedInstance = instance;
       return function(pcTurnPageElementID, templateName = 'Pcbutton') {
         if (pcTurnPageElementID == undefined) {
           return initCanvas;
