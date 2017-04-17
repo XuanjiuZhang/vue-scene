@@ -72,6 +72,7 @@ import qrcanvas from 'qrcanvas'
       const sceneStore = initStore(sceneData);
       global.sceneStore = sceneStore;
       const domEle = document.getElementById(elementID);
+      domEle.style.position = 'relative';
       domEle.innerHTML = '<Scene></Scene>';
       sceneStore.commit('measureOutterEl', { $el: domEle });
       const instance = new Vue({
