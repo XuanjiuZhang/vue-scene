@@ -2,7 +2,7 @@
     <div class="phonePage" :style="pageStyle" ref="phonePage">
         <SceneEle v-for="ele in pageData.elements" :key="ele.id" v-bind="{eleData: ele, pageIndex: index, finalScale}"></SceneEle>
 
-        <div class="page-number" ng-show="scene.showPageNo" style="display: block; z-index: 100;">
+        <div class="page-number" v-show="sceneData.showPageNo" style="display: block; z-index: 100;">
             <em class="page-tip">{{index + 1}} / {{sceneData.pages.length}}</em>
         </div>
 
