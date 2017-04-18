@@ -68,6 +68,9 @@ import qrcanvas from 'qrcanvas'
   };
   global.previewScene = {
     init(sceneData, elementID) {
+      if(_.isString(sceneData.name)){
+        document.title = sceneData.name;
+      }
       loadFonts(sceneData);
       const sceneStore = initStore(sceneData);
       global.sceneStore = sceneStore;
