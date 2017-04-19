@@ -30,7 +30,7 @@ const scenedata = {
   "showPageNo": false,
   "play": {
     "loop": true,
-    "auto": false,
+    "auto": true,
     "interval": 3
   },
   "share": {

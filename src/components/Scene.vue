@@ -102,7 +102,7 @@
 
 <template>
   <div class="full-screen">
-    <ul v-show="!showPassword && firstLoadComplete && !showNoAccess" class="full-screen phone-ul" ref="phoneul">
+    <ul v-show="showSceneContent" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
         <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
       </li>
@@ -433,6 +433,20 @@
         passwordInput: '',
         passwordSendCount: 0,
         passwordCorrect: false,
+        autoplayInterval: undefined,
+      }
+    },
+    watch: {
+      showSceneContent(curVal) {
+        if(curVal){
+          this.autoPlay();
+        }
+      },
+      'sceneData.play.auto'(curVal) {
+        this.autoPlay();
+      },
+      'sceneData.play.interval'(curVal) {
+        this.autoPlay();
       }
     },
     methods: {
@@ -467,13 +481,27 @@
           this.passwordSendCount++;
           this.passwordCorrect = data.code === 'success'
         });
-      }
+      },
+      autoPlay() {
+        const { play: { loop, auto, interval } } = this.sceneData;
+        if(!_.isUndefined(this.autoplayInterval)){
+          window.clearInterval(this.autoplayInterval);
+        }
+        if(auto && interval > 0){
+          this.autoplayInterval = setInterval(() => {
+            this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
+          }, interval * 1000);
+        }
+      } 
     },
     computed: {
       ...mapGetters(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
       'screenWidth', 'screenHeight', 'editorWidth', 'editorHeight',
       'activePage', 'activePageCanUp', 'activePageCanDown', 'firstLoadComplete', 'sceneApi'
       ]),
+      showSceneContent() {
+        return !this.showPassword && this.firstLoadComplete && !this.showNoAccess;
+      },
       showNoAccess() {
         if(this.sceneData.share.mode != 2){
           return false;

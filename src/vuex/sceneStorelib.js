@@ -69,6 +69,7 @@ const initStore = (sceneData) => {
     animationPlayer.playPageAnimation(state.currentPageIndex);
     const currentPage = state.sceneData.pages[state.currentPageIndex];
     toggleElementVisible(currentPage.elements);
+    state.VueEventBus.$emit('execGoPage', index);
   };
   const genPageFormData = (page) => {
     const formData = page.elements.filter(element => {

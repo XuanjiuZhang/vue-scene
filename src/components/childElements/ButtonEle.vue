@@ -52,7 +52,9 @@
               this.hasSubmitted = true;
               let { properties: { info, outLink } } = this.eleData;
               _.isString(info) && alert(info);
-              _.isString(outLink) && window.open(outLink);
+              if(_.isString(outLink) && outLink != ''){
+                window.open(outLink);
+              }
             } else {
               this.hasSubmitted = false;
               alert('error');
