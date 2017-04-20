@@ -14,6 +14,7 @@ export default {
     };
   },
   mounted(){
+    this.loadElementSuccess();
     this.loadBmap().then(BMap => {
       if(this.sceneLoadedPercentage === 100){
         this.initMap();
@@ -51,7 +52,6 @@ export default {
       // 禁用双指操作缩放
       this.mapInstance.disablePinchToZoom();
 
-      
       this.mapInstance.clearOverlays();
       if(currentAddress){
         let {lat, lng, level, title} = currentAddress;
@@ -74,7 +74,7 @@ export default {
         this.mapInstance.addOverlay(marker);
         this.mapInstance.centerAndZoom(BMapPoint, level);
       } 
-      this.loadElementSuccess();
+
     }
   },
 }

@@ -47,7 +47,7 @@
   import SceneEle from './SceneEle.vue';
 
   export default {
-    props: ['pageData', 'index', 'finalScale'],
+    props: ['pageData', 'index', 'finalScale', 'sceneInTouch'],
     created() {},
     mounted() {
       const panstart = (event) => {
@@ -139,7 +139,7 @@
         } else if (this.index === this.sceneData.pages.length - 1) {
           show = this.sceneData.play.loop ? true : false;
         }
-        return show;
+        return this.sceneInTouch && show;
       },
       arrowClass() {
         var horizontal = false;

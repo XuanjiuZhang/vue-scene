@@ -47,7 +47,7 @@ export default {
       if(res.ok){
         return res.json();
       }
-      return {error: true};
+      return 0;
     }).then(data => {
       this.readCount = data;
     });

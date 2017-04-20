@@ -104,7 +104,7 @@
   <div class="full-screen">
     <ul v-show="showSceneContent" class="full-screen phone-ul" ref="phoneul">
       <li v-for="(page, index) in maxPageArray" class="phone-li" :key="page.id" :style="getPhoneLiStyle(index)" :class="phonePageClass">
-        <PhonePage v-bind="{'pageData': page, index, finalScale}"></PhonePage>
+        <PhonePage v-bind="{'pageData': page, index, finalScale, 'sceneInTouch': inTouch}"></PhonePage>
       </li>
     </ul>
     <div class="scene-container" v-show="showPassword">
@@ -217,7 +217,7 @@
             let firstPageRight = this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
             // 最后一页往左滑
             let lastPageLeft = this.currentPageIndex === this.sceneData.pages.length - 1 &&
-              (additionalEvent === 'panleft' || deltaX < 0);
+              (additionalEvent === 'panleft' || deltaX < 0) && !this.sceneData.play.loop;
             // 距离太小
             let tooNear = Math.abs(deltaX) <= this.turnPageThreshold;
 
