@@ -24,7 +24,7 @@
                     </a>
     </div>
 
-    <div v-if="showArrow" :class="arrowClass" style="position: fixed">
+    <div v-show="showArrow" :class="arrowClass" style="position: fixed">
         <div class="arrow-wrap">
             <div class="arrow-part-1">
                 <div class="part-1"></div>
