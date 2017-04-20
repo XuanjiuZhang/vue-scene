@@ -371,6 +371,9 @@ const initStore = (sceneData) => {
           op: liked ? 'add' : 'minus'
         };
         return context.state.sceneApi.updateEleCount(params);
+      },
+      queryStatisticCount(context, payload){
+        return context.state.sceneApi.queryStatisticCount(payload.sceneId);
       }
     }
   });

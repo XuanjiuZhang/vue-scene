@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from 'vuex';
+import { mapMutations, mapActions, mapGetters } from 'vuex';
 export default {
   props: ['eleData', 'pageIndex', 'finalScale'],
   data(){
@@ -43,8 +43,17 @@ export default {
     };
   },
   mounted(){
+    this.queryStatisticCount({sceneId: this.sceneData.id}).then(res => {
+      if(res.ok){
+        return res.json();
+      }
+      return {error: true};
+    }).then(data => {
+      this.readCount = data;
+    });
   },
   computed: {
+    ...mapGetters(['sceneData']),
     computedStyle(){
       const { properties: { iconStyle: rowIconStyle } } = this.eleData;
       const  statisticStyle = {
@@ -75,25 +84,13 @@ export default {
           iconStyle.height = `${12 * this.finalScale}px`;
           statisticStyle.height = `${12 * this.finalScale}px`;
           statisticStyle.fontSize = `${12 * this.finalScale}px`;
-          break;
+          break; 
       }
       return { statisticStyle, iconStyle };
     }
   },
   methods: {
-    ...mapActions(['toggleLike']),
-    ...mapMutations(['mutateLike']),
-    preToggleLike(){
-      const payLoad = {
-        pageIndex: this.pageIndex,
-        eleId: this.eleData.id,
-        liked: !this.liked
-      };
-      this.toggleLike(payLoad).then(() => {
-        this.liked = !this.liked;
-        this.mutateLike(payLoad);
-      });
-    }
+    ...mapActions(['queryStatisticCount']),
   },
 }
 </script>

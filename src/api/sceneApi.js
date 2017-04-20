@@ -51,6 +51,15 @@ const api = {
       body: JSON.stringify(data)
     });
   },
+  queryStatisticCount(sceneId){
+    const url = `${appConfig.h5Service}scene/${sceneId}/view`;
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+  }
 };
 
 export default api;
