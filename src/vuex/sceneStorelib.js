@@ -92,13 +92,27 @@ const initStore = (sceneData) => {
           break;
           // contact
         case 9:
+          let emailPattern = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+          let telPatrn1 =/^[-,\d]+$/; 
           return element.properties.formData.map(row => {
             if (row.required && row.data === '') {
               return {
                 fail: true,
                 msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
               };
-            } else {
+            } else{
+              if(row.fieldName === '邮箱' && !emailPattern.test(row.data)){
+                return {
+                  fail: true,
+                  msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) is not a email!`
+                };
+              }
+              if((row.fieldName === '手机' || row.fieldName === '电话') && !telPatrn1.test(row.data)){
+                return {
+                  fail: true,
+                  msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) is not a telNumber!`
+                };
+              }
               return {
                 fieldname: row.fieldName,
                 value: row.data
