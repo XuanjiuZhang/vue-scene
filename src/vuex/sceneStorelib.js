@@ -166,12 +166,6 @@ const initStore = (sceneData) => {
           execGoPage(state, state.currentPageIndex - 1);
         }
       },
-      goPage(state, payload) {
-        const { pageLink } = payload;
-        if (0 <= pageLink && pageLink <= state.sceneData.pages.length - 1 && pageLink != state.currentPageIndex) {
-          execGoPage(state, pageLink);
-        }
-      },
       loadElementSuccess(state) {
         state.loadedElementCount++;
         var elementCount = 0;
@@ -247,6 +241,13 @@ const initStore = (sceneData) => {
         state.activePageCanUp = up;
       },
       goPage(state, payload) {
+        if(state.loadPageMaxIndex <= payload.index){
+          state.loadPageMaxIndex = Math.min(payload.index + 3, state.sceneData.pages.length);
+          setTimeout(() => {
+            execGoPage(state, payload.index);
+          });
+          return;
+        }
         execGoPage(state, payload.index);
       },
       visualInput(state, payload){
