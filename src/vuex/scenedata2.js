@@ -30,7 +30,7 @@ const scenedata = {
   "showPageNo": false,
   "play": {
     "loop": true,
-    "auto": true,
+    "auto": false,
     "interval": 3
   },
   "share": {
@@ -472,51 +472,58 @@ const scenedata = {
           // 事件触发
           'event': []
         },
-        // {
-        //   'id': 856559,
-        //   // 元素名称
-        //   'name': 'map element',
-        //   // 元素类型
-        //   'type': 14,
-        //   'sound': null,
-        //   // 元素内部的内容，可能是一段html
-        //   'content': 'map element',
-        //   // 显示/隐藏
-        //   'visible': true,
-        //   // 锁定
-        //   'lock': false,
-        //   // 元素样式，样式名用小驼峰命名
-        //   'css': {
-        //     'top': '0px',
-        //     'left': '0px',
-        //     'width': '260px',
-        //     'height': '260px',
-        //     "zIndex": 100,
-        //   },
-        //   contentCss: {
+        {
+          'id': 856559,
+          // 元素名称
+          'name': 'map element',
+          // 元素类型
+          'type': 14,
+          'sound': null,
+          // 元素内部的内容，可能是一段html
+          'content': 'map element',
+          // 显示/隐藏
+          'visible': true,
+          // 锁定
+          'lock': false,
+          // 元素样式，样式名用小驼峰命名
+          'css': {
+            'top': '0px',
+            'left': '0px',
+            'width': '260px',
+            'height': '260px',
+            "zIndex": 100,
+          },
+          contentCss: {
 
-        //   },
-        //   'properties': {
-        //     currentCity: {
-        //       center: {
-        //         lng: 112.94,
-        //         lat: 28.18
-        //       },
-        //       level: 12
-        //     }
-        //   },
-        //   'animate': [{
-        //     "type": 26,
-        //     "direction": 3,
-        //     "duration": 5,
-        //     "delay": 0.5,
-        //     "countNum": 6,
-        //     "count": null,
-        //     "__tableCss": "on",
-        //     "__currentTabIndex": 0,
-        //     "__title": "进入动画(淡入)"
-        //   }],
-        // },
+          },
+          'properties': {
+            currentCity: {
+              center: {
+                lng: 112.94,
+                lat: 28.18
+              },
+              level: 12,
+              name: '长沙市'
+            },
+            currentAddress: {
+              lng: 112.94,
+              lat: 28.18,
+              title: 'test',
+              level: 12
+            }
+          },
+          'animate': [{
+            "type": 26,
+            "direction": 3,
+            "duration": 5,
+            "delay": 0.5,
+            "countNum": 6,
+            "count": null,
+            "__tableCss": "on",
+            "__currentTabIndex": 0,
+            "__title": "进入动画(淡入)"
+          }],
+        },
         {
           'id': 10439,
           // 元素名称

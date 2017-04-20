@@ -112,7 +112,7 @@
         <img :src="beeLogo" alt="" style="position: relative;top:13px;">
       </div>
       <div style="margin: auto;width:295px;position: relative;">
-        <input type="text" v-model="passwordInput" @keydown.enter="confirmPwd" maxlength="30"
+        <input type="text" v-model.trim="passwordInput" @keydown.enter="confirmPwd" maxlength="30"
          class="bee_input_password" placeholder="请输入访问密码">
         <div class="bee_input_btn" @click="confirmPwd">确定</div>
         <div class="psd_err" v-show="passwordSendCount > 0 && !passwordCorrect">密码错误</div>

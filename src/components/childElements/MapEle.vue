@@ -1,5 +1,7 @@
 <template>
-  <div :id="eleData.id + '-innerMap'"></div>
+  <div>
+    <div class="full-screen" :id="eleData.id + '-innerMap'"></div>
+  </div>
 </template>
 
 <script>
@@ -12,19 +14,30 @@ export default {
     };
   },
   mounted(){
-    this.loadBmap().then((BMap) => {
-      this.loadElementSuccess();
-      this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
-        if(newValue === 100){
-          this.initMap();
-          this.$off('sceneLoadedPercentage');
-        }
-      });
+    this.loadBmap().then(BMap => {
+      if(this.sceneLoadedPercentage === 100){
+        this.initMap();
+      }else{
+        this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
+          if(newValue === 100){
+            this.initMap();
+            this.$off('sceneLoadedPercentage');
+          }
+        });
+      }
     });
   },
   computed: {
     ...mapGetters(['sceneLoadedPercentage'])
   },
+  /*watch: {
+    sceneLoadedPercentage(curVal) {
+      if(curVal === 100){
+        this.initMap();
+        this.$off('sceneLoadedPercentage');
+      }
+    }
+  },*/
   methods: {
     ...mapActions(['loadBmap']),
     ...mapMutations(['loadElementSuccess']),
@@ -33,24 +46,35 @@ export default {
       this.mapInstance = new BMap.Map(this.eleData.id + '-innerMap');
       // 禁用地图拖拽
       this.mapInstance.disableDragging();
-      // // 禁用双击放大
-      // this.mapInstance.enableDoubleClickZoom();
-      // // 禁用双指操作缩放
-      // this.mapInstance.disablePinchToZoom();
-      const BMapPoint = new BMap.Point(currentCity.center.lng, currentCity.center.lat);
+      // 禁用双击放大
+      this.mapInstance.enableDoubleClickZoom();
+      // 禁用双指操作缩放
+      this.mapInstance.disablePinchToZoom();
 
+      
       this.mapInstance.clearOverlays();
-      if(currentAddress && currentAddress.title){
-        const opts = {
-          position : BMapPoint,    // 指定文本标注所在的地理位置
+      if(currentAddress){
+        let {lat, lng, level, title} = currentAddress;
+        let BMapPoint = new BMap.Point(lng, lat);
+        let opts = {
+          position : BMapPoint,   // 指定文本标注所在的地理位置
           offset   : new BMap.Size(10, -30)    //设置文本偏移量
         }; 
-        const label = new BMap.Label(currentAddress.title, opts);
-        this.mapInstance.addOverlay(label);
-      }
-      const marker = new BMap.Marker(BMapPoint);
-      this.mapInstance.addOverlay(marker);
-      this.mapInstance.centerAndZoom(BMapPoint, currentCity.level);
+        if(title){
+          let label = new BMap.Label(title, opts);
+          this.mapInstance.addOverlay(label);
+        } 
+        let marker = new BMap.Marker(BMapPoint);
+        this.mapInstance.addOverlay(marker);
+        this.mapInstance.centerAndZoom(BMapPoint, currentCity.level);
+      }else if(currentCity){
+        let {center, level} = currentCity;
+        let BMapPoint = new BMap.Point(center.lng, center.lat);
+        let marker = new BMap.Marker(BMapPoint);
+        this.mapInstance.addOverlay(marker);
+        this.mapInstance.centerAndZoom(BMapPoint, level);
+      } 
+      this.loadElementSuccess();
     }
   },
 }

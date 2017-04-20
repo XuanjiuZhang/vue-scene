@@ -79,6 +79,12 @@ const initStore = (sceneData) => {
       switch (element.type) {
         // input
         case 7:
+          if(element.properties.required && element.properties.data === ''){
+            return {
+              fail: true,
+              msg: `input : ( ${element.name} ) field ( ${element.properties.name} ) required`
+            };
+          }
           return {
             fieldname: element.properties.name,
             value: element.properties.data

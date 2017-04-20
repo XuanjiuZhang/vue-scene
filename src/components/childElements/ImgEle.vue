@@ -18,7 +18,7 @@ export default {
     };
     this.$refs.img.onerror = () => {
       this.loadElementSuccess();
-      console.log(this.eleData.id, '图片加载失败!');
+      // console.log(this.eleData.id, '图片加载失败!');
     };
     // setTimeout(() => {
     //   this.loadElementSuccess();

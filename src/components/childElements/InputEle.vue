@@ -21,10 +21,10 @@ export default {
   methods: {
     ...mapMutations(['visualInput']),
     handleFocus() {
-      this.visualInput({eleData: this.eleData, focused: true});
+      // this.visualInput({eleData: this.eleData, focused: true});
     },
     handleBlur() {
-      this.visualInput({eleData: this.eleData, focused: false});
+      // this.visualInput({eleData: this.eleData, focused: false});
     }
   },
   beforeDestroy(){
