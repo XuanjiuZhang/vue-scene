@@ -168,6 +168,9 @@
     mounted() {
       const initHammer = () => {
         const panstart = (event) => {
+          if(this.activePage.pageOption.banTurnPage){
+            return;
+          }
           this.inTouch = true;
           this.preNextVisible = true;
           this.startData = Object.assign({}, {
@@ -176,6 +179,9 @@
           });
         };
         const panEnd = (event) => {
+          if(this.activePage.pageOption.banTurnPage){
+            return;
+          }
           this.inTouch = false;
           const {
             deltaY,

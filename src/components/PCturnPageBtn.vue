@@ -32,14 +32,20 @@ import {
 
 export default {
   computed: {
-    ...mapGetters(['VueEventBus']),
+    ...mapGetters(['VueEventBus', 'activePage']),
     handlePrePage(){
       return _.throttle(() => {
+        if(this.activePage.pageOption.banTurnPage){
+          return;
+        }
         this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
       }, 500);
     },
     handleNextPage(){
       return _.throttle(() => {
+        if(this.activePage.pageOption.banTurnPage){
+          return;
+        }
         this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
       }, 500);
     },

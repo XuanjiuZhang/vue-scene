@@ -18,11 +18,17 @@ export default {
     ...mapGetters(['VueEventBus', 'currentPageIndex', 'pages']),
     handlePrePage(){
       return _.throttle(() => {
+        if(this.pages[this.currentPageIndex].pageOption.banTurnPage){
+          return;
+        }
         this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
       }, 500);
     },
     handleNextPage(){
       return _.throttle(() => {
+        if(this.pages[this.currentPageIndex].pageOption.banTurnPage){
+          return;
+        }
         this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
       }, 500);
     },
