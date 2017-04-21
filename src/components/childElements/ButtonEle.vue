@@ -53,7 +53,7 @@
               let { properties: { info, outLink } } = this.eleData;
               _.isString(info) && alert(info);
               if(_.isString(outLink) && outLink != ''){
-                window.open(outLink);
+                window.open(`https://${outLink}`);
               }
             } else {
               this.hasSubmitted = false;

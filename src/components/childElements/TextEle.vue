@@ -1,5 +1,6 @@
 <template>
-  <div class="text-element" :style="eleData.properties.textStyle" v-html="eleData.content">
+  <div class="text-element">
+    <div :style="eleData.properties.textStyle" v-html="eleData.content"></div>
   </div>
 </template>
 

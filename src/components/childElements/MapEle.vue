@@ -46,11 +46,11 @@ export default {
       const { properties: { currentCity, currentAddress} } = this.eleData;
       this.mapInstance = new BMap.Map(this.eleData.id + '-innerMap');
       // 禁用地图拖拽
-      this.mapInstance.disableDragging();
+      // this.mapInstance.disableDragging();
       // 禁用双击放大
       this.mapInstance.enableDoubleClickZoom();
       // 禁用双指操作缩放
-      this.mapInstance.disablePinchToZoom();
+      // this.mapInstance.disablePinchToZoom();
 
       this.mapInstance.clearOverlays();
       if(currentAddress){
