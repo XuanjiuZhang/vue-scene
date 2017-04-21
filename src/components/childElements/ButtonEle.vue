@@ -28,6 +28,11 @@
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),
       submit() {
+        if(!_.isUndefined(window.userAgent) && /applewebkit|iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
+          let { properties: { info, outLink } } = this.eleData;
+          _.isString(info) && alert(info);
+          window.open(`https://${outLink}`);
+        }
         if (this.hasSubmitted) {
           console.log('只能提交一次！');
           return '只能提交一次！';
@@ -51,6 +56,9 @@
             if (response.ok) {
               this.hasSubmitted = true;
               let { properties: { info, outLink } } = this.eleData;
+              if(!_.isUndefined(window.userAgent) && /applewebkit|iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
+                return;
+              }
               _.isString(info) && alert(info);
               if(_.isString(outLink) && outLink != ''){
                 window.open(`https://${outLink}`);
