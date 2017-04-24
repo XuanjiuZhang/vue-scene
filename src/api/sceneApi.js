@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import URLSearchParams from 'url-search-params';
 global.URLSearchParams = URLSearchParams;
+// 接口地址: '/h5/service/v1/'
 import appConfig from '../../appconfig';
 import queryString from 'query-string';
 
@@ -53,6 +54,15 @@ const api = {
   },
   queryStatisticCount(sceneId){
     const url = `${appConfig.h5Service}scene/${sceneId}/view`;
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+  },
+  getWeixinConfig(location){
+    const url = `${appConfig.h5Service}/weixin/js_ticket?url=${encodeURIComponent(location)}`;
     return fetch(url, {
       method: 'GET',
       headers: {

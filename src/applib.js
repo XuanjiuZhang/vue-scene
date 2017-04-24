@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import _ from 'underscore';
-import sceneApi from './api/sceneApi';
 window._ = _;
+import sceneApi from './api/sceneApi';
 import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
 import Pcbutton from './components/PCTurnPageBtn.vue'
@@ -66,12 +66,67 @@ import qrcanvas from 'qrcanvas'
     }
     document.getElementsByTagName('head')[0].appendChild(nod);
   };
+
+  const loadWeixinApi = (sceneData) => {
+    const { self, top, userAgent } = window;
+    if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase())){
+      return;
+    }
+    console.log('loadWeixinApi!');
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://res.wx.qq.com/open/js/jweixin-1.0.0.js";
+    script.onload = () => {
+        alert("weixin Script loaded!");
+        // 获取 config
+        const wxConfig = sceneApi.getWeixinConfig(window.location.href).then(res => {
+          if(!res.ok){
+            return {};
+          }
+          return res.json();
+        }).then(data => {
+          window.wx.config(data);
+          window.wx.ready(() => {
+            console.log('wx ready');
+            const { name, description, image } = sceneData;
+            const shareObj = {
+              title: name, // 分享标题
+              desc: description, // 分享描述
+              link: window.location.href, // 分享链接
+              imgUrl: image, // 分享图标`
+              //type: 'link', // 分享类型,music、video或link，不填默认为link
+              //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+              success() {
+                console.log('share success');
+              },
+              cancel() {
+                console.log('share cancel');
+              }
+            };
+            //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+            window.wx.onMenuShareTimeline(shareObj);
+            //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+            window.wx.onMenuShareAppMessage(shareObj);
+            //获取“分享到QQ”按钮点击状态及自定义分享内容接口
+            window.wx.onMenuShareQQ(shareObj);
+            //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+            window.wx.onMenuShareWeibo(shareObj);
+            //获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
+            window.wx.onMenuShareQZone(shareObj);
+          });
+        });
+    };
+    document.getElementsByTagName('head')[0].appendChild(script);
+    
+  }
+
   global.previewScene = {
     init(sceneData, elementID) {
       if(_.isString(sceneData.name)){
         document.title = sceneData.name;
       }
       loadFonts(sceneData);
+      loadWeixinApi(sceneData);
       const sceneStore = initStore(sceneData);
       global.sceneStore = sceneStore;
       const domEle = document.getElementById(elementID);
