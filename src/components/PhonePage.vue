@@ -139,7 +139,9 @@
         } else if (this.index === this.sceneData.pages.length - 1) {
           show = this.sceneData.play.loop ? true : false;
         }
-        return this.sceneInTouch && show;
+        // return this.sceneInTouch && show;
+        return show;
+        
       },
       arrowClass() {
         var horizontal = false;

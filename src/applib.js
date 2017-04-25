@@ -74,8 +74,8 @@ import qrcanvas from 'qrcanvas'
     }
     console.log('loadWeixinApi!');
     const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://res.wx.qq.com/open/js/jweixin-1.0.0.js";
+    script.type = 'text/javascript';
+    script.src = 'https://res.wx.qq.com/open/js/jweixin-1.0.0.js';
     script.onload = () => {
         alert("weixin Script loaded!");
         // 获取 config
