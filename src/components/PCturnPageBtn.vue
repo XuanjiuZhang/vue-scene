@@ -35,9 +35,6 @@ export default {
     ...mapGetters(['VueEventBus', 'activePage']),
     handlePrePage(){
       return _.throttle(() => {
-        if(this.activePage.pageOption.banTurnPage){
-          return;
-        }
         this.VueEventBus.$emit('btnTurnPage', { opt: 'pre' });
       }, 500);
     },

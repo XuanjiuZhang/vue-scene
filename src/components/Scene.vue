@@ -168,9 +168,6 @@
     mounted() {
       const initHammer = () => {
         const panstart = (event) => {
-          if(this.activePage.pageOption.banTurnPage){
-            return;
-          }
           this.inTouch = true;
           this.preNextVisible = true;
           this.startData = Object.assign({}, {
@@ -179,9 +176,6 @@
           });
         };
         const panEnd = (event) => {
-          if(this.activePage.pageOption.banTurnPage){
-            return;
-          }
           this.inTouch = false;
           const {
             deltaY,
@@ -208,7 +202,7 @@
             }
 
             // 往下滑翻页
-            if ((additionalEvent === 'panup' || deltaY < 0) && this.activePageCanUp) {
+            if ((additionalEvent === 'panup' || deltaY < 0) && this.activePageCanUp && !this.shouldStopPanUp) {
               this.downTurnPage();
               return;
             }
@@ -233,7 +227,7 @@
               return;
             }
             // 往左滑翻页
-            if (additionalEvent === 'panleft' || deltaX < 0) {
+            if ((additionalEvent === 'panleft' || deltaX < 0) && !this.shouldStopPanLeft) {
               this.leftTurnPage();
               return;
             }
@@ -253,7 +247,12 @@
             let {
               deltaX
             } = event;
-            this.deltaX = this.startData.deltaX + deltaX;
+            if(this.shouldStopPanLeft){
+              this.deltaX = Math.max(0, this.startData.deltaX + deltaX);
+            }else{
+              this.deltaX = this.startData.deltaX + deltaX;
+            }
+            
           }
         };
         const panRight = (event) => {
@@ -270,7 +269,11 @@
               deltaY
             } = event;
             if (this.activePageCanUp || this.deltaY != 0) {
-              this.deltaY = this.startData.deltaY + deltaY;
+              if(this.shouldStopPanUp){
+                this.deltaY = Math.max(0, this.startData.deltaY + deltaY);
+              }else{
+                this.deltaY = this.startData.deltaY + deltaY;
+              }
             }
           }
         };
@@ -439,7 +442,7 @@
         passwordInput: '',
         passwordSendCount: 0,
         passwordCorrect: false,
-        autoplayInterval: undefined,
+        autoplayInterval: undefined
       }
     },
     watch: {
@@ -498,7 +501,7 @@
             this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
           }, interval * 1000);
         }
-      } 
+      }
     },
     computed: {
       ...mapGetters(['VueEventBus', 'sceneData', 'sceneLoadedPercentage', 'currentPageIndex', 'loadPageMaxIndex',
@@ -581,6 +584,16 @@
         const hScale = this.screenHeight / this.editorHeight;
         const wScale = this.screenWidth / this.editorWidth;
         return Math.min(hScale, wScale);
+      },
+      shouldStopPanUp(){
+        const { pageOption: {banTurnPage, turnPageMode} } = this.activePage;
+        const stopPanUp = banTurnPage && turnPageMode === 1 && this.activePageCanUp;
+        return stopPanUp;
+      },
+      shouldStopPanLeft(){
+        const { pageOption: {banTurnPage, turnPageMode} } = this.activePage;
+        const stopPanLeft = banTurnPage && turnPageMode === 2;
+        return stopPanLeft;
       }
     },
     components: {
