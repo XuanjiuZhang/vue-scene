@@ -8,7 +8,7 @@ import queryString from 'query-string';
 const api = {
   updateEleCount(data) {
     const { sceneid, pageid, elementid, op } = data;
-    const url = `${appConfig.h5Service}scene/${sceneid}/count`;
+    const url = `${appConfig.h5Service}preview/${sceneid}/count`;
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -53,7 +53,7 @@ const api = {
     });
   },
   queryStatisticCount(sceneId){
-    const url = `${appConfig.h5Service}scene/${sceneId}/view`;
+    const url = `${appConfig.h5Service}preview/${sceneId}/view`;
     return fetch(url, {
       method: 'GET',
       headers: {

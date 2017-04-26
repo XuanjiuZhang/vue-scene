@@ -49,7 +49,7 @@ export default {
       }
       return 0;
     }).then(data => {
-      this.readCount = data;
+      this.readCount = data.data;
     });
   },
   computed: {

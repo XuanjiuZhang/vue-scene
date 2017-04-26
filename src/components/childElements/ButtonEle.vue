@@ -27,12 +27,19 @@
     methods: {
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),
+      shouldAppendHttp(outLink) {
+        return outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 &&   outLink.indexOf('mms://') < 0;
+      },
       submit() {
         if(!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
           let { properties: { info, outLink } } = this.eleData;
           _.isString(info) && alert(info);
           console.log('safari link');
-          window.open(`https://${outLink}`);
+          if(this.shouldAppendHttp(outLink)){
+            window.open(`https://${outLink}`);
+          }else{
+            window.open(outLink);
+          }      
         }
         if (this.hasSubmitted) {
           console.log('只能提交一次！');
@@ -63,7 +70,11 @@
               _.isString(info) && alert(info);
               if(_.isString(outLink) && outLink != ''){
                 console.log('android link');
-                window.open(`https://${outLink}`);
+                if(this.shouldAppendHttp(outLink)){
+                  window.open(`https://${outLink}`);
+                }else{
+                  window.open(outLink);
+                } 
               }
             } else {
               this.hasSubmitted = false;
