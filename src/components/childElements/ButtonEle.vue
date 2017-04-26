@@ -28,9 +28,10 @@
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),
       submit() {
-        if(!_.isUndefined(window.userAgent) && /applewebkit|iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
+        if(!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
           let { properties: { info, outLink } } = this.eleData;
           _.isString(info) && alert(info);
+          console.log('safari link');
           window.open(`https://${outLink}`);
         }
         if (this.hasSubmitted) {
@@ -56,11 +57,12 @@
             if (response.ok) {
               this.hasSubmitted = true;
               let { properties: { info, outLink } } = this.eleData;
-              if(!_.isUndefined(window.userAgent) && /applewebkit|iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
+              if(!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
                 return;
               }
               _.isString(info) && alert(info);
               if(_.isString(outLink) && outLink != ''){
+                console.log('android link');
                 window.open(`https://${outLink}`);
               }
             } else {
