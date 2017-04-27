@@ -188,7 +188,8 @@
           });
           if (this.turnPageMode === 1) {
             // 第一页继续往下滑
-            let firstPageDown = this.currentPageIndex === 0 && (additionalEvent === 'pandown' || deltaY > 0);
+            let firstPageDown = this.currentPageIndex === 0 && !this.sceneData.play.loop
+             && (additionalEvent === 'pandown' || deltaY > 0);
             // 最后一页往上滑
             let lastPageUp = this.currentPageIndex === this.sceneData.pages.length - 1 &&
               (additionalEvent === 'panup' || deltaY < 0) && !this.sceneData.play.loop;
@@ -214,7 +215,8 @@
 
           } else {
             // 第一页继续往右滑
-            let firstPageRight = this.currentPageIndex === 0 && (additionalEvent === 'panright' || deltaX > 0);
+            let firstPageRight = this.currentPageIndex === 0 && !this.sceneData.play.loop
+             && (additionalEvent === 'panright' || deltaX > 0);
             // 最后一页往左滑
             let lastPageLeft = this.currentPageIndex === this.sceneData.pages.length - 1 &&
               (additionalEvent === 'panleft' || deltaX < 0) && !this.sceneData.play.loop;
@@ -384,9 +386,10 @@
         this.VueEventBus.$on('btnTurnPage', payload => {
           const { opt } = payload;
           if (opt === 'pre') {
-            if (this.currentPageIndex === 0) {
+            /*if (this.sceneData.pages[this.currentPageIndex].pageOption.banTurnPage) {
               return;
-            } else if (this.turnPageMode === 1) {
+            }*/
+            if (this.turnPageMode === 1) {
               this.preNextVisible = true;
               setTimeout(() => {
                 this.upTurnPage();

@@ -59,6 +59,9 @@ const initStore = (sceneData) => {
     // if(state.loadedElementCount != elementCount){
     //   return false;
     // }
+    /*if(state.sceneData.pages[state.currentPageIndex].pageOption.banTurnPage && state.currentPageIndex < index){
+      return;
+    }*/
     animationPlayer.stopPageAnimation(state.currentPageIndex);
     toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
 
@@ -164,6 +167,8 @@ const initStore = (sceneData) => {
       prePage(state) {
         if (state.currentPageIndex > 0) {
           execGoPage(state, state.currentPageIndex - 1);
+        }else if(state.currentPageIndex === 0 && state.sceneData.play.loop){
+          execGoPage(state, state.sceneData.pages.length - 1);
         }
       },
       loadElementSuccess(state) {
