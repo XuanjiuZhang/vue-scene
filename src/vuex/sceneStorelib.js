@@ -261,11 +261,14 @@ const initStore = (sceneData) => {
           eleData._clonedCss = _.clone(eleData.css);
         }
         if(focused){
-          Object.assign(eleData.css, {
-            left: '20px',
-            top: `${50 - state.currentPageDeltaY}px`,
-            zIndex: 999999,
-          });
+          let actualTop = parseInt(eleData._clonedCss.top) + state.currentPageDeltaY;
+          if(actualTop > state.screenHeight / 2){
+            Object.assign(eleData.css, {
+              // left: '20px',
+              top: `${50 - state.currentPageDeltaY}px`,
+              zIndex: 999999,
+            });
+          }
         }else{
           Object.assign(eleData.css, eleData._clonedCss);
         }
@@ -338,7 +341,7 @@ const initStore = (sceneData) => {
       },
       sceneApi: state => {
         return state.sceneApi;
-      },
+      }
     },
     actions: {
       loadBmap(context) {
