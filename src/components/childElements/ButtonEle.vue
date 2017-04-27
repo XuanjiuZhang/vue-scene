@@ -18,75 +18,76 @@
       }
     },
     computed: {
-      computedBtnStyle() {   
+      computedBtnStyle() {
         const { properties } = this.eleData;
         const { buttonStyle } = properties;
-        return Object.assign({}, buttonStyle, { 'fontSize' : `${parseInt(buttonStyle.fontSize) * this.finalScale}px` });
+        return Object.assign({}, buttonStyle, { 'fontSize': `${parseInt(buttonStyle.fontSize) * this.finalScale}px` });
       }
     },
     methods: {
       ...mapMutations(['loadElementSuccess']),
       ...mapActions(['buttonFormSubmit']),
       shouldAppendHttp(outLink) {
-        return outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 &&   outLink.indexOf('mms://') < 0;
+        return outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0;
+      },
+      doFormDataSubmit(payload, callback) {
+        console.log(payload);
+        this.inSubmitting = true;
+        this.buttonFormSubmit(payload).then(response => {
+          console.log(response);
+          this.inSubmitting = false;
+          if (response.ok && _.isFunction(callback)) {
+            callback();
+          } else {
+            this.hasSubmitted = false;
+            alert('error');
+          }
+        }, (reject) => {
+          this.hasSubmitted = false;
+          this.inSubmitting = false;
+          console.log('submit fail');
+          console.log(reject);
+        });
       },
       submit() {
-        if(!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
-          let { properties: { info, outLink } } = this.eleData;
-          _.isString(info) && alert(info);
-          console.log('safari link');
-          if(this.shouldAppendHttp(outLink)){
-            window.open(`https://${outLink}`);
-          }else{
-            window.open(outLink);
-          }      
-        }
         if (this.hasSubmitted) {
-          console.log('只能提交一次！');
           return '只能提交一次！';
         }
         if (this.inSubmitting) {
-          console.log('正在提交中。。。');
-          return '正在提交中。。';
+          return '正在提交中...';
         }
-        if (!this.hasSubmitted && !this.inSubmitting) {
-          // TODO
-          console.log('submit');
-          console.log(this.getQueryString());
-          const payload = {
-            query: this.getQueryString(),
-            pageIndex: this.pageIndex
-          };
-          this.inSubmitting = true;
-          this.buttonFormSubmit(payload).then(response => {
-            console.log(response);
-            this.inSubmitting = false;
-            if (response.ok) {
-              this.hasSubmitted = true;
-              let { properties: { info, outLink } } = this.eleData;
-              if(!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
-                return;
-              }
-              _.isString(info) && alert(info);
-              if(_.isString(outLink) && outLink != ''){
-                console.log('android link');
-                if(this.shouldAppendHttp(outLink)){
-                  window.open(`https://${outLink}`);
-                }else{
-                  window.open(outLink);
-                } 
-              }
-            } else {
-              this.hasSubmitted = false;
-              alert('error');
-            }
-          }, (reject) => {
-            this.hasSubmitted = false;
-            this.inSubmitting = false;
-            console.log('submit fail');
+
+        const payload = {
+          query: this.getQueryString(),
+          pageIndex: this.pageIndex
+        };
+        
+        const afterSubmit = () => {
+          this.hasSubmitted = true;
+          let { properties: { info, outLink } } = this.eleData;
+          _.isString(info) && alert(info);
+          if (this.shouldAppendHttp(outLink)) {
+            window.open(`https://${outLink}`);
+          } else {
+            window.open(outLink);
+          }
+          return;
+        };
+
+        if (!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())) {
+          console.log('ios');
+          this.buttonFormSubmit(Object.assign({
+            isValidate: true
+          }, payload)).then(result => {
+            afterSubmit();
+            this.doFormDataSubmit(payload, () => {});
+          }, reject => {
             console.log(reject);
-          });
+          }); 
+        }else{
+          this.doFormDataSubmit(payload, afterSubmit);
         }
+
       },
       getQueryString() {
         var qs = location.search.substr(1), // 获取url中"?"符后的字串

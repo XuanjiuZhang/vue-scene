@@ -362,12 +362,13 @@ const initStore = (sceneData) => {
         return global._BMapPromise;
       },
       buttonFormSubmit(context, payload) {
-        const { query: { qrc, src }, pageIndex } = payload;
+        const { query: { qrc, src }, pageIndex, isValidate } = payload;
         const formData = genPageFormData(context.state.sceneData.pages[pageIndex]);
         console.log(formData);
         const failArray = formData.filter(data => {
           return _.has(data, 'fail') && data.fail === true;
         });
+
         if (failArray.length) {
           return new Promise((resolve, reject) => {
             reject(failArray);
@@ -381,7 +382,14 @@ const initStore = (sceneData) => {
             src
           };
           console.log(params);
-          return context.state.sceneApi.formSubmit(params);
+          if(isValidate){
+            return new Promise((resolve, reject) => {
+              resolve(formData);
+            });
+          }else{
+            return context.state.sceneApi.formSubmit(params);
+          }
+          
         }
 
       },

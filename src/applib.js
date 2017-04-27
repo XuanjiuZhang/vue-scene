@@ -77,7 +77,6 @@ import qrcanvas from 'qrcanvas'
     script.type = 'text/javascript';
     script.src = 'https://res.wx.qq.com/open/js/jweixin-1.0.0.js';
     script.onload = () => {
-        alert("weixin Script loaded!");
         // 获取 config
         const wxConfig = sceneApi.getWeixinConfig(window.location.href).then(res => {
           if(!res.ok){
@@ -85,7 +84,8 @@ import qrcanvas from 'qrcanvas'
           }
           return res.json();
         }).then(data => {
-          window.wx.config(data);
+          console.log(data);
+          window.wx.config(data.data);
           window.wx.ready(() => {
             console.log('wx ready');
             const { name, description, image } = sceneData;
@@ -93,7 +93,7 @@ import qrcanvas from 'qrcanvas'
               title: name, // 分享标题
               desc: description, // 分享描述
               link: window.location.href, // 分享链接
-              imgUrl: image, // 分享图标`
+              imgUrl: `http://v.xmfshow.com${image}`, // 分享图标`
               //type: 'link', // 分享类型,music、video或link，不填默认为link
               //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
               success() {
