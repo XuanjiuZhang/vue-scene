@@ -69,6 +69,16 @@ const api = {
         'Content-Type': 'application/json'
       },
     });
+  },
+  getWeixinOauth(data){
+    const {createuserid, shareUrl} = data;
+    const url = `${appConfig.h5Service}/api/weixin?createuser=${createuserid}&rurl=${shareUrl}`;
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
   }
 };
 

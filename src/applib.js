@@ -18,7 +18,7 @@ import qrcanvas from 'qrcanvas'
 // import testSceneData from './vuex/scenedata2';
 // global.testSceneData = testSceneData;
 
-(function() {
+(function () {
   const initCanvas = (ids, config) => {
     const { url, size, cellSize } = config;
     if (_.isArray(ids)) {
@@ -46,7 +46,7 @@ import qrcanvas from 'qrcanvas'
     }
   };
   const loadFonts = (sceneData) => {
-    const { fonts = [] } = sceneData;
+    const { fonts = []} = sceneData;
     if (fonts.length === 0) {
       return
     }
@@ -67,9 +67,34 @@ import qrcanvas from 'qrcanvas'
     document.getElementsByTagName('head')[0].appendChild(nod);
   };
 
+  const weixinOauth = (createuserid, callback) => {
+    var GetQueryString = function (name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]);
+      return null;
+    };
+    if(GetQueryString('v') == 'second'){
+      return _.isFunction(callback) && callback();
+    }
+    sceneApi.getWeixinOauth({createuserid, shareUrl: ''}).then(res => {
+      if(!res.ok){
+        return {error: true};
+      }
+      return res.json();
+    }).then(resData => {
+      const {error, data} = resData;
+      if(!error && !_.isUndefined(data)){
+        window.location.href = data;
+      }else{
+        return _.isFunction(callback) && callback();
+      }
+    });
+  };
+
   const loadWeixinApi = (sceneData) => {
     const { self, top, userAgent } = window;
-    if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase())){
+    if (self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase())) {
       return;
     }
     console.log('loadWeixinApi!');
@@ -77,52 +102,52 @@ import qrcanvas from 'qrcanvas'
     script.type = 'text/javascript';
     script.src = 'https://res.wx.qq.com/open/js/jweixin-1.0.0.js';
     script.onload = () => {
-        // 获取 config
-        const wxConfig = sceneApi.getWeixinConfig(window.location.href).then(res => {
-          if(!res.ok){
-            return {};
-          }
-          return res.json();
-        }).then(data => {
-          console.log(data);
-          window.wx.config(data.data);
-          window.wx.ready(() => {
-            console.log('wx ready');
-            const { name, description, image } = sceneData;
-            const shareObj = {
-              title: name, // 分享标题
-              desc: description, // 分享描述
-              link: window.location.href, // 分享链接
-              imgUrl: `http://v.xmfshow.com${image}`, // 分享图标`
-              //type: 'link', // 分享类型,music、video或link，不填默认为link
-              //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-              success() {
-                console.log('share success');
-              },
-              cancel() {
-                console.log('share cancel');
-              }
-            };
-            //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
-            window.wx.onMenuShareTimeline(shareObj);
-            //获取“分享给朋友”按钮点击状态及自定义分享内容接口
-            window.wx.onMenuShareAppMessage(shareObj);
-            //获取“分享到QQ”按钮点击状态及自定义分享内容接口
-            window.wx.onMenuShareQQ(shareObj);
-            //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
-            window.wx.onMenuShareWeibo(shareObj);
-            //获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
-            window.wx.onMenuShareQZone(shareObj);
-          });
+      // 获取 config
+      const wxConfig = sceneApi.getWeixinConfig(window.location.href).then(res => {
+        if (!res.ok) {
+          return {};
+        }
+        return res.json();
+      }).then(data => {
+        console.log(data);
+        window.wx.config(data.data);
+        window.wx.ready(() => {
+          console.log('wx ready');
+          const { name, description, image } = sceneData;
+          const shareObj = {
+            title: name, // 分享标题
+            desc: description, // 分享描述
+            link: window.location.href, // 分享链接
+            imgUrl: `http://v.xmfshow.com${image}`, // 分享图标`
+            //type: 'link', // 分享类型,music、video或link，不填默认为link
+            //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success() {
+              console.log('share success');
+            },
+            cancel() {
+              console.log('share cancel');
+            }
+          };
+          //获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+          window.wx.onMenuShareTimeline(shareObj);
+          //获取“分享给朋友”按钮点击状态及自定义分享内容接口
+          window.wx.onMenuShareAppMessage(shareObj);
+          //获取“分享到QQ”按钮点击状态及自定义分享内容接口
+          window.wx.onMenuShareQQ(shareObj);
+          //获取“分享到腾讯微博”按钮点击状态及自定义分享内容接口
+          window.wx.onMenuShareWeibo(shareObj);
+          //获取“分享到QQ空间”按钮点击状态及自定义分享内容接口
+          window.wx.onMenuShareQZone(shareObj);
         });
+      });
     };
     document.getElementsByTagName('head')[0].appendChild(script);
-    
-  }
+
+  };
 
   global.previewScene = {
     init(sceneData, elementID) {
-      if(_.isString(sceneData.name)){
+      if (_.isString(sceneData.name)) {
         document.title = sceneData.name;
       }
       loadFonts(sceneData);
@@ -139,7 +164,7 @@ import qrcanvas from 'qrcanvas'
       });
       instance.$mount('#' + elementID);
       global.previewScene.initedInstance = instance;
-      return function(pcTurnPageElementID, templateName = 'Pcbutton') {
+      return function (pcTurnPageElementID, templateName = 'Pcbutton') {
         if (pcTurnPageElementID == undefined) {
           return initCanvas;
         }
@@ -159,7 +184,7 @@ import qrcanvas from 'qrcanvas'
     },
   };
 
-  window.onload = function() {
+  window.onload = function () {
     const { code, qrc, src, isMobile, autoLoad } = window;
     const sceneInfo = { code, qrc, src };
     if (autoLoad) {
@@ -178,4 +203,5 @@ import qrcanvas from 'qrcanvas'
       });
     }
   };
+  
 }());
