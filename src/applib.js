@@ -67,29 +67,23 @@ import qrcanvas from 'qrcanvas'
     document.getElementsByTagName('head')[0].appendChild(nod);
   };
 
-  const weixinOauth = (createuserid, callback) => {
-    var GetQueryString = function (name) {
-      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-      var r = window.location.search.substr(1).match(reg);
-      if (r != null) return unescape(r[2]);
-      return null;
-    };
-    if(GetQueryString('v') == 'second'){
-      return _.isFunction(callback) && callback();
+  const GetQueryString = (name) => {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  };
+
+  const weixinOauth = (sceneData) => {
+    const {application, createUser} = sceneData;
+    const { self, top, userAgent } = window;
+    if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase()) 
+     || application != 'meeting' || GetQueryString('v') == 'second'){
+      return new Promise((resolve, reject) => {
+        resolve({notOauth: true});
+      });
     }
-    sceneApi.getWeixinOauth({createuserid, shareUrl: ''}).then(res => {
-      if(!res.ok){
-        return {error: true};
-      }
-      return res.json();
-    }).then(resData => {
-      const {error, data} = resData;
-      if(!error && !_.isUndefined(data)){
-        window.location.href = data;
-      }else{
-        return _.isFunction(callback) && callback();
-      }
-    });
+    return sceneApi.getWeixinOauth({createuserid: createUser, shareUrl: window.location.href});
   };
 
   const loadWeixinApi = (sceneData) => {
@@ -147,23 +141,38 @@ import qrcanvas from 'qrcanvas'
 
   global.previewScene = {
     init(sceneData, elementID) {
-      if (_.isString(sceneData.name)) {
-        document.title = sceneData.name;
-      }
-      loadFonts(sceneData);
-      loadWeixinApi(sceneData);
       const sceneStore = initStore(sceneData);
-      global.sceneStore = sceneStore;
-      const domEle = document.getElementById(elementID);
-      domEle.style.position = 'relative';
-      domEle.innerHTML = '<Scene></Scene>';
-      sceneStore.commit('measureOutterEl', { $el: domEle });
-      const instance = new Vue({
-        store: sceneStore, // 注入到所有子组件1
-        components: { Scene }
+      weixinOauth(sceneData).then(res => {
+        if(res.notOauth){
+          return {};
+        }
+        if(!res.ok){
+          return {error: true};
+        }
+        return res.json();
+      }).then(resData => {
+        const {error, data} = resData;
+        if(!error && !_.isUndefined(data)){
+          window.location.href = data;
+          return;
+        }
+        if (_.isString(sceneData.name)) {
+          document.title = sceneData.name;
+        }
+        loadFonts(sceneData);
+        loadWeixinApi(sceneData);
+        global.sceneStore = sceneStore;
+        const instance = new Vue({
+          store: sceneStore, // 注入到所有子组件1
+          components: { Scene }
+        });
+        const domEle = document.getElementById(elementID);
+        domEle.style.position = 'relative';
+        domEle.innerHTML = '<Scene></Scene>';
+        sceneStore.commit('measureOutterEl', { $el: domEle });
+        instance.$mount('#' + elementID);
+        global.previewScene.initedInstance = instance;
       });
-      instance.$mount('#' + elementID);
-      global.previewScene.initedInstance = instance;
       return function (pcTurnPageElementID, templateName = 'Pcbutton') {
         if (pcTurnPageElementID == undefined) {
           return initCanvas;

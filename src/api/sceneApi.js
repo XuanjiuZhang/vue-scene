@@ -72,7 +72,7 @@ const api = {
   },
   getWeixinOauth(data){
     const {createuserid, shareUrl} = data;
-    const url = `${appConfig.h5Service}/api/weixin?createuser=${createuserid}&rurl=${shareUrl}`;
+    const url = `${appConfig.h5Service}/weixin?createuser=${createuserid}&rurl=${shareUrl}`;
     return fetch(url, {
       method: 'GET',
       headers: {
