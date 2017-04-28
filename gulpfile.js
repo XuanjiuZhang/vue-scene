@@ -48,7 +48,3 @@ gulp.task('copyImage', function(){
   ])
     .pipe(gulp.dest('./build/img/'));
 });
-// gulp.task('copyImage', ['clean'], function(){
-//   return gulp.src(['./src/images/**/*'])
-//     .pipe(gulp.dest('./build/images/'));
-// });

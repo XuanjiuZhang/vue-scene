@@ -58,7 +58,7 @@ export default {
   props: ['eleData', 'pageIndex'],
   data() {
     return {
-      hasScored: false,
+      currentScore: 0,
       inMouseMove: false
     }
   },
@@ -122,11 +122,20 @@ export default {
   methods: {
     ...mapMutations(['scoreChange']),
     score: function (index) {
-      this.hasScored = true;
-      this.scoreChange({ pageIndex: this.pageIndex, eleId: this.eleData.id, currentScore: index + 1 });
-      this.ratingItemArray.forEach((item, itemIndex) => {
-        item.hasScored = itemIndex <= index;
-      });
+      if(this.currentScore === index + 1){
+        this.currentScore = 0;
+        this.scoreChange({ pageIndex: this.pageIndex, eleId: this.eleData.id, currentScore: this.currentScore });
+        this.ratingItemArray.forEach((item, itemIndex) => {
+          item.hasScored = false;
+        });
+        this.mouseLeaveItem();
+      }else{
+        this.currentScore = index + 1;
+        this.scoreChange({ pageIndex: this.pageIndex, eleId: this.eleData.id, currentScore: this.currentScore });
+        this.ratingItemArray.forEach((item, itemIndex) => {
+          item.hasScored = itemIndex <= index;
+        });
+      }
     },
     mouseEnterItem: function(index){
       this.inMouseMove = true;
