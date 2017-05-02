@@ -47,7 +47,7 @@ const initStore = (sceneData) => {
   const toggleElementVisible = (elements) => {
     elements.forEach(element => {
       if (_.isArray(element.animate) && element.animate.length != 0) {
-        element.visible = !element.visible;
+        element.animationVisible = !element.animationVisible;
       }
     });
   };

@@ -41,7 +41,7 @@ export default {
         top: _.isUndefined(top) ? 0 : newTop + 'px',
         left: _.isUndefined(left) ? 0 : newLeft + 'px',
         padding: _.isUndefined(padding) ? 0 : padding,
-        display: this.eleData.visible ? '' : 'none'
+        display: this.eleData.visible && this.eleData.animationVisible ? '' : 'none'
       });
     },
 

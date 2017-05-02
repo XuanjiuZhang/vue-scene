@@ -104,9 +104,9 @@ const animationPlayer = {
     pages.forEach(page => {
       page.elements.forEach(element => {
         if(_.isArray(element.animate) && element.animate.length != 0){
-          element.visible = false;
+          element.animationVisible = false;
         }else{
-          element.visible = true;
+          element.animationVisible = true;
         }
       });
     });
