@@ -21,10 +21,10 @@
     left: 0;
     top: 0;
     &.animated-page {
-      transition: .5s transform;
+      transition: .45s transform;
     }
     &.animated-page-fast {
-      transition: .2s transform;
+      transition: .15s transform;
     }
   }
   
@@ -436,11 +436,11 @@
         preNextVisible: false,
         fastTurnPage: false,
         normalTurnPage: false,
-        fastTurnPageTime: 400,
-        normalTurnPageTime: 700,
+        fastTurnPageTime: 100,
+        normalTurnPageTime: 450,
         turnPageThreshold: 120,
         btnTurnPageThreshold: 50,
-        addPanTime: 700,
+        addPanTime: 450,
         bgMusicPlaying: true,
         passwordInput: '',
         passwordSendCount: 0,
