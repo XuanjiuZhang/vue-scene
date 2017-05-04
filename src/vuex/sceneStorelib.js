@@ -125,12 +125,21 @@ const initStore = (sceneData) => {
           break;
           // select
         case 10:
-          return element.properties.options.map(option => {
+          let selectContent = element.properties.options.filter(option => {
+            return option.selected;
+          }).map(op => {
+            return op.text;
+          }).join();
+          return {
+            fieldname: element.properties.title,
+            value: selectContent
+          };
+          /*return element.properties.options.map(option => {
             return {
               fieldname: option.text,
               value: option.selected
             };
-          });
+          });*/
           break;
           // score
         case 11:

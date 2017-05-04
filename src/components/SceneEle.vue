@@ -19,7 +19,7 @@ import StatisticEle from './childElements/StatisticEle.vue';
 import TelEle from './childElements/TelEle.vue';
 
 export default {
-  props: ['eleData', 'pageIndex', 'finalScale'], 
+  props: ['eleData', 'pageIndex', 'finalScale', 'pageData'], 
   created(){
   },
   data(){
@@ -27,12 +27,23 @@ export default {
     } 
   },
   computed: {
+    ...mapGetters(['screenWidth', 'screenHeight', 'editorWidth', 'editorHeight']),
     eleStyle: function(){
       const { notOpacity, width, height, top, left, padding } = this.eleData.css;
+      // const topRatio = parseInt(top) / this.editorHeight;
+      const leftRatio = parseInt(left) / this.editorWidth;
+
       const newWidth = parseInt(width) * this.finalScale;
       const newHeight = parseInt(height) * this.finalScale; 
-      const newTop = parseInt(top) * this.finalScale;
-      const newLeft = parseInt(left) * this.finalScale;
+      var newTop = 0;
+      if(parseInt(top) + newHeight > this.pageData.pageOption.pageSize){
+        newTop = this.pageData.pageOption.pageSize - newHeight;
+      }else{
+        newTop = parseInt(top);
+      }
+      const newLeft = this.screenWidth * leftRatio;
+      /*const newTop = parseInt(top) * this.finalScale;
+      const newLeft = parseInt(left) * this.finalScale;*/
 
       return Object.assign({}, this.eleData.css, {
         opacity: _.isUndefined(notOpacity) ? 1 : 1 - notOpacity / 100,

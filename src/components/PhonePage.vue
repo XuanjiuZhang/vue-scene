@@ -1,12 +1,18 @@
+<style lang="less">
+  .trailer-label-level {
+    z-index: 999999
+  }
+</style>
 <template>
     <div class="phonePage" :style="pageStyle" ref="phonePage">
-        <SceneEle v-for="ele in pageData.elements" :key="ele.id" v-bind="{eleData: ele, pageIndex: index, finalScale}"></SceneEle>
+        <SceneEle v-for="ele in pageData.elements" :key="ele.id"
+         v-bind="{eleData: ele, pageIndex: index, finalScale, pageData}"></SceneEle>
 
         <div class="page-number" v-show="sceneData.showPageNo" style="display: block; z-index: 100;">
             <em class="page-tip">{{index + 1}} / {{sceneData.pages.length}}</em>
         </div>
 
-        <div class="trailer-label" v-if="index === sceneData.pages.length - 1
+        <div class="trailer-label trailer-label-level" v-if="index === sceneData.pages.length - 1
      && sceneData.trailerLabel && sceneData.trailerLabel.type != 3">
             <a v-if="sceneData.trailerLabel.type === 1" :href="sceneData.trailerLabel.labelLink" :class="{
             'grey': sceneData.trailerLabel.style === 1,

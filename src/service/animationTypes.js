@@ -152,7 +152,7 @@ const inAnimation = [
     iconClass: 'bounce-in',
     animationClass: ['animated', 'slideInUp']
   }, {
-    name: '上方滑入',
+    name: '上方滑出',
     type: 77,
     iconClass: 'bounce-in',
     animationClass: ['animated', 'slideOutDown']
