@@ -8,7 +8,7 @@
         <SceneEle v-for="ele in pageData.elements" :key="ele.id"
          v-bind="{eleData: ele, pageIndex: index, finalScale, pageData}"></SceneEle>
 
-        <div class="page-number" v-show="sceneData.showPageNo" style="display: block; z-index: 100;">
+        <div class="page-number" v-show="sceneData.showPageNo" style="display: block; z-index: 999999;">
             <em class="page-tip">{{index + 1}} / {{sceneData.pages.length}}</em>
         </div>
 

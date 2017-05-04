@@ -35,12 +35,18 @@ export default {
 
       const newWidth = parseInt(width) * this.finalScale;
       const newHeight = parseInt(height) * this.finalScale; 
+      const growHeight = newHeight - parseInt(height);
       var newTop = 0;
-      if(parseInt(top) + newHeight > this.pageData.pageOption.pageSize){
-        newTop = this.pageData.pageOption.pageSize - newHeight;
+      if(parseInt(top) >= 200){
+        newTop = parseInt(top) - growHeight;
       }else{
         newTop = parseInt(top);
       }
+      /*if(parseInt(top) + newHeight > this.pageData.pageOption.pageSize){
+        newTop = this.pageData.pageOption.pageSize - newHeight;
+      }else{
+        newTop = parseInt(top);
+      }*/
       const newLeft = this.screenWidth * leftRatio;
       /*const newTop = parseInt(top) * this.finalScale;
       const newLeft = parseInt(left) * this.finalScale;*/
