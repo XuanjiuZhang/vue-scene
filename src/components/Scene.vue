@@ -21,10 +21,10 @@
     left: 0;
     top: 0;
     &.animated-page {
-      transition: .45s transform;
+      transition: .35s transform;
     }
     &.animated-page-fast {
-      transition: .15s transform;
+      transition: .2s transform;
     }
   }
   
