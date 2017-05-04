@@ -14,14 +14,14 @@
 
         <div class="trailer-label trailer-label-level" v-if="index === sceneData.pages.length - 1
      && sceneData.trailerLabel && sceneData.trailerLabel.type != 3">
-            <a v-if="sceneData.trailerLabel.type === 1" :href="sceneData.trailerLabel.labelLink" :class="{
+            <a v-if="sceneData.trailerLabel.type === 1" :href="parsedTrailerLink" :class="{
             'grey': sceneData.trailerLabel.style === 1,
             'red': sceneData.trailerLabel.style === 2,
             'green': sceneData.trailerLabel.style === 3
         }" target="_blank" class="label-link">
                 [小蜜蜂]技术支持
                 </a>
-                <a v-if="sceneData.trailerLabel.type === 2" :href="sceneData.trailerLabel.trademarkInfoSite" :class="{
+                <a v-if="sceneData.trailerLabel.type === 2" :href="parsedTrademarkInfoSite" :class="{
             'grey': sceneData.trailerLabel.style === 1,
             'red': sceneData.trailerLabel.style === 2,
             'green': sceneData.trailerLabel.style === 3
@@ -185,6 +185,22 @@
           backgroundPosition: 'center top',
           fontSize: this.finalScale * 100 + '%'
         };
+      },
+      parsedTrailerLink() {
+        const outLink = this.sceneData.trailerLabel.labelLink;
+        if(outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
+          return 'http://' + outLink;
+        }else{
+          return outLink;
+        }
+      },
+      parsedTrademarkInfoSite() {
+        const outLink = this.sceneData.trailerLabel.trademarkInfoSite;
+        if(outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
+          return 'http://' + outLink;
+        }else{
+          return outLink;
+        }
       }
     },
     components: {
