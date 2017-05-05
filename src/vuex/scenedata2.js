@@ -81,7 +81,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': 'sound element',
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
@@ -111,7 +111,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': 'link element',
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
@@ -165,7 +165,7 @@ const scenedata = {
             title: '选项表单标题',
             options: [{
               text: '选项1',
-              selected: true
+              selected: false
             }, {
               text: '选项2',
               selected: false
@@ -174,7 +174,7 @@ const scenedata = {
               selected: false
             }],
             required: true,
-            multiSelect: false,
+            multiSelect: true,
             titleColor: 'rgba(255, 255, 255, 1)',
             optionStyle: {
               'color': '#666',
@@ -310,7 +310,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': 'video element',
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
@@ -343,7 +343,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': 'carousel form element',
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
@@ -383,17 +383,18 @@ const scenedata = {
           'type': 1,
           'sound': null,
           // 元素内部的内容，可能是一段html
-          'content': 'text element',
+          'content': '<p>双击输入文字</p><p><br></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a><b style="font-size: 68px;"><span style="font-size: 69px;"></span><span style="font-size: 68px;"></span><span style="font-size: 67px;"></span><span style="font-size: 66px;"></span><span style="font-size: 65px;"></span><span style="font-size: 64px;"></span><span style="font-size: 63px;"></span><span style="font-size: 62px;"></span><span style="font-size: 61px;"></span><span style="font-size: 60px;"></span><span style="font-size: 59px;"></span><span style="font-size: 58px;"></span><span style="font-size: 57px;"></span><span style="font-size: 56px;"></span><span style="font-size: 55px;"></span><span style="font-size: 54px;"></span><span style="font-size: 53px;"></span><span style="font-size: 52px;"></span><span style="font-size: 51px;"></span><span style="font-size: 50px;"></span><span style="font-size: 49px;"></span><span style="font-size: 48px;"></span><span style="font-size: 47px;"></span><span style="font-size: 46px;"></span><span style="font-size: 45px;"></span><span style="font-size: 44px;"></span><span style="font-size: 43px;"></span><span style="font-size: 42px;"></span><span style="font-size: 41px;"></span><span style="font-size: 40px;"></span><span style="font-size: 39px;"></span><span style="font-size: 38px;"></span><span style="font-size: 37px;"></span><span style="font-size: 36px;"></span><span style="font-size: 35px;"></span><span style="font-size: 34px;"></span><span style="font-size: 33px;"></span><span style="font-size: 32px;"></span><span style="font-size: 31px;"></span><span style="font-size: 30px;"></span><span style="font-size: 29px;"></span><span style="font-size: 28px;"></span><span style="font-size: 27px;"></span><span style="font-size: 26px;"></span><span style="font-size: 25px;"></span><span style="font-size: 24px;"></span><span style="font-size: 23px;"></span><span style="font-size: 22px;">双击输入文字</span></b></a></p>',
           // 显示/隐藏
           'visible': true,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
           'css': {
-            'top': '417px',
-            'left': '130px',
+            'top': '117px',
+            'left': '30px',
             'width': '300px',
-            'height': '32px'
+            'height': '320px',
+            'z-index': 999
           },
           contentCss: {
 
@@ -419,7 +420,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': null,
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素外层 .element-container 的样式，样式名用小驼峰命名
@@ -482,7 +483,7 @@ const scenedata = {
           // 元素内部的内容，可能是一段html
           'content': 'map element',
           // 显示/隐藏
-          'visible': true,
+          'visible': false,
           // 锁定
           'lock': false,
           // 元素样式，样式名用小驼峰命名
@@ -566,7 +567,7 @@ const scenedata = {
           "name": "image element",
           "type": 2,
           "sound": null,
-          "visible": true,
+          "visible": false,
           "lock": false,
           "css": {
             "top": "-22px",

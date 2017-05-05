@@ -85,7 +85,8 @@ const initStore = (sceneData) => {
           if(element.properties.required && element.properties.data === ''){
             return {
               fail: true,
-              msg: `input : ( ${element.name} ) field ( ${element.properties.name} ) required`
+              // msg: `输入框元素 : ( ${element.properties.name} ) 字段 ( ${element.properties.name} ) 必填`
+              msg: `请填写${element.properties.name}`
             };
           }
           return {
@@ -101,19 +102,22 @@ const initStore = (sceneData) => {
             if (row.required && row.data === '') {
               return {
                 fail: true,
-                msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) required`
+                // msg: `联系表单元素: ( ${element.name} ) 字段 ( ${row.fieldName} ) 必填`
+                msg: `请填写${row.fieldName}`
               };
             } else{
-              if(row.fieldName === '邮箱' && !emailPattern.test(row.data)){
+              if(row.fieldName === '邮箱' && row.data != '' && !emailPattern.test(row.data)){
                 return {
                   fail: true,
-                  msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) is not a email!`
+                  // msg: `联系表单元素: ( ${element.name} ) 字段 ( ${row.fieldName} ) 不是邮箱格式!`
+                  msg: `${row.fieldName}格式错误`
                 };
               }
-              if((row.fieldName === '手机' || row.fieldName === '电话') && !telPatrn1.test(row.data)){
+              if((row.fieldName === '手机' || row.fieldName === '电话') && row.data != '' && !telPatrn1.test(row.data)){
                 return {
                   fail: true,
-                  msg: `contact form : ( ${element.name} ) field ( ${row.fieldName} ) is not a telNumber!`
+                  // msg: `联系表单元素: ( ${element.name} ) 字段 ( ${row.fieldName} ) 只能包含数字!`
+                  msg: `${row.fieldName}格式错误`
                 };
               }
               return {
@@ -130,6 +134,13 @@ const initStore = (sceneData) => {
           }).map(op => {
             return op.text;
           }).join();
+          if(element.properties.required && selectContent === ''){
+            return {
+              fail: true,
+              // msg: `选项表单元素 : ( ${element.properties.title} ) 为必选`
+              msg: `请选择${element.properties.title}`
+            }
+          }
           return {
             fieldname: element.properties.title,
             value: selectContent
@@ -271,7 +282,7 @@ const initStore = (sceneData) => {
         }
         if(focused){
           let actualTop = parseInt(eleData._clonedCss.top) + state.currentPageDeltaY;
-          if(actualTop > state.screenHeight / 2){
+          if(actualTop > state.screenHeight / 2 || actualTop < 0){
             Object.assign(eleData.css, {
               // left: '20px',
               top: `${50 - state.currentPageDeltaY}px`,

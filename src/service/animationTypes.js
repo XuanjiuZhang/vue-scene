@@ -1,11 +1,12 @@
 // 进入动画
 const inAnimation = [
-  {
+  /*{
     name: '弹跳进入',
     type: 1,
     iconClass: 'bounce-in',
     animationClass: ['animated', 'bounce'] }
-  , {
+  , */
+  {
     name: '弹入',
     type: 2,
     iconClass: 'bounce-in',
@@ -170,6 +171,12 @@ const inAnimation = [
 ];
 // 强调动画
 const emphasizeAnimation = [
+  {
+    name: '弹跳',
+    type: 1,
+    iconClass: 'bounce-in',
+    animationClass: ['animated', 'bounce']
+  },
   {
     name: '闪烁',
     type: 7,

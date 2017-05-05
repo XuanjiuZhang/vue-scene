@@ -76,7 +76,8 @@
           const {
             deltaY
           } = event;
-          this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight - this.pageData.pageOption.pageSize));
+          this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight
+           - this.pageData.pageOption.pageSize * this.finalScale));
         }
       };
       const panDown = (event) => {
@@ -84,7 +85,8 @@
           const {
             deltaY
           } = event;
-          this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight - this.pageData.pageOption.pageSize));
+          this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, this.screenHeight
+           - this.pageData.pageOption.pageSize * this.finalScale));
         }
       };
       const initHammer = () => {
@@ -115,7 +117,7 @@
             });
           } else {
             let down = this.deltaY === 0;
-            let up = this.deltaY === this.screenHeight - this.pageData.pageOption.pageSize;
+            let up = this.deltaY === this.screenHeight - this.pageData.pageOption.pageSize * this.finalScale;
             this.changeCurrentPageDeltaY({currentPageDeltaY: this.deltaY});
             this.activePageCanUpDown({ down, up });
           }
@@ -174,7 +176,8 @@
             }
         } = this.pageData;
         return {
-          height: pageOption.longPage && (pageOption.pageSize > this.screenHeight) ? pageOption.pageSize + 'px' : '100%',
+          height: pageOption.longPage && (pageOption.pageSize > this.screenHeight) ?
+           pageOption.pageSize * this.finalScale + 'px' : '100%',
           width: '100%',
           position: 'relative',
           overflow: 'hidden',
@@ -188,7 +191,7 @@
       },
       parsedTrailerLink() {
         const outLink = this.sceneData.trailerLabel.labelLink;
-        if(outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
+        if(outLink && outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
           return 'http://' + outLink;
         }else{
           return outLink;
@@ -196,7 +199,7 @@
       },
       parsedTrademarkInfoSite() {
         const outLink = this.sceneData.trailerLabel.trademarkInfoSite;
-        if(outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
+        if(outLink && outLink.indexOf('http://') < 0 && outLink.indexOf('https://') < 0 && outLink.indexOf('ftp://') < 0 && outLink.indexOf('rtsp://') < 0 && outLink.indexOf('mms://') < 0){
           return 'http://' + outLink;
         }else{
           return outLink;

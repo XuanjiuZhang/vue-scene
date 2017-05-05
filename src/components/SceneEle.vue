@@ -31,23 +31,25 @@ export default {
     eleStyle: function(){
       const { notOpacity, width, height, top, left, padding } = this.eleData.css;
       // const topRatio = parseInt(top) / this.editorHeight;
-      const leftRatio = parseInt(left) / this.editorWidth;
+      // const leftRatio = parseInt(left) / this.editorWidth;
 
       const newWidth = parseInt(width) * this.finalScale;
       const newHeight = parseInt(height) * this.finalScale; 
-      const growHeight = newHeight - parseInt(height);
+      const newTop = parseInt(top) * this.finalScale;
+      const newLeft = parseInt(left) * this.finalScale;
+      /*const growHeight = newHeight - parseInt(height);
       var newTop = 0;
-      if(parseInt(top) >= 200){
-        newTop = parseInt(top) - growHeight;
+      newTop = Math.max(0, parseInt(top) - growHeight);
+      if(parseInt(top) >= 486){
+        newTop = parseInt(top) - growHeight / 2;
       }else{
         newTop = parseInt(top);
-      }
+      }*/
       /*if(parseInt(top) + newHeight > this.pageData.pageOption.pageSize){
         newTop = this.pageData.pageOption.pageSize - newHeight;
       }else{
         newTop = parseInt(top);
       }*/
-      const newLeft = this.screenWidth * leftRatio;
       /*const newTop = parseInt(top) * this.finalScale;
       const newLeft = parseInt(left) * this.finalScale;*/
 

@@ -1,3 +1,18 @@
+<style lang="less">
+  /*.type-text-circle-check {
+    color: #13ce66
+  }*/
+  /*.type-text-information{
+    color: #50bfff
+  }
+  .type-text-warning{
+    color: #FF7F24
+  }
+  .type-text-circle-cross{
+    color: #ff4949
+  }*/
+</style>
+
 <template>
   <div>
     <a class="submit-btn" href="" :style="computedBtnStyle" @click.prevent="submit">{{eleData.properties.buttonName}}</a>
@@ -9,6 +24,7 @@
     mapMutations,
     mapActions
   } from 'vuex';
+  import { MessageBox } from 'element-ui';
   export default {
     props: ['eleData', 'pageIndex', 'finalScale'],
     data() {
@@ -47,13 +63,49 @@
           this.inSubmitting = false;
           console.log('submit fail');
           console.log(reject);
+          const errMsg = reject.reduce((msg, nextRejection) => {
+              return msg +  nextRejection.msg + ';';
+            }, '');
+          /*Message({
+                message: errMsg,
+                type: 'warning',
+                duration: 200000
+              });*/
+          MessageBox({
+              title: '表单字段错误',
+              message: errMsg,
+              // type: 'warning',
+              duration: 2000,
+              showConfirmButton: false
+            });
+          /*reject.forEach(rejection => {
+              Message({
+                message: rejection,
+                type: 'warning',
+                duration: 2000
+              });
+            });*/
         });
       },
       submit() {
         if (this.hasSubmitted) {
+          MessageBox({
+            title: '提交失败',
+            message: '只能提交一次！',
+            // type: 'warning',
+            duration: 2000,
+            showConfirmButton: false
+          });
           return '只能提交一次！';
         }
         if (this.inSubmitting) {
+          MessageBox({
+            title: '提交失败',
+            message: '正在提交中...',
+            // type: 'warning',
+            duration: 2000,
+            showConfirmButton: false
+          });
           return '正在提交中...';
         }
 
@@ -65,11 +117,26 @@
         const afterSubmit = () => {
           this.hasSubmitted = true;
           let { properties: { info, outLink } } = this.eleData;
-          _.isString(info) && alert(info);
+          /*_.isString(info) && alert(info);
           if (this.shouldAppendHttp(outLink)) {
             window.open(`https://${outLink}`);
           } else {
             window.open(outLink);
+          }*/
+          if(_.isString(info)){
+            MessageBox({
+              title: '提交成功',
+              message: info,
+              type: 'success',
+              duration: 2000,
+              callback: () => {
+                if (this.shouldAppendHttp(outLink)) {
+                  window.open(`https://${outLink}`);
+                } else {
+                  window.open(outLink);
+                }
+              }
+            });
           }
           return;
         };
@@ -83,6 +150,28 @@
             this.doFormDataSubmit(payload, () => {});
           }, reject => {
             console.log(reject);
+            const errMsg = reject.reduce((msg, nextRejection) => {
+              return msg +  nextRejection.msg + ';';
+            }, '');
+            /*Message({
+                message: errMsg,
+                type: 'warning',
+                duration: 2000
+              });*/
+            MessageBox({
+              title: '表单字段错误',
+              message: errMsg,
+              // type: 'warning',
+              duration: 2000,
+              showConfirmButton: false
+            });
+            /*reject.forEach(rejection => {
+              Message({
+                message: rejection.msg,
+                type: 'warning',
+                duration: 2000
+              });
+            });*/
           }); 
         }else{
           this.doFormDataSubmit(payload, afterSubmit);

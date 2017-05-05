@@ -15,8 +15,8 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/newScene.json'
 // global.testSceneData = testSceneData;
-// import testSceneData from './vuex/scenedata2';
-// global.testSceneData = testSceneData;
+/*import testSceneData from './vuex/scenedata2';
+global.testSceneData = testSceneData;*/
 
 (function () {
   const initCanvas = (ids, config) => {
