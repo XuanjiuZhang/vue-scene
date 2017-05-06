@@ -18,10 +18,12 @@ export default {
       if(this.finalScale > 1){
         let fontGroup = this.eleData.content.match(fontPattern);
         let showContent = this.eleData.content;
-        fontGroup.forEach(ft => {
-          let size = ft.match(numPattern)[0];
-          showContent = showContent.replace(size, Math.floor(parseInt(size) * this.finalScale));
-        });
+        if(fontGroup){
+          fontGroup.forEach(ft => {
+            let size = ft.match(numPattern)[0];
+            showContent = showContent.replace(size, Math.floor(parseInt(size) * this.finalScale));
+          });
+        }
         return showContent;
       }else{
         return this.eleData.content;

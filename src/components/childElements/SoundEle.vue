@@ -58,15 +58,21 @@ export default {
     }
   },
   mounted(){
+    const onceSuc = _.once(() => {
+      this.loadElementSuccess();
+    });
     this.$refs.audio.oncanplay = () => {
       console.log(this.eleData.properties.musicSrc, 'Audio canplay 加载成功');
-      this.loadElementSuccess();
+      onceSuc();
     };
     this.$refs.audio.onerror = () => {
       console.log(this.eleData.properties.musicSrc, 'Audio加载失败');
-      this.loadElementSuccess();
+      onceSuc();
     };
-
+    setTimeout(function() {
+      onceSuc();
+    }, 3000);
+    
   },
   methods: {
     ...mapMutations(['loadElementSuccess']),

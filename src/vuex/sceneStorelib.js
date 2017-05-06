@@ -214,10 +214,14 @@ const initStore = (sceneData) => {
         const element = state.sceneData.pages[pageIndex].elements.find((element) => {
           return element.id === eleId;
         });
-        const heightStandard = state.screenHeight * .5;
+        const hScale = state.screenHeight / state.editorHeight;
+        const wScale = state.screenWidth / state.editorWidth;
+        const finalScale = Math.min(hScale, wScale);
+        const heightStandard = state.screenHeight * .5 / finalScale;
         const playingStyle = {
           height: heightStandard + 'px',
-          width: state.screenWidth + 'px',
+          // width: '100%',
+          width: state.screenWidth / finalScale + 'px',
           left: 0,
           top: state.screenHeight * .1 + 'px',
           zIndex: 99999

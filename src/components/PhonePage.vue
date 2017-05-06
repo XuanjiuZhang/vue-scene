@@ -126,6 +126,9 @@
 
       this.$watch('currentPageIndex', (newValue) => {
         defineUpDown();
+        if(newValue != this.index){
+          this.deltaY = 0;
+        }
       });
 
       defineUpDown();
