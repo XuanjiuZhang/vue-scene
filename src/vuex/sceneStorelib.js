@@ -7,10 +7,11 @@ import sceneDataPrepare from '../service/sceneDataPrepare';
 import { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle } from '../service/animationPlayer';
 import SceneEditor from '../service/sceneLayout';
 
-const initStore = (sceneData) => {
+const initStore = (sceneData, elementID) => {
   const preMsg = sceneDataPrepare(sceneData);
   console.log(preMsg);
-  const sceneEditor = new SceneEditor(320, 486);
+  const domEle = document.getElementById(elementID);
+  const sceneEditor = new SceneEditor(320, 486, domEle.offsetWidth, domEle.offsetHeight);
   sceneEditor.transCss(sceneData);
   console.log(sceneData);
   animationPlayer.initAnimatedEle(sceneData);
@@ -438,6 +439,9 @@ const initStore = (sceneData) => {
   });
 
   Object.assign(animationPlayer, { store });
+  domEle.style.position = 'relative';
+  domEle.innerHTML = '<Scene></Scene>';
+  store.commit('measureOutterEl', { $el: domEle });
 
   return store;
 }

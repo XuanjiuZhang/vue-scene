@@ -140,7 +140,7 @@ global.testSceneData = testSceneData;
 
   global.previewScene = {
     init(sceneData, elementID) {
-      const sceneStore = initStore(sceneData);
+      const sceneStore = initStore(sceneData, elementID);
       weixinOauth(sceneData).then(res => {
         if(res.notOauth){
           return {};
@@ -165,10 +165,6 @@ global.testSceneData = testSceneData;
           store: sceneStore, // 注入到所有子组件1
           components: { Scene }
         });
-        const domEle = document.getElementById(elementID);
-        domEle.style.position = 'relative';
-        domEle.innerHTML = '<Scene></Scene>';
-        sceneStore.commit('measureOutterEl', { $el: domEle });
         instance.$mount('#' + elementID);
         global.previewScene.initedInstance = instance;
       });

@@ -1,9 +1,12 @@
 import _ from 'underscore';
 
 class SceneEditor{
-  constructor(width, height){
-    this.width = width;
-    this.height = height;
+  constructor(editorWidth, editorHeight, screenWidth, screenHeight){
+    this.editorWidth = editorWidth;
+    this.editorHeight = editorHeight;
+    this.screenWidth = screenWidth;
+    this.screenHeight = screenHeight;
+    this.scale = screenWidth / editorWidth;
   }
   transCss(sceneData){
     if(_.isArray(sceneData.pages)){
@@ -17,19 +20,23 @@ class SceneEditor{
   transSigleElementCss = (element, page) => {
     const { pageOption: { longPage, pageSize} } = page;
     const {left, top, height, width} = element.css;
-    const pLeft = parseInt(left) / this.width * 100 + '%';
+    const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
+    const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
     var pTop = '';
+    var pHeight = '';
     console.log(top);
     console.log(longPage);
     console.log(pageSize);
     if(longPage){
       pTop = parseInt(top) / parseInt(pageSize) * 100 + '%';
+      pHeight = parseInt(height) / parseInt(pageSize) * 100 + '%';
     }else{
-      pTop = parseInt(top) / this.height * 100 + '%';
+      pTop = parseInt(top) / this.editorHeight * 100 + '%';
+      pHeight = parseInt(height) / this.editorHeight * 100 + '%';
     }
     console.log(pTop);
-    const pHeight = parseInt(height) / this.height * 100 + '%';
-    const pWidth = parseInt(width) / this.width * 100 + '%';
+    console.log(pHeight);
+    // const pHeight = parseInt(editorHeight) / this.editorHeight * 100 + '%';
     element.transCss = {};
     Object.assign(element.transCss, element.css, {
       left: pLeft,
