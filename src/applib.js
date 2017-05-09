@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import _ from 'underscore';
 window._ = _;
+import {MessageBox} from 'element-ui';
 import sceneApi from './api/sceneApi';
 import initStore from './vuex/sceneStorelib'
 import Scene from './components/scene.vue'
@@ -15,8 +16,8 @@ import qrcanvas from 'qrcanvas'
 // test
 // import testSceneData from './vuex/newScene.json'
 // global.testSceneData = testSceneData;
-import testSceneData from './vuex/scenedata2';
-global.testSceneData = testSceneData;
+// import testSceneData from './vuex/scenedata2';
+// global.testSceneData = testSceneData;
 
 (function () {
   const initCanvas = (ids, config) => {
@@ -200,6 +201,13 @@ global.testSceneData = testSceneData;
       global.previewScene.initBySceneCode(sceneInfo).then(response => {
         console.log(response);
         if (!response.ok) {
+          MessageBox({
+              title: '错误',
+              message: '该场景不存在',
+              type: 'warning',
+              duration: 5000,
+              showConfirmButton: true
+            });
           return;
         }
         return response.json();

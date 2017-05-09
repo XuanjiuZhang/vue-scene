@@ -157,7 +157,7 @@
   import 'element-ui/lib/theme-default/index.css';
   import {
     Carousel,
-    CarouselItem
+    CarouselItem,
   } from 'element-ui';
   Vue.component(Carousel.name, Carousel);
   Vue.component(CarouselItem.name, CarouselItem);

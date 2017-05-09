@@ -64,13 +64,8 @@
           console.log('submit fail');
           console.log(reject);
           const errMsg = reject.reduce((msg, nextRejection) => {
-              return msg +  nextRejection.msg + ';';
+              return msg +  nextRejection.msg + '  ';
             }, '');
-          /*Message({
-                message: errMsg,
-                type: 'warning',
-                duration: 200000
-              });*/
           MessageBox({
               title: '表单字段错误',
               message: errMsg,
@@ -78,13 +73,6 @@
               duration: 2000,
               showConfirmButton: false
             });
-          /*reject.forEach(rejection => {
-              Message({
-                message: rejection,
-                type: 'warning',
-                duration: 2000
-              });
-            });*/
         });
       },
       submit() {
@@ -117,17 +105,11 @@
         const afterSubmit = () => {
           this.hasSubmitted = true;
           let { properties: { info, outLink } } = this.eleData;
-          /*_.isString(info) && alert(info);
-          if (this.shouldAppendHttp(outLink)) {
-            window.open(`https://${outLink}`);
-          } else {
-            window.open(outLink);
-          }*/
           if(_.isString(info)){
             MessageBox({
               title: '提交成功',
               message: info,
-              type: 'success',
+              // type: 'success',
               duration: 2000,
               callback: () => {
                 if (this.shouldAppendHttp(outLink)) {
@@ -151,13 +133,8 @@
           }, reject => {
             console.log(reject);
             const errMsg = reject.reduce((msg, nextRejection) => {
-              return msg +  nextRejection.msg + ';';
+              return msg +  nextRejection.msg + '  ';
             }, '');
-            /*Message({
-                message: errMsg,
-                type: 'warning',
-                duration: 2000
-              });*/
             MessageBox({
               title: '表单字段错误',
               message: errMsg,
@@ -165,13 +142,6 @@
               duration: 2000,
               showConfirmButton: false
             });
-            /*reject.forEach(rejection => {
-              Message({
-                message: rejection.msg,
-                type: 'warning',
-                duration: 2000
-              });
-            });*/
           }); 
         }else{
           this.doFormDataSubmit(payload, afterSubmit);

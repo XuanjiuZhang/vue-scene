@@ -21,10 +21,10 @@ module.exports = {
     // vendor: ['whatwg-fetch', './lib/hammer.min.js']
   },
   output: {
-    path: path.join(__dirname, '/assets/fonts/'),
+    path: path.join(__dirname, '/h5/assets/fonts/'),
     // filename: '[name].js',
     filename: 'previewLib.min.js',
-    publicPath: '/assets/fonts/',
+    publicPath: '/h5/assets/fonts/',
     chunkFilename: '[name].min.js?[hash:8]'
   },
   module: {
