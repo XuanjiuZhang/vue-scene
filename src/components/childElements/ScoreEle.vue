@@ -55,7 +55,7 @@
 <script>
 import { mapMutations } from 'vuex';
 export default {
-  props: ['eleData', 'pageIndex'],
+  props: ['eleData', 'pageIndex', 'finalScale'],
   data() {
     return {
       currentScore: 0,
@@ -94,16 +94,16 @@ export default {
       }
       switch (properties.iconStyle.iconSize) {
         case 0:
-          style.width = '28px';
-          style.height = '28px';
+          style.width = 28 * this.finalScale + 'px';
+          style.height = 28 * this.finalScale + 'px';
           break;
         case 1:
-          style.width = '22px';
-          style.height = '22px';
+          style.width = 22 * this.finalScale + 'px';
+          style.height = 22 * this.finalScale + 'px';
           break;
         case 2:
-          style.width = '14px';
-          style.height = '14px';
+          style.width = 14 * this.finalScale + 'px';
+          style.height = 14 * this.finalScale + 'px';
           break;
       }
       return style;

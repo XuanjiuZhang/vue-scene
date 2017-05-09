@@ -14,10 +14,8 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-// import testSceneData from './vuex/newScene.json'
-// global.testSceneData = testSceneData;
-// import testSceneData from './vuex/scenedata2';
-// global.testSceneData = testSceneData;
+import testSceneData from './test/invite.json' ;
+global.testSceneData = testSceneData;
 
 (function () {
   const initCanvas = (ids, config) => {
@@ -211,6 +209,15 @@ import qrcanvas from 'qrcanvas'
           return;
         }
         return response.json();
+      }, error => {
+        MessageBox({
+              title: '错误',
+              message: '该场景不存在',
+              type: 'warning',
+              duration: 5000,
+              showConfirmButton: true
+            });
+        return ;
       }).then(sceneData => {
         if (isMobile === 'true') {
           global.previewScene.init(sceneData, 'root');

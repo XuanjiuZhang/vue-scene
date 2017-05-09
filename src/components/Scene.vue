@@ -584,9 +584,10 @@
         };
       },
       finalScale() {
-        const hScale = this.screenHeight / this.editorHeight;
+        /*const hScale = this.screenHeight / this.editorHeight;
         const wScale = this.screenWidth / this.editorWidth;
-        return Math.min(hScale, wScale);
+        return Math.min(hScale, wScale);*/
+        return this.screenWidth / this.editorWidth;
       },
       shouldStopPanUp(){
         const { pageOption: {banTurnPage, turnPageMode} } = this.activePage;

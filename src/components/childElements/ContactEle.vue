@@ -28,25 +28,13 @@
       contactStyle() {
         const { properties } = this.eleData;
         const { inputStyle } = properties;
-        return Object.assign({}, inputStyle, { 'height': `${parseInt(inputStyle.height) * this.finalScale * .8}px` });
-        // if(this.finalScale >= 1.1){
-        //   return Object.assign({}, inputStyle, { 'height': `${parseInt(inputStyle.height) * this.finalScale * .8}px` });
-        // }else{
-        //   return Object.assign({}, inputStyle, { 'height': `${parseInt(inputStyle.height) * this.finalScale}px` });
-        // }
+        return Object.assign({}, inputStyle, { 'height': `${parseInt(inputStyle.height) * this.finalScale}px` });
       },
       contactDivStyle() {
         const { properties } = this.eleData;
         const { inputStyle } = properties;
         return Object.assign({}, inputStyle,
-           { 'height': `${parseInt(inputStyle.height) * this.finalScale * .8}px`, 'border': undefined });
-        // if(this.finalScale >= 1.1){
-        //   return Object.assign({}, inputStyle,
-        //    { 'height': `${parseInt(inputStyle.height) * this.finalScale * .8}px`, 'border': undefined });
-        // }else{
-        //   return Object.assign({}, inputStyle,
-        //    { 'height': `${parseInt(inputStyle.height) * this.finalScale}px`, 'border': undefined });
-        // }
+           { 'height': `${parseInt(inputStyle.height) * this.finalScale}px`, 'border': undefined });
       }
     },
     beforeDestroy(){

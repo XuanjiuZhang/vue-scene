@@ -1,0 +1,3494 @@
+{
+  "_id": {
+    "$oid": "590be2e5c8fc340001bbcf34"
+  },
+  "application": "normal",
+  "applyCase": 0,
+  "applyTemplate": 0,
+  "assigntoUser": [],
+  "bgAudio": {},
+  "code": "4hpsDgq",
+  "count": {
+    "view": 34,
+    "eleCount": {}
+  },
+  "createTime": 1493951205556,
+  "createUser": "c7a01b3a-7a8c-4574-7ebd-08d46b4306c6",
+  "description": "",
+  "fonts": [],
+  "grid": {
+    "gridVisable": true,
+    "color": "rgba(150, 150, 150, 0.2)",
+    "guideVisable": true,
+    "snapVisable": true
+  },
+  "id": "48b1b740313a11e78f8c13a48a77ffcf",
+  "image": "/cdn/f0/42/50120d845e036f5e2b23d92f84a2.png",
+  "industry": "62b93068-144f-4283-f43c-08d45c4e825b",
+  "name": "邀请函场景_副本",
+  "organizationid": "be9fccf0-9028-48d4-0c40-08d46b430694",
+  "pageMode": 1,
+  "pages": [
+    {
+      "id": 520,
+      "name": "第1页",
+      "num": 1,
+      "pageOption": {
+        "longPage": true,
+        "pageSize": 800,
+        "banTurnPage": false,
+        "turnPageMode": 1
+      },
+      "pageBackground": {
+        "color": "#ffffff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 92625976,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p style=\"text-align: center;\"><span style=\"color: rgb(23, 14, 245);\">竞网瓷砖井湾子店</span></p><p style=\"text-align: center;\"><span style=\"color: rgb(23, 14, 245);\">活动地点：湖南长沙井</span><a style=\"color: rgb(28, 19, 248);\">湾子家具城</a></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "389px",
+            "left": "2px",
+            "width": "313px",
+            "height": "90px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "5s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "5s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": -1,
+          "__originTop": 390,
+          "__isOriginRecord": false,
+          "__originWidth": 277,
+          "__originHeight": 90,
+          "__containerLeft": 274,
+          "__containerTop": 616,
+          "animate": [
+            {
+              "type": 67,
+              "duration": 1,
+              "delay": 5,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(下方放大)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomInUp"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 87810808,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\">开企庆典</span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 21px; font-weight: bold;\">THEOPENINGCEREMONY</span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"><span style=\"font-weight: bold;\"><br></span></span></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 5, 5); font-size: 64px;\"></span></p><p></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "241px",
+            "left": "29px",
+            "width": "275px",
+            "height": "135px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "4s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "4s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 29,
+          "__originTop": 254,
+          "__isOriginRecord": false,
+          "__originWidth": 275,
+          "__originHeight": 655,
+          "__containerLeft": 301,
+          "__containerTop": 468,
+          "animate": [
+            {
+              "type": 53,
+              "duration": 1,
+              "delay": 4,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(右下旋入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateInUpLeft"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 97732223,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(245, 15, 15);\">2017.5.4</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "154px",
+            "left": "114px",
+            "width": "91px",
+            "height": "28px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "3s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "3s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 114,
+          "__originTop": 154,
+          "__isOriginRecord": false,
+          "__containerLeft": 386,
+          "__containerTop": 381,
+          "__originWidth": 91,
+          "__originHeight": 19,
+          "animate": [
+            {
+              "type": 31,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(右方淡入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "fadeInRight"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 57504905,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "73px",
+            "left": "56px",
+            "width": "201px",
+            "height": "201px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/50/7f/cb8a1212b1add483cf2f920a2b67.png",
+            "size": 581340,
+            "originalWidth": 1270,
+            "originalHeight": 1270
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 57,
+          "__originTop": 72,
+          "__isOriginRecord": false,
+          "__originWidth": 192,
+          "__originHeight": 192,
+          "__containerLeft": 328,
+          "__containerTop": 300,
+          "animate": [
+            {
+              "type": 45,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(Y翻入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "flipInY"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 15582309,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(245, 18, 18);\"><span style=\"font-weight: bold; font-size: 40px;\">邀请函</span></span></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"><span style=\"font-weight: bold; font-size: 23px;\">INVITAION</span></span></p><p><span style=\"color: rgb(245, 18, 18);\"><span style=\"font-weight: bold; font-size: 40px;\"><br></span></span></p><p><br></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p><p><span style=\"color: rgb(245, 18, 18);\"></span></p><p></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "-1px",
+            "left": "94px",
+            "width": "147px",
+            "height": "89px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 94,
+          "__originTop": -1,
+          "__isOriginRecord": false,
+          "__originWidth": 147,
+          "__originHeight": 83,
+          "__containerLeft": 366,
+          "__containerTop": 226,
+          "animate": [
+            {
+              "type": 3,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(上方弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceInDown"
+          ],
+          "__lastAnimationPromise": {}
+        }
+      ]
+    },
+    {
+      "id": 36473,
+      "name": "第02页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "#fff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 51578940,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p style=\"font-size: 42px;\"><span style=\"color: rgb(228, 9, 35); font-weight: bold;\">品牌故事</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "30px",
+            "left": "69px",
+            "width": "170px",
+            "height": "57px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 67,
+          "__originTop": -1,
+          "__isOriginRecord": false,
+          "__originWidth": 170,
+          "__originHeight": 126,
+          "__containerLeft": 405,
+          "__containerTop": 141.5,
+          "animate": [
+            {
+              "type": 7,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 1,
+              "__title": "强调动画(闪烁)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "flash"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 14098570,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "-16px",
+            "left": "68px",
+            "width": "164px",
+            "height": "162.20765027322406px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 1.0964360839930265,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/50/f9/b86393b089f734e4154e33021b97.png",
+            "size": 118621,
+            "originalWidth": 242,
+            "originalHeight": 240
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 72,
+          "__originTop": -11,
+          "__isOriginRecord": false,
+          "__containerLeft": 404,
+          "__containerTop": 95.5,
+          "__originWidth": 183,
+          "__originHeight": 181,
+          "animate": [
+            {
+              "type": 81,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 1,
+              "__title": "强调动画(旋转)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "simple360Rotate"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 85161153,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(238, 8, 36);\">&nbsp; &nbsp; 竞网瓷砖是湖南竞网竞网智赢有限公司的知名品牌瓷砖，以品质铸就品牌，科技推动品牌，口碑传播品牌为宗旨。企业难过ISO9001管理体系认证ISO140001环境系认证及产品质量“3C”认证等，专业生产地砖、墙砖、专业用砖及卫浴产品</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "235px",
+            "left": "-1px",
+            "width": "324px",
+            "height": "210px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "",
+            "WebkitAnimationDelay": "",
+            "WebkitAnimationIterationCount": "",
+            "MozAnimationDuration": "",
+            "MozAnimationDelay": "",
+            "MozAnimationIterationCount": ""
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": -1,
+          "__originTop": 235,
+          "__isOriginRecord": false,
+          "__containerLeft": 335,
+          "__containerTop": 346.5,
+          "__originWidth": 321,
+          "__originHeight": 60,
+          "animate": [
+            {
+              "type": 33,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(下方淡入)"
+            }
+          ],
+          "animationClass": [],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 33522523,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(233, 6, 33);\">十年知名好品牌，专业品牌</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "177px",
+            "left": "39px",
+            "width": "240px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 22,
+          "__originTop": 69,
+          "__isOriginRecord": false,
+          "__containerLeft": 375,
+          "__containerTop": 288.5,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "animate": [
+            {
+              "type": 31,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(右方淡入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "fadeInRight"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 26044700,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "-69px",
+            "left": "27px",
+            "width": "253.02681992337165px",
+            "height": "254px",
+            "notOpacity": 48,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/2d/37/79875b9fe215e5993cdd4d9b7a4d.png",
+            "size": 245931,
+            "originalWidth": 658,
+            "originalHeight": 663
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 27,
+          "__originTop": -68,
+          "__isOriginRecord": false,
+          "__originWidth": 260,
+          "__originHeight": 261,
+          "__containerLeft": 363,
+          "__containerTop": 42.5,
+          "animate": [
+            {
+              "type": 7,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 1,
+              "__title": "强调动画(闪烁)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "flash"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 77005679,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "178px",
+            "left": "-6px",
+            "width": "320px",
+            "height": "320px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/6f/ff/5fbdbacce87760776d6a31f38988.png",
+            "size": 152275,
+            "originalWidth": 658,
+            "originalHeight": 658
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 3,
+          "__originTop": 125,
+          "__isOriginRecord": false,
+          "__containerLeft": 330,
+          "__containerTop": 289.5
+        }
+      ]
+    },
+    {
+      "id": 479089,
+      "name": "第12页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "#fff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 81783889,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span id=\"selectionBoundary_1493884668308_16359243489694375\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_9849168575420453\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_8590356775906922\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_738335438355725\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_5747854343575005\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670615_20300331585164133\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670810_15666721236467818\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p style=\"font-size: 15px;\"><span style=\"color: rgb(250, 242, 243);\">旗舰店面积达460，舒适宽敞的购物空间，是你舒心购物的体验前提</span></p><p><span id=\"selectionBoundary_1493884670809_6706094362166113\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670614_9979003363907952\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_8464431193190476\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_40577267884626966\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_527553652070242\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_6145600777036178\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884668307_1260489052324878\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "177px",
+            "left": "78px",
+            "width": "242px",
+            "height": "45px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "1s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "1s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 78,
+          "__originTop": 123,
+          "__isOriginRecord": false,
+          "__containerLeft": 168.5,
+          "__containerTop": 288.5,
+          "__originWidth": 242,
+          "__originHeight": 90,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 1,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 52926686,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p>更大</p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "177px",
+            "left": "21px",
+            "width": "51px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "1s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "1s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "__originLeft": 21,
+          "__originTop": 177,
+          "__containerLeft": 111.5,
+          "__containerTop": 288.5,
+          "animate": [
+            {
+              "type": 4,
+              "duration": 1,
+              "delay": 1,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左方弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceInLeft"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 74857815,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(15, 14, 15);\">店面特色</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "31px",
+            "left": "117px",
+            "width": "100px",
+            "height": "41px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 114,
+          "__originTop": 32,
+          "__isOriginRecord": false,
+          "__originWidth": 100,
+          "__originHeight": 30,
+          "__containerLeft": 207.5,
+          "__containerTop": 142.5,
+          "animate": [
+            {
+              "type": 4,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左方弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceInLeft"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 83433205,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "-7px",
+            "left": "101px",
+            "width": "101px",
+            "height": "109.65714285714286px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 90,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/df/06/3a7c2bef7293ac2d81a7ff7a00ce.png",
+            "size": 30125,
+            "originalWidth": 496,
+            "originalHeight": 544
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 101,
+          "__originTop": -7,
+          "__isOriginRecord": false,
+          "__originWidth": 140,
+          "__originHeight": 152,
+          "__containerLeft": 191.5,
+          "__containerTop": 104.5,
+          "animate": [
+            {
+              "type": 50,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(旋转进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 1464523,
+          "name": "image element副本",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "162px",
+            "left": "7px",
+            "width": "61px",
+            "height": "65.83168316831683px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 90,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/df/06/3a7c2bef7293ac2d81a7ff7a00ce.png",
+            "size": 30125,
+            "originalWidth": 496,
+            "originalHeight": 544
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 7,
+          "__originTop": 162,
+          "__isOriginRecord": false,
+          "__originWidth": 101,
+          "__originHeight": 109,
+          "__containerLeft": 97.5,
+          "__containerTop": 273.5,
+          "animate": [
+            {
+              "type": 50,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(旋转进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 96600128,
+          "name": "text element副本",
+          "type": 1,
+          "sound": null,
+          "content": "<p>更全</p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "265px",
+            "left": "23px",
+            "width": "51px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "__originLeft": 23,
+          "__originTop": 265,
+          "__containerLeft": 113.5,
+          "__containerTop": 376.5,
+          "animate": [
+            {
+              "type": 4,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左方弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceInLeft"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 40766177,
+          "name": "image element副本副本",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "248px",
+            "left": "8px",
+            "width": "61px",
+            "height": "65.83168316831683px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 90,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/df/06/3a7c2bef7293ac2d81a7ff7a00ce.png",
+            "size": 30125,
+            "originalWidth": 496,
+            "originalHeight": 544
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 8,
+          "__originTop": 248,
+          "__isOriginRecord": false,
+          "__originWidth": 101,
+          "__originHeight": 109,
+          "__containerLeft": 98.5,
+          "__containerTop": 359.5,
+          "animate": [
+            {
+              "type": 50,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(旋转进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 1620156,
+          "name": "image element副本副本",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "328px",
+            "left": "11px",
+            "width": "61px",
+            "height": "65.83168316831683px",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 90,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/df/06/3a7c2bef7293ac2d81a7ff7a00ce.png",
+            "size": 30125,
+            "originalWidth": 496,
+            "originalHeight": 544
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 11,
+          "__originTop": 328,
+          "__isOriginRecord": false,
+          "__originWidth": 101,
+          "__originHeight": 109,
+          "__containerLeft": 101.5,
+          "__containerTop": 439.5,
+          "animate": [
+            {
+              "type": 50,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(旋转进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 97518022,
+          "name": "text element副本副本",
+          "type": 1,
+          "sound": null,
+          "content": "<p>更好</p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "345px",
+            "left": "27px",
+            "width": "51px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "3s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "3s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "__originLeft": 23,
+          "__originTop": 255,
+          "__containerLeft": 117.5,
+          "__containerTop": 456.5,
+          "animate": [
+            {
+              "type": 4,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左方弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceInLeft"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 31088579,
+          "name": "text element副本",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span id=\"selectionBoundary_1493884668308_16359243489694375\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_9849168575420453\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_8590356775906922\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_738335438355725\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_5747854343575005\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670615_20300331585164133\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670810_15666721236467818\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p style=\"font-size: 15px;\"><span style=\"color: rgb(250, 242, 243);\">全系列的商品陈列，再也不用来回奔波货比三家，让你省时省力更省心。</span></p><p><span id=\"selectionBoundary_1493884670809_6706094362166113\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670614_9979003363907952\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_8464431193190476\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_40577267884626966\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_527553652070242\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_6145600777036178\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884668307_1260489052324878\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "262px",
+            "left": "77px",
+            "width": "242px",
+            "height": "45px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 77,
+          "__originTop": 262,
+          "__isOriginRecord": false,
+          "__containerLeft": 167.5,
+          "__containerTop": 373.5,
+          "__originWidth": 242,
+          "__originHeight": 90,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 54826322,
+          "name": "text element副本副本",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span id=\"selectionBoundary_1493884668308_16359243489694375\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_9849168575420453\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_8590356775906922\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_738335438355725\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_5747854343575005\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670615_20300331585164133\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670810_15666721236467818\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p style=\"font-size: 15px;\"><span style=\"color: rgb(250, 242, 243);\">配备专业的家装服务人员，快速解决你的安装疑问，给你提供比五星更好的服务标准</span></p><p><span id=\"selectionBoundary_1493884670809_6706094362166113\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670614_9979003363907952\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670416_8464431193190476\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884670208_40577267884626966\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669840_527553652070242\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884669185_6145600777036178\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p><span id=\"selectionBoundary_1493884668307_1260489052324878\" class=\"rangySelectionBoundary\" style=\"line-height: 0; display: none;\">﻿</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "341px",
+            "left": "77px",
+            "width": "242px",
+            "height": "66px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "3s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "3s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 77,
+          "__originTop": 341,
+          "__isOriginRecord": false,
+          "__containerLeft": 167.5,
+          "__containerTop": 452.5,
+          "__originWidth": 242,
+          "__originHeight": 90,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        }
+      ]
+    },
+    {
+      "id": 436986,
+      "name": "第22页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "#fff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 88942225,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(248, 244, 245);\">领取时间：10月31日9:00—20:00</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "374px",
+            "left": "14px",
+            "width": "300px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 8,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "4s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "4s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 8,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 32,
+          "__originTop": 370,
+          "__isOriginRecord": false,
+          "__containerLeft": 350,
+          "__containerTop": 522,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 4,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 21897408,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "233px",
+            "left": "22px",
+            "width": "204px",
+            "height": "129.4125px",
+            "notOpacity": 0,
+            "zIndex": 7,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/04/c4/bb445a41b6de16572bfafe0b0787.png",
+            "size": 44195,
+            "originalWidth": 603,
+            "originalHeight": 383
+          },
+          "__originalZIndex": 7,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 24,
+          "__originTop": 233,
+          "__isOriginRecord": false,
+          "__originWidth": 320,
+          "__originHeight": 203,
+          "__containerLeft": 358,
+          "__containerTop": 381,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 88431757,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "204px",
+            "left": "175px",
+            "width": "145px",
+            "height": "169.46875px",
+            "notOpacity": 0,
+            "zIndex": 6,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "3s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "3s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/b2/9f/4719781848c79f71f5e635453b2d.png",
+            "size": 177040,
+            "originalWidth": 391,
+            "originalHeight": 457
+          },
+          "__originalZIndex": 6,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 175,
+          "__originTop": 243,
+          "__isOriginRecord": false,
+          "__originWidth": 145,
+          "__originHeight": 169,
+          "__containerLeft": 511,
+          "__containerTop": 352,
+          "animate": [
+            {
+              "type": 2,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(弹入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "bounceIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 42467540,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "245px",
+            "left": "207px",
+            "width": "102px",
+            "height": "102px",
+            "notOpacity": 0,
+            "zIndex": 5,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/47/90/54769f359d2f3d80409b6942dab4.png",
+            "size": 15504,
+            "originalWidth": 256,
+            "originalHeight": 256
+          },
+          "__originalZIndex": 5,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 50,
+          "__originTop": 297,
+          "__isOriginRecord": false,
+          "__originWidth": 72,
+          "__originHeight": 72,
+          "__containerLeft": 543,
+          "__containerTop": 393,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 43954482,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><a style=\"color: rgb(252, 246, 247); font-weight: bold;\">数据量有限 &nbsp; 先到先得</a></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "158px",
+            "left": "55px",
+            "width": "252px",
+            "height": "44px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "1s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "1s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 55,
+          "__originTop": 158,
+          "__isOriginRecord": false,
+          "__containerLeft": 391,
+          "__containerTop": 306,
+          "__originWidth": 227,
+          "__originHeight": 44,
+          "animate": [
+            {
+              "type": 54,
+              "duration": 1,
+              "delay": 1,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左下旋入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateInUpRight"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 16397313,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p style=\"text-align: left; font-size: 18px;\"><span style=\"color: rgb(252, 249, 249); font-size: 18px; font-weight: bold;\">开业当天，进店即可领取开业礼品一份</span></p><p style=\"font-size: 18px;\"></p><p></p><p></p><p style=\"font-size: 18px;\"></p><p></p><p></p><p style=\"font-size: 18px;\"></p><p></p><p></p><p style=\"font-size: 18px;\"></p><p></p><p></p><p style=\"font-size: 18px;\"></p><p></p><p></p><p style=\"font-size: 18px;\"></p><p></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "128px",
+            "left": "5px",
+            "width": "316px",
+            "height": "27px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "1s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "1s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 5,
+          "__originTop": 128,
+          "__isOriginRecord": false,
+          "__containerLeft": 341,
+          "__containerTop": 276,
+          "__originWidth": 316,
+          "__originHeight": 32,
+          "animate": [
+            {
+              "type": 54,
+              "duration": 1,
+              "delay": 1,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(左下旋入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateInUpRight"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 42574712,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(252, 247, 248);\">开业优惠一</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "46px",
+            "left": "108px",
+            "width": "108px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 98,
+          "__originTop": 20,
+          "__isOriginRecord": false,
+          "__containerLeft": 444,
+          "__containerTop": 194,
+          "__tempName": "text element",
+          "__isModifyName": false,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 7880532,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "1px",
+            "left": "95px",
+            "width": "129px",
+            "height": "125.31428571428573px",
+            "notOpacity": 52,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/2e/0b/9d2902593690eff0c16ee8cfba0f.png",
+            "size": 189398,
+            "originalWidth": 618,
+            "originalHeight": 609
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 105,
+          "__originHeight": 102,
+          "__originLeft": 85,
+          "__originTop": -25,
+          "__containerLeft": 431,
+          "__containerTop": 149,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        }
+      ]
+    },
+    {
+      "id": 507255,
+      "name": "第32页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "#fff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 22013732,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><a style=\"font-size: 17px; color: rgb(253, 251, 253);\">【接受邀请，可免费获得抽奖机会一次】</a></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "362px",
+            "left": "2px",
+            "width": "332px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 8,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "5s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "5s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 8,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 2,
+          "__originTop": 378,
+          "__isOriginRecord": false,
+          "__originWidth": 332,
+          "__originHeight": 30,
+          "__containerLeft": 338,
+          "__containerTop": 510,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 5,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 39668083,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p style=\"font-size: 15px;\"><span style=\"color: rgb(255, 253, 255); font-size: 15px;\">到店消费任意金额，可获得现场抽奖机会一次</span></p><p style=\"font-size: 15px;\"></p><p></p><p></p><p><br></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "335px",
+            "left": "9px",
+            "width": "321px",
+            "height": "43px",
+            "notOpacity": 0,
+            "zIndex": 7,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "4s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "4s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 7,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 6,
+          "__originTop": 348,
+          "__isOriginRecord": false,
+          "__originWidth": 321,
+          "__originHeight": 28,
+          "__containerLeft": 345,
+          "__containerTop": 483,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 4,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 72800590,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"background-color: rgb(151, 60, 148); color: rgb(253, 252, 253);\">中奖率100%，缤纷好礼等你来拿</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "294px",
+            "left": "14px",
+            "width": "300px",
+            "height": "31px",
+            "notOpacity": 0,
+            "zIndex": 6,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "3s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "3s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 6,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 14,
+          "__originTop": 294,
+          "__isOriginRecord": false,
+          "__containerLeft": 350,
+          "__containerTop": 442,
+          "__originWidth": 300,
+          "__originHeight": 60,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 3,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 59794177,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": false,
+          "lock": false,
+          "css": {
+            "top": "138px",
+            "left": "42px",
+            "width": "131px",
+            "height": "121.99375px",
+            "notOpacity": 0,
+            "zIndex": 5,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/fb/46/911c68d7e91b4aadcdf87c508745.png",
+            "size": 507777,
+            "originalWidth": 1000,
+            "originalHeight": 934
+          },
+          "__originalZIndex": 5,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 45,
+          "__originTop": 136,
+          "__isOriginRecord": false,
+          "__originWidth": 320,
+          "__originHeight": 298,
+          "__containerLeft": 378,
+          "__containerTop": 286,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 16226845,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": false,
+          "lock": false,
+          "css": {
+            "top": "149px",
+            "left": "156px",
+            "width": "116px",
+            "height": "65.975px",
+            "notOpacity": 0,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "2s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "2s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/d8/6b/107bc011df037f0778e37eca737e.png",
+            "size": 91930,
+            "originalWidth": 640,
+            "originalHeight": 364
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 148,
+          "__originTop": 163,
+          "__isOriginRecord": false,
+          "__originWidth": 320,
+          "__originHeight": 182,
+          "__containerLeft": 492,
+          "__containerTop": 297,
+          "animate": [
+            {
+              "type": 63,
+              "duration": 1,
+              "delay": 2,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(放大进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "zoomIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 26740136,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"font-size: 49px; color: rgb(248, 7, 46); font-weight: bold;\">幸运</span></p><p></p><p></p><div><span style=\"font-size: 22px;\"><span style=\"font-weight: bold;\"><span style=\"color: rgb(248, 7, 46);\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span style=\"color: rgb(247, 242, 243);\">大抽奖</span></span></span></div><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "137px",
+            "left": "37px",
+            "width": "268px",
+            "height": "111px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "1s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "1s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": "rzgfzfhj"
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 36,
+          "__originTop": 138,
+          "__isOriginRecord": false,
+          "__originWidth": 268,
+          "__originHeight": 139,
+          "__containerLeft": 372,
+          "__containerTop": 286,
+          "animate": [
+            {
+              "type": 50,
+              "duration": 1,
+              "delay": 1,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(旋转进入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rotateIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 98928916,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(253, 249, 250);\">开业优惠二</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "49px",
+            "left": "115px",
+            "width": "117px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 112,
+          "__originTop": 47,
+          "__isOriginRecord": false,
+          "__containerLeft": 451,
+          "__containerTop": 197,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 39718238,
+          "name": "image element副本",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "4px",
+            "left": "98px",
+            "width": "129px",
+            "height": "125.31428571428573px",
+            "notOpacity": 52,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/2e/0b/9d2902593690eff0c16ee8cfba0f.png",
+            "size": 189398,
+            "originalWidth": 618,
+            "originalHeight": 609
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 105,
+          "__originHeight": 102,
+          "__originLeft": 85,
+          "__originTop": -25,
+          "__containerLeft": 434,
+          "__containerTop": 152,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        }
+      ]
+    },
+    {
+      "id": 815459,
+      "name": "第42页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "#fff",
+        "image": "/cdn/63/9a/7f068b06e8008c152dd216e614a1.jpg"
+      },
+      "elements": [
+        {
+          "id": 14316616,
+          "name": "button form element",
+          "type": 8,
+          "sound": null,
+          "content": "button form element",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "393px",
+            "left": "24px",
+            "zIndex": 5,
+            "width": "256px",
+            "height": "36px",
+            "opacity": 1,
+            "notOpacity": 0,
+            "padding": 0
+          },
+          "contentCss": {
+            "fontSize": "16px",
+            "lineHeight": "36px",
+            "borderRadius": "4px",
+            "borderRadiusPerc": 0,
+            "backgroundColor": "transparent",
+            "boxShadow": "0px 0px 0px rgba(0,0,0,0.5)",
+            "boxShadowDirection": 0,
+            "boxShadowSize": 0,
+            "textAlign": "center",
+            "borderStyle": "outset",
+            "borderColor": "rgba(250,3,3,1)",
+            "borderWidth": "3px",
+            "rotateZ": 0,
+            "cursor": "pointer"
+          },
+          "properties": {
+            "formId": 815459,
+            "buttonName": "提交",
+            "info": "谢谢参与！",
+            "outLink": "",
+            "buttonStyle": {
+              "fontSize": "16px",
+              "color": "#fff",
+              "backgroundColor": "rgba(247,3,62,1)",
+              "line-height": "36px"
+            }
+          },
+          "__originalZIndex": 5,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 34,
+          "__originTop": 393,
+          "__isOriginRecord": false,
+          "__originWidth": 110,
+          "__originHeight": 36,
+          "__containerLeft": 355,
+          "__containerTop": 190.5
+        },
+        {
+          "id": 84937921,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(250, 246, 250); font-weight: bold;\">竞网瓷砖井湾子店</span></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "121px",
+            "left": "78px",
+            "width": "171px",
+            "height": "31px",
+            "notOpacity": 0,
+            "zIndex": 3,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 3,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 72,
+          "__originTop": 121,
+          "__isOriginRecord": false,
+          "__containerLeft": 409,
+          "__containerTop": -81.5,
+          "__originWidth": 171,
+          "__originHeight": 25
+        },
+        {
+          "id": 13273196,
+          "name": "image element副本副本",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "1px",
+            "left": "101px",
+            "width": "129px",
+            "height": "125.31428571428573px",
+            "notOpacity": 52,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/2e/0b/9d2902593690eff0c16ee8cfba0f.png",
+            "size": 189398,
+            "originalWidth": 618,
+            "originalHeight": 609
+          },
+          "__originalZIndex": 1,
+          "isActive": false,
+          "__isEdit": false,
+          "__isOriginRecord": false,
+          "__originWidth": 105,
+          "__originHeight": 102,
+          "__originLeft": 95,
+          "__originTop": 3,
+          "__containerLeft": 432,
+          "__containerTop": -201.5,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 61334529,
+          "name": "text element副本",
+          "type": 1,
+          "sound": null,
+          "content": "<p><span style=\"color: rgb(253, 249, 250);\">邀请回执单</span></p><p></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "46px",
+            "left": "116px",
+            "width": "117px",
+            "height": "30px",
+            "notOpacity": 0,
+            "zIndex": 2,
+            "opacity": 1,
+            "padding": 0,
+            "WebkitAnimationDuration": "1s",
+            "WebkitAnimationDelay": "0s",
+            "WebkitAnimationIterationCount": 1,
+            "MozAnimationDuration": "1s",
+            "MozAnimationDelay": "0s",
+            "MozAnimationIterationCount": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "__originalZIndex": 2,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 115,
+          "__originTop": 79,
+          "__isOriginRecord": false,
+          "__containerLeft": 447,
+          "__containerTop": -156.5,
+          "__originWidth": 300,
+          "__originHeight": 30,
+          "animate": [
+            {
+              "type": 61,
+              "duration": 1,
+              "delay": 0,
+              "countNum": 1,
+              "count": null,
+              "__tableCss": "on",
+              "__currentTabIndex": 0,
+              "__title": "进入动画(转入)"
+            }
+          ],
+          "animationClass": [
+            "animated",
+            "rollIn"
+          ],
+          "__lastAnimationPromise": {}
+        },
+        {
+          "id": 6950065,
+          "name": "input form element",
+          "type": 7,
+          "sound": null,
+          "content": "",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "155px",
+            "left": "31px",
+            "width": "251px",
+            "height": "36px",
+            "notOpacity": 5,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "rgba(0,0,0,0.05)",
+            "borderStyle": "outset",
+            "borderColor": "rgba(247,13,13,1)",
+            "borderWidth": "2px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "rgba(243,5,5,1)",
+              "x": 1,
+              "y": 1,
+              "vague": 35,
+              "extension": 5,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "name": "姓名",
+            "data": "",
+            "required": true,
+            "style": {
+              "width": "100%",
+              "height": "100%",
+              "padding": "0 5px",
+              "borderColor": "rgba(253,250,250,0.05)"
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 26,
+          "__originTop": 157,
+          "__isOriginRecord": false,
+          "__containerLeft": 362,
+          "__containerTop": -47.5,
+          "__originWidth": 220,
+          "__originHeight": 36
+        },
+        {
+          "id": 66806868,
+          "name": "input form element副本",
+          "type": 7,
+          "sound": null,
+          "content": "",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "226px",
+            "left": "30px",
+            "width": "251px",
+            "height": "36px",
+            "notOpacity": 5,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "rgba(0,0,0,0.05)",
+            "borderStyle": "outset",
+            "borderColor": "rgba(247,13,13,1)",
+            "borderWidth": "2px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "rgba(243,5,5,1)",
+              "x": 1,
+              "y": 1,
+              "vague": 35,
+              "extension": 5,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "name": "手机号",
+            "data": "",
+            "required": true,
+            "style": {
+              "width": "100%",
+              "height": "100%",
+              "padding": "0 5px",
+              "borderColor": "rgba(253,250,250,0.05)"
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 30,
+          "__originTop": 227,
+          "__isOriginRecord": false,
+          "__containerLeft": 361,
+          "__containerTop": 23.5,
+          "__originWidth": 251,
+          "__originHeight": 36
+        },
+        {
+          "id": 47352109,
+          "name": "input form element副本副本",
+          "type": 7,
+          "sound": null,
+          "content": "",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "297px",
+            "left": "30px",
+            "width": "251px",
+            "height": "36px",
+            "notOpacity": 5,
+            "zIndex": 4,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "rgba(0,0,0,0.05)",
+            "borderStyle": "outset",
+            "borderColor": "rgba(247,13,13,1)",
+            "borderWidth": "2px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "rgba(243,5,5,1)",
+              "x": 1,
+              "y": 1,
+              "vague": 35,
+              "extension": 5,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "name": "人数",
+            "data": "",
+            "required": true,
+            "style": {
+              "width": "100%",
+              "height": "100%",
+              "padding": "0 5px",
+              "borderColor": "rgba(253,250,250,0.05)"
+            }
+          },
+          "__originalZIndex": 4,
+          "isActive": false,
+          "__isEdit": false,
+          "__originLeft": 30,
+          "__originTop": 297,
+          "__isOriginRecord": false,
+          "__containerLeft": 361,
+          "__containerTop": 94.5,
+          "__originWidth": 251,
+          "__originHeight": 36
+        }
+      ],
+      "formID": "590b04552b1547000180474b"
+    }
+  ],
+  "play": {
+    "loop": true,
+    "auto": false,
+    "interval": 3
+  },
+  "purpose": "39d6607f-d384-427b-6da1-08d45c4e825a",
+  "sendstatus": 0,
+  "share": {
+    "mode": 1,
+    "showCount": true,
+    "bindDomain": true,
+    "des": ""
+  },
+  "showPageNo": false,
+  "sort": 0,
+  "status": 1,
+  "trailerLabel": {
+    "type": 1,
+    "style": 1
+  },
+  "type": 0,
+  "updateTime": 1494301639950
+}

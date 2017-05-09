@@ -103,14 +103,14 @@
         });
         this.HammerManager.add(this.Pan);
       };
-      if (this.pageData.pageOption.longPage && this.pageData.pageOption.pageSize > this.screenHeight) {
+      if (this.pageData.pageOption.longPage && this.pageData.pageOption.pageSize * this.finalScale > this.screenHeight) {
         initHammer();
       }
 
       const defineUpDown = () => {
         if (this.currentPageIndex === this.index) {
           // 不是长页面 或者页面高度小于一个屏幕的高度, 可以翻页
-          if (!this.pageData.pageOption.longPage || this.pageData.pageOption.pageSize <= this.screenHeight) {
+          if (!this.pageData.pageOption.longPage || this.pageData.pageOption.pageSize * this.finalScale <= this.screenHeight) {
             this.activePageCanUpDown({
               down: true,
               up: true
@@ -142,7 +142,7 @@
       }
     },
     computed: {
-      ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex']),
+      ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex', 'editorWidth']),
       showArrow() {
         var show = true;
         if (this.pageData.pageOption.banTurnPage) {
@@ -171,7 +171,7 @@
         const {
           pageOption = {
               longPage: false,
-              pageSize: 486
+              pageSize: this.screenHeight
             },
             pageBackground = {
               image: '',
@@ -179,8 +179,10 @@
             }
         } = this.pageData;
         return {
-          height: pageOption.longPage && (pageOption.pageSize > this.screenHeight) ?
-           pageOption.pageSize * this.finalScale + 'px' : '100%',
+          // height: pageOption.longPage && (pageOption.pageSize > this.screenHeight) ?
+          //  pageOption.pageSize * this.finalScale + 'px' : '100%',
+          height: pageOption.longPage && (pageOption.pageSize * this.finalScale > this.screenHeight) ? 
+          pageOption.pageSize * this.finalScale + 'px' : '100%',
           width: '100%',
           position: 'relative',
           overflow: 'hidden',

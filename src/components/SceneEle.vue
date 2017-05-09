@@ -29,36 +29,9 @@ export default {
   computed: {
     ...mapGetters(['screenWidth', 'screenHeight', 'editorWidth', 'editorHeight']),
     eleStyle: function(){
-      const { notOpacity, width, height, top, left, padding } = this.eleData.css;
-      // const topRatio = parseInt(top) / this.editorHeight;
-      // const leftRatio = parseInt(left) / this.editorWidth;
-
-      const newWidth = parseInt(width) * this.finalScale;
-      const newHeight = parseInt(height) * this.finalScale; 
-      const newTop = parseInt(top) * this.finalScale;
-      const newLeft = parseInt(left) * this.finalScale;
-      /*const growHeight = newHeight - parseInt(height);
-      var newTop = 0;
-      newTop = Math.max(0, parseInt(top) - growHeight);
-      if(parseInt(top) >= 486){
-        newTop = parseInt(top) - growHeight / 2;
-      }else{
-        newTop = parseInt(top);
-      }*/
-      /*if(parseInt(top) + newHeight > this.pageData.pageOption.pageSize){
-        newTop = this.pageData.pageOption.pageSize - newHeight;
-      }else{
-        newTop = parseInt(top);
-      }*/
-      /*const newTop = parseInt(top) * this.finalScale;
-      const newLeft = parseInt(left) * this.finalScale;*/
-
-      return Object.assign({}, this.eleData.css, {
+      const { notOpacity, width, height, top, left, padding } = this.eleData.transCss;
+      return Object.assign({}, this.eleData.transCss, {
         opacity: _.isUndefined(notOpacity) ? 1 : 1 - notOpacity / 100,
-        width: _.isUndefined(width) ? '100px' : newWidth + 'px',
-        height: _.isUndefined(height) ? '100px' : newHeight + 'px',
-        top: _.isUndefined(top) ? 0 : newTop + 'px',
-        left: _.isUndefined(left) ? 0 : newLeft + 'px',
         padding: _.isUndefined(padding) ? 0 : padding,
         display: this.eleData.visible && this.eleData.animationVisible ? '' : 'none'
       });
@@ -84,15 +57,15 @@ export default {
         backgroundColor: _.isUndefined(backgroundColor) ? 'transparent' : backgroundColor,
         borderStyle: _.isUndefined(borderStyle) ? 'none' : borderStyle,
         borderColor: _.isUndefined(borderColor) ? 'rgba(85,85,85,1)' : borderColor,
-        borderWidth: _.isUndefined(borderWidth) ? '1px' : borderWidth,
-        borderRadius: _.isUndefined(borderRadius) ? 0 : borderRadius,
+        borderWidth: _.isUndefined(borderWidth) ? '1px' : `${Math.round(parseInt(borderWidth) * this.finalScale)}px`,
+        borderRadius: _.isUndefined(borderRadius) ? 0 : `${Math.round(parseInt(borderRadius) * this.finalScale)}px`,
         rotateZ: _.isUndefined(rotateZ) ? 0 : rotateZ,
         boxShadow: boxShadowStr,
         // translate3d ... not use for now
         transform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
         WebkitTransform: _.isUndefined(rotateZ) ? '' : `rotateZ(${rotateZ}deg)`,
-        fontSize: _.isUndefined(fontSize) ? undefined : `${parseInt(fontSize) * this.finalScale}px`,
-        lineHeight: _.isUndefined(lineHeight) ? undefined : `${parseInt(lineHeight) * this.finalScale}px`
+        fontSize: _.isUndefined(fontSize) ? undefined : `${Math.round(parseInt(fontSize) * this.finalScale)}px`,
+        lineHeight: _.isUndefined(lineHeight) ? undefined : `${Math.round(parseInt(lineHeight) * this.finalScale)}px`
       });
     },
   },

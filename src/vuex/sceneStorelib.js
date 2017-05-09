@@ -5,10 +5,14 @@ Vue.use(Vuex);
 import sceneApi from '../api/sceneApi';
 import sceneDataPrepare from '../service/sceneDataPrepare';
 import { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle } from '../service/animationPlayer';
+import SceneEditor from '../service/sceneLayout';
 
 const initStore = (sceneData) => {
   const preMsg = sceneDataPrepare(sceneData);
   console.log(preMsg);
+  const sceneEditor = new SceneEditor(320, 486);
+  sceneEditor.transCss(sceneData);
+  console.log(sceneData);
   animationPlayer.initAnimatedEle(sceneData);
 
   const VueEventBus = new Vue();
