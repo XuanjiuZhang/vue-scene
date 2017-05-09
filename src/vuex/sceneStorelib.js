@@ -219,27 +219,23 @@ const initStore = (sceneData, elementID) => {
         const element = state.sceneData.pages[pageIndex].elements.find((element) => {
           return element.id === eleId;
         });
-        const hScale = state.screenHeight / state.editorHeight;
-        const wScale = state.screenWidth / state.editorWidth;
-        const finalScale = Math.min(hScale, wScale);
-        const heightStandard = state.screenHeight * .5 / finalScale;
         const playingStyle = {
-          height: heightStandard + 'px',
-          // width: '100%',
-          width: state.screenWidth / finalScale + 'px',
-          left: 0,
-          top: state.screenHeight * .1 + 'px',
-          zIndex: 99999
+          height: '40%',
+          width: '100%',
+          top: '25%',
+          left: '0',
+          zIndex: 99999,
+          position: 'fixed'
         };
-        element.__originCss = _.extend({}, element.css);
-        _.extend(element.css, playingStyle);
+        element.__originTransCss = _.extend({}, element.transCss);
+        _.extend(element.transCss, playingStyle);
       },
       videoFrameClose(state, payload) {
         const { pageIndex, eleId } = payload;
         const element = state.sceneData.pages[pageIndex].elements.find((element) => {
           return element.id === eleId;
         });
-        _.extend(element.css, element.__originCss);
+        _.extend(element.transCss, element.__originTransCss);
       },
       toggleSelectOption(state, payload) {
         const { optionIndex, pageIndex, eleId } = payload;
@@ -285,7 +281,7 @@ const initStore = (sceneData, elementID) => {
         execGoPage(state, payload.index);
       },
       visualInput(state, payload){
-        const { eleData, focused } = payload;
+        /*const { eleData, focused } = payload;
         if(_.isUndefined(eleData._clonedCss)){
           eleData._clonedCss = _.clone(eleData.css);
         }
@@ -300,7 +296,7 @@ const initStore = (sceneData, elementID) => {
           }
         }else{
           Object.assign(eleData.css, eleData._clonedCss);
-        }
+        }*/
       },
       changeCurrentPageDeltaY(state, payload){
         state.currentPageDeltaY = payload.currentPageDeltaY;
