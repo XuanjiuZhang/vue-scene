@@ -20,7 +20,8 @@ export default {
   props: ['eleData'],
   methods: {
     ...mapMutations(['visualInput']),
-    handleFocus() {
+    handleFocus(e) {
+      console.log(e);
       this.visualInput({eleData: this.eleData, focused: true});
     },
     handleBlur() {

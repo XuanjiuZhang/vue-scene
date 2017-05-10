@@ -193,6 +193,7 @@ const initStore = (sceneData, elementID) => {
         if (state.currentPageIndex > 0) {
           execGoPage(state, state.currentPageIndex - 1);
         }else if(state.currentPageIndex === 0 && state.sceneData.play.loop){
+          state.loadPageMaxIndex = state.sceneData.pages.length - 1;
           execGoPage(state, state.sceneData.pages.length - 1);
         }
       },
@@ -222,7 +223,7 @@ const initStore = (sceneData, elementID) => {
         const playingStyle = {
           height: '40%',
           width: '100%',
-          top: '25%',
+          top: '18%',
           left: '0',
           zIndex: 99999,
           position: 'fixed'
