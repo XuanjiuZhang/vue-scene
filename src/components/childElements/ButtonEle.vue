@@ -14,7 +14,7 @@
 </style>
 
 <template>
-  <div>
+  <div ref="wrapper">
     <a class="submit-btn" href="" :style="computedBtnStyle" @click.prevent="submit">{{eleData.properties.buttonName}}</a>
   </div>
 </template>
@@ -22,7 +22,8 @@
 <script>
   import {
     mapMutations,
-    mapActions
+    mapActions,
+    mapGetters,
   } from 'vuex';
   import { MessageBox } from 'element-ui';
   export default {
@@ -33,11 +34,26 @@
         inSubmitting: false
       }
     },
+    /*mounted() {
+      setTimeout(() => {
+        this.wrapperHeight = this.$refs.wrapper.offsetHeight;
+      }, 100);
+    },
+    watch: {
+      'currentPageIndex'(newVal) {
+        if(newVal === this.pageIndex){
+          this.wrapperHeight = this.$refs.wrapper.offsetHeight;
+        }
+      }
+    },*/
     computed: {
+      ...mapGetters(['screenHeight', 'editorHeight']),
       computedBtnStyle() {
         const { properties } = this.eleData;
         const { buttonStyle } = properties;
-        return Object.assign({}, buttonStyle, { 'fontSize': `${parseInt(buttonStyle.fontSize) * this.finalScale}px` });
+        const maxScale = Math.max(this.screenHeight / this.editorHeight, this.finalScale);
+        return Object.assign({}, buttonStyle, { 'fontSize': `${parseInt(buttonStyle.fontSize) * this.finalScale}px`, 
+        'line-height': `${parseInt(buttonStyle['line-height'])  * maxScale}px` });
       }
     },
     methods: {

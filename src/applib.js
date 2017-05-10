@@ -14,7 +14,7 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-import testSceneData from './test/score.json' ;
+import testSceneData from './test/allElement.json' ;
 global.testSceneData = testSceneData;
 
 (function () {
