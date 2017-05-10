@@ -3,7 +3,7 @@
     z-index: 999999
   }
   .input-transform {
-    transition: .5s;
+    transition: .35s;
   }
 </style>
 <template>
@@ -159,15 +159,32 @@
             let movePercent = Math.abs(screenTop - this.adjustInputScreenTop);
             this.deltaY -= movePercent / 100 * this.screenHeight;
             console.log('adjust!');
+            setTimeout(() => {
+              this.phonePageClass['input-transform'] = false;
+            }, 500);
           }else if(screenTop < this.minInputScreenTop){
             this.phonePageClass['input-transform'] = true;
             this.savedDeltaY = this.deltaY;
             let movePercent = Math.abs(screenTop - this.adjustInputScreenTop);
             this.deltaY += movePercent / 100 * this.screenHeight;
             console.log('adjust!');
+            setTimeout(() => {
+              this.phonePageClass['input-transform'] = false;
+            }, 500);
           }
         }else if(this.currentPageIndex === this.index && _.isUndefined(newVal)){
-          this.deltaY = this.savedDeltaY;
+          // this.deltaY = this.savedDeltaY;
+          if (!this.pageData.pageOption.longPage || this.pageData.pageOption.pageSize * this.finalScale <= this.screenHeight) {
+            this.deltaY = this.savedDeltaY;
+          }
+          if(this.pageData.pageOption.longPage && this.pageData.pageOption.pageSize * this.finalScale > this.screenHeight){
+            if(this.deltaY > 0){
+              this.deltaY = 0;
+            }
+            if(this.deltaY < this.screenHeight - this.pageData.pageOption.pageSize * this.finalScale){
+              this.deltaY = this.screenHeight - this.pageData.pageOption.pageSize * this.finalScale;
+            }
+          }
           this.phonePageClass['input-transform'] = false;
         }
       }
@@ -179,8 +196,8 @@
       return {
         deltaY: 0,
         savedDeltaY: 0,
-        minInputScreenTop: 0,
-        maxInputScreenTop: 32,
+        minInputScreenTop: 8,
+        maxInputScreenTop: 28,
         adjustInputScreenTop: 20,
         phonePageClass: {
           phonePage: true,
