@@ -2,9 +2,12 @@
   .trailer-label-level {
     z-index: 999999
   }
+  .input-transform {
+    transition: .5s;
+  }
 </style>
 <template>
-    <div class="phonePage" :style="pageStyle" ref="phonePage">
+    <div :style="pageStyle" ref="phonePage" :class="phonePageClass">
         <SceneEle v-for="ele in pageData.elements" :key="ele.id"
          v-bind="{eleData: ele, pageIndex: index, finalScale, pageData}"></SceneEle>
 
@@ -133,16 +136,60 @@
 
       defineUpDown();
     },
+    watch: {
+      'currentFocusInput'(newVal) {
+        if(!window.isMobile){
+          return;
+        }
+        if(this.currentPageIndex === this.index && !_.isUndefined(newVal)){
+          // caculate screen position
+          var pageSize = 0;
+          const pageOption = this.pageData.pageOption;
+          if (pageOption.longPage && (pageOption.pageSize * this.finalScale > this.screenHeight)) {
+            pageSize = pageOption.pageSize * this.finalScale;
+          } else {
+            pageSize = this.screenHeight;
+          }
+          const screenTop = (parseInt(this.currentFocusElement.transCss.top) / 100 * pageSize + newVal.offsetTop + this.deltaY) / this.screenHeight * 100;
+          console.log('screenTop');
+          console.log(screenTop);
+          if(screenTop > this.maxInputScreenTop){
+            this.phonePageClass['input-transform'] = true;
+            this.savedDeltaY = this.deltaY;
+            let movePercent = Math.abs(screenTop - this.adjustInputScreenTop);
+            this.deltaY -= movePercent / 100 * this.screenHeight;
+            console.log('adjust!');
+          }else if(screenTop < this.minInputScreenTop){
+            this.phonePageClass['input-transform'] = true;
+            this.savedDeltaY = this.deltaY;
+            let movePercent = Math.abs(screenTop - this.adjustInputScreenTop);
+            this.deltaY += movePercent / 100 * this.screenHeight;
+            console.log('adjust!');
+          }
+        }else if(this.currentPageIndex === this.index && _.isUndefined(newVal)){
+          this.deltaY = this.savedDeltaY;
+          this.phonePageClass['input-transform'] = false;
+        }
+      }
+    },
     methods: {
       ...mapMutations(['activePageCanUpDown', 'changeCurrentPageDeltaY'])
     },
     data() {
       return {
-        deltaY: 0
+        deltaY: 0,
+        savedDeltaY: 0,
+        minInputScreenTop: 0,
+        maxInputScreenTop: 32,
+        adjustInputScreenTop: 20,
+        phonePageClass: {
+          phonePage: true,
+          'input-transform': false,
+        }
       }
     },
     computed: {
-      ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex', 'editorWidth']),
+      ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex', 'editorWidth', 'currentFocusInput', 'currentFocusElement']),
       showArrow() {
         var show = true;
         if (this.pageData.pageOption.banTurnPage) {

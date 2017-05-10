@@ -19,11 +19,13 @@
     props: ['eleData', 'finalScale'],
     methods: {
       ...mapMutations(['visualInput']),
-      handleFocus() {
-        this.visualInput({eleData: this.eleData, focused: true});
+      handleFocus(e) {
+        setTimeout(() => {
+          this.visualInput({eleData: this.eleData, domTarget: e.target, focused: true});
+        });
       },
       handleBlur() {
-        this.visualInput({eleData: this.eleData, focused: false});
+        this.visualInput({focused: false});
       }
     },
     computed: {

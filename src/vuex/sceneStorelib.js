@@ -33,7 +33,9 @@ const initStore = (sceneData, elementID) => {
     firstLoadComplete: false,
     loadedElementCount: 0,
     loadPageMaxIndex: 3,
-    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv'
+    BmapAk: 'KOrgR0r0RM4xotCjVoAhA9kUFoubHSVv',
+    currentFocusElement: undefined,
+    currentFocusInput: undefined,
   };
 
   const initEventBus = _.once(() => {
@@ -282,6 +284,14 @@ const initStore = (sceneData, elementID) => {
         execGoPage(state, payload.index);
       },
       visualInput(state, payload){
+        const { eleData, domTarget, focused } = payload;
+        if(focused){
+          state.currentFocusElement = eleData;
+          state.currentFocusInput = domTarget;
+        }else{
+          state.currentFocusElement = undefined;
+          state.currentFocusInput = undefined;
+        }
         /*const { eleData, focused } = payload;
         if(_.isUndefined(eleData._clonedCss)){
           eleData._clonedCss = _.clone(eleData.css);
@@ -367,6 +377,12 @@ const initStore = (sceneData, elementID) => {
       },
       sceneApi: state => {
         return state.sceneApi;
+      },
+      currentFocusInput: state => {
+        return state.currentFocusInput;
+      },
+      currentFocusElement: state => {
+        return state.currentFocusElement;
       }
     },
     actions: {

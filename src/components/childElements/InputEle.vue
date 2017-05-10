@@ -21,11 +21,12 @@ export default {
   methods: {
     ...mapMutations(['visualInput']),
     handleFocus(e) {
-      console.log(e);
-      this.visualInput({eleData: this.eleData, focused: true});
+      setTimeout(() => {
+        this.visualInput({eleData: this.eleData, domTarget: e.target, focused: true});
+      });
     },
     handleBlur() {
-      this.visualInput({eleData: this.eleData, focused: false});
+      this.visualInput({focused: false});
     }
   },
   beforeDestroy(){
