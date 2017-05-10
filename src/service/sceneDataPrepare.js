@@ -57,7 +57,7 @@ const ContactEle = (element) => {
     }
     Object.assign(element.properties.inputStyle, {
       'fontSize': '100%',
-      'height': '46px'
+      'height': '36px'
     });
   }else{
     result.success = true;

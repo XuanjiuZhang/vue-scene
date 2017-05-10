@@ -193,7 +193,7 @@ const initStore = (sceneData, elementID) => {
         if (state.currentPageIndex > 0) {
           execGoPage(state, state.currentPageIndex - 1);
         }else if(state.currentPageIndex === 0 && state.sceneData.play.loop){
-          state.loadPageMaxIndex = state.sceneData.pages.length - 1;
+          state.loadPageMaxIndex = state.sceneData.pages.length;
           execGoPage(state, state.sceneData.pages.length - 1);
         }
       },
