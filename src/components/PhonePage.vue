@@ -161,7 +161,7 @@
             console.log('adjust!');
             setTimeout(() => {
               this.phonePageClass['input-transform'] = false;
-            }, 500);
+            }, this.adjustTime);
           }else if(screenTop < this.minInputScreenTop){
             this.phonePageClass['input-transform'] = true;
             this.savedDeltaY = this.deltaY;
@@ -170,7 +170,7 @@
             console.log('adjust!');
             setTimeout(() => {
               this.phonePageClass['input-transform'] = false;
-            }, 500);
+            }, this.adjustTime);
           }
         }else if(this.currentPageIndex === this.index && _.isUndefined(newVal)){
           // this.deltaY = this.savedDeltaY;
@@ -199,6 +199,7 @@
         minInputScreenTop: 8,
         maxInputScreenTop: 28,
         adjustInputScreenTop: 20,
+        adjustTime: 350,
         phonePageClass: {
           phonePage: true,
           'input-transform': false,

@@ -24,9 +24,6 @@ class SceneEditor{
     const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
     var pTop = '';
     var pHeight = '';
-    console.log(top);
-    console.log(longPage);
-    console.log(pageSize);
     if(longPage){
       pTop = parseInt(top) / parseInt(pageSize) * 100 + '%';
       pHeight = parseInt(height) / parseInt(pageSize) * 100 + '%';
@@ -34,8 +31,6 @@ class SceneEditor{
       pTop = parseInt(top) / this.editorHeight * 100 + '%';
       pHeight = parseInt(height) / this.editorHeight * 100 + '%';
     }
-    console.log(pTop);
-    console.log(pHeight);
     // const pHeight = parseInt(editorHeight) / this.editorHeight * 100 + '%';
     element.transCss = {};
     Object.assign(element.transCss, element.css, {

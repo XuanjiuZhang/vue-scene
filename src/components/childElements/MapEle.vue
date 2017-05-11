@@ -7,42 +7,53 @@
 <script>
 import { mapActions, mapMutations, mapGetters } from 'vuex';
 export default {
-  props: ['eleData'],
+  props: ['eleData', 'pageIndex'],
   data(){
     return {
+      inited: false,
       mapInstance: undefined
     };
   },
   mounted(){
     this.loadElementSuccess();
-    this.loadBmap().then(BMap => {
-      if(this.sceneLoadedPercentage === 100){
-        this.initMap();
-      }else{
-        this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
-          if(newValue === 100){
-            this.initMap();
-            this.$off('sceneLoadedPercentage');
-          }
-        });
-      }
-    });
+    if(this.pageIndex === 0) {
+      this.preInit();
+    }
   },
   computed: {
-    ...mapGetters(['sceneLoadedPercentage'])
+    ...mapGetters(['sceneLoadedPercentage', 'currentPageIndex'])
   },
-  /*watch: {
-    sceneLoadedPercentage(curVal) {
-      if(curVal === 100){
-        this.initMap();
-        this.$off('sceneLoadedPercentage');
+  watch: {
+    currentPageIndex(curVal) {
+      if(curVal === this.pageIndex){
+        this.preInit();
+        this.$off('currentPageIndex');
       }
     }
-  },*/
+  },
   methods: {
     ...mapActions(['loadBmap']),
     ...mapMutations(['loadElementSuccess']),
+    preInit() {
+      console.log('preInit!');
+      this.loadBmap().then(BMap => {
+        console.log(this.sceneLoadedPercentage);
+        if(this.sceneLoadedPercentage === 100){
+          this.initMap();
+        }else{
+          this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
+            if(newValue === 100){
+              this.initMap();
+              this.$off('sceneLoadedPercentage');
+            }
+          });
+        }
+      });
+    },
     initMap(){
+      if(this.inited) {
+        return;
+      }
       const { properties: { currentCity, currentAddress} } = this.eleData;
       this.mapInstance = new BMap.Map(this.eleData.id + '-innerMap');
       // 禁用地图拖拽
@@ -53,7 +64,9 @@ export default {
       // this.mapInstance.disablePinchToZoom();
 
       this.mapInstance.clearOverlays();
+      console.log(this.eleData.properties);
       if(currentAddress){
+        console.log('use currentAddress!');
         let {lat, lng, level, title} = currentAddress;
         let BMapPoint = new BMap.Point(lng, lat);
         let opts = {
@@ -66,15 +79,16 @@ export default {
         } 
         let marker = new BMap.Marker(BMapPoint);
         this.mapInstance.addOverlay(marker);
-        this.mapInstance.centerAndZoom(BMapPoint, currentCity.level);
+        this.mapInstance.centerAndZoom(BMapPoint, level);
       }else if(currentCity){
+        console.log('use currentCity!');
         let {center, level} = currentCity;
         let BMapPoint = new BMap.Point(center.lng, center.lat);
         let marker = new BMap.Marker(BMapPoint);
         this.mapInstance.addOverlay(marker);
         this.mapInstance.centerAndZoom(BMapPoint, level);
       } 
-
+      this.inited = true;
     }
   },
 }
