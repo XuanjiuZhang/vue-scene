@@ -51,9 +51,9 @@
       computedBtnStyle() {
         const { properties } = this.eleData;
         const { buttonStyle } = properties;
-        const maxScale = Math.max(this.screenHeight / this.editorHeight, this.finalScale);
+        const hScale = this.screenHeight / this.editorHeight;
         return Object.assign({}, buttonStyle, { 'fontSize': `${parseInt(buttonStyle.fontSize) * this.finalScale}px`, 
-        'line-height': `${parseInt(buttonStyle['line-height'])  * maxScale}px` });
+        'line-height': `${parseInt(buttonStyle['line-height'])  * hScale}px` });
       }
     },
     methods: {

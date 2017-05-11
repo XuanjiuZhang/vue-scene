@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   props: ['eleData', 'finalScale'],
   mounted(){
@@ -12,16 +13,20 @@ export default {
     console.log(this.finalScale);
   },
   computed: {
+    ...mapGetters(['screenWidth', 'screenHeight', 'editorWidth', 'editorHeight']),
     parsedContent() {
+      const hScale = this.screenHeight / this.editorHeight;
+      const actualScale = Math.min(hScale, this.finalScale);
+      console.log(actualScale);
       const fontPattern = /font-size:\s*[\d]+px;/g;
       const numPattern = /[\d]+/g;
-      if(this.finalScale > 1){
+      if(actualScale > 1){
         let fontGroup = this.eleData.content.match(fontPattern);
         let showContent = this.eleData.content;
         if(fontGroup){
           fontGroup.forEach(ft => {
             let size = ft.match(numPattern)[0];
-            showContent = showContent.replace(size, Math.floor(parseInt(size) * this.finalScale));
+            showContent = showContent.replace(size, Math.floor(parseInt(size) * actualScale));
           });
         }
         return showContent;

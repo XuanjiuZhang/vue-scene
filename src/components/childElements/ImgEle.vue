@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img style="width: 100%;" :src="eleData.properties.src" :alt="eleData.name" draggable="false" ref="img">
+    <img :style="imgStyle" :src="eleData.properties.src" :alt="eleData.name" draggable="false" ref="img">
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 </style>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapGetters } from 'vuex';
 export default {
   props: ['eleData'],
   mounted(){
@@ -27,5 +27,26 @@ export default {
   methods: {
     ...mapMutations(['loadElementSuccess'])
   },
+  computed: {
+    ...mapGetters(['screenWidth', 'screenHeight', 'editorWidth', 'editorHeight']),
+    imgStyle() {
+      const editorWh = this.editorWidth / this.editorHeight;
+      const screenWh = this.screenWidth / this.screenHeight;
+      return {
+          width: '100%',
+          height: '100%'
+        }
+      /*if(screenWh > editorWh){
+        return {
+          width: '100%',
+          height: '100%'
+        }
+      }else{
+        return {
+          width: '100%',
+        }
+      }*/
+    }
+  }
 }
 </script>
