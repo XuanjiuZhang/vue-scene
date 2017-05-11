@@ -16,7 +16,7 @@ export default {
   },
   mounted(){
     this.loadElementSuccess();
-    if(this.pageIndex === 0) {
+    if(this.currentPageIndex === this.pageIndex) {
       this.preInit();
     }
   },
@@ -24,8 +24,8 @@ export default {
     ...mapGetters(['sceneLoadedPercentage', 'currentPageIndex'])
   },
   watch: {
-    currentPageIndex(curVal) {
-      if(curVal === this.pageIndex){
+    'currentPageIndex'(activeId) {
+      if(this.pageIndex === this.currentPageIndex){
         this.preInit();
         this.$off('currentPageIndex');
       }
