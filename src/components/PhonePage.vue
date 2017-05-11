@@ -138,9 +138,15 @@
     },
     watch: {
       'currentFocusInput'(newVal) {
-        if(!window.isMobile){
+        console.log(window.isMobile);
+        if(_.isUndefined(window.isMobile) || window.isMobile === 'false'){
           return;
         }
+        if (!_.isUndefined(window.userAgent) && /iphone|ipad|mac/i.test(window.userAgent.toLowerCase())){
+          console.log('ios currentFocusInput');
+          return;
+        }
+        console.log('android currentFocusInput');
         if(this.currentPageIndex === this.index && !_.isUndefined(newVal)){
           // caculate screen position
           var pageSize = 0;

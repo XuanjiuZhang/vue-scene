@@ -11,7 +11,7 @@ del = require('del');
 
 
 gulp.task('dev', ['cleanImage', 'copyImage'], function() {
-  config.entry.app.unshift('webpack-dev-server/client?http://localhost:8085/', 'webpack/hot/only-dev-server');
+  config.entry.app.unshift('webpack-dev-server/client?http://10.41.3.223:8085/', 'webpack/hot/only-dev-server');
 
   var compiler = webpack(config);
   var server = new webpackDevServer(compiler, {

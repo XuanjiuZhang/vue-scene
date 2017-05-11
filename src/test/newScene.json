@@ -1,4 +1,378 @@
-{"_id":{"$oid":"58b7dd9c56325a000d67c619"},"id":"c062c4b0ff2511e6860291b4fad021c1","code":"5gQnSWv","createTime":1488444828797,"industry":"62b93068-144f-4283-f43c-08d45c4e825b","purpose":"527d30bf-e6dd-4cb4-6d98-08d45c4e825a","name":"我的场景","status":1,"sendstatus":0,"image":"/cdn/5f/15/f3b43158e516a3c27ee21415b554.jpg","pageMode":1,"updateTime":1488606197483,"bgAudio":{"url":"/cdn/48/a5/68241d2306ffbd2e3fdb2ab2157a.mp3","name":"小苹果.mp3","id":"58b7dd6756325a000d67c618"},"description":"","sort":0,"count":{"view":0,"eleCount":{}},"showPageNo":false,"play":{"loop":true,"auto":false,"interval":3},"share":{"mode":1,"showCount":true,"bindDomain":true},"applyTemplate":0,"applyCase":0,"type":0,"fonts":[{
+{
+  "_id": {
+    "$oid": "58b7dd9c56325a000d67c619"
+  },
+  "id": "c062c4b0ff2511e6860291b4fad021c1",
+  "code": "5gQnSWv",
+  "createTime": 1488444828797,
+  "industry": "62b93068-144f-4283-f43c-08d45c4e825b",
+  "purpose": "527d30bf-e6dd-4cb4-6d98-08d45c4e825a",
+  "name": "我的场景",
+  "status": 1,
+  "sendstatus": 0,
+  "image": "/cdn/5f/15/f3b43158e516a3c27ee21415b554.jpg",
+  "pageMode": 1,
+  "updateTime": 1488606197483,
+  "bgAudio": {
+    "url": "/cdn/48/a5/68241d2306ffbd2e3fdb2ab2157a.mp3",
+    "name": "小苹果.mp3",
+    "id": "58b7dd6756325a000d67c618"
+  },
+  "description": "",
+  "sort": 0,
+  "count": {
+    "view": 0,
+    "eleCount": {}
+  },
+  "showPageNo": false,
+  "play": {
+    "loop": true,
+    "auto": false,
+    "interval": 3
+  },
+  "share": {
+    "mode": 1,
+    "showCount": true,
+    "bindDomain": true
+  },
+  "applyTemplate": 0,
+  "applyCase": 0,
+  "type": 0,
+  "fonts": [
+    {
       "name": "fz_cchjt",
       "url": "http://www.xmfshow.com/upload/files/font/scene/19054a00767f11e68ce54b17201c70fd/c626ac50768511e6aa3b677d424043bc.woff"
-    }],"grid":{"gridVisable":true,"color":"rgba(150, 150, 150, 0.2)","guideVisable":true,"snapVisable":true},"trailerLabel":{"type":1,"style":1},"weixinAuth":0,"pages":[{"id":520,"name":"第1页","num":1,"pageOption":{"longPage":true,"pageSize":832,"banTurnPage":false,"turnPageMode":2},"pageBackground":{"color":"#ffffff","image":"/cdn/99/7c/57590ba1b9e7012613820ecf5b02.jpg"},"elements":[{"id":36537,"name":"shape element","type":4,"sound":null,"content":null,"visible":true,"lock":false,"css":{"top":"120px","left":"20px","zIndex":1,"width":"100px","height":"100px","notOpacity":0,"opacity":1,"padding":0},"contentCss":{"backgroundColor":"transparent","borderStyle":"none","borderColor":"rgba(85,85,85,1)","borderWidth":"1px","borderRadius":"0px","rotateZ":0,"boxShadow":{"color":"transparent","x":0,"y":0,"vague":0,"extension":0,"inset":false},"cursor":"pointer"},"properties":{"svg":"<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"100px\" height=\"100px\" viewBox=\"0 0 100 100\" enable-background=\"new 0 0 100 100\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M71.633,2.28H28.367c-4.212,0-7.635,3.423-7.635,7.636v80.168c0,4.213,3.423,7.636,7.635,7.636h43.266\n\t\tc4.213,0,7.635-3.423,7.635-7.636V9.916C79.268,5.703,75.846,2.28,71.633,2.28z M43.001,9.255c0-1.044,0.84-1.884,1.884-1.884\n\t\th10.23c1.043,0,1.884,0.84,1.884,1.884v0.05c0,1.044-0.841,1.884-1.884,1.884h-10.23c-1.044,0-1.884-0.84-1.884-1.884V9.255z\n\t\t M50,94.856c-2.278,0-4.136-1.857-4.136-4.137c0-2.277,1.857-4.135,4.136-4.135c2.277,0,4.136,1.857,4.136,4.135\n\t\tC54.136,92.999,52.277,94.856,50,94.856z M72.905,82.449c0,0.699-0.573,1.272-1.272,1.272H28.367c-0.7,0-1.272-0.573-1.272-1.272\n\t\tV17.551c0-0.7,0.572-1.272,1.272-1.272h43.266c0.699,0,1.272,0.572,1.272,1.272V82.449z\" fill=\"rgba(219,47,47,1)\"></path>\n\t<path d=\"M66.556,67.18h-33.11c-0.697,0-1.261,0.563-1.261,1.259v0.025c0,0.696,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.563,1.26-1.26v-0.025C67.815,67.743,67.251,67.18,66.556,67.18z\" fill=\"rgba(213,41,41,1)\"></path>\n\t<path d=\"M66.556,74.814h-33.11c-0.697,0-1.261,0.564-1.261,1.26V76.1c0,0.695,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.564,1.26-1.26v-0.025C67.815,75.379,67.251,74.814,66.556,74.814z\" fill=\"rgba(182,28,28,1)\"></path>\n\t<path d=\"M66.556,59.544h-33.11c-0.697,0-1.261,0.564-1.261,1.26v0.025c0,0.695,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.564,1.26-1.26v-0.025C67.815,60.108,67.251,59.544,66.556,59.544z\" fill=\"rgba(175,44,44,1)\"></path>\n\t<path d=\"M47.614,48.091c1.862,0,3.617-0.457,5.174-1.247l5.593,5.592c0.497,0.497,1.147,0.746,1.799,0.746s1.303-0.249,1.8-0.746\n\t\tc0.994-0.994,0.994-2.604,0-3.599l-5.269-5.269c1.471-1.927,2.355-4.323,2.355-6.93c0-6.315-5.137-11.453-11.452-11.453\n\t\ts-11.453,5.138-11.453,11.453C36.161,42.953,41.299,48.091,47.614,48.091z M47.614,29.004c4.21,0,7.635,3.425,7.635,7.635\n\t\ts-3.425,7.636-7.635,7.636c-4.211,0-7.636-3.426-7.636-7.636S43.403,29.004,47.614,29.004z\" fill=\"rgba(216,161,161,1)\"></path>\n</g>\n</svg>","svgColor":"#f00","svgShapeArray":[{"shapeDomEle":{},"color":"rgba(219,47,47,1)"},{"shapeDomEle":{},"color":"rgba(213,41,41,1)"},{"shapeDomEle":{},"color":"rgba(182,28,28,1)"},{"shapeDomEle":{},"color":"rgba(175,44,44,1)"},{"shapeDomEle":{},"color":"rgba(216,161,161,1)"}]},"animate":[],"isActive":false,"__isEdit":false,"__originalZIndex":1,"__originLeft":41,"__originTop":79,"__isOriginRecord":false,"__containerLeft":264,"__containerTop":234},{"id":44166,"name":"carousel form element","type":3,"sound":null,"content":"carousel form element","visible":true,"lock":false,"css":{"top":"130px","left":"209px","width":"103px","height":"175.1px","text-align":"center","notOpacity":0,"zIndex":1,"opacity":1,"padding":0},"contentCss":{"width":"100%","height":"100%","overflow":"hidden","backgroundColor":"transparent","borderStyle":"none","borderColor":"rgba(85,85,85,1)","borderWidth":"1px","borderRadius":"0px","rotateZ":0,"boxShadow":{"color":"transparent","x":0,"y":0,"vague":0,"extension":0,"inset":false},"cursor":"pointer"},"properties":{"autoPlay":true,"playInterval":4,"transition":"zoom","pictures":["/cdn/12/35/3b0d3183d90e982e1c2aa580f57f.jpg","/cdn/31/a8/8c68f5c7af2284cdcd991f025e61.jpg"]},"isActive":false,"__isEdit":false,"__originalZIndex":1,"__originLeft":16,"__originTop":145,"__isOriginRecord":false,"__containerLeft":453,"__containerTop":244,"__originWidth":320,"__originHeight":544},{"id":91268,"name":"text element","type":1,"sound":null,"content":"<p><b>双击输入文字</b></p>","visible":true,"lock":false,"css":{"top":"22px","left":"63px","width":"300px","height":"30px","notOpacity":0.26,"zIndex":1,"opacity":1,"padding":0},"contentCss":{"backgroundColor":"rgba(219,51,51,1)","borderStyle":"none","borderColor":"rgba(85,85,85,1)","borderWidth":"1px","borderRadius":"0px","rotateZ":321,"boxShadow":{"color":"transparent","x":0,"y":0,"vague":0,"extension":0,"inset":false},"cursor":"pointer"},"properties":{"textStyle":{"color":"#333","fontSize":"20px","lineHeight":1.5,"textAlign":"left","fontWeight":300,"fontFamily":""}},"isActive":false,"__isEdit":false,"__originalZIndex":1,"__originLeft":81,"__originTop":23,"__isOriginRecord":false,"__containerLeft":307,"__containerTop":136},{"id":28431,"name":"image element","type":2,"sound":null,"visible":true,"lock":false,"css":{"top":"341px","left":"36px","width":"260px","height":"462px","notOpacity":0,"opacity":1,"padding":0,"zIndex":1},"contentCss":{"backgroundColor":"transparent","borderStyle":"none","borderColor":"rgba(85,85,85,1)","borderWidth":"1px","borderRadius":"0px","rotateZ":0,"boxShadow":{"color":"transparent","x":0,"y":0,"vague":0,"extension":0,"inset":false},"cursor":"pointer"},"properties":{"src":"/cdn/38/12/40c70261c0fc732251f567da712f.jpg","size":28088,"originalWidth":260,"originalHeight":462},"isActive":false,"__isEdit":false,"__originalZIndex":1,"__originLeft":29,"__originTop":10,"__isOriginRecord":false,"__containerLeft":280,"__containerTop":455}]},{"id":2678,"name":"第02页","num":1,"pageOption":{"longPage":false,"pageSize":486,"banTurnPage":false,"turnPageMode":0},"pageBackground":{"color":"rgba(227,241,217,1)","image":""},"elements":[{"id":29312,"name":"image element","type":2,"sound":null,"visible":true,"lock":false,"css":{"top":"9px","left":"26px","width":"260px","height":"462px","notOpacity":0,"opacity":1,"padding":0,"zIndex":1},"contentCss":{"backgroundColor":"transparent","borderStyle":"none","borderColor":"rgba(85,85,85,1)","borderWidth":"1px","borderRadius":"0px","rotateZ":0,"boxShadow":{"color":"transparent","x":0,"y":0,"vague":0,"extension":0,"inset":false},"cursor":"pointer"},"properties":{"src":"/cdn/ee/02/ef38c2711fd651ed44f7c5fb7c14.jpg","size":9229,"originalWidth":260,"originalHeight":462},"isActive":false,"__isEdit":false,"__originalZIndex":1,"__originLeft":0,"__originTop":0,"__isOriginRecord":false,"__containerLeft":290.5,"__containerTop":157.5}]}],"createUser":"8dc7f2f0-ff1b-11e6-b146-854c7e290a6e","organizationid":"8dc86820-ff1b-11e6-b146-854c7e290a6e"}
+    }
+  ],
+  "grid": {
+    "gridVisable": true,
+    "color": "rgba(150, 150, 150, 0.2)",
+    "guideVisable": true,
+    "snapVisable": true
+  },
+  "trailerLabel": {
+    "type": 1,
+    "style": 1
+  },
+  "weixinAuth": 0,
+  "pages": [
+    {
+      "id": 520,
+      "name": "第1页",
+      "num": 1,
+      "pageOption": {
+        "longPage": true,
+        "pageSize": 832,
+        "banTurnPage": false,
+        "turnPageMode": 2
+      },
+      "pageBackground": {
+        "color": "#ffffff",
+        "image": "/cdn/99/7c/57590ba1b9e7012613820ecf5b02.jpg"
+      },
+      "elements": [
+        {
+          "id": 36537,
+          "name": "shape element",
+          "type": 4,
+          "sound": null,
+          "content": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "120px",
+            "left": "20px",
+            "zIndex": 1,
+            "width": "100px",
+            "height": "100px",
+            "notOpacity": 0,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "svg": "<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\" width=\"100px\" height=\"100px\" viewBox=\"0 0 100 100\" enable-background=\"new 0 0 100 100\" xml:space=\"preserve\">\n<g>\n\t<path d=\"M71.633,2.28H28.367c-4.212,0-7.635,3.423-7.635,7.636v80.168c0,4.213,3.423,7.636,7.635,7.636h43.266\n\t\tc4.213,0,7.635-3.423,7.635-7.636V9.916C79.268,5.703,75.846,2.28,71.633,2.28z M43.001,9.255c0-1.044,0.84-1.884,1.884-1.884\n\t\th10.23c1.043,0,1.884,0.84,1.884,1.884v0.05c0,1.044-0.841,1.884-1.884,1.884h-10.23c-1.044,0-1.884-0.84-1.884-1.884V9.255z\n\t\t M50,94.856c-2.278,0-4.136-1.857-4.136-4.137c0-2.277,1.857-4.135,4.136-4.135c2.277,0,4.136,1.857,4.136,4.135\n\t\tC54.136,92.999,52.277,94.856,50,94.856z M72.905,82.449c0,0.699-0.573,1.272-1.272,1.272H28.367c-0.7,0-1.272-0.573-1.272-1.272\n\t\tV17.551c0-0.7,0.572-1.272,1.272-1.272h43.266c0.699,0,1.272,0.572,1.272,1.272V82.449z\" fill=\"rgba(219,47,47,1)\"></path>\n\t<path d=\"M66.556,67.18h-33.11c-0.697,0-1.261,0.563-1.261,1.259v0.025c0,0.696,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.563,1.26-1.26v-0.025C67.815,67.743,67.251,67.18,66.556,67.18z\" fill=\"rgba(213,41,41,1)\"></path>\n\t<path d=\"M66.556,74.814h-33.11c-0.697,0-1.261,0.564-1.261,1.26V76.1c0,0.695,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.564,1.26-1.26v-0.025C67.815,75.379,67.251,74.814,66.556,74.814z\" fill=\"rgba(182,28,28,1)\"></path>\n\t<path d=\"M66.556,59.544h-33.11c-0.697,0-1.261,0.564-1.261,1.26v0.025c0,0.695,0.563,1.26,1.261,1.26h33.11\n\t\tc0.695,0,1.26-0.564,1.26-1.26v-0.025C67.815,60.108,67.251,59.544,66.556,59.544z\" fill=\"rgba(175,44,44,1)\"></path>\n\t<path d=\"M47.614,48.091c1.862,0,3.617-0.457,5.174-1.247l5.593,5.592c0.497,0.497,1.147,0.746,1.799,0.746s1.303-0.249,1.8-0.746\n\t\tc0.994-0.994,0.994-2.604,0-3.599l-5.269-5.269c1.471-1.927,2.355-4.323,2.355-6.93c0-6.315-5.137-11.453-11.452-11.453\n\t\ts-11.453,5.138-11.453,11.453C36.161,42.953,41.299,48.091,47.614,48.091z M47.614,29.004c4.21,0,7.635,3.425,7.635,7.635\n\t\ts-3.425,7.636-7.635,7.636c-4.211,0-7.636-3.426-7.636-7.636S43.403,29.004,47.614,29.004z\" fill=\"rgba(216,161,161,1)\"></path>\n</g>\n</svg>",
+            "svgColor": "#f00",
+            "svgShapeArray": [
+              {
+                "shapeDomEle": {},
+                "color": "rgba(219,47,47,1)"
+              },
+              {
+                "shapeDomEle": {},
+                "color": "rgba(213,41,41,1)"
+              },
+              {
+                "shapeDomEle": {},
+                "color": "rgba(182,28,28,1)"
+              },
+              {
+                "shapeDomEle": {},
+                "color": "rgba(175,44,44,1)"
+              },
+              {
+                "shapeDomEle": {},
+                "color": "rgba(216,161,161,1)"
+              }
+            ]
+          },
+          "animate": [],
+          "isActive": false,
+          "__isEdit": false,
+          "__originalZIndex": 1,
+          "__originLeft": 41,
+          "__originTop": 79,
+          "__isOriginRecord": false,
+          "__containerLeft": 264,
+          "__containerTop": 234
+        },
+        {
+          "id": 44166,
+          "name": "carousel form element",
+          "type": 3,
+          "sound": null,
+          "content": "carousel form element",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "130px",
+            "left": "209px",
+            "width": "103px",
+            "height": "175.1px",
+            "text-align": "center",
+            "notOpacity": 0,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "width": "100%",
+            "height": "100%",
+            "overflow": "hidden",
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "autoPlay": true,
+            "playInterval": 4,
+            "transition": "zoom",
+            "pictures": [
+              "/cdn/12/35/3b0d3183d90e982e1c2aa580f57f.jpg",
+              "/cdn/31/a8/8c68f5c7af2284cdcd991f025e61.jpg"
+            ]
+          },
+          "isActive": false,
+          "__isEdit": false,
+          "__originalZIndex": 1,
+          "__originLeft": 16,
+          "__originTop": 145,
+          "__isOriginRecord": false,
+          "__containerLeft": 453,
+          "__containerTop": 244,
+          "__originWidth": 320,
+          "__originHeight": 544
+        },
+        {
+          "id": 91268,
+          "name": "text element",
+          "type": 1,
+          "sound": null,
+          "content": "<p><b>双击输入文字</b></p>",
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "22px",
+            "left": "63px",
+            "width": "300px",
+            "height": "30px",
+            "notOpacity": 0.26,
+            "zIndex": 1,
+            "opacity": 1,
+            "padding": 0
+          },
+          "contentCss": {
+            "backgroundColor": "rgba(219,51,51,1)",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 321,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "textStyle": {
+              "color": "#333",
+              "fontSize": "20px",
+              "lineHeight": 1.5,
+              "textAlign": "left",
+              "fontWeight": 300,
+              "fontFamily": ""
+            }
+          },
+          "isActive": false,
+          "__isEdit": false,
+          "__originalZIndex": 1,
+          "__originLeft": 81,
+          "__originTop": 23,
+          "__isOriginRecord": false,
+          "__containerLeft": 307,
+          "__containerTop": 136
+        },
+        {
+          "id": 28431,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "341px",
+            "left": "36px",
+            "width": "260px",
+            "height": "462px",
+            "notOpacity": 0,
+            "opacity": 1,
+            "padding": 0,
+            "zIndex": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/38/12/40c70261c0fc732251f567da712f.jpg",
+            "size": 28088,
+            "originalWidth": 260,
+            "originalHeight": 462
+          },
+          "isActive": false,
+          "__isEdit": false,
+          "__originalZIndex": 1,
+          "__originLeft": 29,
+          "__originTop": 10,
+          "__isOriginRecord": false,
+          "__containerLeft": 280,
+          "__containerTop": 455
+        }
+      ]
+    },
+    {
+      "id": 2678,
+      "name": "第02页",
+      "num": 1,
+      "pageOption": {
+        "longPage": false,
+        "pageSize": 486,
+        "banTurnPage": false,
+        "turnPageMode": 0
+      },
+      "pageBackground": {
+        "color": "rgba(227,241,217,1)",
+        "image": ""
+      },
+      "elements": [
+        {
+          "id": 29312,
+          "name": "image element",
+          "type": 2,
+          "sound": null,
+          "visible": true,
+          "lock": false,
+          "css": {
+            "top": "9px",
+            "left": "26px",
+            "width": "260px",
+            "height": "462px",
+            "notOpacity": 0,
+            "opacity": 1,
+            "padding": 0,
+            "zIndex": 1
+          },
+          "contentCss": {
+            "backgroundColor": "transparent",
+            "borderStyle": "none",
+            "borderColor": "rgba(85,85,85,1)",
+            "borderWidth": "1px",
+            "borderRadius": "0px",
+            "rotateZ": 0,
+            "boxShadow": {
+              "color": "transparent",
+              "x": 0,
+              "y": 0,
+              "vague": 0,
+              "extension": 0,
+              "inset": false
+            },
+            "cursor": "pointer"
+          },
+          "properties": {
+            "src": "/cdn/ee/02/ef38c2711fd651ed44f7c5fb7c14.jpg",
+            "size": 9229,
+            "originalWidth": 260,
+            "originalHeight": 462
+          },
+          "isActive": false,
+          "__isEdit": false,
+          "__originalZIndex": 1,
+          "__originLeft": 0,
+          "__originTop": 0,
+          "__isOriginRecord": false,
+          "__containerLeft": 290.5,
+          "__containerTop": 157.5
+        }
+      ]
+    }
+  ],
+  "createUser": "8dc7f2f0-ff1b-11e6-b146-854c7e290a6e",
+  "organizationid": "8dc86820-ff1b-11e6-b146-854c7e290a6e"
+}

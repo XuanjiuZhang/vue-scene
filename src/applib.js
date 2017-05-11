@@ -14,8 +14,8 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-import testSceneData from './test/map.json' ;
-global.testSceneData = testSceneData;
+// import testSceneData from './test/meetingInvite.json' ;
+// global.testSceneData = testSceneData;
 
 (function () {
   const initCanvas = (ids, config) => {
@@ -189,6 +189,7 @@ global.testSceneData = testSceneData;
   };
 
   window.onload = function () {
+    // window.previewScene.init(testSceneData, 'root');
     const { code, qrc, src, isMobile, autoLoad } = window;
     const sceneInfo = { code, qrc, src };
     if (autoLoad) {

@@ -118,7 +118,7 @@ const changeElementCssAndClass = (state, payload) => {
   const element = state.sceneData.pages[pageIndex].elements[eleIndex];
   Vue.set(element, 'animationClass', styleClass);
   // Object.assign(element.animationClass, styleClass);
-  _.extend(element.css, style);
+  _.extend(element.transCss, style);
 };
 const addElementLastPlayPromise = (state, payload) => {
   const { elementLastAnimationPromise, eleIndex, pageIndex } = payload;
@@ -143,7 +143,7 @@ const restoreElementStyle = (state, payload) => {
   // Vue.set(element, 'css', emptyStyle);
   // Object.assign(element.animationClass, []);
   Object.assign(element.__lastAnimationPromise, null);
-  _.extend(element.css, emptyStyle);
+  _.extend(element.transCss, emptyStyle);
 };
 
 export { animationPlayer, changeElementCssAndClass, addElementLastPlayPromise, restoreElementStyle };

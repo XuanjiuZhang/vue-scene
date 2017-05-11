@@ -35,7 +35,6 @@ export default {
     ...mapActions(['loadBmap']),
     ...mapMutations(['loadElementSuccess']),
     preInit() {
-      console.log('preInit!');
       this.loadBmap().then(BMap => {
         console.log(this.sceneLoadedPercentage);
         if(this.sceneLoadedPercentage === 100){
