@@ -134,7 +134,7 @@
 
     <!--背景音乐-->
     <div class="bg-audio-element" v-show="showBgAudio" @click="toggleBgMusic">
-      <audio ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
+      <audio id="bgmusic" ref="bgmusic" class="bg-music" autoplay="true" v-bind="{'loop': sceneData.bgAudio.loop, 'src': sceneData.bgAudio.url}">
       </audio>
       <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
     </div>

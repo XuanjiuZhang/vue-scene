@@ -106,6 +106,9 @@ import qrcanvas from 'qrcanvas'
         window.wx.config(data.data);
         window.wx.ready(() => {
           console.log('wx ready');
+          if(sceneData.play.auto){
+            document.getElementById('bgmusic').play();
+          }
           const { name, description, image } = sceneData;
           const shareObj = {
             title: name, // 分享标题
@@ -159,13 +162,13 @@ import qrcanvas from 'qrcanvas'
           document.title = sceneData.name;
         }
         loadFonts(sceneData);
-        loadWeixinApi(sceneData);
         global.sceneStore = sceneStore;
         const instance = new Vue({
           store: sceneStore, // 注入到所有子组件1
           components: { Scene }
         });
         instance.$mount('#' + elementID);
+        loadWeixinApi(sceneData);
         global.previewScene.initedInstance = instance;
       });
       return function (pcTurnPageElementID, templateName = 'Pcbutton') {
