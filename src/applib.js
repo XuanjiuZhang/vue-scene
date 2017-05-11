@@ -106,9 +106,7 @@ import qrcanvas from 'qrcanvas'
         window.wx.config(data.data);
         window.wx.ready(() => {
           console.log('wx ready');
-          if(sceneData.play.auto){
-            document.getElementById('bgmusic').play();
-          }
+          document.getElementById('bgmusic').play();
           const { name, description, image } = sceneData;
           const shareObj = {
             title: name, // 分享标题
