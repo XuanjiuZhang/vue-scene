@@ -32,11 +32,11 @@ export default {
     imgStyle() {
       const editorWh = this.editorWidth / this.editorHeight;
       const screenWh = this.screenWidth / this.screenHeight;
-      return {
+      /*return {
           width: '100%',
           height: '100%'
-        }
-      /*if(screenWh > editorWh){
+        }*/
+      if(screenWh > editorWh){
         return {
           width: '100%',
           height: '100%'
@@ -45,7 +45,7 @@ export default {
         return {
           width: '100%',
         }
-      }*/
+      }
     }
   }
 }

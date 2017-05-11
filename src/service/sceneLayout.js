@@ -22,14 +22,16 @@ class SceneEditor{
     const {left, top, height, width} = element.css;
     const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
     const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
+
+    const pHeight = Math.ceil(parseInt(height) * this.scale) + 'px';
+
     var pTop = '';
-    var pHeight = '';
     if(longPage){
       pTop = parseInt(top) / parseInt(pageSize) * 100 + '%';
-      pHeight = parseInt(height) / parseInt(pageSize) * 100 + '%';
+      // pHeight = parseInt(transHeight) / parseInt(pageSize) * 100 + '%';
     }else{
       pTop = parseInt(top) / this.editorHeight * 100 + '%';
-      pHeight = parseInt(height) / this.editorHeight * 100 + '%';
+      // pHeight = parseInt(transHeight) / this.editorHeight * 100 + '%';
     }
     // const pHeight = parseInt(editorHeight) / this.editorHeight * 100 + '%';
     element.transCss = {};
