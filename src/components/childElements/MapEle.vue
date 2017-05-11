@@ -24,8 +24,8 @@ export default {
     ...mapGetters(['sceneLoadedPercentage', 'currentPageIndex'])
   },
   watch: {
-    'currentPageIndex'(activeId) {
-      if(this.pageIndex === this.currentPageIndex){
+    'currentPageIndex'(current) {
+      if(this.pageIndex === current){
         this.preInit();
         this.$off('currentPageIndex');
       }
