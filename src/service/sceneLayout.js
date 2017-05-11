@@ -23,7 +23,7 @@ class SceneEditor{
     const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
     const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
 
-    const pHeight = Math.ceil(parseInt(height) * this.scale) + 'px';
+    const pHeight = Math.ceil(parseInt(height) * this.scale) + 2 + 'px';
 
     var pTop = '';
     if(longPage){
