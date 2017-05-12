@@ -17,13 +17,13 @@ module.exports = {
   },
   context: __dirname + "/src",
   entry: {
-    app: ['whatwg-fetch', './applib.js'],
+    app: ['vue'],
     // vendor: ['whatwg-fetch', './lib/hammer.min.js']
   },
   output: {
     path: path.join(__dirname, '/h5/assets/fonts/'),
     // filename: '[name].js',
-    filename: 'previewLib.min.js',
+    filename: 'test.min.js',
     publicPath: '/h5/assets/fonts/',
     chunkFilename: '[name].min.js?[hash:8]'
   },
@@ -66,11 +66,11 @@ module.exports = {
     //   // minChunks: 2,
     // }),
     // 压缩js文件
-    new webpack.optimize.UglifyJsPlugin({
+    /*new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
         warnings: false // 禁止生成warning
       }
-    })
+    })*/
   ]
 };

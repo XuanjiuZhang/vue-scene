@@ -6,6 +6,7 @@ var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var config = require("./webpack.config.js");
 var buildConfig = require("./webpack.config.build");
+var testConfig = require('./webpack.config.test');
 var path = require('path');
 del = require('del');
 
@@ -47,4 +48,8 @@ gulp.task('copyImage', function(){
     './src/img/*',
   ])
     .pipe(gulp.dest('./build/img/'));
+});
+
+gulp.task('test', ['cleanImage', 'copyImage'], function() {
+  webpack(testConfig, function(err, stats) { console.log(err) });
 });

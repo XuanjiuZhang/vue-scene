@@ -1,5 +1,5 @@
-import Vuex from 'vuex';
 import Vue from 'vue'
+import Vuex from 'vuex';
 Vue.use(Vuex);
 
 import sceneApi from '../api/sceneApi';
@@ -106,7 +106,7 @@ const initStore = (sceneData, elementID) => {
           let emailPattern = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
           let telPatrn1 =/^[-,\d]+$/; 
           return element.properties.formData.map(row => {
-            if (row.required && row.data === '') {
+            if (row.required && (row.data === '' || row.data === undefined)) {
               return {
                 fail: true,
                 // msg: `联系表单元素: ( ${element.name} ) 字段 ( ${row.fieldName} ) 必填`

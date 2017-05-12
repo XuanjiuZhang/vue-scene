@@ -927,7 +927,7 @@
               {
                 "fieldName": "手机",
                 "data": "",
-                "required": false
+                "required": true
               },
               {
                 "fieldName": "邮箱",

@@ -21,7 +21,7 @@ class SceneEditor{
     const { pageOption: { longPage, pageSize} } = page;
     const {left, top, height, width} = element.css;
     const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
-    const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
+    const pWidth = Math.floor(parseInt(width) / this.editorWidth * 100) + '%';
 
     const pHeight = Math.ceil(parseInt(height) * this.scale) + 2 + 'px';
 
