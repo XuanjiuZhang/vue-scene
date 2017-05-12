@@ -1,17 +1,21 @@
 <template>
   <div>
     <div class="full-screen" :id="eleData.id + '-innerMap'"></div>
+    <a v-show="full" style="position:fixed;bottom: 0;left: 10px;font-size: 30px" @click="closeFullScreen" class="close_mask">×</a>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapActions, mapMutations, mapGetters } from 'vuex';
 export default {
   props: ['eleData', 'pageIndex'],
   data(){
     return {
       inited: false,
-      mapInstance: undefined
+      mapInstance: undefined,
+      full: false,
+      BMapPoint: undefined,
     };
   },
   mounted(){
@@ -33,7 +37,7 @@ export default {
   },
   methods: {
     ...mapActions(['loadBmap']),
-    ...mapMutations(['loadElementSuccess']),
+    ...mapMutations(['loadElementSuccess', 'mapFullScreen']),
     preInit() {
       this.loadBmap().then(BMap => {
         console.log(this.sceneLoadedPercentage);
@@ -67,27 +71,48 @@ export default {
       if(currentAddress){
         console.log('use currentAddress!');
         let {lat, lng, level, title} = currentAddress;
-        let BMapPoint = new BMap.Point(lng, lat);
+        this.BMapPoint = new BMap.Point(lng, lat);
         let opts = {
-          position : BMapPoint,   // 指定文本标注所在的地理位置
+          position : this.BMapPoint,   // 指定文本标注所在的地理位置
           offset   : new BMap.Size(10, -30)    //设置文本偏移量
         }; 
         if(title){
           let label = new BMap.Label(title, opts);
           this.mapInstance.addOverlay(label);
         } 
-        let marker = new BMap.Marker(BMapPoint);
+        let marker = new BMap.Marker(this.BMapPoint);
+        this.markerFullScreen(marker);
         this.mapInstance.addOverlay(marker);
-        this.mapInstance.centerAndZoom(BMapPoint, level);
+        this.mapInstance.centerAndZoom(this.BMapPoint, level);
       }else if(currentCity){
         console.log('use currentCity!');
         let {center, level} = currentCity;
-        let BMapPoint = new BMap.Point(center.lng, center.lat);
-        let marker = new BMap.Marker(BMapPoint);
+        this.BMapPoint = new BMap.Point(center.lng, center.lat);
+        let marker = new BMap.Marker(this.BMapPoint);
+        this.markerFullScreen(marker);
         this.mapInstance.addOverlay(marker);
-        this.mapInstance.centerAndZoom(BMapPoint, level);
+        this.mapInstance.centerAndZoom(this.BMapPoint, level);
       } 
       this.inited = true;
+    },
+    closeFullScreen() {
+      this.full = false;
+      this.mapFullScreen({eleData: this.eleData, full: this.full});
+      setTimeout(() => {
+          this.mapInstance.centerAndZoom(this.BMapPoint, this.mapInstance.getZoom());
+        }, 160);
+    },
+    markerFullScreen(marker) {
+      marker.addEventListener('click', () => {
+        if(this.full){
+          return;
+        }
+        this.full = true;
+        this.mapFullScreen({eleData: this.eleData, full: this.full});
+        setTimeout(() => {
+            this.mapInstance.centerAndZoom(this.BMapPoint, this.mapInstance.getZoom());
+          }, 160);
+      });
     }
   },
 }

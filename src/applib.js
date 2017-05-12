@@ -14,8 +14,8 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-/*import testSceneData from './test/map.json' ;
-global.testSceneData = testSceneData;*/
+import testSceneData from './test/allElement.json' ;
+global.testSceneData = testSceneData;
 
 (function () {
   const initCanvas = (ids, config) => {

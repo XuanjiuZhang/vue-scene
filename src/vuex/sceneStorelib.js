@@ -322,6 +322,23 @@ const initStore = (sceneData, elementID) => {
         }else{
           animationPlayer.stopPageAnimation(pageIndex);
         }
+      },
+      mapFullScreen(state, payload) {
+        console.log(payload);
+        const {eleData, full} = payload;
+        if(full){
+          eleData.__smallMapCss = Object.assign({}, eleData.transCss);
+          Object.assign(eleData.transCss, {
+            width: '100%',
+            height: '100%',
+            top: '0',
+            left: '0',
+            zIndex: 9999
+          });
+        }else{
+          console.log(eleData.__smallMapCss);
+          Object.assign(eleData.transCss, eleData.__smallMapCss);
+        }
       }
     },
     getters: {

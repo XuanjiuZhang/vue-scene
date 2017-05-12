@@ -69,7 +69,9 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
-        warnings: false // 禁止生成warning
+        warnings: false, // 禁止生成warning
+        drop_debugger: true,
+        drop_console: true
       }
     })
   ]
