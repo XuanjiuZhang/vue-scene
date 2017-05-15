@@ -42,19 +42,19 @@ export default {
       this.loadBmap().then(BMap => {
         console.log(this.sceneLoadedPercentage);
         if(this.sceneLoadedPercentage === 100){
-          this.initMap();
+          this.initMap(false);
         }else{
           this.$watch('sceneLoadedPercentage', (newValue, oldValue) => {
             if(newValue === 100){
-              this.initMap();
+              this.initMap(false);
               this.$off('sceneLoadedPercentage');
             }
           });
         }
       });
     },
-    initMap(){
-      if(this.inited) {
+    initMap(reload){
+      if(this.inited && !reload) {
         return;
       }
       const { properties: { currentCity, currentAddress} } = this.eleData;
@@ -99,8 +99,9 @@ export default {
       this.full = false;
       this.mapFullScreen({eleData: this.eleData, full: this.full});
       setTimeout(() => {
+          this.initMap(true);
           this.mapInstance.centerAndZoom(this.BMapPoint, this.mapInstance.getZoom());
-        }, 160);
+        }, 300);
     },
     markerFullScreen(marker) {
       marker.addEventListener('click', () => {
@@ -110,8 +111,9 @@ export default {
         this.full = true;
         this.mapFullScreen({eleData: this.eleData, full: this.full});
         setTimeout(() => {
+            this.initMap(true);
             this.mapInstance.centerAndZoom(this.BMapPoint, this.mapInstance.getZoom());
-          }, 160);
+          }, 300);
       });
     }
   },
