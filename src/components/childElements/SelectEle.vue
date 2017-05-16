@@ -49,9 +49,10 @@
         const { selectCssFileConfig } = properties;
         const { height, lineHeight, HorizontalPadding } = selectCssFileConfig;
         return {
-          'height': `${height * this.finalScale}px`,
+          'min-height': `${height * this.finalScale}px`,
           'lineHeight': `${lineHeight * this.finalScale}px`,
-          'padding': `0 ${HorizontalPadding * this.finalScale}px`
+          'padding': `0 ${HorizontalPadding * this.finalScale}px`,
+          'background-color': properties.optionStyle.optionBackgroundColor
         };
       }
     },
