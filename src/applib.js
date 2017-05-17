@@ -111,7 +111,7 @@ global.testSceneData = testSceneData;*/
           const shareObj = {
             title: name, // 分享标题
             desc: description, // 分享描述
-            link: window.location.href, // 分享链接
+            link: window.location.href.replace('&v=second', ''), // 分享链接
             imgUrl: `http://v.xmfshow.com${image}`, // 分享图标`
             //type: 'link', // 分享类型,music、video或link，不填默认为link
             //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
