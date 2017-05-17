@@ -56,13 +56,14 @@ global.testSceneData = testSceneData;*/
       str += `@font-face{font-family:'${font.name}';src:url('${font.url}');}`
     });
     console.log(str);
-    if (nod.styleSheet) { //ie下  
+    nod.appendChild(document.createTextNode(str));
+    /*if (nod.styleSheet) { //ie下  
       nod.styleSheet.cssText = str;
     } else {
       nod.appendChild(document.createTextNode(str));
-      //或者写成 nod.appendChild(document.createTextNode(str))  
+      // 或者写成 nod.appendChild(document.createTextNode(str))  
       // nod.innerHTML = str;       
-    }
+    }*/
     document.getElementsByTagName('head')[0].appendChild(nod);
   };
 
@@ -75,9 +76,9 @@ global.testSceneData = testSceneData;*/
 
   const weixinOauth = (sceneData) => {
     const {application, createUser} = sceneData;
-    const { self, top, userAgent } = window;
+    const { self, top, userAgent, weixinoauth } = window;
     if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase()) 
-     || application != 'meeting' || GetQueryString('v') == 'second'){
+     || application != 'meeting' || !_.isUndefined(weixinoauth)){
       return new Promise((resolve, reject) => {
         resolve({notOauth: true});
       });
@@ -220,7 +221,7 @@ global.testSceneData = testSceneData;*/
         if (isMobile === 'true') {
           global.previewScene.init(sceneData, 'root');
         } else {
-          global.previewScene.init(sceneData, 'root')('phoneBtn')(['qrCode'], { url: window.location.href, size: 232 });
+          global.previewScene.init(sceneData, 'root')('phoneBtn')(['qrCode'], { url: window.location.href.replace('v=second', ''), size: 232 });
         }
       });
     }

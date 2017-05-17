@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="full-screen" :id="eleData.id + '-innerMap'"></div>
-    <a v-show="full" style="position:fixed;bottom: 0;left: 10px;font-size: 30px" @click="closeFullScreen" class="close_mask">×</a>
+    <a v-show="full" style="position:fixed;bottom: 0;right: 10px;font-size: 30px" @click="closeFullScreen" class="close_mask">×</a>
   </div>
 </template>
 
