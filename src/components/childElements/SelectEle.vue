@@ -22,7 +22,7 @@
   export default {
     props: ['eleData', 'pageIndex', 'finalScale'],
     methods: {
-    ...mapMutations(['toggleSelectOption']),
+      ...mapMutations(['toggleSelectOption']),
       toggle(optionIndex) {
         const payLoad = {
           optionIndex,
@@ -38,7 +38,7 @@
         const { selectCssFileConfig } = properties;
         const { height, lineHeight, HorizontalPadding } = selectCssFileConfig;
         return {
-          'height': `${height * this.finalScale}px`,
+          // 'height': `${height * this.finalScale}px`,
           'lineHeight': `${lineHeight * this.finalScale}px`,
           'padding': `0 ${HorizontalPadding * this.finalScale}px`,
           'color': properties.titleColor

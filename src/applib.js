@@ -14,7 +14,7 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-/*import testSceneData from './test/map.json' ;
+/*import testSceneData from './test/allElement.json' ;
 global.testSceneData = testSceneData;*/
 
 (function () {
@@ -77,8 +77,11 @@ global.testSceneData = testSceneData;*/
   const weixinOauth = (sceneData) => {
     const {application, createUser} = sceneData;
     const { self, top, userAgent, weixinoauth } = window;
+    console.log(weixinoauth);
+    // 
+    // !_.isUndefined(weixinoauth) || weixinoauth === ''
     if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase()) 
-     || application != 'meeting' || !_.isUndefined(weixinoauth)){
+     || application != 'meeting' || GetQueryString('v') == 'second'){
       return new Promise((resolve, reject) => {
         resolve({notOauth: true});
       });
@@ -219,6 +222,7 @@ global.testSceneData = testSceneData;*/
         return ;
       }).then(sceneData => {
         if (isMobile === 'true') {
+          // alert(window.weixinoauth);
           global.previewScene.init(sceneData, 'root');
         } else {
           global.previewScene.init(sceneData, 'root')('phoneBtn')(['qrCode'], { url: window.location.href.replace('v=second', ''), size: 232 });
