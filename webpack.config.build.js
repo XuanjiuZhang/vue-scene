@@ -72,7 +72,10 @@ module.exports = {
         warnings: false, // 禁止生成warning
         drop_debugger: true,
         drop_console: true
-      }
+      },
+      // test: /\.js($|\?)/i,
+      // include: ['previewLib.min.js'],
+      // exclude: ['previewLib.min.js']
     })
   ]
 };

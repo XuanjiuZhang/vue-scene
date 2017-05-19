@@ -70,8 +70,9 @@ export default {
       onceSuc();
     };
     setTimeout(function() {
+      console.log(this.eleData.properties.musicSrc, 'Audio加载超时');
       onceSuc();
-    }, 3000);
+    }, 1500);
     
   },
   methods: {

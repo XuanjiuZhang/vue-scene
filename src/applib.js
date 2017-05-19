@@ -14,7 +14,7 @@ import './lib/hammer.min.js'
 import qrcanvas from 'qrcanvas'
 
 // test
-/*import testSceneData from './test/allElement.json' ;
+/*import testSceneData from './test/questionForm.json' ;
 global.testSceneData = testSceneData;*/
 
 (function () {
@@ -78,10 +78,10 @@ global.testSceneData = testSceneData;*/
     const {application, createUser} = sceneData;
     const { self, top, userAgent, weixinoauth } = window;
     console.log(weixinoauth);
-    // 
+    // GetQueryString('v') == 'second'
     // !_.isUndefined(weixinoauth) || weixinoauth === ''
     if(self != top || _.isUndefined(userAgent) || !/micromessenger/i.test(userAgent.toLowerCase()) 
-     || application != 'meeting' || GetQueryString('v') == 'second'){
+     || application != 'meeting' || (weixinoauth && weixinoauth != '')){
       return new Promise((resolve, reject) => {
         resolve({notOauth: true});
       });
@@ -145,6 +145,9 @@ global.testSceneData = testSceneData;*/
 
   global.previewScene = {
     init(sceneData, elementID) {
+      if(!_.isUndefined(global.previewScene.initedInstance)){
+        global.previewScene.initedInstance.$destroy();
+      }
       const sceneStore = initStore(sceneData, elementID);
       weixinOauth(sceneData).then(res => {
         if(res.notOauth){
@@ -195,8 +198,8 @@ global.testSceneData = testSceneData;*/
 
   window.onload = function () {
     // window.previewScene.init(testSceneData, 'root');
-    const { code, qrc, src, isMobile, autoLoad } = window;
-    const sceneInfo = { code, qrc, src };
+    const { code, qrc, src, isMobile, autoLoad, v } = window;
+    const sceneInfo = { code, qrc, src, v };
     if (autoLoad) {
       global.previewScene.initBySceneCode(sceneInfo).then(response => {
         console.log(response);
