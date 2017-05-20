@@ -37,8 +37,10 @@
         image.onload = load1ImageSuc;
         image.onerror = load1ImageFail;
       });
-
-      this.loadElementSuccess();
+      setTimeout(() => {
+        console.log(this.eleData.id, '图集加载时间过长!');
+        this.loadElementSuccess();
+      }, 1500);
     },
     methods: {
       ...mapMutations(['loadElementSuccess'])

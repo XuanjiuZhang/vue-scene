@@ -20,9 +20,10 @@ export default {
       this.loadElementSuccess();
       // console.log(this.eleData.id, '图片加载失败!');
     };
-    // setTimeout(() => {
-    //   this.loadElementSuccess();
-    // }, Math.random() * 800);
+    setTimeout(() => {
+      console.log(this.eleData.id, '图片加载时间过长!');
+      this.loadElementSuccess();
+    }, 1500);
   },
   methods: {
     ...mapMutations(['loadElementSuccess'])
