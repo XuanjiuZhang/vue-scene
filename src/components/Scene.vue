@@ -543,6 +543,10 @@
         return !_.isUndefined(url) && url != '';
       },
       maxPageArray() {
+        // 如果还在输入密码状态或者禁止访问,返回空数组(更快的显示界面).
+        if(this.showPassword || this.showNoAccess){
+          return []
+        }
         return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
       },
       // 翻页和不翻页的时长有差异,故定义了两个不同的类.
