@@ -17,7 +17,11 @@ import SoundEle from './childElements/SoundEle.vue';
 import CountEle from './childElements/CountEle.vue';
 import StatisticEle from './childElements/StatisticEle.vue';
 import TelEle from './childElements/TelEle.vue';
-
+/*
+* 这个组件是所有元素的父元素. 控制一些公共的样式和逻辑.
+* 如animation.css动画播放都是依附在这个组件上
+* 另外也控制了元素在场景中的绝对定位
+*/
 export default {
   props: ['eleData', 'pageIndex', 'finalScale', 'pageData'], 
   created(){
@@ -28,6 +32,7 @@ export default {
   },
   computed: {
     ...mapGetters(['screenWidth', 'screenHeight', 'editorWidth', 'editorHeight']),
+    // 外层样式,控制透明度和隐藏等.
     eleStyle: function(){
       const { notOpacity, width, height, top, left, padding } = this.eleData.transCss;
       return Object.assign({}, this.eleData.transCss, {
@@ -36,7 +41,7 @@ export default {
         display: this.eleData.visible && this.eleData.animationVisible ? '' : 'none'
       });
     },
-
+    // 里层样式,会渲染在子组件上,控制更多细节
     eleContentStyle: function(){
       const { backgroundColor, borderStyle, borderColor, borderWidth, borderRadius,
          rotateZ, boxShadow, translate3d, fontSize, lineHeight }
@@ -74,12 +79,14 @@ export default {
     const childrenInfo = elementType.find(type => {
       return type.typeID === this.eleData.type;
     });
+    // 子元素, 传入this.eleData元素数据, 宽度的缩放比例this.finalScale(可以用于换算fontSize等). 
     const childEle = h(childrenInfo.tag, 
     {
       props: {eleData: this.eleData, pageIndex: this.pageIndex, finalScale: this.finalScale},
       class: ['element-content'],
       style: this.eleContentStyle
     });
+    // 外层元素的样式数组.this.eleData.animationClass里会根据动画的播放设置动态的变化,从而触发元素的重新渲染
     const containerClassArray = this.eleData.animationClass ?
      this.eleData.animationClass.concat('element-container') : ['element-container'];
     const attrs = { id: this.eleData.id };
