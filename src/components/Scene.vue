@@ -416,16 +416,23 @@
         });
       }
 
-      initTurnPage();
-      initHammer();
-      // No element..
+      // 计算场景当前需要展示的元素数量, loadPageMaxIndex是当前需要加载的最后一页的index. 
       let elementCount = 0;
       this.sceneData.pages.slice(0, this.loadPageMaxIndex).forEach((page, index) => {
         elementCount += page.elements.length;
       });
+      // 如果没有元素,需要手动触发场景加载完成.
       if (elementCount === 0) {
         this.loadElementSuccess();
       }
+
+      // 如果只有一页就不需要翻页了.
+      if(this.sceneData.pages.length > 1){
+        // 初始化翻页逻辑
+        initTurnPage();
+        // 初始化hammer, 用于页面的滑动. 长页面的内部滑动在PhonePage中.
+        initHammer();
+      } 
     },
     data() {
       return {
@@ -500,6 +507,7 @@
           window.clearInterval(this.autoplayInterval);
         }
         if(auto && interval > 0){
+          // 模拟点击按钮翻页,实现自动播放
           this.autoplayInterval = setInterval(() => {
             this.VueEventBus.$emit('btnTurnPage', { opt: 'next' });
           }, interval * 1000);
@@ -514,6 +522,7 @@
       showSceneContent() {
         return !this.showPassword && this.firstLoadComplete && !this.showNoAccess;
       },
+      // 判断禁止访问
       showNoAccess() {
         if(this.sceneData.share.mode != 2){
           return false;
@@ -536,12 +545,14 @@
       maxPageArray() {
         return this.sceneData.pages.slice(0, this.loadPageMaxIndex);
       },
+      // 翻页和不翻页的时长有差异,故定义了两个不同的类.
       phonePageClass() {
         return {
           'animated-page': this.fastTurnPage,
           'animated-page-fast': this.normalTurnPage
         }
       },
+      // 翻页模式, 目前有两种,左右和上下
       turnPageMode() {
         const pageMode = this.activePage.pageOption.turnPageMode;
         if (pageMode === 0) {
@@ -550,6 +561,7 @@
           return pageMode;
         }
       },
+      // 前一页的样式, 控制显示的位置
       prePageStyle() {
         const style = {
           transform: this.turnPageMode === 1 ? `translateY(-${this.screenHeight - this.deltaY}px)` : `translateX(-${this.screenWidth - this.deltaX}px)`,
@@ -559,6 +571,7 @@
         };
         return style;
       },
+      // 当前页的样式
       activePageStyle() {
         const style = {
           transform: this.turnPageMode === 1 ? `translateY(${this.deltaY}px)` : `translateX(${this.deltaX}px)`,
@@ -567,6 +580,7 @@
         };
         return style;
       },
+      // 后一页的样式
       nextPageStyle() {
         const style = {
           transform: this.turnPageMode === 1 ? `translateY(${this.screenHeight + this.deltaY}px)` : `translateX(${this.screenWidth + this.deltaX}px)`,
@@ -576,6 +590,7 @@
         };
         return style;
       },
+      // 隐藏页的样式
       hidePageStyle() {
         return {
           display: 'none',
@@ -587,8 +602,10 @@
         /*const hScale = this.screenHeight / this.editorHeight;
         const wScale = this.screenWidth / this.editorWidth;
         return Math.min(hScale, wScale);*/
+        // 这里缩放比例都以宽度为准
         return this.screenWidth / this.editorWidth;
       },
+      // 是否应停止panUp当前页, 禁止翻页只是禁止向下一页翻. 因此需要进行翻页模式的判断
       shouldStopPanUp(){
         const { pageOption: {banTurnPage, turnPageMode} } = this.activePage;
         const stopPanUp = banTurnPage && turnPageMode === 1 && this.activePageCanUp;

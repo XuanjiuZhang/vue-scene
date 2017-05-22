@@ -70,6 +70,7 @@ export default {
     },
   },
   render (h) {
+    // 根据元素的种类找到元素相关细节信息. 
     const childrenInfo = elementType.find(type => {
       return type.typeID === this.eleData.type;
     });
@@ -89,6 +90,7 @@ export default {
     const childrenInfo = elementType.find(type => {
       return type.typeID === this.eleData.type;
     });
+    // 这里保存了不需要额外请求网络资源的元素. 会立即加载完毕
     const immediateElementTypes = ['text-element', 'shape-element', 'input-form-element', 'button-form-element', 'contact-form-element',
       'select-form-element', 'score-form-element', 'link-element', 'tel-element', 'count-element', 'statistic-element', 'video-element'];
     const isImmediate = immediateElementTypes.find(type => {

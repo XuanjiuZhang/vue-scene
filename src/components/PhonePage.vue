@@ -215,6 +215,10 @@
     computed: {
       ...mapGetters(['sceneData', 'screenWidth', 'screenHeight', 'currentPageIndex', 'editorWidth', 'currentFocusInput', 'currentFocusElement']),
       showArrow() {
+        // 只有一页不显示翻页箭头
+        if(this.sceneData.pages.length === 1){
+          return false;
+        }
         var show = true;
         if (this.pageData.pageOption.banTurnPage) {
           show = false;
@@ -252,6 +256,7 @@
         return {
           // height: pageOption.longPage && (pageOption.pageSize > this.screenHeight) ?
           //  pageOption.pageSize * this.finalScale + 'px' : '100%',
+          // 如果页面是长页面且原始高度按比例缩放以后大于当前屏幕高度, 则使用缩放以后的高度; 否则采用100%屏幕高度.
           height: pageOption.longPage && (pageOption.pageSize * this.finalScale > this.screenHeight) ? 
           pageOption.pageSize * this.finalScale + 'px' : '100%',
           width: '100%',
