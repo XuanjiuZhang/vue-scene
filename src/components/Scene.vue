@@ -299,7 +299,7 @@
         this.Pan = new Hammer.Pan({
           event: 'pan',
           pointers: 0,
-          threshold: 50,
+          threshold: this.hammerThrehold,
           direction: Hammer.DIRECTION_ALL
         });
         this.HammerManager.add(this.Pan);
@@ -443,10 +443,11 @@
         preNextVisible: false,
         fastTurnPage: false,
         normalTurnPage: false,
-        fastTurnPageTime: 100,
+        fastTurnPageTime: 200,
         normalTurnPageTime: 360,
-        turnPageThreshold: 120,
-        btnTurnPageThreshold: 50,
+        hammerThrehold: 12,
+        turnPageThreshold: 20,
+        btnTurnPageThreshold: 20,
         addPanTime: 360,
         bgMusicPlaying: true,
         passwordInput: '',
