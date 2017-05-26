@@ -98,6 +98,14 @@
     top: 46px;
     left: 7px;
   }
+
+  .long-page-progress {
+    position: fixed;
+    z-index: 999999;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+  }
 </style>
 
 <template>
@@ -139,6 +147,13 @@
       <div class="audio-icon" :class="{rotate: bgMusicPlaying}"></div>
     </div>
     <!-- / 背景音乐-->
+
+    <!--长页面进度-->
+    <div v-show="showPageProgress" class="long-page-progress">
+      <div :style="longPageProgressStyle"></div>
+    </div>
+    <!--/长页面进度-->
+    
   </div>
 </template>
 
@@ -166,6 +181,9 @@
   export default {
     created() { },
     mounted() {
+      this.VueEventBus.$on('changeLongPageProgress', (percent) => 
+      this.longPageProgress = percent);
+
       const initHammer = () => {
         const panstart = (event) => {
           this.inTouch = true;
@@ -453,7 +471,8 @@
         passwordInput: '',
         passwordSendCount: 0,
         passwordCorrect: false,
-        autoplayInterval: undefined
+        autoplayInterval: undefined,
+        longPageProgress: 0
       }
     },
     watch: {
@@ -620,6 +639,22 @@
         const { pageOption: {banTurnPage, turnPageMode} } = this.activePage;
         const stopPanLeft = banTurnPage && turnPageMode === 2;
         return stopPanLeft;
+      },
+      showPageProgress() {
+        const {
+          pageOption = {
+            longPage: false,
+            pageSize: this.screenHeight
+          }
+        } = this.activePage;
+        return pageOption.longPage && (pageOption.pageSize * this.finalScale > this.screenHeight);
+      },
+      longPageProgressStyle() {
+        return {
+          height: '100%',
+          width: this.longPageProgress + '%',
+          backgroundColor: '#3ca4ff'
+        };
       }
     },
     components: {

@@ -42,7 +42,7 @@ const initStore = (sceneData, elementID) => {
     const firstLoad = _.once((state) => {
       state.firstLoadComplete = true;
       animationPlayer.playPageAnimation(state.currentPageIndex);
-      toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+      toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements, true);
     });
     // const restLoad = _.after(2, execGoPage);
     VueEventBus.$on('LoadPagesComplete', (state) => {
@@ -51,10 +51,10 @@ const initStore = (sceneData, elementID) => {
     });
   });
 
-  const toggleElementVisible = (elements) => {
+  const toggleElementVisible = (elements, show) => {
     elements.forEach(element => {
       if (_.isArray(element.animate) && element.animate.length != 0) {
-        element.animationVisible = !element.animationVisible;
+        element.animationVisible = show;
       }
     });
   };
@@ -70,7 +70,7 @@ const initStore = (sceneData, elementID) => {
       return;
     }*/
     animationPlayer.stopPageAnimation(state.currentPageIndex);
-    toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements);
+    toggleElementVisible(state.sceneData.pages[state.currentPageIndex].elements, false);
 
     Object.assign(state, {
       currentPageIndex: index,
@@ -78,7 +78,7 @@ const initStore = (sceneData, elementID) => {
     });
     animationPlayer.playPageAnimation(state.currentPageIndex);
     const currentPage = state.sceneData.pages[state.currentPageIndex];
-    toggleElementVisible(currentPage.elements);
+    toggleElementVisible(currentPage.elements, true);
     state.VueEventBus.$emit('execGoPage', index);
   };
   const genPageFormData = (page) => {
@@ -163,7 +163,7 @@ const initStore = (sceneData, elementID) => {
         case 11:
           return {
             fieldname: element.properties.title || '未命名评分表单 ' + Math.round(Math.random() * 1000),
-            value: element.currentScore
+            value: element.currentScore + ''
           }
           break;
       }
@@ -274,6 +274,9 @@ const initStore = (sceneData, elementID) => {
         state.activePageCanUp = up;
       },
       goPage(state, payload) {
+        if(payload.index < 0 || payload.index > state.sceneData.pages.length - 1){
+          return;
+        }
         if(state.loadPageMaxIndex <= payload.index){
           state.loadPageMaxIndex = Math.min(payload.index + 3, state.sceneData.pages.length);
           setTimeout(() => {

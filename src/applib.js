@@ -174,6 +174,9 @@ global.testSceneData = testSceneData;*/
         });
         instance.$mount('#' + elementID);
         loadWeixinApi(sceneData);
+        if(window.jump && parseInt(window.jump) >= 0){
+          sceneStore.commit('goPage', {index: parseInt(window.jump)});
+        }
         global.previewScene.initedInstance = instance;
       });
       return function (pcTurnPageElementID, templateName = 'Pcbutton') {

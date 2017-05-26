@@ -130,10 +130,24 @@ const play = (sceneData) => {
   }
 }
 
+const share = (sceneData) => {
+  if(_.isUndefined(sceneData.share)){
+    Object.assign(sceneData, {
+      share: {
+        'mode': 1,
+        'showCount': false,
+        'bindDomain': false,
+        'des': ''
+      }
+    });
+  }
+}
+
 const pre = (sceneData) => {
   bgAudo(sceneData);
   fonts(sceneData);
   play(sceneData);
+  share(sceneData);
   const { pages } = sceneData;
   const elementPreArray = [scoreEle, buttonEle, soundEle, ContactEle, SelectEle, InputEle];
   const preMsg = [];
