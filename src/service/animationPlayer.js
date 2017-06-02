@@ -128,6 +128,9 @@ const addElementLastPlayPromise = (state, payload) => {
 const restoreElementStyle = (state, payload) => {
   const { eleIndex, pageIndex } = payload;
   const element = state.sceneData.pages[pageIndex].elements[eleIndex];
+  if(!element){
+    return
+  }
   const emptyStyle = {
     WebkitAnimationDuration: '',
     WebkitAnimationDelay: '',
@@ -138,11 +141,9 @@ const restoreElementStyle = (state, payload) => {
   };
   if(element.__lastAnimationPromise){
     clearTimeout(element.__lastAnimationPromise);
+    Object.assign(element.__lastAnimationPromise, null);
   }
   Vue.set(element, 'animationClass', []);
-  // Vue.set(element, 'css', emptyStyle);
-  // Object.assign(element.animationClass, []);
-  Object.assign(element.__lastAnimationPromise, null);
   _.extend(element.transCss, emptyStyle);
 };
 

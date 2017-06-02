@@ -100,7 +100,7 @@
   }
 
   .long-page-progress {
-    position: fixed;
+    position: absolute;
     z-index: 999999;
     bottom: 0;
     width: 100%;

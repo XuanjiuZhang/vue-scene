@@ -86,7 +86,7 @@
           const maxRange = this.screenHeight
             - this.pageData.pageOption.pageSize * this.finalScale;
           this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, maxRange));
-          const percent = Math.abs(this.startData.deltaY + deltaY) / Math.abs(maxRange) * 100
+          const percent = Math.abs(this.deltaY) / Math.abs(maxRange) * 100
           changeLongPageProgress(percent);
         }
       };
@@ -98,7 +98,7 @@
           const maxRange = this.screenHeight
             - this.pageData.pageOption.pageSize * this.finalScale;
           this.deltaY = Math.min(0, Math.max(this.startData.deltaY + deltaY, maxRange));
-          const percent = Math.abs(this.startData.deltaY + deltaY) / Math.abs(maxRange) * 100
+          const percent = Math.abs(this.deltaY) / Math.abs(maxRange) * 100
           changeLongPageProgress(percent);
         }
       };
