@@ -141,6 +141,7 @@
         defineUpDown();
         if (newValue != this.index) {
           this.deltaY = 0;
+          changeLongPageProgress(0);
         }
       });
 
