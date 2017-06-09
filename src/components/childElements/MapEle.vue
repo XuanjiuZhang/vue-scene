@@ -106,6 +106,7 @@ export default {
     markerFullScreen(marker) {
       marker.addEventListener('click', () => {
         if(this.full){
+          this.closeFullScreen();
           return;
         }
         this.full = true;
