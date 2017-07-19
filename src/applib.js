@@ -11,9 +11,9 @@ import BsBtn from './components/BackstageTurnPageBtn.vue'
 import BsBtnB from './components/BackstageTurnPageBtnStyleB.vue'
 import './style/element.less'
 import './lib/hammer.min.js'
-import qrcanvas from 'qrcanvas'
+import qrcanvas from 'qrcanvas' 
 
-// test
+// 用于测试的场景数据
 /*import testSceneData from './test/questionForm.json' ;
 global.testSceneData = testSceneData;*/
 
