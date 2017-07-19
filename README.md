@@ -27,6 +27,10 @@
 
 引用了部分elementUI组件并且进行过修改,请使用src/lib/element-ui包,复制到node_modules下,而不是npm install element-ui
 
+运行方式 gulp dev 执行开发模式, 在build目录下testApp.html是只有预览不带手机边框和二维码的布局(用于移动端).testAppPc.html则是用于pc预览的页面.
+
+gulp build 是执行打包, 打包后只有一个previewLib.min.js 文件,引用该文件即可. 目前是放置在小蜜蜂项目 fore_h5 的app.view/lib/ 文件夹下.
+
 ### 主要细节
 1. 编辑器是用px进行的绝对定位,手机区域是320 * 486.元素坐标原点是手机的左上角.
 2. 有长页面功能,页面高度可以超过486px.
