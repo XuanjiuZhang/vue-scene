@@ -24,6 +24,9 @@
     };
 
 ---
+
+引用了部分elementUI组件并且进行过修改,请使用src/lib/element-ui包,复制到node_modules下,而不是npm install element-ui
+
 ### 主要细节
 1. 编辑器是用px进行的绝对定位,手机区域是320 * 486.元素坐标原点是手机的左上角.
 2. 有长页面功能,页面高度可以超过486px.

@@ -7,6 +7,9 @@ class SceneEditor{
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
     this.scale = screenWidth / editorWidth;
+
+    this.screenWHRatio = screenWidth / screenHeight
+    this.editorWHRatio = editorWidth / editorHeight
   }
   transCss(sceneData){
     if(_.isArray(sceneData.pages)){
@@ -23,7 +26,14 @@ class SceneEditor{
     const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
     const pWidth = Math.floor(parseInt(width) / this.editorWidth * 100) + '%';
 
-    const pHeight = Math.ceil(parseInt(height) * this.scale) + 'px';
+    let pHeight
+    if(this.screenWHRatio > this.editorWHRatio) {
+      // 超宽屏
+      pHeight = this.screenHeight / this.editorHeight * parseInt(height) + 'px';
+    }else {
+      pHeight = Math.ceil(parseInt(height) * this.scale) + 'px';
+    }
+    
 
     var pTop = '';
     if(longPage){
