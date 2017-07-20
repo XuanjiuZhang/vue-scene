@@ -1,5 +1,6 @@
 # vue-scene vue场景预览
 
+![image](https://github.com/jiujiue99/vue-scene/blob/percentLayout/src/img/sample.png)
 
 ### 简介
 #### 由于之前小蜜蜂编辑器ng预览性能消耗大不适合在移动端进行预览,所以将预览的逻辑用vue重新编写.
