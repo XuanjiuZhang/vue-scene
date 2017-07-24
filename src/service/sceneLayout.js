@@ -24,14 +24,14 @@ class SceneEditor{
     const { pageOption: { longPage, pageSize} } = page;
     const {left, top, height, width} = element.css;
     const pLeft = parseInt(left) / this.editorWidth * 100 + '%';
-    const pWidth = Math.floor(parseInt(width) / this.editorWidth * 100) + '%';
+    const pWidth = parseInt(width) / this.editorWidth * 100 + '%';
 
     let pHeight
     if(this.screenWHRatio > this.editorWHRatio) {
       // 超宽屏
       pHeight = this.screenHeight / this.editorHeight * parseInt(height) + 'px';
     }else {
-      pHeight = Math.ceil(parseInt(height) * this.scale) + 'px';
+      pHeight = parseInt(height) * this.scale + 'px';
     }
     
 
